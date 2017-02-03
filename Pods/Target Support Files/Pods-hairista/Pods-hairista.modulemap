@@ -1,0 +1,6 @@
+framework module Pods_hairista {
+  umbrella header "Pods-hairista-umbrella.h"
+
+  export *
+  module * { export * }
+}

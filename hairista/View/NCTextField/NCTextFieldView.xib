@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NCTextFieldView">
+            <connections>
+                <outlet property="leadingContraintTextField" destination="aWX-cc-pED" id="EZs-RY-eHr"/>
+                <outlet property="txtTextField" destination="9b9-ND-AQg" id="ECj-4M-Bki"/>
+                <outlet property="view" destination="iN0-l3-epB" id="xwy-dh-N4D"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="35"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9b9-ND-AQg">
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="d2H-Cv-J9Q"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9b9-ND-AQg" secondAttribute="bottom" id="8Nf-bC-coW"/>
+                <constraint firstAttribute="trailing" secondItem="9b9-ND-AQg" secondAttribute="trailing" constant="-1" id="Ryo-l3-uz2"/>
+                <constraint firstItem="9b9-ND-AQg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Wx7-jQ-jkz"/>
+                <constraint firstItem="9b9-ND-AQg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="11" id="aWX-cc-pED"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

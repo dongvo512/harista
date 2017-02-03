@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NCScrollLabelView">
+            <connections>
+                <outlet property="lblText" destination="F8w-iO-Db3" id="vvU-Do-qmu"/>
+                <outlet property="scrollView" destination="OsS-4X-VXG" id="BV4-Fe-sBC"/>
+                <outlet property="view" destination="iN0-l3-epB" id="pAl-Gr-1u8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="25"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsS-4X-VXG">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8w-iO-Db3">
+                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="F8w-iO-Db3" firstAttribute="top" secondItem="OsS-4X-VXG" secondAttribute="top" id="2zj-b4-OLm"/>
+                        <constraint firstAttribute="trailing" secondItem="F8w-iO-Db3" secondAttribute="trailing" id="DUI-1y-zEi"/>
+                        <constraint firstItem="F8w-iO-Db3" firstAttribute="height" secondItem="OsS-4X-VXG" secondAttribute="height" id="ePI-sh-9x5"/>
+                        <constraint firstItem="F8w-iO-Db3" firstAttribute="leading" secondItem="OsS-4X-VXG" secondAttribute="leading" id="oix-k5-ad0"/>
+                        <constraint firstAttribute="bottom" secondItem="F8w-iO-Db3" secondAttribute="bottom" id="rNy-ru-kWA"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="L9x-0P-Gl4"/>
+                    </connections>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OsS-4X-VXG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="0Uu-K0-oaF"/>
+                <constraint firstItem="OsS-4X-VXG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BXa-25-on5"/>
+                <constraint firstItem="F8w-iO-Db3" firstAttribute="width" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="width" id="TNG-O0-5eL"/>
+                <constraint firstAttribute="trailing" secondItem="OsS-4X-VXG" secondAttribute="trailing" id="a2k-5m-yKC"/>
+                <constraint firstItem="OsS-4X-VXG" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="kVp-mD-q3r"/>
+                <constraint firstAttribute="bottom" secondItem="OsS-4X-VXG" secondAttribute="bottom" id="khI-H4-tGs"/>
+                <constraint firstItem="OsS-4X-VXG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uGV-S5-SmX"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
