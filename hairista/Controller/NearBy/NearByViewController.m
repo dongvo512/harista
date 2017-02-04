@@ -266,9 +266,11 @@
             
             pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             UIButton *btnGo = [UIButton buttonWithType:UIButtonTypeCustom];
-            NSLog(@"%d",[arrAnnotations indexOfObject:annotation]);
+           // NSLog(@"%d",[arrAnnotations indexOfObject:annotation]);
             [btnGo setTag:[arrAnnotations indexOfObject:annotation]];
+           
             [btnGo setImage:[UIImage imageNamed:@"ic_go"] forState:UIControlStateNormal];
+            
             [btnGo addTarget:self action:@selector(touchBtnGo:) forControlEvents:UIControlEventTouchUpInside];
             btnGo.frame =
             CGRectMake(0, 0, 26, 26);
@@ -322,7 +324,7 @@
         arrAnnotations = [NSArray arrayWithObjects:annotationSanBay, annotationHairBar,annotationHair,annotationLeHieu, nil];
         
         [self.mapKit addAnnotations:arrAnnotations];
-        
+       // [self.mapKit showAnnotations:arrAnnotations animated:NO];
         CLLocation *locationUser = [[CLLocation alloc] initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
         
         Annotation *annotation = [[self getDistanceClosest:arrAnnotations CLLocationUser:locationUser] firstObject];

@@ -71,15 +71,35 @@
                                         <action selector="back:" destination="-1" eventType="touchUpInside" id="r6P-cx-rFI"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBn-KQ-Esp">
+                                    <rect key="frame" x="335" y="1" width="40" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="jtR-kI-9Dz"/>
+                                        <constraint firstAttribute="height" constant="50" id="nKU-8n-Uqt"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_createbooking_small"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ShJ-Td-j1A">
+                                    <rect key="frame" x="295" y="1" width="40" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="MGN-Hp-vDX"/>
+                                        <constraint firstAttribute="height" constant="50" id="vmJ-Fy-vyP"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_camera_small"/>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstItem="LBn-KQ-Esp" firstAttribute="leading" secondItem="ShJ-Td-j1A" secondAttribute="trailing" id="4Fu-yZ-R74"/>
                                 <constraint firstItem="Ocf-mV-da5" firstAttribute="top" secondItem="90h-J4-si6" secondAttribute="top" id="BOF-H9-GEm"/>
                                 <constraint firstAttribute="bottom" secondItem="dcE-Fq-HgW" secondAttribute="bottom" constant="1" id="Dtv-IN-FcP"/>
+                                <constraint firstItem="LBn-KQ-Esp" firstAttribute="top" secondItem="Ocf-mV-da5" secondAttribute="bottom" id="FdU-iP-D9W"/>
                                 <constraint firstItem="Sjf-Uq-TKq" firstAttribute="centerX" secondItem="90h-J4-si6" secondAttribute="centerX" id="Ida-dR-ayd"/>
+                                <constraint firstAttribute="trailing" secondItem="LBn-KQ-Esp" secondAttribute="trailing" id="bl3-97-MRO"/>
                                 <constraint firstAttribute="height" constant="52" id="fPg-Fz-Aaw"/>
                                 <constraint firstItem="dcE-Fq-HgW" firstAttribute="leading" secondItem="90h-J4-si6" secondAttribute="leading" id="kIv-sS-WKS"/>
                                 <constraint firstItem="Sjf-Uq-TKq" firstAttribute="top" secondItem="Ocf-mV-da5" secondAttribute="bottom" constant="9" id="lk1-wD-k5g"/>
+                                <constraint firstItem="ShJ-Td-j1A" firstAttribute="top" secondItem="Ocf-mV-da5" secondAttribute="bottom" id="sWZ-RF-IVS"/>
                                 <constraint firstAttribute="trailing" secondItem="Ocf-mV-da5" secondAttribute="trailing" id="wdQ-Ds-acX"/>
                                 <constraint firstItem="Ocf-mV-da5" firstAttribute="leading" secondItem="90h-J4-si6" secondAttribute="leading" id="xe4-Tn-rXM"/>
                             </constraints>
@@ -100,7 +120,7 @@
                     <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5X-EH-MgL" userLabel="View - Content">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="595"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="492.5"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="salon_1" translatesAutoresizingMaskIntoConstraints="NO" id="N86-f3-zXf">
                                     <rect key="frame" x="12" y="12" width="72" height="72"/>
@@ -228,7 +248,7 @@
                                     </constraints>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Kv-IV-aq0" userLabel="View - Find Salon">
-                                    <rect key="frame" x="30" y="383" width="315" height="50"/>
+                                    <rect key="frame" x="30" y="382.5" width="315" height="50"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_comment" translatesAutoresizingMaskIntoConstraints="NO" id="X2y-YO-4uB">
                                             <rect key="frame" x="18" y="10" width="30" height="30"/>
@@ -258,7 +278,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAc-mo-OCA" userLabel="View -update InfoUser">
-                                    <rect key="frame" x="30" y="251" width="315" height="50"/>
+                                    <rect key="frame" x="30" y="250.5" width="315" height="50"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_hair" translatesAutoresizingMaskIntoConstraints="NO" id="2aK-vF-D83">
                                             <rect key="frame" x="18" y="10" width="30" height="30"/>
@@ -286,9 +306,12 @@
                                             <integer key="value" value="25"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="Wfh-eK-Bkj" appends="YES" id="0Kr-Ra-XHh"/>
+                                    </connections>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTA-Sl-Xer" userLabel="View - Album">
-                                    <rect key="frame" x="30" y="317" width="315" height="50"/>
+                                    <rect key="frame" x="30" y="316.5" width="315" height="50"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_bill" translatesAutoresizingMaskIntoConstraints="NO" id="xqr-IE-IuU">
                                             <rect key="frame" x="18" y="10" width="30" height="30"/>
@@ -318,7 +341,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" red="0.1176470588" green="0.1450980392" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="tcm-cw-kqH" secondAttribute="trailing" constant="45" id="0AY-Eg-wOC"/>
                                 <constraint firstItem="6Kv-IV-aq0" firstAttribute="leading" secondItem="D5X-EH-MgL" secondAttribute="leading" constant="30" id="0vL-h9-8Yh"/>
@@ -363,13 +386,14 @@
                                 <constraint firstItem="OEG-Gb-Vqo" firstAttribute="top" secondItem="jey-V6-Hm1" secondAttribute="bottom" constant="19" id="pQ6-2o-9d9"/>
                                 <constraint firstItem="1o9-qj-gti" firstAttribute="leading" secondItem="jey-V6-Hm1" secondAttribute="trailing" constant="11" id="pp7-qC-iqF"/>
                                 <constraint firstItem="qAq-0B-6Aq" firstAttribute="top" secondItem="bl0-ZL-6iH" secondAttribute="bottom" constant="14" id="qcj-ny-PTP"/>
-                                <constraint firstAttribute="height" constant="595" id="wGn-fx-AC8"/>
+                                <constraint firstAttribute="bottom" secondItem="6Kv-IV-aq0" secondAttribute="bottom" constant="60" id="rhM-KY-YSI"/>
                                 <constraint firstItem="KAc-mo-OCA" firstAttribute="top" secondItem="c3x-K0-ivJ" secondAttribute="bottom" constant="16" id="xcR-CA-dZN"/>
                                 <constraint firstItem="c3x-K0-ivJ" firstAttribute="top" secondItem="1o9-qj-gti" secondAttribute="bottom" constant="8" id="xot-ro-Elk"/>
                                 <constraint firstItem="y64-GA-SnW" firstAttribute="leading" secondItem="N86-f3-zXf" secondAttribute="trailing" constant="8" id="zwF-Sc-Tm0"/>
                             </constraints>
                         </view>
                     </subviews>
+                    <color key="backgroundColor" red="0.1176470588" green="0.1450980392" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="D5X-EH-MgL" firstAttribute="leading" secondItem="542-tl-lxr" secondAttribute="leading" id="8iP-iz-mYg"/>
                         <constraint firstItem="D5X-EH-MgL" firstAttribute="width" secondItem="542-tl-lxr" secondAttribute="width" id="9dc-LH-20o"/>
@@ -378,11 +402,6 @@
                         <constraint firstAttribute="trailing" secondItem="D5X-EH-MgL" secondAttribute="trailing" id="XSf-iw-8vv"/>
                     </constraints>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sdt-9l-qIs">
-                    <rect key="frame" x="38" y="570" width="72" height="72"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="ic_add"/>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -396,13 +415,19 @@
             </constraints>
             <point key="canvasLocation" x="26.5" y="52.5"/>
         </view>
+        <tapGestureRecognizer id="Wfh-eK-Bkj">
+            <connections>
+                <action selector="touchCatagoriesHair:" destination="-1" id="CtK-XT-IMa"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="ic_add" width="16" height="16"/>
         <image name="ic_arrow" width="10" height="10"/>
         <image name="ic_back" width="15" height="15"/>
         <image name="ic_bill" width="30" height="30"/>
+        <image name="ic_camera_small" width="24" height="24"/>
         <image name="ic_comment" width="30" height="30"/>
+        <image name="ic_createbooking_small" width="24" height="24"/>
         <image name="ic_favorite" width="24" height="24"/>
         <image name="ic_hair" width="30" height="30"/>
         <image name="ic_map" width="24" height="24"/>

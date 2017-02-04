@@ -67,14 +67,25 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfW-gE-mOS">
-                                    <rect key="frame" x="325" y="2" width="50" height="50"/>
+                                    <rect key="frame" x="295" y="1" width="40" height="50"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="50" id="CRS-BU-cO0"/>
-                                        <constraint firstAttribute="height" constant="50" id="eur-uE-loR"/>
+                                        <constraint firstAttribute="width" constant="40" id="OP7-Jg-M0z"/>
+                                        <constraint firstAttribute="height" constant="50" id="f8M-54-QvH"/>
                                     </constraints>
                                     <state key="normal" image="ic_search"/>
                                     <connections>
                                         <action selector="touchBtnSearch:" destination="-1" eventType="touchUpInside" id="VRJ-gI-Ou7"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJD-om-Hne">
+                                    <rect key="frame" x="335" y="1" width="40" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="8ou-z1-3L7"/>
+                                        <constraint firstAttribute="height" constant="50" id="kaU-wb-AQZ"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_nearby_small"/>
+                                    <connections>
+                                        <action selector="touchBtnNearBy:" destination="-1" eventType="touchUpInside" id="F4d-LC-jqi"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -83,12 +94,14 @@
                                 <constraint firstAttribute="bottom" secondItem="7r5-bx-sa9" secondAttribute="bottom" constant="1" id="3JN-QH-EGp"/>
                                 <constraint firstAttribute="height" constant="52" id="6cm-vn-FJ0"/>
                                 <constraint firstItem="Yiq-qH-AKk" firstAttribute="leading" secondItem="Mc7-7Y-IQe" secondAttribute="leading" id="9NT-wZ-cQx"/>
-                                <constraint firstAttribute="trailing" secondItem="vfW-gE-mOS" secondAttribute="trailing" id="AQz-Ps-gQf"/>
+                                <constraint firstAttribute="trailing" secondItem="kJD-om-Hne" secondAttribute="trailing" id="9Pb-fN-pAb"/>
+                                <constraint firstItem="kJD-om-Hne" firstAttribute="leading" secondItem="vfW-gE-mOS" secondAttribute="trailing" id="DXn-Vy-Nar"/>
                                 <constraint firstItem="7r5-bx-sa9" firstAttribute="leading" secondItem="Mc7-7Y-IQe" secondAttribute="leading" id="Fbo-fL-l0j"/>
                                 <constraint firstAttribute="trailing" secondItem="Yiq-qH-AKk" secondAttribute="trailing" id="HNh-On-BYC"/>
-                                <constraint firstAttribute="bottom" secondItem="vfW-gE-mOS" secondAttribute="bottom" id="QJl-aH-lza"/>
                                 <constraint firstItem="I6m-wL-2EZ" firstAttribute="centerX" secondItem="Mc7-7Y-IQe" secondAttribute="centerX" id="Riw-67-k8l"/>
+                                <constraint firstItem="vfW-gE-mOS" firstAttribute="top" secondItem="Yiq-qH-AKk" secondAttribute="bottom" id="iuA-0H-qYA"/>
                                 <constraint firstItem="I6m-wL-2EZ" firstAttribute="top" secondItem="Yiq-qH-AKk" secondAttribute="bottom" constant="9" id="luX-at-ZuA"/>
+                                <constraint firstItem="kJD-om-Hne" firstAttribute="top" secondItem="Yiq-qH-AKk" secondAttribute="bottom" id="oFn-J8-ebk"/>
                                 <constraint firstItem="Yiq-qH-AKk" firstAttribute="top" secondItem="Mc7-7Y-IQe" secondAttribute="top" id="x43-ja-LUK"/>
                             </constraints>
                         </view>
@@ -112,24 +125,11 @@
                         <outlet property="delegate" destination="-1" id="gqu-am-AeP"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQI-p1-PVS">
-                    <rect key="frame" x="283" y="575" width="72" height="72"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="72" id="2X2-tw-U0W"/>
-                        <constraint firstAttribute="width" constant="72" id="drj-RI-Z1U"/>
-                    </constraints>
-                    <state key="normal" image="ic_nearby"/>
-                    <connections>
-                        <action selector="touchBtnNearBy:" destination="-1" eventType="touchUpInside" id="TxG-sW-BrO"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="0.1176470588" green="0.1450980392" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Zco-uo-Ke4" secondAttribute="trailing" id="G1r-eV-YIN"/>
                 <constraint firstItem="j1D-FF-ZX2" firstAttribute="top" secondItem="Zco-uo-Ke4" secondAttribute="bottom" id="MuZ-Ld-CFx"/>
-                <constraint firstAttribute="bottom" secondItem="yQI-p1-PVS" secondAttribute="bottom" constant="20" id="RP7-hw-iAa"/>
-                <constraint firstAttribute="trailing" secondItem="yQI-p1-PVS" secondAttribute="trailing" constant="20" id="VhS-Pl-8ra"/>
                 <constraint firstItem="Zco-uo-Ke4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XKB-YD-oHo"/>
                 <constraint firstAttribute="bottom" secondItem="j1D-FF-ZX2" secondAttribute="bottom" id="a82-tC-fh2"/>
                 <constraint firstItem="j1D-FF-ZX2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fJK-d2-W7a"/>
@@ -141,7 +141,7 @@
     </objects>
     <resources>
         <image name="ic_menu" width="21" height="18"/>
-        <image name="ic_nearby" width="72" height="72"/>
+        <image name="ic_nearby_small" width="24" height="24"/>
         <image name="ic_search" width="24" height="24"/>
     </resources>
 </document>

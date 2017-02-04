@@ -8,11 +8,11 @@
 
 #import "Annotation.h"
 
-@interface Annotation (){
+@interface Annotation ()<MKAnnotation>{
 
     CLLocationCoordinate2D coordinateCurr;
-    NSString *title;
-    NSString *subtitle;
+    NSString *titleCurr;
+    NSString *subtitleCurr;
     UIImage *imgAnnotaion;
 }
 
@@ -20,9 +20,9 @@
 
 @implementation Annotation
 
-@synthesize coordinate = _coordinate;
-@synthesize title = _title;
-@synthesize subtitle = _subtitle;
+@synthesize coordinate = coordinateCurr;
+@synthesize title = titleCurr;
+@synthesize subtitle = subtitleCurr;
 
 -(id)init:(NSString *)aTitle address:(NSString *)address coordinate:(CLLocationCoordinate2D)coordinate imageSalon:(UIImage *)imageSalon{
    
@@ -30,8 +30,8 @@
     
     if(self){
         
-        title = aTitle;
-        subtitle = address;
+        titleCurr = aTitle;
+        subtitleCurr = address;
         coordinateCurr = coordinate;
         imgAnnotaion = imageSalon;
         

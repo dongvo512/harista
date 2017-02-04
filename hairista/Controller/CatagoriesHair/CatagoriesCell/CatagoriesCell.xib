@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CatagoriesCell" id="gTV-IL-0wX" customClass="CatagoriesCell">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="184"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="184"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_toc_ngan" translatesAutoresizingMaskIntoConstraints="NO" id="md0-DX-68r">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tóc ngắn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rql-Pv-hQA">
+                        <rect key="frame" x="0.0" y="149" width="150" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="LKo-zz-Ahm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="md0-DX-68r" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8xx-fD-NYJ"/>
+                <constraint firstAttribute="bottom" secondItem="md0-DX-68r" secondAttribute="bottom" constant="34" id="BNz-M7-7nc"/>
+                <constraint firstAttribute="bottom" secondItem="Rql-Pv-hQA" secondAttribute="bottom" id="GLb-lB-XUb"/>
+                <constraint firstItem="Rql-Pv-hQA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SDP-zd-f6n"/>
+                <constraint firstAttribute="trailing" secondItem="md0-DX-68r" secondAttribute="trailing" id="ZeN-Ey-OLI"/>
+                <constraint firstAttribute="trailing" secondItem="Rql-Pv-hQA" secondAttribute="trailing" id="cbF-bq-Ssl"/>
+                <constraint firstItem="md0-DX-68r" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gP2-ea-v7v"/>
+            </constraints>
+            <size key="customSize" width="147" height="175"/>
+            <connections>
+                <outlet property="imgCatagories" destination="md0-DX-68r" id="Q5r-6d-5JK"/>
+                <outlet property="lblCatagoriesName" destination="Rql-Pv-hQA" id="nsu-o1-6rH"/>
+            </connections>
+            <point key="canvasLocation" x="-419" y="-301"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="bg_toc_ngan" width="300" height="300"/>
+    </resources>
+</document>

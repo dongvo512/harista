@@ -10,6 +10,8 @@
 
 #import "DetailSalonViewController.h"
 #import "Salon.h"
+#import "CatagoriesHairViewController.h"
+
 
 @interface DetailSalonViewController (){
 
@@ -44,6 +46,16 @@
     // Dispose of any resources that can be recreated.
 }
 #pragma mark - Method
+
+- (IBAction)touchCatagoriesHair:(id)sender {
+    
+    CatagoriesHairViewController *vcCatagoriesHair = [[CatagoriesHairViewController alloc] initWithNibName:@"CatagoriesHairViewController" bundle:nil];
+    
+    [self.navigationController pushViewController:vcCatagoriesHair animated:YES];
+    
+}
+
+
 - (IBAction)back:(id)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
