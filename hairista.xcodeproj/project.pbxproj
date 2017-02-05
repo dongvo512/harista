@@ -53,6 +53,8 @@
 		B8A103151E457FBF00C4E376 /* HairCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A103131E457FBF00C4E376 /* HairCell.xib */; };
 		B8A103191E45878B00C4E376 /* HairFullView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A103181E45878B00C4E376 /* HairFullView.m */; };
 		B8A1031B1E45879300C4E376 /* HairFullView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A1031A1E45879300C4E376 /* HairFullView.xib */; };
+		B8A2D1AB1E46F7E800A357BC /* ServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A2D1A91E46F7E800A357BC /* ServiceCell.m */; };
+		B8A2D1AC1E46F7E800A357BC /* ServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A2D1AA1E46F7E800A357BC /* ServiceCell.xib */; };
 		B8AA6B131E4090DB002716A7 /* SearchSalonAdvanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8AA6B111E4090DB002716A7 /* SearchSalonAdvanceViewController.m */; };
 		B8AA6B141E4090DB002716A7 /* SearchSalonAdvanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AA6B121E4090DB002716A7 /* SearchSalonAdvanceViewController.xib */; };
 		B8AA6B191E40920F002716A7 /* SearchOptionSalonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8AA6B171E40920F002716A7 /* SearchOptionSalonCell.m */; };
@@ -193,6 +195,9 @@
 		B8A103171E45878B00C4E376 /* HairFullView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HairFullView.h; sourceTree = "<group>"; };
 		B8A103181E45878B00C4E376 /* HairFullView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HairFullView.m; sourceTree = "<group>"; };
 		B8A1031A1E45879300C4E376 /* HairFullView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HairFullView.xib; sourceTree = "<group>"; };
+		B8A2D1A81E46F7E800A357BC /* ServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCell.h; sourceTree = "<group>"; };
+		B8A2D1A91E46F7E800A357BC /* ServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCell.m; sourceTree = "<group>"; };
+		B8A2D1AA1E46F7E800A357BC /* ServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceCell.xib; sourceTree = "<group>"; };
 		B8AA6B101E4090DB002716A7 /* SearchSalonAdvanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSalonAdvanceViewController.h; sourceTree = "<group>"; };
 		B8AA6B111E4090DB002716A7 /* SearchSalonAdvanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSalonAdvanceViewController.m; sourceTree = "<group>"; };
 		B8AA6B121E4090DB002716A7 /* SearchSalonAdvanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchSalonAdvanceViewController.xib; sourceTree = "<group>"; };
@@ -440,6 +445,7 @@
 		B880C6B81E45FCE200AA2B72 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B8A2D1A71E46F7D900A357BC /* ServiceCell */,
 				B880C6B91E45FD1B00AA2B72 /* ServicesViewController.h */,
 				B880C6BA1E45FD1B00AA2B72 /* ServicesViewController.m */,
 				B880C6BB1E45FD1B00AA2B72 /* ServicesViewController.xib */,
@@ -578,6 +584,16 @@
 				B8A1031A1E45879300C4E376 /* HairFullView.xib */,
 			);
 			path = HairFullView;
+			sourceTree = "<group>";
+		};
+		B8A2D1A71E46F7D900A357BC /* ServiceCell */ = {
+			isa = PBXGroup;
+			children = (
+				B8A2D1A81E46F7E800A357BC /* ServiceCell.h */,
+				B8A2D1A91E46F7E800A357BC /* ServiceCell.m */,
+				B8A2D1AA1E46F7E800A357BC /* ServiceCell.xib */,
+			);
+			path = ServiceCell;
 			sourceTree = "<group>";
 		};
 		B8AA6B0F1E4090CB002716A7 /* SearchSalonAdvance */ = {
@@ -1008,6 +1024,7 @@
 				B8A1030B1E4569F000C4E376 /* ListHairViewController.xib in Resources */,
 				B8AA6B141E4090DB002716A7 /* SearchSalonAdvanceViewController.xib in Resources */,
 				B8DE7ED21E390A450008769C /* OpenSans-ExtraBold.ttf in Resources */,
+				B8A2D1AC1E46F7E800A357BC /* ServiceCell.xib in Resources */,
 				B8DE7EE61E390A450008769C /* RobotoCondensed-Bold.ttf in Resources */,
 				B86D28491E2E22E3005491E6 /* NCSearchBarView.xib in Resources */,
 				B8DE7EEB1E390A450008769C /* RobotoCondensed-Regular.ttf in Resources */,
@@ -1114,6 +1131,7 @@
 				B80F91B01E41CF0E00649C88 /* NCComboboxNewView.m in Sources */,
 				B88D7C9D1E3A092A006B8019 /* MenuCell.m in Sources */,
 				B880C6C11E45FED400AA2B72 /* Service.m in Sources */,
+				B8A2D1AB1E46F7E800A357BC /* ServiceCell.m in Sources */,
 				B80F91BD1E41F88900649C88 /* ProvinceViewController.m in Sources */,
 				B8EC1C651E291CCA00D2D1E6 /* AppDelegate.m in Sources */,
 				B8B5BAD81E3A5ABB00586CBE /* HeaderBannerCell.m in Sources */,

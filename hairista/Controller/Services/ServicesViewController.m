@@ -9,11 +9,12 @@
 #import "ServicesViewController.h"
 #import "GroupService.h"
 #import "Service.h"
+#import "ServiceCell.h"
 
-
-@interface ServicesViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface ServicesViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *arrGroupService;
+@property (weak, nonatomic) IBOutlet UICollectionView *cllService;
 
 @end
 
@@ -22,6 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self createDataTemp];
+    
+    [self.cllService registerNib:[UINib nibWithNibName:@"ServiceCell" bundle:nil] forCellWithReuseIdentifier:@"ServiceCell"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,6 +78,25 @@
     group_2.arrSerives = [NSArray arrayWithObjects:service_2_1,service_2_2, service_2_3, nil];
 }
 
+#pragma mark - UICollectionViewDataSource
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+
+    return self.arrGroupService.count;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+
+    GroupService *group = [self.arrGroupService objectAtIndex:section];
+    
+    return group.arrSerives.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+
+    ServiceCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ServiceCell" forIndexPath:indexPath];
+    
+    return cell;
+}
 
 @end
