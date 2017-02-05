@@ -106,7 +106,7 @@
     
     [self createListSalonBanner];
     [self.pageControl setNumberOfPages:self.arrSalonsHeader.count];
-    self.widthContraintPageControl.constant = 14 * self.arrSalonsHeader.count;
+    self.widthContraintPageControl.constant = 18 * self.arrSalonsHeader.count;
     [self.pageControl setCurrentPage:0];
     
     timer = [NSTimer scheduledTimerWithTimeInterval:3.0

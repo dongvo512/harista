@@ -11,6 +11,6 @@
 @class Hair;
 
 @interface HairFullView : UIView
-- (id)initWithFrame:(CGRect)frame hair:(Hair *)hair;
+- (id)initWithFrame:(CGRect)frame imgName:(NSString *)aImgName title:(NSString *)aTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewHair;;
 @end

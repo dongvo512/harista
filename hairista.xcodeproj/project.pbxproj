@@ -59,6 +59,8 @@
 		B8AA6B141E4090DB002716A7 /* SearchSalonAdvanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AA6B121E4090DB002716A7 /* SearchSalonAdvanceViewController.xib */; };
 		B8AA6B191E40920F002716A7 /* SearchOptionSalonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8AA6B171E40920F002716A7 /* SearchOptionSalonCell.m */; };
 		B8AA6B1A1E40920F002716A7 /* SearchOptionSalonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AA6B181E40920F002716A7 /* SearchOptionSalonCell.xib */; };
+		B8B470D01E476E6D0063CE2C /* ServiceHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B470CE1E476E6D0063CE2C /* ServiceHeaderView.m */; };
+		B8B470D11E476E6D0063CE2C /* ServiceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B470CF1E476E6D0063CE2C /* ServiceHeaderView.xib */; };
 		B8B5BAD11E3A57C900586CBE /* HeaderBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BAD01E3A57C900586CBE /* HeaderBannerView.m */; };
 		B8B5BAD31E3A57D500586CBE /* HeaderBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B5BAD21E3A57D500586CBE /* HeaderBannerView.xib */; };
 		B8B5BAD81E3A5ABB00586CBE /* HeaderBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BAD61E3A5ABB00586CBE /* HeaderBannerCell.m */; };
@@ -204,6 +206,9 @@
 		B8AA6B161E40920F002716A7 /* SearchOptionSalonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOptionSalonCell.h; sourceTree = "<group>"; };
 		B8AA6B171E40920F002716A7 /* SearchOptionSalonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchOptionSalonCell.m; sourceTree = "<group>"; };
 		B8AA6B181E40920F002716A7 /* SearchOptionSalonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchOptionSalonCell.xib; sourceTree = "<group>"; };
+		B8B470CD1E476E6D0063CE2C /* ServiceHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceHeaderView.h; sourceTree = "<group>"; };
+		B8B470CE1E476E6D0063CE2C /* ServiceHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceHeaderView.m; sourceTree = "<group>"; };
+		B8B470CF1E476E6D0063CE2C /* ServiceHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceHeaderView.xib; sourceTree = "<group>"; };
 		B8B5BACF1E3A57C900586CBE /* HeaderBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderBannerView.h; sourceTree = "<group>"; };
 		B8B5BAD01E3A57C900586CBE /* HeaderBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderBannerView.m; sourceTree = "<group>"; };
 		B8B5BAD21E3A57D500586CBE /* HeaderBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderBannerView.xib; sourceTree = "<group>"; };
@@ -445,6 +450,7 @@
 		B880C6B81E45FCE200AA2B72 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B8B470CC1E476E480063CE2C /* ServiceHeaderView */,
 				B8A2D1A71E46F7D900A357BC /* ServiceCell */,
 				B880C6B91E45FD1B00AA2B72 /* ServicesViewController.h */,
 				B880C6BA1E45FD1B00AA2B72 /* ServicesViewController.m */,
@@ -615,6 +621,16 @@
 				B8AA6B181E40920F002716A7 /* SearchOptionSalonCell.xib */,
 			);
 			path = SearchOptionSalonCell;
+			sourceTree = "<group>";
+		};
+		B8B470CC1E476E480063CE2C /* ServiceHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				B8B470CD1E476E6D0063CE2C /* ServiceHeaderView.h */,
+				B8B470CE1E476E6D0063CE2C /* ServiceHeaderView.m */,
+				B8B470CF1E476E6D0063CE2C /* ServiceHeaderView.xib */,
+			);
+			path = ServiceHeaderView;
 			sourceTree = "<group>";
 		};
 		B8B5BACE1E3A57BC00586CBE /* HeaderBannerView */ = {
@@ -996,6 +1012,7 @@
 				B8DE7EE71E390A450008769C /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				B8DE7EDD1E390A450008769C /* Roboto-BoldItalic.ttf in Resources */,
 				B8B5BAD91E3A5ABB00586CBE /* HeaderBannerCell.xib in Resources */,
+				B8B470D11E476E6D0063CE2C /* ServiceHeaderView.xib in Resources */,
 				B8A103051E455AFB00C4E376 /* Images.xcassets in Resources */,
 				B8DE7EE11E390A450008769C /* Roboto-Medium.ttf in Resources */,
 				B8DE7EE31E390A450008769C /* Roboto-Regular.ttf in Resources */,
@@ -1109,6 +1126,7 @@
 				B8AA6B131E4090DB002716A7 /* SearchSalonAdvanceViewController.m in Sources */,
 				B8A103021E4555AA00C4E376 /* CatagoriesCell.m in Sources */,
 				B8EC1C521E291B6700D2D1E6 /* hairista.xcdatamodeld in Sources */,
+				B8B470D01E476E6D0063CE2C /* ServiceHeaderView.m in Sources */,
 				B88D7CA81E3A1342006B8019 /* BookingsViewController.m in Sources */,
 				B8A1030A1E4569F000C4E376 /* ListHairViewController.m in Sources */,
 				B86D284E1E2E2305005491E6 /* NCTextFieldView.m in Sources */,

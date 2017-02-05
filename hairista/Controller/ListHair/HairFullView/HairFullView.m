@@ -7,12 +7,13 @@
 //
 
 #import "HairFullView.h"
-#import "Hair.h"
+
 
 
 @interface HairFullView (){
 
-    Hair *hairCurr;
+    NSString *imgName;
+    NSString *title;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *view;
@@ -23,10 +24,12 @@
 
 @implementation HairFullView
 
-- (id)initWithFrame:(CGRect)frame hair:(Hair *)hair{
+- (id)initWithFrame:(CGRect)frame imgName:(NSString *)aImgName title:(NSString *)aTitle{
+   
     if(self = [super initWithFrame:frame]){
         
-        hairCurr = hair;
+        imgName = aImgName;
+        title = aTitle;
         [self setup];
     }
     return self;
@@ -38,8 +41,8 @@
     self.view.frame = self.bounds;
     [self addSubview:self.view];
     
-    self.imgViewHair.image = [UIImage imageNamed:hairCurr.imgName];
-    self.lblName.text = hairCurr.hairName;
+    self.imgViewHair.image = [UIImage imageNamed:imgName];
+    self.lblName.text = title;
 }
 - (IBAction)tapView:(id)sender {
     

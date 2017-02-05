@@ -1,5 +1,5 @@
 //
-//  ServiceCell.h
+//  ServiceHeaderView.h
 //  hairista
 //
 //  Created by Dong Vo on 2/5/17.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class Service;
+@interface ServiceHeaderView : UICollectionReusableView
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
-@interface ServiceCell : UICollectionViewCell
--(void)setDataForCell:(Service *)service;
+
 @end

@@ -247,7 +247,7 @@
                                         <constraint firstAttribute="width" constant="10" id="dRy-uc-Uo8"/>
                                     </constraints>
                                 </imageView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Kv-IV-aq0" userLabel="View - Find Salon">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Kv-IV-aq0" userLabel="View - Comment">
                                     <rect key="frame" x="30" y="382.5" width="315" height="50"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_comment" translatesAutoresizingMaskIntoConstraints="NO" id="X2y-YO-4uB">
@@ -310,7 +310,7 @@
                                         <outletCollection property="gestureRecognizers" destination="Wfh-eK-Bkj" appends="YES" id="0Kr-Ra-XHh"/>
                                     </connections>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTA-Sl-Xer" userLabel="View - Album">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTA-Sl-Xer" userLabel="View - Service">
                                     <rect key="frame" x="30" y="316.5" width="315" height="50"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_bill" translatesAutoresizingMaskIntoConstraints="NO" id="xqr-IE-IuU">
@@ -339,6 +339,9 @@
                                             <integer key="value" value="25"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="oHq-YU-YzL" appends="YES" id="yH8-AY-Yke"/>
+                                    </connections>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -418,6 +421,11 @@
         <tapGestureRecognizer id="Wfh-eK-Bkj">
             <connections>
                 <action selector="touchCatagoriesHair:" destination="-1" id="CtK-XT-IMa"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="oHq-YU-YzL">
+            <connections>
+                <action selector="touchSerices:" destination="-1" id="akW-Nm-b1m"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

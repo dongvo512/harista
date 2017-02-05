@@ -11,7 +11,7 @@
 #import "DetailSalonViewController.h"
 #import "Salon.h"
 #import "CatagoriesHairViewController.h"
-
+#import "ServicesViewController.h"
 
 @interface DetailSalonViewController (){
 
@@ -46,6 +46,11 @@
     // Dispose of any resources that can be recreated.
 }
 #pragma mark - Method
+- (IBAction)touchSerices:(id)sender {
+    
+    ServicesViewController *vcServices = [[ServicesViewController alloc] initWithNibName:@"ServicesViewController" bundle:nil];
+    [self.navigationController pushViewController:vcServices animated:YES];
+}
 
 - (IBAction)touchCatagoriesHair:(id)sender {
     

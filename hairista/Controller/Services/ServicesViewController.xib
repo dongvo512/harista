@@ -62,6 +62,9 @@
                                         <constraint firstAttribute="height" constant="50" id="dBv-Y1-GND"/>
                                     </constraints>
                                     <state key="normal" image="ic_back"/>
+                                    <connections>
+                                        <action selector="back:" destination="-1" eventType="touchUpInside" id="eaj-Fr-LA3"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -89,17 +92,21 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GOO-k5-la3">
-                    <rect key="frame" x="0.0" y="72" width="375" height="595"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IMa-Pm-mIq">
+                    <rect key="frame" x="0.0" y="80" width="375" height="587"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="IMa-Pm-mIq">
                         <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="headerReferenceSize" width="50" height="50"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
                     </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Fnz-FA-j0T"/>
+                        <outlet property="delegate" destination="-1" id="4Z9-TG-e9v"/>
+                    </connections>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.1176470588" green="0.1450980392" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="GOO-k5-la3" secondAttribute="bottom" id="BbF-dV-twH"/>
                 <constraint firstAttribute="trailing" secondItem="GOO-k5-la3" secondAttribute="trailing" id="E2J-zn-o3G"/>
@@ -107,7 +114,7 @@
                 <constraint firstAttribute="trailing" secondItem="K6m-iB-gIm" secondAttribute="trailing" id="Vdy-B4-YVB"/>
                 <constraint firstItem="GOO-k5-la3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZKD-kA-7ee"/>
                 <constraint firstItem="K6m-iB-gIm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fhf-5l-DbT"/>
-                <constraint firstItem="GOO-k5-la3" firstAttribute="top" secondItem="K6m-iB-gIm" secondAttribute="bottom" id="ziv-gT-Xpf"/>
+                <constraint firstItem="GOO-k5-la3" firstAttribute="top" secondItem="K6m-iB-gIm" secondAttribute="bottom" constant="8" id="ziv-gT-Xpf"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <point key="canvasLocation" x="25.5" y="51.5"/>

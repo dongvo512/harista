@@ -149,7 +149,7 @@
     
     Hair *hair = [self.arrData objectAtIndex:indexPath.row];
     
-    hairFull = [[HairFullView alloc] initWithFrame:self.view.bounds hair:hair];
+    hairFull = [[HairFullView alloc] initWithFrame:self.view.bounds imgName:hair.imgName title:hair.hairName];
     
     [UIView transitionWithView:self.view duration:0.5
                        options:UIViewAnimationOptionTransitionCrossDissolve //change to whatever animation you like

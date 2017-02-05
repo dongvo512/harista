@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ServiceHeader" id="U6b-Vx-4bR" customClass="ServiceHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="46O-Gq-t6r">
+                    <rect key="frame" x="8" y="0.0" width="304" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Xbe-KJ-aJi"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cắt tóc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDT-3O-RgT">
+                    <rect key="frame" x="16" y="15" width="288" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Gnz-24-kWa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="19"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="DDT-3O-RgT" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="5Rb-o5-l7g"/>
+                <constraint firstAttribute="trailing" secondItem="46O-Gq-t6r" secondAttribute="trailing" constant="8" id="PIX-Wv-Pla"/>
+                <constraint firstItem="46O-Gq-t6r" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="8" id="Y2w-mO-cU2"/>
+                <constraint firstAttribute="trailing" secondItem="DDT-3O-RgT" secondAttribute="trailing" constant="16" id="dmi-rB-3eK"/>
+                <constraint firstItem="DDT-3O-RgT" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="sys-pA-eeX"/>
+                <constraint firstItem="46O-Gq-t6r" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="uzP-eh-bQN"/>
+            </constraints>
+            <connections>
+                <outlet property="lblTitle" destination="DDT-3O-RgT" id="42p-C4-2o0"/>
+            </connections>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="header" width="414" height="50"/>
+    </resources>
+</document>

@@ -7,6 +7,16 @@
 //
 
 #import "ServiceCell.h"
+#import "Service.h"
+
+
+@interface ServiceCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *lblServiceName;
+@property (weak, nonatomic) IBOutlet UILabel *lblPrice;
+@property (weak, nonatomic) IBOutlet UIImageView *imgService;
+
+@end
 
 @implementation ServiceCell
 
@@ -14,5 +24,10 @@
     [super awakeFromNib];
     // Initialization code
 }
+-(void)setDataForCell:(Service *)service{
 
+    self.lblPrice.text = service.price;
+    self.lblServiceName.text = service.name;
+    self.imgService.image = [UIImage imageNamed:service.imgNameService];
+}
 @end
