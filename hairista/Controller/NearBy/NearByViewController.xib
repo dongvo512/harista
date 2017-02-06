@@ -105,7 +105,7 @@
                         <constraint firstAttribute="width" constant="40" id="8qZ-2H-bBc"/>
                         <constraint firstAttribute="height" constant="40" id="qtm-0M-e4m"/>
                     </constraints>
-                    <state key="normal" image="ic_nearby_small"/>
+                    <state key="normal" image="ic_nearby_small_pink"/>
                     <connections>
                         <action selector="touchBtnUserLocation:" destination="-1" eventType="touchUpInside" id="8LE-hM-1sx"/>
                     </connections>
@@ -143,6 +143,6 @@
     <resources>
         <image name="ic_back" width="15" height="15"/>
         <image name="ic_hair_small" width="40" height="40"/>
-        <image name="ic_nearby_small" width="24" height="24"/>
+        <image name="ic_nearby_small_pink" width="40" height="40"/>
     </resources>
 </document>
