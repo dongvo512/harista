@@ -8,6 +8,7 @@
 
 #import "Common.h"
 #import "CommonDefine.h"
+#import "Reachability.h"
 
 @interface Common()
 
@@ -28,6 +29,42 @@
     return sharedInstance;
 }
 
++ (BOOL)checkForWIFIConnection{
+    
+    BOOL statusInternet = FALSE;
+    
+    Reachability *wifiReach = [Reachability reachabilityForInternetConnection];
+    NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
+    
+    switch (netStatus){
+            
+        case NotReachable:
+        {
+            NSLog(@"The internet is down.");
+            statusInternet = FALSE;
+            
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            NSLog(@"The internet is working via WIFI.");
+            statusInternet = TRUE;
+            
+            break;
+        }
+        case ReachableViaWWAN:
+        {
+            NSLog(@"The internet is working via WWAN.");
+            statusInternet = TRUE;
+            
+            break;
+        }
+    }
+    
+    return statusInternet;
+}
+
+
 + (NSInteger)yearFromDate:(NSDate *)date{
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
@@ -35,6 +72,53 @@
     return [components year];
 }
 
++ (NSString *)getStringDisplayFormDate:(NSDate *)date andFormatString:(NSString *)format{
+
+    NSString *convertString = @"";
+    
+    NSDateFormatter *fm = [[NSDateFormatter alloc] init];
+    [fm setDateFormat:format];
+
+    convertString = [fm stringFromDate:date];
+    
+    return convertString;
+    
+}
+
++(void)showAlert:(UIViewController *)controller title:(NSString *)title message:(NSString *)message buttonClick:(ButtonClick)buttonClick{
+
+    UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+       
+        
+        if(buttonClick){
+        
+             buttonClick(action);
+        }
+       
+    }];
+    
+    
+    [vcAlert addAction:Oke];
+    
+    [controller presentViewController:vcAlert animated:YES completion:nil];
+
+}
+
+
++ (BOOL)isSameDay:(NSDate*)date1 otherDay:(NSDate*)date2 {
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+    NSDateComponents* comp1 = [calendar components:unitFlags fromDate:date1];
+    NSDateComponents* comp2 = [calendar components:unitFlags fromDate:date2];
+    
+    return [comp1 day]   == [comp2 day] &&
+    [comp1 month] == [comp2 month] &&
+    [comp1 year]  == [comp2 year];
+
+}
 + (NSInteger)monthFromDate:(NSDate *)date{
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];

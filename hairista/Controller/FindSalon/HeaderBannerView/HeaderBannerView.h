@@ -10,4 +10,6 @@
 
 @interface HeaderBannerView : UIView
 @property (strong, nonatomic) IBOutlet UIView *view;
+
+- (id)initWithFrame:(CGRect)frame listSalonHot:(NSArray *)arraySalonHot;
 @end

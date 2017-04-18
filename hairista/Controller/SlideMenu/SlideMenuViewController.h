@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MenuLeftView.h"
 
 @interface SlideMenuViewController : UIViewController
 
 + (id)sharedInstance;
-
+@property (nonatomic, strong) MenuLeftView *viewMenuLeft;
+@property (nonatomic) BOOL isUserManager;
 // nhấn nút menu.
 -(void)toggle;
 

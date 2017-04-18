@@ -10,24 +10,24 @@
 #import "FindSalonViewController.h"
 #import "MenuLeftView.h"
 #import "CommonDefine.h"
-#import "UpdateUserInfoViewController.h"
+#import "UserInfoViewController.h"
 #import "AlbumImageViewController.h"
 #import "FavoriteViewController.h"
 #import "BookingsViewController.h"
+#import "ManageBookingViewController.h"
+#import "ListUserViewController.h"
 
 
-typedef NS_ENUM(NSInteger, ItemMenu) {
+
+typedef NS_ENUM(NSInteger, ItemMenuManage) {
     
-    Item_Salon,
-    Item_Images,
-    Item_Favorite,
-    Item_Bookings,
-    Item_InfoUser
+    ItemManagerBooking,
+    ItemMangeUser
     
 };
 
 
-@interface SlideMenuViewController (){
+@interface SlideMenuViewController ()<UIGestureRecognizerDelegate>{
 
     UINavigationController *vcNavigation;
     
@@ -37,10 +37,9 @@ typedef NS_ENUM(NSInteger, ItemMenu) {
     
     CGFloat ratioWidthMenuLeft;
     
-    MenuLeftView *viewMenuLeft;
-    
     NSInteger indexSelectedCurr;
 }
+
 @property (weak, nonatomic) IBOutlet UIView *viewContent;
 
 @end
@@ -94,16 +93,10 @@ static SlideMenuViewController *sharedInstance = nil;
 
 #pragma mark - Method
 
-- (void)selectedItemInMenu:(NSInteger )index{
+- (void)selectItemMemeber:(NSInteger)index{
 
-    
-    if(index == indexSelectedCurr){
-    
-        [self toggle];
-        return;
-    }
-    
     switch (index) {
+            
         case Item_Salon:{
             
             FindSalonViewController *vcFindSalon = [FindSalonViewController sharedInstance];
@@ -130,10 +123,10 @@ static SlideMenuViewController *sharedInstance = nil;
             [vcNavigation setViewControllers:@[vcBooking] animated:YES];
         }
             break;
-
+            
         case Item_InfoUser:{
             
-            UpdateUserInfoViewController *vcUpdateUser = [[UpdateUserInfoViewController alloc] initWithNibName:@"UpdateUserInfoViewController" bundle:nil];
+            UserInfoViewController *vcUpdateUser = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
             [vcNavigation setViewControllers:@[vcUpdateUser] animated:YES];
         }
             break;
@@ -141,12 +134,58 @@ static SlideMenuViewController *sharedInstance = nil;
         default:
             break;
     }
+
+}
+
+- (void)selectItemManager:(NSInteger)index{
+
+    switch (index) {
+            
+        case ItemManagerBooking:{
+            
+            ManageBookingViewController *vcManageBooking = [ManageBookingViewController sharedInstance];
+            [vcNavigation setViewControllers:@[vcManageBooking] animated:YES];
+        }
+            break;
+        case ItemMangeUser:{
+            
+            ListUserViewController *vcManageListUser = [[ListUserViewController alloc] initWithNibName:@"ListUserViewController" bundle:nil];
+            [vcNavigation setViewControllers:@[vcManageListUser] animated:YES];
+        }
+            break;
+
+            //ItemMangeUser
+        default:
+            break;
+    }
+
+}
+
+- (void)selectedItemInMenu:(NSInteger )index{
+
+    if(index == indexSelectedCurr){
     
+        [self toggle];
+        return;
+    }
+    
+    if(self.isUserManager){
+    
+        [self selectItemManager:index];
+    }
+    else{
+    
+        [self selectItemMemeber:index];
+    }
+  
     indexSelectedCurr = index;
     
     [self toggle];
 }
-
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
 - (void)addSwipeGestureForViewContent{
 
     UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(toggle)];
@@ -267,13 +306,27 @@ static SlideMenuViewController *sharedInstance = nil;
 
 - (void)createNavigationContent{
 
-    FindSalonViewController *vcListSalon = [[FindSalonViewController alloc] initWithNibName:@"FindSalonViewController" bundle:nil];
+    if(self.isUserManager){
     
-    vcNavigation = [[UINavigationController alloc] initWithRootViewController:vcListSalon];
-    vcNavigation.navigationBarHidden = YES;
-    vcNavigation.view.frame = self.view.bounds;
+        ManageBookingViewController *vcManageBooking = [[ManageBookingViewController alloc] initWithNibName:@"ManageBookingViewController" bundle:nil];
+      
+        vcNavigation = [[UINavigationController alloc] initWithRootViewController:vcManageBooking];
+        vcNavigation.navigationBarHidden = YES;
+        vcNavigation.view.frame = self.view.bounds;
+        
+        [self.view addSubview:vcNavigation.view];
+    }
+    else{
     
-    [self.view addSubview:vcNavigation.view];
+        FindSalonViewController *vcListSalon = [[FindSalonViewController alloc] initWithNibName:@"FindSalonViewController" bundle:nil];
+        
+        vcNavigation = [[UINavigationController alloc] initWithRootViewController:vcListSalon];
+        vcNavigation.navigationBarHidden = YES;
+        vcNavigation.view.frame = self.view.bounds;
+        
+        [self.view addSubview:vcNavigation.view];
+
+    }
     
 }
 
@@ -309,19 +362,20 @@ static SlideMenuViewController *sharedInstance = nil;
 
 -(void)createMenuLeft{
 
-    viewMenuLeft = [[MenuLeftView alloc] init];
-    viewMenuLeft.backgroundColor = [UIColor whiteColor];
+    self.viewMenuLeft = [[MenuLeftView alloc] init:self.isUserManager];
 
-    [viewMenuLeft setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.viewMenuLeft.backgroundColor = [UIColor whiteColor];
+
+    [self.viewMenuLeft setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    [self.view addSubview:viewMenuLeft];
+    [self.view addSubview:self.viewMenuLeft];
     
-     leftContraint = [NSLayoutConstraint constraintWithItem:viewMenuLeft attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1  constant:-(SW*ratioWidthMenuLeft)];
+     leftContraint = [NSLayoutConstraint constraintWithItem:self.viewMenuLeft attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1  constant:-(SW*ratioWidthMenuLeft)];
   
-    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:viewMenuLeft attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.viewMenuLeft attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:0];
     
-    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:viewMenuLeft attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:1     constant:0];
-    NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:viewMenuLeft attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:ratioWidthMenuLeft constant:0];
+    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.viewMenuLeft attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:1     constant:0];
+    NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:self.viewMenuLeft attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:ratioWidthMenuLeft constant:0];
     
     [self.view addConstraints:@[leftContraint, top, height, width]];
    

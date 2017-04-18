@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -19,6 +19,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuLeftView">
             <connections>
+                <outlet property="lblEmail" destination="75B-DX-jID" id="qJu-X9-nh5"/>
+                <outlet property="lblFullName" destination="SGm-eD-oaw" id="TKS-IE-IDe"/>
+                <outlet property="lblPhone" destination="s8Q-2b-ubP" id="oau-j7-s4D"/>
                 <outlet property="tblViewMenu" destination="3Hz-Mr-5MF" id="D2I-hE-MkM"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MMs-Ka-nZ7"/>
             </connections>
@@ -90,12 +93,22 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXr-nn-zOR">
+                            <rect key="frame" x="0.0" y="0.0" width="246" height="128"/>
+                            <connections>
+                                <action selector="touchBtnUpdateUserInfo:" destination="-1" eventType="touchUpInside" id="1eH-DJ-LME"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="SGm-eD-oaw" firstAttribute="top" secondItem="s8Q-2b-ubP" secondAttribute="bottom" constant="4" id="1kE-Cc-TPA"/>
+                        <constraint firstAttribute="trailing" secondItem="cXr-nn-zOR" secondAttribute="trailing" id="1ln-Qy-hCV"/>
+                        <constraint firstItem="cXr-nn-zOR" firstAttribute="top" secondItem="89H-Sn-eTB" secondAttribute="top" id="6zb-rP-rjM"/>
                         <constraint firstItem="SGm-eD-oaw" firstAttribute="leading" secondItem="YbH-Vj-l9E" secondAttribute="trailing" constant="16" id="BzY-gc-4xx"/>
+                        <constraint firstItem="cXr-nn-zOR" firstAttribute="leading" secondItem="89H-Sn-eTB" secondAttribute="leading" id="Hge-RF-gCk"/>
                         <constraint firstItem="YbH-Vj-l9E" firstAttribute="leading" secondItem="89H-Sn-eTB" secondAttribute="leading" constant="10" id="OjQ-hx-hyl"/>
+                        <constraint firstAttribute="bottom" secondItem="cXr-nn-zOR" secondAttribute="bottom" id="Q67-DV-1JQ"/>
                         <constraint firstAttribute="trailing" secondItem="SGm-eD-oaw" secondAttribute="trailing" constant="8" id="UCM-of-xX6"/>
                         <constraint firstItem="s8Q-2b-ubP" firstAttribute="top" secondItem="89H-Sn-eTB" secondAttribute="top" constant="29" id="VFG-yf-h1h"/>
                         <constraint firstItem="s8Q-2b-ubP" firstAttribute="leading" secondItem="YbH-Vj-l9E" secondAttribute="trailing" constant="16" id="VPy-N7-IDy"/>

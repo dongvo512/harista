@@ -15,4 +15,6 @@
 + (UIColor *)colorFromCharacter:(NSString *)character;
 + (UIColor *)grayBorder;
 + (UIColor *)grayTextCombobox;
++ (UIColor *)blueDateToday;
+
 @end

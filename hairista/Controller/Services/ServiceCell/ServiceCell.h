@@ -12,4 +12,5 @@
 
 @interface ServiceCell : UICollectionViewCell
 -(void)setDataForCell:(Service *)service;
+@property (weak, nonatomic) IBOutlet UIImageView *imgSelected;;
 @end

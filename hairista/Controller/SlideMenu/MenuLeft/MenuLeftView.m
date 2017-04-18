@@ -16,13 +16,19 @@
 
 
 @interface MenuLeftView ()
+@property (weak, nonatomic) IBOutlet UILabel *lblPhone;
+@property (weak, nonatomic) IBOutlet UILabel *lblFullName;
+@property (weak, nonatomic) IBOutlet UILabel *lblEmail;
 
 @property (weak, nonatomic) IBOutlet UITableView *tblViewMenu;
 @property (nonatomic, strong) NSMutableArray *arrMenus;
 
+
 @end
 
 @implementation MenuLeftView
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -42,23 +48,25 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame{
+- (id)initWithFrame:(CGRect)frame isUserManager:(BOOL)isUserManager{
     
     self = [super initWithFrame:frame];
     
     if(self){
         
+        self.isUserManager = isUserManager;
         [self setup];
     }
     
     return self;
 }
-- (id) init{
+- (id) init:(BOOL)isUserManager{
 
     self = [super init];
     
     if(self){
         
+        self.isUserManager = isUserManager;
         [self setup];
     }
     
@@ -74,8 +82,18 @@
     [self addSubview:self.view];
     
     [self.tblViewMenu registerNib:[UINib nibWithNibName:@"MenuCell" bundle:nil] forCellReuseIdentifier:@"MenuCell"];
-
+   
+    [self loadUserInfo];
+    
     [self createListMenu];
+    
+}
+
+
+#pragma mark - Action
+- (IBAction)touchBtnUpdateUserInfo:(id)sender {
+    
+    [[SlideMenuViewController sharedInstance] selectedItemInMenu:Item_InfoUser];
     
 }
 
@@ -86,38 +104,73 @@
      [[SlideMenuViewController sharedInstance] selectedItemInMenu:4];
 }
 
+-(void)loadUserInfo{
+
+    self.lblPhone.text = Appdelegate_hairista.sessionUser.phone;
+    
+    //NSLog(@"%@",Appdelegate_hairista.sessionUser.phone);
+    
+    self.lblFullName.text = Appdelegate_hairista.sessionUser.name;
+    // NSLog(@"%@",Appdelegate_hairista.sessionUser.name);
+    
+    self.lblEmail.text = Appdelegate_hairista.sessionUser.email;
+    // NSLog(@"%@",Appdelegate_hairista.sessionUser.email);
+}
 
 - (void)createListMenu{
 
     self.arrMenus = [NSMutableArray array];
     
-    ItemMenu *item_1 = [[ItemMenu alloc] init];
-    item_1.itemName = @"Salon tóc";
-    item_1.itemIconName = @"ic_salon";
+    if(self.isUserManager){
     
-    [self.arrMenus addObject:item_1];
+        ItemMenu *item_1 = [[ItemMenu alloc] init];
+        item_1.itemName = @"Lịch hẹn";
+        item_1.itemIconName = @"ic_salon";
+        
+        [self.arrMenus addObject:item_1];
+        
+        ItemMenu *item_2 = [[ItemMenu alloc] init];
+        item_2.itemName = @"Danh sách Khách hàng";
+        item_2.itemIconName = @"ic_hair";
+        
+        [self.arrMenus addObject:item_2];
+        
+        
+        ItemMenu *item_3 = [[ItemMenu alloc] init];
+        item_3.itemName = @"Danh sách Dịch vụ";
+        item_3.itemIconName = @"ic_favorite";
+        
+        [self.arrMenus addObject:item_3];
+        
+    }
+    else{
     
-    ItemMenu *item_2 = [[ItemMenu alloc] init];
-    item_2.itemName = @"Hình ảnh";
-    item_2.itemIconName = @"ic_hair";
-    
-    [self.arrMenus addObject:item_2];
-
-    
-    ItemMenu *item_3 = [[ItemMenu alloc] init];
-    item_3.itemName = @"Salon yêu thích";
-    item_3.itemIconName = @"ic_favorite";
-    
-    [self.arrMenus addObject:item_3];
-    
-    ItemMenu *item_4 = [[ItemMenu alloc] init];
-    item_4.itemName = @"Lịch hẹn";
-    item_4.itemIconName = @"ic_booking";
-    
-    [self.arrMenus addObject:item_4];
-
-    
-    
+        
+        ItemMenu *item_1 = [[ItemMenu alloc] init];
+        item_1.itemName = @"Salon tóc";
+        item_1.itemIconName = @"ic_salon";
+        
+        [self.arrMenus addObject:item_1];
+        
+        ItemMenu *item_2 = [[ItemMenu alloc] init];
+        item_2.itemName = @"Hình ảnh";
+        item_2.itemIconName = @"ic_hair";
+        
+        [self.arrMenus addObject:item_2];
+        
+        
+        ItemMenu *item_3 = [[ItemMenu alloc] init];
+        item_3.itemName = @"Salon yêu thích";
+        item_3.itemIconName = @"ic_favorite";
+        
+        [self.arrMenus addObject:item_3];
+        
+        ItemMenu *item_4 = [[ItemMenu alloc] init];
+        item_4.itemName = @"Lịch hẹn";
+        item_4.itemIconName = @"ic_booking";
+        
+        [self.arrMenus addObject:item_4];
+    }
 }
 
 #pragma mark - Table view DataSource - Delegate

@@ -8,7 +8,7 @@
 
 #import "SalonCell.h"
 #import "Salon.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SalonCell ()
 
@@ -35,14 +35,12 @@
 }
 
 -(void)setDataForCell:(Salon *)salon{
+    
+    [self.imgSalon sd_setImageWithURL:[NSURL URLWithString:salon.avatar] placeholderImage:IMG_DEFAULT];
+    self.lblSalonPhone.text = salon.phone;
+    self.lblSalonName.text = salon.name;
+    self.lblSalonAddress.text = salon.homeAddress;
 
-    self.imgSalon.image = [UIImage imageNamed:salon.strSalonUrl];
-    
-    self.lblSalonPhone.text = salon.strPhone;
-    
-    self.lblSalonName.text = salon.strSalonName;
-    
-    self.lblSalonAddress.text = salon.strAddress;
 }
 
 @end

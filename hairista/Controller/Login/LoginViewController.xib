@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,8 +23,8 @@
             <connections>
                 <outlet property="btnLogin" destination="lRY-yw-UXl" id="KvW-rQ-vrL"/>
                 <outlet property="btnRegister" destination="Vjs-4p-HQQ" id="z2a-BU-iJe"/>
-                <outlet property="txtEmail" destination="aPv-0X-ob1" id="214-VL-COl"/>
                 <outlet property="txtPassword" destination="rdd-Qo-G6A" id="KeZ-gv-mwr"/>
+                <outlet property="txtPhone" destination="aPv-0X-ob1" id="4Ut-41-LFY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewPassword" destination="Rht-je-NN0" id="fdf-N3-Bnp"/>
                 <outlet property="viewUserName" destination="0Po-BR-2hc" id="wi2-Tm-kKT"/>
@@ -168,6 +168,9 @@
                                     <integer key="value" value="24"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="regis:" destination="-1" eventType="touchUpInside" id="fk3-FX-Ea0"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oU4-lC-hfx">
                             <rect key="frame" x="61" y="192.5" width="127" height="24"/>

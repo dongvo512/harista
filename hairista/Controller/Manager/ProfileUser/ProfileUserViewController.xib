@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileUserViewController">
+            <connections>
+                <outlet property="tblView" destination="t41-CK-U5B" id="qqX-oW-jvv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkG-zM-hky" userLabel="View - Top">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KfW-jf-dGX">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                            <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="cwo-mU-giX"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QE-41-yMX">
+                            <rect key="frame" x="0.0" y="20" width="375" height="52"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QR0-ym-2Pj">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                    <color key="backgroundColor" red="0.78427709909999999" green="0.4554715842" blue="0.67424186429999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="0.5" id="I6F-4g-z9c"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chi tiết khách hàng" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivr-jg-84q">
+                                    <rect key="frame" x="98" y="10" width="179" height="31"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="179" id="VDz-JI-6V9"/>
+                                        <constraint firstAttribute="height" constant="31" id="ezj-dr-ndx"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uz0-uC-lWq">
+                                    <rect key="frame" x="0.0" y="1" width="50" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="cYO-Ov-xar"/>
+                                        <constraint firstAttribute="width" constant="50" id="uNN-ls-2k5"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_back"/>
+                                    <connections>
+                                        <action selector="back:" destination="-1" eventType="touchUpInside" id="XVa-Xi-fmV"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="QR0-ym-2Pj" firstAttribute="top" secondItem="9QE-41-yMX" secondAttribute="top" id="3JX-41-bGk"/>
+                                <constraint firstAttribute="bottom" secondItem="uz0-uC-lWq" secondAttribute="bottom" constant="1" id="7H1-ck-rLM"/>
+                                <constraint firstAttribute="height" constant="52" id="MQU-gy-1gX"/>
+                                <constraint firstAttribute="trailing" secondItem="QR0-ym-2Pj" secondAttribute="trailing" id="UpV-bg-2mF"/>
+                                <constraint firstItem="ivr-jg-84q" firstAttribute="centerX" secondItem="9QE-41-yMX" secondAttribute="centerX" id="ZLH-be-D7Y"/>
+                                <constraint firstItem="ivr-jg-84q" firstAttribute="top" secondItem="QR0-ym-2Pj" secondAttribute="bottom" constant="9" id="ZYV-fi-Gq6"/>
+                                <constraint firstItem="QR0-ym-2Pj" firstAttribute="leading" secondItem="9QE-41-yMX" secondAttribute="leading" id="dWZ-0J-pFz"/>
+                                <constraint firstItem="uz0-uC-lWq" firstAttribute="leading" secondItem="9QE-41-yMX" secondAttribute="leading" id="guv-Ea-p4F"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="KfW-jf-dGX" firstAttribute="leading" secondItem="hkG-zM-hky" secondAttribute="leading" id="8hu-x9-rOy"/>
+                        <constraint firstItem="9QE-41-yMX" firstAttribute="leading" secondItem="hkG-zM-hky" secondAttribute="leading" id="X5T-nc-ain"/>
+                        <constraint firstAttribute="trailing" secondItem="9QE-41-yMX" secondAttribute="trailing" id="aKD-5U-g0j"/>
+                        <constraint firstItem="KfW-jf-dGX" firstAttribute="top" secondItem="hkG-zM-hky" secondAttribute="top" id="gUg-cn-ie5"/>
+                        <constraint firstAttribute="bottom" secondItem="9QE-41-yMX" secondAttribute="bottom" id="ltn-5G-fGr"/>
+                        <constraint firstAttribute="height" constant="72" id="oBA-Ia-B2Z"/>
+                        <constraint firstAttribute="trailing" secondItem="KfW-jf-dGX" secondAttribute="trailing" id="tnn-Zz-Lr6"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="t41-CK-U5B">
+                    <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="oTY-0f-4d1"/>
+                        <outlet property="delegate" destination="-1" id="tK5-2w-uSR"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="t41-CK-U5B" firstAttribute="top" secondItem="hkG-zM-hky" secondAttribute="bottom" id="5GB-4Z-JRc"/>
+                <constraint firstAttribute="bottom" secondItem="t41-CK-U5B" secondAttribute="bottom" id="9S9-e2-gaO"/>
+                <constraint firstAttribute="trailing" secondItem="t41-CK-U5B" secondAttribute="trailing" id="DVg-of-wQq"/>
+                <constraint firstItem="hkG-zM-hky" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Z7H-yE-KDi"/>
+                <constraint firstItem="t41-CK-U5B" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="p4m-L4-ohj"/>
+                <constraint firstItem="hkG-zM-hky" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sL4-KA-Nbp"/>
+                <constraint firstAttribute="trailing" secondItem="hkG-zM-hky" secondAttribute="trailing" id="sk0-WZ-39g"/>
+            </constraints>
+            <point key="canvasLocation" x="64.5" y="59.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_back" width="15" height="15"/>
+    </resources>
+</document>

@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPrice;
 @property (weak, nonatomic) IBOutlet UIImageView *imgService;
 
+
 @end
 
 @implementation ServiceCell
@@ -26,6 +27,7 @@
 }
 -(void)setDataForCell:(Service *)service{
 
+    [self.imgSelected setHidden:!service.isSelected];
     self.lblPrice.text = service.price;
     self.lblServiceName.text = service.name;
     self.imgService.image = [UIImage imageNamed:service.imgNameService];

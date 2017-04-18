@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface MenuLeftView : UIView
+
+- (id) init:(BOOL)isUserManager;
+
+- (id)initWithFrame:(CGRect)frame isUserManager:(BOOL)isUserManager;
+
+- (void)loadUserInfo;
+
+@property (nonatomic) BOOL isUserManager;
 @property (strong, nonatomic) IBOutlet UIView *view;
 @end

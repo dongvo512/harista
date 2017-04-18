@@ -62,6 +62,13 @@
                             <constraint firstAttribute="trailing" secondItem="wKJ-bm-k3h" secondAttribute="trailing" id="kv0-do-cor"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkicon" translatesAutoresizingMaskIntoConstraints="NO" id="gNd-KC-T4L">
+                        <rect key="frame" x="108" y="0.0" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Nbe-Ye-aPy"/>
+                            <constraint firstAttribute="width" constant="20" id="hZl-rb-w9c"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
@@ -69,12 +76,15 @@
                 <constraint firstItem="Scf-Od-AqD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Dez-Gv-go0"/>
                 <constraint firstItem="Wn0-om-Oim" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="MlQ-tv-GjD"/>
                 <constraint firstAttribute="bottom" secondItem="Wn0-om-Oim" secondAttribute="bottom" id="Xac-BI-zbK"/>
+                <constraint firstItem="gNd-KC-T4L" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ang-SU-5Wq"/>
                 <constraint firstAttribute="trailing" secondItem="Wn0-om-Oim" secondAttribute="trailing" id="bCr-uR-t2A"/>
                 <constraint firstItem="Wn0-om-Oim" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dLe-9G-2vu"/>
+                <constraint firstAttribute="trailing" secondItem="gNd-KC-T4L" secondAttribute="trailing" constant="2" id="gMF-bL-4kM"/>
                 <constraint firstAttribute="bottom" secondItem="Scf-Od-AqD" secondAttribute="bottom" id="iht-6A-mEs"/>
             </constraints>
             <size key="customSize" width="129" height="129"/>
             <connections>
+                <outlet property="imgSelected" destination="gNd-KC-T4L" id="y1O-7x-x5p"/>
                 <outlet property="imgService" destination="Wn0-om-Oim" id="QTs-bs-Gip"/>
                 <outlet property="lblPrice" destination="wKJ-bm-k3h" id="BIs-Rw-cdg"/>
                 <outlet property="lblServiceName" destination="rmc-wL-xXq" id="Yhg-Tp-TNi"/>
@@ -83,6 +93,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="checkicon" width="15" height="15"/>
         <image name="wash_hair_1" width="674" height="449"/>
     </resources>
 </document>

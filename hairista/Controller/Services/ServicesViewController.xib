@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ServicesViewController">
             <connections>
+                <outlet property="btnChecked" destination="Nay-8n-PXo" id="FIH-dH-LWd"/>
                 <outlet property="cllService" destination="GOO-k5-la3" id="J6a-fS-xFB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -66,11 +67,24 @@
                                         <action selector="back:" destination="-1" eventType="touchUpInside" id="eaj-Fr-LA3"/>
                                     </connections>
                                 </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nay-8n-PXo">
+                                    <rect key="frame" x="329" y="4" width="44" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="GBF-0B-goi"/>
+                                        <constraint firstAttribute="height" constant="44" id="rXU-zH-mME"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_checked"/>
+                                    <connections>
+                                        <action selector="check:" destination="-1" eventType="touchUpInside" id="Vwq-4G-g8Z"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="qEb-UK-5De" firstAttribute="top" secondItem="TFg-oF-Tr0" secondAttribute="top" id="1fl-37-KBl"/>
                                 <constraint firstItem="DH6-q9-yMv" firstAttribute="top" secondItem="qEb-UK-5De" secondAttribute="bottom" constant="9" id="DLf-9r-yTt"/>
+                                <constraint firstAttribute="bottom" secondItem="Nay-8n-PXo" secondAttribute="bottom" constant="4" id="Kti-p8-dwS"/>
+                                <constraint firstAttribute="trailing" secondItem="Nay-8n-PXo" secondAttribute="trailing" constant="2" id="Nbe-Ty-mzX"/>
                                 <constraint firstItem="9id-lR-hJg" firstAttribute="leading" secondItem="TFg-oF-Tr0" secondAttribute="leading" id="UDC-3b-ooo"/>
                                 <constraint firstAttribute="height" constant="52" id="ce8-Ib-XVD"/>
                                 <constraint firstAttribute="bottom" secondItem="9id-lR-hJg" secondAttribute="bottom" constant="1" id="h88-DJ-g1p"/>
@@ -122,5 +136,6 @@
     </objects>
     <resources>
         <image name="ic_back" width="15" height="15"/>
+        <image name="ic_checked" width="24" height="24"/>
     </resources>
 </document>

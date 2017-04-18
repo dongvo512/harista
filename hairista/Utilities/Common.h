@@ -13,8 +13,12 @@
 
 @interface Common : NSObject
 
+typedef void (^ButtonClick)(UIAlertAction *alertAction);
+typedef void (^DataAPIResult)(NSError *error, id idObject);
+typedef void (^CallAPIResult)(BOOL isError, NSString *stringError, id responseDataObject);
 #pragma mark - System
 + (instancetype)sharedInstance;
++ (BOOL)checkForWIFIConnection;
 
 #pragma mark - Devices
 + (NSInteger)yearFromDate:(NSDate *)date;
@@ -33,4 +37,9 @@
 
 + (NSString *)upperFirstLetter:(NSString *)strKeyWord;
 
++ (NSString *)getStringDisplayFormDate:(NSDate *)date andFormatString:(NSString *)format;
++ (BOOL)isSameDay:(NSDate*)date1 otherDay:(NSDate*)date2;
+
+#pragma mark - Alert
++(void)showAlert:(UIViewController *)controller title:(NSString *)title message:(NSString *)message buttonClick:(ButtonClick)buttonClick;
 @end

@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthContraintPageControl;
 
-@property (nonatomic, strong) NSMutableArray *arrSalonsHeader;
+@property (nonatomic, strong) NSArray *arrSalonsHeader;
 
 
 @end
@@ -45,8 +45,11 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame{
+- (id)initWithFrame:(CGRect)frame listSalonHot:(NSArray *)arraySalonHot{
+    
     if(self = [super initWithFrame:frame]){
+        
+        self.arrSalonsHeader = arraySalonHot;
         [self setup];
     }
     return self;
@@ -54,46 +57,6 @@
 
 #pragma mark - Method
 
--(void)createListSalonBanner{
-
-    self.arrSalonsHeader = [NSMutableArray array];
-    
-    Salon *salon_1 = [[Salon alloc] init];
-    salon_1.strPhone = @"0932188608";
-    salon_1.strSalonName = @"Salon Đông Võ";
-    salon_1.openTime = @"8:30 - 17:30";
-    salon_1.strSalonUrl = @"salon_1";
-    [self.arrSalonsHeader addObject:salon_1];
-    
-    Salon *salon_2 = [[Salon alloc] init];
-    salon_2.strPhone = @"0922313456";
-    salon_2.strSalonName = @"Salon Duy Hưng";
-    salon_2.openTime = @"7:30 - 19:30";
-    salon_2.strSalonUrl = @"salon_2";
-    [self.arrSalonsHeader addObject:salon_2];
-    
-    Salon *salon_3 = [[Salon alloc] init];
-    salon_3.strPhone = @"099987888";
-    salon_3.strSalonName = @"Salon Sa Võ";
-    salon_3.openTime = @"8:30 - 17:30";
-    salon_3.strSalonUrl = @"salon_3";
-    [self.arrSalonsHeader addObject:salon_3];
-    
-    Salon *salon_4 = [[Salon alloc] init];
-    salon_4.strPhone = @"0921122333";
-    salon_4.strSalonName = @"Salon Beautyfull Hair";
-    salon_4.openTime = @"10:30 - 17:30";
-    salon_4.strSalonUrl = @"salon_4";
-    [self.arrSalonsHeader addObject:salon_4];
-    
-    Salon *salon_5 = [[Salon alloc] init];
-    salon_5.strPhone = @"099878800";
-    salon_5.strSalonName = @"Salon Beautyfull Hair 2";
-    salon_5.openTime = @"8:30 - 17:30";
-    salon_5.strSalonUrl = @"salon_5";
-    [self.arrSalonsHeader addObject:salon_5];
-    
-}
 
 - (void)setup{
     
@@ -103,8 +66,7 @@
     [self addSubview:self.view];
     
     [self.cllBannerSalon registerNib:[UINib nibWithNibName:@"HeaderBannerCell" bundle:nil] forCellWithReuseIdentifier:@"HeaderBannerCell"];
-    
-    [self createListSalonBanner];
+
     [self.pageControl setNumberOfPages:self.arrSalonsHeader.count];
     self.widthContraintPageControl.constant = 18 * self.arrSalonsHeader.count;
     [self.pageControl setCurrentPage:0];

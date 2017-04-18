@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) NSString *imgNameService;
+@property (nonatomic)  BOOL isSelected;
 
 @end
 

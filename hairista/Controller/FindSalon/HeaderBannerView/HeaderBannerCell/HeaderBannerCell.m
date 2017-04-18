@@ -8,7 +8,7 @@
 
 #import "HeaderBannerCell.h"
 #import "Salon.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HeaderBannerCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewBanner;
@@ -28,10 +28,11 @@
 
 -(void)setDataForCell:(Salon *)salon{
 
-    self.imgViewBanner.image = [UIImage imageNamed:salon.strSalonUrl];
-    self.lblSalonName.text = salon.strSalonName;
-    self.lblSalonPhone.text = salon.strPhone;
-    self.lblSalonTimeOpen.text = salon.openTime;
+  //  self.imgViewBanner.image = [UIImage imageNamed:salon.strSalonUrl];
+    [self.imgViewBanner sd_setImageWithURL:[NSURL URLWithString:salon.avatar] placeholderImage:IMG_DEFAULT];
+    self.lblSalonName.text = salon.name;
+    self.lblSalonPhone.text = salon.phone;
+   // self.lblSalonTimeOpen.text = salon.openTime;
 }
 
 @end

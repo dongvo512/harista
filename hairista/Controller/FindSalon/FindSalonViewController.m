@@ -16,7 +16,16 @@
 #import "NearByViewController.h"
 #import "SearchSalonAdvanceViewController.h"
 #import "DetailSalonViewController.h"
+#import "SalonManage.h"
 
+#define LIMIT_ITEM @"1"
+
+typedef NS_ENUM(NSInteger, TypeSalon) {
+    
+    List_Salon_Hot,
+    List_Salon
+
+};
 
 @interface FindSalonViewController ()<UITableViewDelegate, UITableViewDataSource>{
 
@@ -25,9 +34,16 @@
     UIRefreshControl *refreshControl;
     
     UIRefreshControl *refreshControlBottom;
+    
+    BOOL isLoadingData;
+    
+    BOOL isFullData;
+    
+    NSInteger pageIndex;
 }
 
 @property (nonatomic, strong) NSMutableArray *arrSalons;
+@property (nonatomic, strong) NSArray *arrSalonsHot;
 @property (weak, nonatomic) IBOutlet UITableView *tblView;
 
 @end
@@ -54,13 +70,19 @@ static FindSalonViewController *sharedInstance = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+//    self.automaticallyAdjustsScrollViewInsets = YES;
     self.tblView.rowHeight = UITableViewAutomaticDimension;
     self.tblView.estimatedRowHeight = 59;
     
     [self.tblView registerNib:[UINib nibWithNibName:@"SalonCell" bundle:nil] forCellReuseIdentifier:@"SalonCell"];
     
     self.arrSalons = [NSMutableArray array];
-    [self createListSalon];
+   // [self createListSalon];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self getListSalonHot];
+    [self getListSalons];
+    
     
     refreshControl = [[UIRefreshControl alloc]init];
     [self.tblView addSubview:refreshControl];
@@ -94,160 +116,178 @@ static FindSalonViewController *sharedInstance = nil;
     
 }
 
--(void)createListSalon{
+#pragma mark - Get Data
 
-    Salon *salon_1 = [[Salon alloc] init];
-    salon_1.strAddress = @"158 Nguyễn Văn Cừ, Quận 1 Tp.HCM";
-    salon_1.strSalonName = @"Beauty Salon 2233";
-    salon_1.strPhone = @"0932188608";
-    salon_1.strSalonUrl = @"salon_1";
-    [self.arrSalons addObject:salon_1];
+- (void)getListSalonHot{
+
+    [[SalonManage sharedInstance] getListSalons:YES page:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+        
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+        
+            NSArray *arrData = idObject;
+            
+            if(arrData.count > 0){
+            
+                self.arrSalonsHot = arrData;
+                
+                [self.tblView reloadSections:[NSIndexSet indexSetWithIndex:List_Salon_Hot] withRowAnimation:UITableViewRowAnimationFade];
+            }
+        
+        }
+        
+    }];
+}
+- (void)getListSalons{
     
-    Salon *salon_2 = [[Salon alloc] init];
-    salon_2.strAddress = @"250 Nguyễn Huệ, Quận 1 Tp.HCM";
-    salon_2.strSalonName = @"Beauty Salon 1234";
-    salon_2.strPhone = @"093123123";
-    salon_2.strSalonUrl = @"salon_2";
-    [self.arrSalons addObject:salon_2];
-    
-    
-    Salon *salon_3 = [[Salon alloc] init];
-    salon_3.strAddress = @"168 Thành Thái Q.10 Tp.HCM";
-    salon_3.strSalonName = @"Beauty Salon 7876";
-    salon_3.strPhone = @"092135433";
-    salon_3.strSalonUrl = @"salon_3";
-    [self.arrSalons addObject:salon_3];
-    
-    
-    Salon *salon_4 = [[Salon alloc] init];
-    salon_4.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-    salon_4.strSalonName = @"Beauty Salon 999";
-    salon_4.strPhone = @"0936r464";
-    salon_4.strSalonUrl = @"salon_4";
-    [self.arrSalons addObject:salon_4];
-    
-    Salon *salon_5 = [[Salon alloc] init];
-    salon_5.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-    salon_5.strSalonName = @"Beauty Salon 999";
-    salon_5.strPhone = @"091112231";
-    salon_5.strSalonUrl = @"salon_3";
-    [self.arrSalons addObject:salon_5];
-    
-    Salon *salon_6 = [[Salon alloc] init];
-    salon_6.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-    salon_6.strSalonName = @"Beauty Salon 999";
-    salon_6.strPhone = @"09456343";
-    salon_6.strSalonUrl = @"salon_2";
-    [self.arrSalons addObject:salon_6];
-    
-    Salon *salon_7 = [[Salon alloc] init];
-    salon_7.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-    salon_7.strSalonName = @"Beauty Salon 999";
-    salon_7.strPhone = @"09999977543";
-    salon_7.strSalonUrl = @"salon_1";
-    [self.arrSalons addObject:salon_7];
-    
-    Salon *salon_8 = [[Salon alloc] init];
-    salon_8.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-    salon_8.strSalonName = @"Beauty Salon 999";
-    salon_8.strPhone = @"092214353";
-    salon_8.strSalonUrl = @"salon_4";
-    [self.arrSalons addObject:salon_8];
-    
-    Salon *salon_9 = [[Salon alloc] init];
-    salon_9.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-    salon_9.strSalonName = @"Beauty Salon 999";
-    salon_9.strPhone = @"090834532";
-    salon_9.strSalonUrl = @"salon_5";
-    [self.arrSalons addObject:salon_9];
-    
-    Salon *salon_10 = [[Salon alloc] init];
-    salon_10.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-    salon_10.strSalonName = @"Beauty Salon 999";
-    salon_10.strPhone = @"09992212121";
-    salon_10.strSalonUrl = @"salon_3";
-    [self.arrSalons addObject:salon_10];
-    
-    Salon *salon_11 = [[Salon alloc] init];
-    salon_11.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-    salon_11.strSalonName = @"Beauty Salon 999";
-    salon_11.strPhone = @"0977882211";
-    salon_11.strSalonUrl = @"salon_1";
-    [self.arrSalons addObject:salon_11];
+    [[SalonManage sharedInstance] getListSalons:NO page:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+            
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            NSArray *arrData = idObject;
+            
+            if(arrData.count > 0){
+                
+                [self.arrSalons addObjectsFromArray:arrData];
+                
+                [self.tblView reloadSections:[NSIndexSet indexSetWithIndex:List_Salon] withRowAnimation:UITableViewRowAnimationFade];
+            }
+            
+        }
+
+    }];
+
 }
 
-- (void)addMoreSalon{
-
-    NSMutableArray *arrIndexPath = [NSMutableArray array];
-    
-    Salon *salon_1 = [[Salon alloc] init];
-    salon_1.strAddress = @"158 Nguyễn Văn Cừ, Quận 1 Tp.HCM";
-    salon_1.strSalonName = @"Beauty Salon 2233";
-    salon_1.strPhone = @"0932188608";
-    salon_1.strSalonUrl = @"salon_1";
-    [self.arrSalons addObject:salon_1];
-    NSIndexPath *indexPath_1 = [NSIndexPath indexPathForRow:[self.arrSalons indexOfObject:salon_1] inSection:0];
-    [arrIndexPath addObject:indexPath_1];
-    
-
-    Salon *salon_2 = [[Salon alloc] init];
-    salon_2.strAddress = @"250 Nguyễn Huệ, Quận 1 Tp.HCM";
-    salon_2.strSalonName = @"Beauty Salon 1234";
-    salon_2.strPhone = @"093123123";
-    salon_2.strSalonUrl = @"salon_2";
-    [self.arrSalons addObject:salon_2];
-    NSIndexPath *indexPath_2 = [NSIndexPath indexPathForRow:[self.arrSalons indexOfObject:salon_2] inSection:0];
-    [arrIndexPath addObject:indexPath_2];
-    
-    
-    Salon *salon_3 = [[Salon alloc] init];
-    salon_3.strAddress = @"168 Thành Thái Q.10 Tp.HCM";
-    salon_3.strSalonName = @"Beauty Salon 7876";
-    salon_3.strPhone = @"092135433";
-    salon_3.strSalonUrl = @"salon_3";
-    [self.arrSalons addObject:salon_3];
-    NSIndexPath *indexPath_3 = [NSIndexPath indexPathForRow:[self.arrSalons indexOfObject:salon_3] inSection:0];
-    [arrIndexPath addObject:indexPath_3];
-    
-    
-    Salon *salon_4 = [[Salon alloc] init];
-    salon_4.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-    salon_4.strSalonName = @"Beauty Salon 999";
-    salon_4.strPhone = @"0936r464";
-    salon_4.strSalonUrl = @"salon_4";
-    [self.arrSalons addObject:salon_4];
-    NSIndexPath *indexPath_4 = [NSIndexPath indexPathForRow:[self.arrSalons indexOfObject:salon_4] inSection:0];
-    [arrIndexPath addObject:indexPath_4];
-    
-    Salon *salon_5 = [[Salon alloc] init];
-    salon_5.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-    salon_5.strSalonName = @"Beauty Salon 999";
-    salon_5.strPhone = @"091112231";
-    salon_5.strSalonUrl = @"salon_3";
-    [self.arrSalons addObject:salon_5];
-    NSIndexPath *indexPath_5 = [NSIndexPath indexPathForRow:[self.arrSalons indexOfObject:salon_5] inSection:0];
-    [arrIndexPath addObject:indexPath_5];
-    
-    [self.tblView insertRowsAtIndexPaths:arrIndexPath withRowAnimation:NO];
-    [refreshControlBottom endRefreshing];
-}
-- (void)refreshTableBottom{
-
-     [self performSelector:@selector(addMoreSalon) withObject:nil afterDelay:2.0f];
-}
 - (void)refreshTable{
 
-    [self performSelector:@selector(finishRefresh) withObject:nil afterDelay:2.0f];
+    pageIndex = 1;
+    
+    [self performSelector:@selector(refreshListSalonHot) withObject:nil afterDelay:1.0f];
+    
+    [self performSelector:@selector(refreshListSalon) withObject:nil afterDelay:1.0f];
 }
--(void)finishRefresh{
 
-    [self.arrSalons removeAllObjects];
+
+-(void)refreshListSalonHot{
+
+    isLoadingData = YES;
     
-    [self createListSalon];
-    
-    [self.tblView reloadData];
-    [refreshControl endRefreshing];
+    [[SalonManage sharedInstance] getListSalons:YES page:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        isLoadingData = NO;
+        
+        if(error){
+            
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            NSArray *arrData = idObject;
+            
+            if(arrData.count > 0){
+                
+                self.arrSalonsHot = arrData;
+                headerView = nil;
+                [self.tblView reloadSections:[NSIndexSet indexSetWithIndex:List_Salon_Hot] withRowAnimation:UITableViewRowAnimationFade];
+            }
+            
+        }
+        
+         [refreshControl endRefreshing];
+    }];
+
 }
+
+-(void)refreshListSalon{
+
+    isLoadingData = YES;
+    
+    isFullData = NO;
+    
+    [[SalonManage sharedInstance] getListSalons:NO page:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        isLoadingData = NO;
+        
+        if(error){
+            
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            NSArray *arrData = idObject;
+            
+            if(arrData.count > 0){
+                
+                self.arrSalons = [NSMutableArray arrayWithArray:arrData];
+                
+                [self.tblView reloadSections:[NSIndexSet indexSetWithIndex:List_Salon] withRowAnimation:UITableViewRowAnimationFade];
+            }
+            
+        }
+        
+        [refreshControl endRefreshing];
+    }];
+
+}
+
+-(void)loadMoreSalon{
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    pageIndex ++;
+    
+    isLoadingData = YES;
+    
+    [[SalonManage sharedInstance] getListSalons:NO page:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        isLoadingData = NO;
+        
+        if(error){
+            
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            NSArray *arrData = idObject;
+            
+            if(arrData.count > 0){
+                
+                [self.arrSalons addObjectsFromArray:arrData];
+                
+                [self.tblView reloadSections:[NSIndexSet indexSetWithIndex:List_Salon] withRowAnimation:UITableViewRowAnimationFade];
+                
+                if(arrData.count < LIMIT_ITEM.integerValue){
+                
+                    isFullData = YES;
+                }
+            }
+            
+        }
+        
+    }];
+
+}
+
+#pragma mark - Action
+
 - (IBAction)showMenu:(id)sender {
     
     [[SlideMenuViewController sharedInstance] toggle];
@@ -257,12 +297,23 @@ static FindSalonViewController *sharedInstance = nil;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.arrSalons.count;
+    NSInteger rows;
+    
+    if(section == List_Salon_Hot){
+        
+        rows = 0;
+    }
+    else{
+    
+        rows = self.arrSalons.count;
+    }
+    
+    return rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -283,7 +334,16 @@ static FindSalonViewController *sharedInstance = nil;
     [self.navigationController pushViewController:vcDetail animated:YES];
     
 }
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    if(indexPath.row == self.arrSalons.count - 1 && !isLoadingData &&!isFullData){
+    
+        [self loadMoreSalon];
+    }
+
+}
 /*- (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -292,20 +352,41 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 #pragma mark - Header
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
-    UIView *view = nil;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
     
-    if(!headerView){
+    if(section == List_Salon_Hot && self.arrSalonsHot.count > 0){
     
-        headerView = [[HeaderBannerView alloc] initWithFrame:CGRectMake(0, 0, SW, SW/2)];
+        if(!headerView){
+            
+            headerView = [[HeaderBannerView alloc] initWithFrame:CGRectMake(0, 0, SW, SW/2) listSalonHot:self.arrSalonsHot];
+        }
+        
+        view = headerView;
     }
     
-    view = headerView;
     return view;
 }
-
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+   
+    return view;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return SW/2;
+    if(section == List_Salon_Hot){
+    
+        return (self.arrSalonsHot.count == 0)?1:SW/2;
+    }
+    else{
+    
+        return CGFLOAT_MIN;
+    }
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return CGFLOAT_MIN;
     
 }
 

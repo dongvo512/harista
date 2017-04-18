@@ -159,4 +159,10 @@
     UIColor *color = [UIColor colorWithRed:47.0f/255.0f green:47.0f/255.0f blue:47.0f/255.0f alpha:1];
     return color;
 }
+
++ (UIColor *)blueDateToday{
+    
+    UIColor *color = [UIColor colorWithRed:5.0f/255.0f green:76.0f/255.0f blue:130.0f/255.0f alpha:1];
+    return color;
+}
 @end

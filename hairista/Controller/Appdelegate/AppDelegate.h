@@ -7,11 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SessionUser.h"
+#import "ProcessDataView.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) SessionUser *sessionUser;
+@property (nonatomic, strong) ProcessDataView *processDataView;
+@property (nonatomic, strong) NSProgress *progressCurr;
 
-
+#pragma mark - Popup Golbal
+-(void)showProcessBar:(UIImage *)image;
+-(void)closeProgress;
 @end
 
