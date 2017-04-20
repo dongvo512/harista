@@ -64,8 +64,8 @@
     
     self.btnRegister.layer.cornerRadius = heightCurr/2;
     
-//    self.txtPhone.text = @"Manager";
-//    self.txtPassword.text = @"123456";
+    self.txtPhone.text = @"0932188608";
+    self.txtPassword.text = @"123456";
     
 }
 
@@ -128,6 +128,7 @@
         return;
     }
     
+    [self.view endEditing:YES];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     

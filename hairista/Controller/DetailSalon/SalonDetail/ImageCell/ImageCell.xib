@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="119" height="110"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zEE-2T-5l3">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zEE-2T-5l3">
                         <rect key="frame" x="0.0" y="0.0" width="119" height="110"/>
                     </imageView>
                 </subviews>
@@ -30,6 +30,9 @@
                 <constraint firstItem="zEE-2T-5l3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="q0o-YX-c6d"/>
             </constraints>
             <size key="customSize" width="119" height="110"/>
+            <connections>
+                <outlet property="imgView" destination="zEE-2T-5l3" id="m7A-a4-0mf"/>
+            </connections>
             <point key="canvasLocation" x="-268" y="-115"/>
         </collectionViewCell>
     </objects>

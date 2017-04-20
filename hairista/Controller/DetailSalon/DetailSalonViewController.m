@@ -70,17 +70,7 @@
 }
 
 #pragma mark - Action
-- (IBAction)touchBtnCamera:(id)sender {
-    
-    if(!vcImagePicker){
-        
-        vcImagePicker = [[ImagePickerViewController alloc] init];
-        vcImagePicker.delegateImg = self;
-    }
-    
-    [vcImagePicker takeAPickture:self];
 
-}
 
 #pragma mark - Method
 
@@ -88,7 +78,7 @@
     
     self.vcSalonDetal = [[SalonDetailViewController alloc] initWithNibName:@"SalonDetailViewController" bundle:nil salon:salon];
     
-    self.vcComment = [[CommentViewController alloc] initWithNibName:@"CommentViewController" bundle:nil];
+    self.vcComment = [[CommentViewController alloc] initWithNibName:@"CommentViewController" bundle:nil salon:salon];
     
     self.vcService = [[ServicesViewController alloc] initWithNibName:@"ServicesViewController" bundle:nil];
     
@@ -204,7 +194,7 @@
 - (IBAction)takePhoto:(id)sender {
     
     if(!vcImagePicker){
-    
+        
         vcImagePicker = [[ImagePickerViewController alloc] init];
         vcImagePicker.delegateImg = self;
     }

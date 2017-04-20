@@ -118,21 +118,10 @@
                         <constraint firstAttribute="height" constant="72" id="jWF-0t-cO9"/>
                     </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="542-tl-lxr">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="542-tl-lxr">
                     <rect key="frame" x="0.0" y="118" width="375" height="549"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvJ-9V-LLp">
-                    <rect key="frame" x="303" y="595" width="56" height="56"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="56" id="Mlv-Yl-Vte"/>
-                        <constraint firstAttribute="width" constant="56" id="eif-0R-LPw"/>
-                    </constraints>
-                    <state key="normal" image="ic_camera"/>
-                    <connections>
-                        <action selector="touchBtnCamera:" destination="-1" eventType="touchUpInside" id="BQT-k2-0Jr"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="br9-2I-QbR">
                     <rect key="frame" x="0.0" y="72" width="375" height="46"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -145,8 +134,6 @@
             <constraints>
                 <constraint firstItem="eq6-Ti-MTk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5lf-a7-OTz"/>
                 <constraint firstAttribute="trailing" secondItem="542-tl-lxr" secondAttribute="trailing" id="5sL-wz-kyl"/>
-                <constraint firstAttribute="bottom" secondItem="VvJ-9V-LLp" secondAttribute="bottom" constant="16" id="8at-WU-0OH"/>
-                <constraint firstAttribute="trailing" secondItem="VvJ-9V-LLp" secondAttribute="trailing" constant="16" id="D1E-rj-hJl"/>
                 <constraint firstItem="br9-2I-QbR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KDr-CN-HBE"/>
                 <constraint firstItem="542-tl-lxr" firstAttribute="top" secondItem="br9-2I-QbR" secondAttribute="bottom" id="R7Q-ng-Qpt"/>
                 <constraint firstItem="eq6-Ti-MTk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rcq-gW-PlM"/>
@@ -161,7 +148,6 @@
     </objects>
     <resources>
         <image name="ic_back" width="15" height="15"/>
-        <image name="ic_camera" width="72" height="72"/>
         <image name="ic_camera_small" width="24" height="24"/>
         <image name="ic_createbooking_small" width="24" height="24"/>
     </resources>

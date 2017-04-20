@@ -9,6 +9,9 @@
 #import "SalonManage.h"
 #import "Salon.h"
 #import "Image.h"
+#import "SessionUser.h"
+#import "Comment.h"
+
 
 static SalonManage *sharedInstance = nil;
 @implementation SalonManage
@@ -48,12 +51,55 @@ static SalonManage *sharedInstance = nil;
             img.allowId = CHECK_NIL([dic objectForKey:@"allowId"]);
             
             [arrImageSalon addObject:img];
+            
         }
     }
     
     return arrImageSalon;
 }
-//ListImageSalon
+
+-(NSMutableArray *)parseListCommentSalon:(NSDictionary *)responseDataObject{
+    
+    NSArray *arrData = [responseDataObject objectForKey:@"data"];
+
+    NSMutableArray *arrListSalons = nil;
+    
+    
+    if(arrData){
+    
+        arrListSalons = [NSMutableArray array];
+        
+        for(NSDictionary *dic in arrData){
+            
+            Comment *comment = [[Comment alloc] init];
+            comment.createdAt = CHECK_NIL([dic objectForKey:@"createdAt"]);
+            comment.idComment = CHECK_NIL([dic objectForKey:@"id"]);
+            comment.message = CHECK_NIL([dic objectForKey:@"message"]);
+            comment.model = CHECK_NIL([dic objectForKey:@"model"]);
+            comment.modelId = CHECK_NIL([dic objectForKey:@"modelId"]);
+            comment.rate = CHECK_NIL([dic objectForKey:@"rate"]);
+            comment.status = CHECK_NIL([dic objectForKey:@"status"]);
+            comment.updatedAt = CHECK_NIL([dic objectForKey:@"updatedAt"]);
+            NSDictionary *dicUser = CHECK_NIL([dic objectForKey:@"user"]);
+           
+            if(dicUser){
+               
+                comment.user = [[SessionUser alloc] init];
+                comment.user.avatar = CHECK_NIL([dicUser objectForKey:@"avatar"]);
+                comment.user.authToken = CHECK_NIL([dicUser objectForKey:@"authToken"]);
+                comment.user.idUser = CHECK_NIL([dicUser objectForKey:@"id"]);
+                comment.user.name = CHECK_NIL([dicUser objectForKey:@"name"]);
+         
+            }
+           
+            [arrListSalons addObject:comment];
+        }
+    }
+    
+    return arrListSalons;
+}
+
+
 -(NSMutableArray *)parseListSalons:(NSDictionary *)responseDataObject{
 
     NSArray *arrData = [responseDataObject objectForKey:@"data"];
@@ -100,6 +146,9 @@ static SalonManage *sharedInstance = nil;
             salon.updatedAt = CHECK_NIL([dic objectForKey:@"updatedAt"]);
             salon.avatar = CHECK_NIL([dic objectForKey:@"avatar"]);
             salon.wallpaper = CHECK_NIL([dic objectForKey:@"wallpaper"]);
+            
+             salon.wallpaper = CHECK_NIL([dic objectForKey:@"openTime"]);
+             salon.wallpaper = CHECK_NIL([dic objectForKey:@"closeTime"]);
             
             [arrListSalons addObject:salon];
         }
@@ -176,7 +225,6 @@ static SalonManage *sharedInstance = nil;
         }
     }];
     
-    
 }
 
 -(void)getListImageSalon:(NSString *)idSalon page:(NSString *)page limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult{
@@ -225,5 +273,27 @@ static SalonManage *sharedInstance = nil;
     }];
 
 }
-
+- (void)getListCommentSalon:(NSString *)idSalon page:(NSString *)page limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult{
+    
+    NSString *url = [NSString stringWithFormat:@"%@/%@?page=%@&limit=%@",URL_GET_URL_COMMENT_SALON,idSalon,page,limit];
+    
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorGetListCommentSalon", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorGetListCommentSalon" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSMutableArray *arrCommentSalon = [self parseListCommentSalon:responseDataObject];
+            
+            dataApiResult(nil, arrCommentSalon);
+        }
+    }];
+    
+}
 @end

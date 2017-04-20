@@ -7,8 +7,7 @@
 //
 
 #import "HairFullView.h"
-
-
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HairFullView (){
 
@@ -41,7 +40,7 @@
     self.view.frame = self.bounds;
     [self addSubview:self.view];
     
-    self.imgViewHair.image = [UIImage imageNamed:imgName];
+    [self.imgViewHair sd_setImageWithURL:[NSURL URLWithString:imgName] placeholderImage:IMG_DEFAULT];
     self.lblName.text = title;
 }
 - (IBAction)tapView:(id)sender {

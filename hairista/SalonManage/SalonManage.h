@@ -18,6 +18,8 @@
 
 -(void)getListImageSalon:(NSString *)idSalon page:(NSString *)page limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult;
 
+- (void)getListCommentSalon:(NSString *)idSalon page:(NSString *)page limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult;
+
 //- (void)getDetailSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult;
 
 @end

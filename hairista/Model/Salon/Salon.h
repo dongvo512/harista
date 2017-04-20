@@ -44,7 +44,7 @@
 @property (nonatomic, strong) NSString *updatedAt;
 @property (nonatomic, strong) NSString *avatar;
 @property (nonatomic, strong) NSString *wallpaper;
-
-
+@property (nonatomic, strong) NSString *openTime;
+@property (nonatomic, strong) NSString *closeTime;
 
 @end

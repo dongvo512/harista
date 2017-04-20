@@ -21,4 +21,6 @@
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *userId;
 
+@property (nonatomic) CGFloat heightImage;
+
 @end

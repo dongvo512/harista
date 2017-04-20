@@ -40,6 +40,7 @@ typedef void (^CallAPIResult)(BOOL isError, NSString *stringError, id responseDa
 + (NSString *)getStringDisplayFormDate:(NSDate *)date andFormatString:(NSString *)format;
 + (BOOL)isSameDay:(NSDate*)date1 otherDay:(NSDate*)date2;
 
++ (NSString *)formattedDateTimeWithDateString:(NSString *)inputDateString inputFormat:(NSString *)inputFormat outputFormat:(NSString *)outputFormat;
 #pragma mark - Alert
 +(void)showAlert:(UIViewController *)controller title:(NSString *)title message:(NSString *)message buttonClick:(ButtonClick)buttonClick;
 @end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Salon;
+
 @interface CommentViewController : UIViewController
+
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil salon:(Salon *)salon;
 
 @end

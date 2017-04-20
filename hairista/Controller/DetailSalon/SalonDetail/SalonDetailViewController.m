@@ -12,6 +12,9 @@
 #import "HeaderSalonView.h"
 #import "SalonManage.h"
 #import "Salon.h"
+#import "Image.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "HairFullView.h"
 
 #define LIMIT_ITEM @"14"
 
@@ -40,6 +43,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.arrImages = [NSMutableArray array];
     
     [self getListImageSalon];
     
@@ -82,8 +87,6 @@
                 
                 [self.collectionView reloadData];
             }
-            
-           
         }
     }];
 }
@@ -102,19 +105,37 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
+    Image *image = [self.arrImages objectAtIndex:indexPath.row];
     
+   HairFullView *hairFull = [[HairFullView alloc] initWithFrame:CGRectMake(0, 0, SW, SH) imgName:image.url title:image.name];
+    
+    [UIView transitionWithView:self.view duration:0.5
+                       options:UIViewAnimationOptionTransitionCrossDissolve //change to whatever animation you like
+                    animations:^ { [[[SlideMenuViewController sharedInstance] view] addSubview:hairFull];
+                        
+                    }
+                    completion:nil];
+
     
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     
+    Image *img = [self.arrImages objectAtIndex:indexPath.row];
+    [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        img.heightImage = (SW -24)/2 * image.size.height/image.size.width;
+        [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
+    }];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return CGSizeMake((SW -24)/2, (SW -24)/2);
+    Image *img = [self.arrImages objectAtIndex:indexPath.row];
+    
+    return CGSizeMake((SW -24)/2, (img.heightImage == 0)?(SW -24)/2:img.heightImage);
 }
 
 #pragma mark - Header
@@ -125,7 +146,7 @@
     if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
       
         HeaderSalonView *headerSalonView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderSalonView" forIndexPath:indexPath];
-        
+        [headerSalonView setDataForView:salonCurr];
         reusableview = headerSalonView;
     }
    

@@ -84,7 +84,19 @@
     return convertString;
     
 }
-
++ (NSString *)formattedDateTimeWithDateString:(NSString *)inputDateString inputFormat:(NSString *)inputFormat outputFormat:(NSString *)outputFormat
+{
+    NSString *formattedDateTime = @"";
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:inputFormat];
+    
+    NSDate *inputDate = [dateFormatter dateFromString:inputDateString];
+    
+    [dateFormatter setDateFormat:outputFormat];
+    formattedDateTime = [dateFormatter stringFromDate:inputDate];
+    
+    return formattedDateTime;
+}
 +(void)showAlert:(UIViewController *)controller title:(NSString *)title message:(NSString *)message buttonClick:(ButtonClick)buttonClick{
 
     UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];

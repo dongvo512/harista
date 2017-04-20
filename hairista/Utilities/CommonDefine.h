@@ -31,6 +31,7 @@
 #define CHECK_NIL(value) (value == [NSNull null]?@"":value)
 
 #define IMG_DEFAULT [UIImage imageNamed:@"bg_default"]
+#define IMG_USER_DEFAULT [UIImage imageNamed:@"ic_avatar"]
 
 
 //-------------------------------------------------------------------------------
@@ -145,6 +146,7 @@
 #define URL_GET_LIST_SALON @"https://salonhair.herokuapp.com/api/v1/salons"
 #define URL_GET_DETAIL_SALON @"https://salonhair.herokuapp.com/api/v1/users/"
 #define URL_POST_URL_IMAGE @"https://salonhair.herokuapp.com/api/v1/imagesUrl"
+#define URL_GET_URL_COMMENT_SALON @"https://salonhair.herokuapp.com/api/v1/comments"
 
 //
 

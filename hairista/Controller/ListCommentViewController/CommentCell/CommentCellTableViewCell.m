@@ -8,11 +8,16 @@
 
 #import "CommentCellTableViewCell.h"
 #import "Comment.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface CommentCellTableViewCell ()
-@property (weak, nonatomic) IBOutlet UILabel *lblName;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
+@property (weak, nonatomic) IBOutlet UILabel *lblNumStar;
 @property (weak, nonatomic) IBOutlet UILabel *lblComment;
+@property (weak, nonatomic) IBOutlet UILabel *lblDateComment;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
 
 @end
 
@@ -21,6 +26,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -30,7 +36,12 @@
 }
 -(void)setDataForCell:(Comment *)comment{
 
-    self.lblName.text = comment.strName;
-    self.lblComment.text = comment.comment;
+    self.lblName.text = comment.user.name;
+    self.lblComment.text = comment.message;
+    
+    [self.imgAvatar sd_setImageWithURL:[NSURL URLWithString:comment.user.avatar] placeholderImage:IMG_USER_DEFAULT];
+    self.lblNumStar.text = comment.rate;
+    self.lblDateComment.text = [Common formattedDateTimeWithDateString:comment.createdAt inputFormat:@"yyyy-MM-dd HH:mm:ss" outputFormat:@"dd/MM/yyyy"];
+    
 }
 @end

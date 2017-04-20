@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class Salon;
+
 @interface HeaderSalonView : UICollectionReusableView
+
+-(void)setDataForView:(Salon *)salon;
+
+
 
 @end

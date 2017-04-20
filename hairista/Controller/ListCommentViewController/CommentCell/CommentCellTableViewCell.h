@@ -11,6 +11,7 @@
 @class Comment;
 
 @interface CommentCellTableViewCell : UITableViewCell
+
 -(void)setDataForCell:(Comment *)comment;
 
 @end
