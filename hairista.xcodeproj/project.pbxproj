@@ -61,6 +61,10 @@
 		B86D28491E2E22E3005491E6 /* NCSearchBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86D28471E2E22E3005491E6 /* NCSearchBarView.xib */; };
 		B86D284E1E2E2305005491E6 /* NCTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B86D284C1E2E2305005491E6 /* NCTextFieldView.m */; };
 		B86D284F1E2E2305005491E6 /* NCTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86D284D1E2E2305005491E6 /* NCTextFieldView.xib */; };
+		B87543C31EAA62790047213A /* CommentDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B87543C21EAA62790047213A /* CommentDetailView.m */; };
+		B87543C51EAA63860047213A /* CommentDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87543C41EAA63860047213A /* CommentDetailView.xib */; };
+		B87543CA1EAA6D190047213A /* CommentStarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B87543C81EAA6D190047213A /* CommentStarCell.m */; };
+		B87543CB1EAA6D190047213A /* CommentStarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87543C91EAA6D190047213A /* CommentStarCell.xib */; };
 		B87810021E9A013D00D0B104 /* ChangePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = B87810001E9A013D00D0B104 /* ChangePassword.m */; };
 		B87810031E9A013D00D0B104 /* ChangePassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87810011E9A013D00D0B104 /* ChangePassword.xib */; };
 		B87872AD1EA4C01B005BFC6F /* ChooseImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B87872AC1EA4C01B005BFC6F /* ChooseImageView.m */; };
@@ -293,6 +297,12 @@
 		B86D284C1E2E2305005491E6 /* NCTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCTextFieldView.m; sourceTree = "<group>"; };
 		B86D284D1E2E2305005491E6 /* NCTextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCTextFieldView.xib; sourceTree = "<group>"; };
 		B86D28501E2E2348005491E6 /* CommonDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
+		B87543C11EAA62790047213A /* CommentDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailView.h; sourceTree = "<group>"; };
+		B87543C21EAA62790047213A /* CommentDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailView.m; sourceTree = "<group>"; };
+		B87543C41EAA63860047213A /* CommentDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentDetailView.xib; sourceTree = "<group>"; };
+		B87543C71EAA6D190047213A /* CommentStarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentStarCell.h; sourceTree = "<group>"; };
+		B87543C81EAA6D190047213A /* CommentStarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentStarCell.m; sourceTree = "<group>"; };
+		B87543C91EAA6D190047213A /* CommentStarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentStarCell.xib; sourceTree = "<group>"; };
 		B8780FFF1E9A013D00D0B104 /* ChangePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePassword.h; sourceTree = "<group>"; };
 		B87810001E9A013D00D0B104 /* ChangePassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePassword.m; sourceTree = "<group>"; };
 		B87810011E9A013D00D0B104 /* ChangePassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePassword.xib; sourceTree = "<group>"; };
@@ -824,6 +834,27 @@
 			path = NCTextField;
 			sourceTree = "<group>";
 		};
+		B87543C01EAA62630047213A /* CommentDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				B87543C61EAA6D040047213A /* CommentStarCell */,
+				B87543C11EAA62790047213A /* CommentDetailView.h */,
+				B87543C21EAA62790047213A /* CommentDetailView.m */,
+				B87543C41EAA63860047213A /* CommentDetailView.xib */,
+			);
+			path = CommentDetailView;
+			sourceTree = "<group>";
+		};
+		B87543C61EAA6D040047213A /* CommentStarCell */ = {
+			isa = PBXGroup;
+			children = (
+				B87543C71EAA6D190047213A /* CommentStarCell.h */,
+				B87543C81EAA6D190047213A /* CommentStarCell.m */,
+				B87543C91EAA6D190047213A /* CommentStarCell.xib */,
+			);
+			path = CommentStarCell;
+			sourceTree = "<group>";
+		};
 		B8780FFE1E9A013000D0B104 /* ChangePassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -847,6 +878,7 @@
 		B87D7D2C1E43465800CD5D54 /* DetailSalon */ = {
 			isa = PBXGroup;
 			children = (
+				B87543C01EAA62630047213A /* CommentDetailView */,
 				B880C6B81E45FCE200AA2B72 /* Services */,
 				B862EB301E4A133500BBAB79 /* ListComment */,
 				B8565EB41E9F1A72002E72A5 /* SalonDetail */,
@@ -1581,10 +1613,12 @@
 				B8EF74B61E4CB6BB001466C4 /* BookingViewController.xib in Resources */,
 				B8CF1DC61E50AB500008C6EC /* ManageListBookingViewController.xib in Resources */,
 				B8ACAAA71E58943400F9AF05 /* ProfileUserViewController.xib in Resources */,
+				B87543CB1EAA6D190047213A /* CommentStarCell.xib in Resources */,
 				B85346CB1E535BE500B74D9F /* DetailBookingViewController.xib in Resources */,
 				B8C32B511E2E11B200FB0E11 /* SalonCell.xib in Resources */,
 				B8ACAAA11E5881DD00F9AF05 /* UserCell.xib in Resources */,
 				B80F91B11E41CF0E00649C88 /* NCComboboxNewView.xib in Resources */,
+				B87543C51EAA63860047213A /* CommentDetailView.xib in Resources */,
 				B8BA2E7F1E9CEF1300E1C9FA /* MenuCell.xib in Resources */,
 				B880C6BD1E45FD1B00AA2B72 /* ServicesViewController.xib in Resources */,
 				B8A1031B1E45879300C4E376 /* HairFullView.xib in Resources */,
@@ -1749,6 +1783,7 @@
 				B8DE7EF11E3911CE0008769C /* SlideMenuViewController.m in Sources */,
 				B8565EB91E9F1B1D002E72A5 /* SalonDetailViewController.m in Sources */,
 				B8EC1C691E291CD600D2D1E6 /* LoginViewController.m in Sources */,
+				B87543C31EAA62790047213A /* CommentDetailView.m in Sources */,
 				B8AA6B131E4090DB002716A7 /* SearchSalonAdvanceViewController.m in Sources */,
 				B8A103021E4555AA00C4E376 /* CatagoriesCell.m in Sources */,
 				B8EC1C521E291B6700D2D1E6 /* hairista.xcdatamodeld in Sources */,
@@ -1773,6 +1808,7 @@
 				B8C32B501E2E11B200FB0E11 /* SalonCell.m in Sources */,
 				B8CF1DD01E50B1D20008C6EC /* Booking.m in Sources */,
 				B87D7D301E43466F00CD5D54 /* DetailSalonViewController.m in Sources */,
+				B87543CA1EAA6D190047213A /* CommentStarCell.m in Sources */,
 				B8DE7EFC1E391FDE0008769C /* MenuLeftView.m in Sources */,
 				B88D7CA21E3A0B0E006B8019 /* ItemMenu.m in Sources */,
 				B83D4EE91EA267D600F39BD4 /* CHTCollectionViewWaterfallLayout.m in Sources */,

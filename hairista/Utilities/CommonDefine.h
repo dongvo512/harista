@@ -147,6 +147,10 @@
 #define URL_GET_DETAIL_SALON @"https://salonhair.herokuapp.com/api/v1/users/"
 #define URL_POST_URL_IMAGE @"https://salonhair.herokuapp.com/api/v1/imagesUrl"
 #define URL_GET_URL_COMMENT_SALON @"https://salonhair.herokuapp.com/api/v1/comments"
+#define URL_POST_COMMENT_SALON @"https://salonhair.herokuapp.com/api/v1/comments"
+
+
+///{{url}}comments/2
 
 //
 

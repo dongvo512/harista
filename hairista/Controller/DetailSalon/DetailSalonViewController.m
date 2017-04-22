@@ -60,10 +60,11 @@
     
     [self createTabSalon];
     
-    [self loadTabbar];
-    
 }
+- (void)viewDidAppear:(BOOL)animated{
 
+     [self loadTabbar];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -84,7 +85,30 @@
     
 }
 
-
+-(void)loadTabbar{
+    
+    [self configUI];
+    
+    self.arrViews = [NSArray arrayWithObjects:self.vcSalonDetal.view, self.vcService.view, self.vcComment.view, nil];
+    
+    for (int i = 0 ; i< self.arrViews.count;i++) {
+        
+        UIView * view = self.arrViews[i];
+        CGRect frame = CGRectMake(0, 0, self.scrollMaster.frame.size.width, self.scrollMaster.frame.size.height);
+        frame.origin.x = self.scrollMaster.frame.size.width * i;
+        view.frame = frame;
+        
+        [self.scrollMaster addSubview:view];
+        
+    }
+    
+    UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, tabController.view.frame.size.height, self.tabView.frame.size.width, 1)];
+    [line setBackgroundColor:[UIColor grayBorder]];
+    [self.tabView addSubview:line];
+    
+    self.scrollMaster.contentSize = CGSizeMake(self.scrollMaster.frame.size.width * tabController.selection.count,self.scrollMaster.frame.size.height);
+    
+}
 - (void)configUI{
     
     tabController = [[DKScrollingTabController alloc] init];
@@ -160,30 +184,7 @@
     
 }
 
--(void)loadTabbar{
-    
-    [self configUI];
-    
-    self.arrViews = [NSArray arrayWithObjects:self.vcSalonDetal.view, self.vcService.view, self.vcComment.view, nil];
-    
-    for (int i = 0 ; i< self.arrViews.count;i++) {
-        
-        UIView * view = self.arrViews[i];
-        CGRect frame = CGRectMake(0, 0, self.scrollMaster.frame.size.width, self.scrollMaster.frame.size.height);
-        frame.origin.x = self.scrollMaster.frame.size.width * i;
-        view.frame = frame;
-        
-        [self.scrollMaster addSubview:view];
-        
-    }
-    
-    UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, tabController.view.frame.size.height, self.tabView.frame.size.width, 1)];
-    [line setBackgroundColor:[UIColor grayBorder]];
-    [self.tabView addSubview:line];
-    
-    self.scrollMaster.contentSize = CGSizeMake(self.scrollMaster.frame.size.width * tabController.selection.count,self.scrollMaster.frame.size.height);
-    
-}
+
 - (IBAction)touchBooking:(id)sender {
     
     BookingViewController *vcBooking = [[BookingViewController alloc] initWithNibName:@"BookingViewController" bundle:nil];

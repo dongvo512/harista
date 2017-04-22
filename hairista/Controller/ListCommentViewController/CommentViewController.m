@@ -11,6 +11,7 @@
 #import "Comment.h"
 #import "SalonManage.h"
 #import "Salon.h"
+#import "CommentDetailView.h"
 
 #define LIMIT_ITEM @"14"
 
@@ -66,8 +67,10 @@
 }
 
 #pragma mark - Action
-- (IBAction)btnComment:(id)sender {
+- (IBAction)touchBtnComment:(id)sender {
     
+    CommentDetailView *commentView = [[CommentDetailView alloc] initWithFrame:CGRectMake(0, 0, SW, SH)];
+    [[[SlideMenuViewController sharedInstance] view] addSubview:commentView];
     
 }
 

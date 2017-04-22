@@ -11,6 +11,7 @@
 #import "ItemMenu.h"
 #import "SlideMenuViewController.h"
 #import "UIColor+Method.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #define HEIGHT_CELL_MENU 60
 
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPhone;
 @property (weak, nonatomic) IBOutlet UILabel *lblFullName;
 @property (weak, nonatomic) IBOutlet UILabel *lblEmail;
+@property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
 
 @property (weak, nonatomic) IBOutlet UITableView *tblViewMenu;
 @property (nonatomic, strong) NSMutableArray *arrMenus;
@@ -115,6 +117,8 @@
     
     self.lblEmail.text = Appdelegate_hairista.sessionUser.email;
     // NSLog(@"%@",Appdelegate_hairista.sessionUser.email);
+    
+    [self.imgAvatar sd_setImageWithURL:[NSURL URLWithString:Appdelegate_hairista.sessionUser.avatar] placeholderImage:IMG_USER_DEFAULT];
 }
 
 - (void)createListMenu{

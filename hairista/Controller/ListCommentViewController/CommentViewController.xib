@@ -36,7 +36,7 @@
                     </constraints>
                     <state key="normal" image="btn_comment"/>
                     <connections>
-                        <action selector="btnComment:" destination="-1" eventType="touchUpInside" id="mHB-YV-9lI"/>
+                        <action selector="touchBtnComment:" destination="-1" eventType="touchUpInside" id="aHi-w9-zUR"/>
                     </connections>
                 </button>
             </subviews>

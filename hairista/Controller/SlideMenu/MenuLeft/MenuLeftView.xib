@@ -19,6 +19,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuLeftView">
             <connections>
+                <outlet property="imgAvatar" destination="YbH-Vj-l9E" id="DRE-Ri-iXE"/>
                 <outlet property="lblEmail" destination="75B-DX-jID" id="qJu-X9-nh5"/>
                 <outlet property="lblFullName" destination="SGm-eD-oaw" id="TKS-IE-IDe"/>
                 <outlet property="lblPhone" destination="s8Q-2b-ubP" id="oau-j7-s4D"/>

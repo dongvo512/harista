@@ -296,4 +296,28 @@ static SalonManage *sharedInstance = nil;
     }];
     
 }
+
+-(void)sendMessage:(NSString *)idSalon message:(NSString *)message rate:(NSString *)rate dataResult:(DataAPIResult)dataApiResult{
+
+    NSString *url = [NSString stringWithFormat:@"%@/%@",URL_POST_COMMENT_SALON,idSalon];
+    
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorGetListCommentSalon", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorGetListCommentSalon" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSMutableArray *arrCommentSalon = [self parseListCommentSalon:responseDataObject];
+            
+            dataApiResult(nil, arrCommentSalon);
+        }
+    }];
+}
+
 @end

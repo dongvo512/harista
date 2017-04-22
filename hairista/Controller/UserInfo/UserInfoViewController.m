@@ -24,7 +24,6 @@
     
     BOOL isUploadedAvatar;
     NSString *strUrlAvart;
-    NSString *idImage;
     BOOL isTouchBtnUpdate;
 }
 
@@ -96,9 +95,9 @@
         [dic setObject:self.tfAddress.text forKey:@"homeAddress"];
     }
     
-    if(isUploadedAvatar && idImage){
+    if(isUploadedAvatar && strUrlAvart){
     
-       [dic setObject:idImage forKey:@"avatar"];
+       [dic setObject:strUrlAvart forKey:@"avatar"];
     }
     
     if(self.tfFullName.text.length == 0 && self.tfEmail.text.length == 0 && self.tfAddress.text.length == 0 && !isUploadedAvatar){
@@ -218,15 +217,23 @@
     
    Appdelegate_hairista.progressCurr =  [[ImgurAnonymousAPIClient client] uploadImageData:data
                                          withFilename:@"image.jpg"
-                                    completionHandler:^(NSURL *imgurURL, NSError *error) {
-                                     
-                                        [Appdelegate_hairista closeProgress];
-                                        
-                                        strUrlAvart = imgurURL.absoluteString;
-                                      
-                                        [self uploadImagUrl:strUrlAvart];
-                                    
-                                    }];
+                                                                        completionHandler:^(NSURL *imgurURL, NSError *error) {
+                                                                            
+                                                                            [Appdelegate_hairista closeProgress];
+                                                                            
+                                                                            strUrlAvart = imgurURL.absoluteString;
+                                                                            
+                                                                            isUploadedAvatar = YES;
+                                                                            
+                                                                            if(isTouchBtnUpdate){
+                                                                                
+                                                                                [self updateAvatar];
+                                                                            }
+                                                                            
+                                                                            
+                                                                            //  [self uploadImagUrl:strUrlAvart];
+                                                                            
+                                                                        }];
     [Appdelegate_hairista showProcessBar:image];
     
     
@@ -234,40 +241,51 @@
 
 }
 
--(void)uploadImagUrl:(NSString *)imgUrl{
-
-    
-    [[AuthenticateManage sharedInstance] uploadUrlImage:imgUrl dataResult:^(NSError *error, id idObject) {
-        
-        if(error){
-        
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
-        }
-        else{
-        
-            idImage = (NSString *)idObject;
-            
-            if(idImage){
-                
-                isUploadedAvatar = YES;
-                
-                if(isTouchBtnUpdate){
-                    
-                    [self updateAvatar];
-                }
-            }
-        }
-    }];
-    
-}
+//-(void)uploadImagUrl:(NSString *)imgUrl{
+//
+//    
+//    [[AuthenticateManage sharedInstance] uploadUrlImage:imgUrl dataResult:^(NSError *error, id idObject) {
+//        
+//        if(error){
+//        
+//            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+//        }
+//        else{
+//        
+//            idImage = (NSString *)idObject;
+//            
+//            if(idImage){
+//                
+//                isUploadedAvatar = YES;
+//                
+//                if(isTouchBtnUpdate){
+//                    
+//                    [self updateAvatar];
+//                }
+//            }
+//        }
+//    }];
+//    
+//}
 
 -(void)updateAvatar{
 
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *dic = nil;
 
-    if(isUploadedAvatar && idImage){
+    if(isUploadedAvatar && strUrlAvart){
         
-        [dic setObject:idImage forKey:@"avatar"];
+       dic = [[NSMutableDictionary alloc] init];
+        
+        [dic setObject:strUrlAvart forKey:@"avatar"];
+        
+        if(self.tfFullName.text.length > 0){
+            
+            [dic setObject:self.tfFullName.text forKey:@"name"];
+        }
+        else{
+            
+            [dic setObject:Appdelegate_hairista.sessionUser.name forKey:@"name"];
+        }
     }
     
     if(dic){
