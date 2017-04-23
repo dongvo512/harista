@@ -16,7 +16,7 @@
 #import "Hair.h"
 
 
-#define NUM_ITEM 3
+#define NUM_ITEM 2
 #define MARGIN 8
 
 @interface ServicesViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
@@ -56,6 +56,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self.cllService setContentInset:UIEdgeInsetsMake(8, 0, 0, 0)];
     
     [self createDataTemp];
     

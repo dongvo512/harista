@@ -39,6 +39,7 @@
 		B83D4EEF1EA26FEA00F39BD4 /* HeaderSalonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B83D4EED1EA26FEA00F39BD4 /* HeaderSalonView.xib */; };
 		B83D4EF41EA275E300F39BD4 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B83D4EF21EA275E300F39BD4 /* ImageCell.m */; };
 		B83D4EF51EA275E300F39BD4 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B83D4EF31EA275E300F39BD4 /* ImageCell.xib */; };
+		B83F399A1EAAFFD40068C947 /* StarRate.m in Sources */ = {isa = PBXBuildFile; fileRef = B83F39991EAAFFD40068C947 /* StarRate.m */; };
 		B846AB001EA0C91F00C2B858 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B846AAFF1EA0C91F00C2B858 /* ImageIO.framework */; };
 		B846AB021EA0C92B00C2B858 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B846AB011EA0C92B00C2B858 /* MobileCoreServices.framework */; };
 		B85346CA1E535BE500B74D9F /* DetailBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B85346C81E535BE500B74D9F /* DetailBookingViewController.m */; };
@@ -260,6 +261,8 @@
 		B83D4EF11EA275E300F39BD4 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
 		B83D4EF21EA275E300F39BD4 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
 		B83D4EF31EA275E300F39BD4 /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		B83F39981EAAFFD40068C947 /* StarRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarRate.h; sourceTree = "<group>"; };
+		B83F39991EAAFFD40068C947 /* StarRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarRate.m; sourceTree = "<group>"; };
 		B846AAFF1EA0C91F00C2B858 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		B846AB011EA0C92B00C2B858 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B85346C71E535BE500B74D9F /* DetailBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailBookingViewController.h; sourceTree = "<group>"; };
@@ -703,6 +706,15 @@
 				B83D4EF31EA275E300F39BD4 /* ImageCell.xib */,
 			);
 			path = ImageCell;
+			sourceTree = "<group>";
+		};
+		B83F39971EAAFFC30068C947 /* StarRate */ = {
+			isa = PBXGroup;
+			children = (
+				B83F39981EAAFFD40068C947 /* StarRate.h */,
+				B83F39991EAAFFD40068C947 /* StarRate.m */,
+			);
+			path = StarRate;
 			sourceTree = "<group>";
 		};
 		B85346C61E535BCE00B74D9F /* DetailBooking */ = {
@@ -1444,6 +1456,7 @@
 		B8EC1C5F1E291C9900D2D1E6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B83F39971EAAFFC30068C947 /* StarRate */,
 				B85D99141EA506AA00C3F305 /* Image */,
 				B864FBA51E97649B00EABC66 /* SessionUser */,
 				B899E8FA1E5858D400CC268B /* User */,
@@ -1840,6 +1853,7 @@
 				B8B5BAD11E3A57C900586CBE /* HeaderBannerView.m in Sources */,
 				B8E5F9551E2A03E9007E5A81 /* Common.m in Sources */,
 				B862EB3A1E4A140100BBAB79 /* CommentCellTableViewCell.m in Sources */,
+				B83F399A1EAAFFD40068C947 /* StarRate.m in Sources */,
 				B8C32B411E2DEB0A00FB0E11 /* FindSalonViewController.m in Sources */,
 				B83D4EEE1EA26FEA00F39BD4 /* HeaderSalonView.m in Sources */,
 				B803D0B41E3B88E30078857E /* NearByViewController.m in Sources */,

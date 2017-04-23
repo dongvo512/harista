@@ -30,6 +30,9 @@
                 <constraint firstAttribute="trailing" secondItem="PYM-tf-WKO" secondAttribute="trailing" id="sOa-nJ-pds"/>
             </constraints>
             <size key="customSize" width="116" height="85"/>
+            <connections>
+                <outlet property="imgStar" destination="PYM-tf-WKO" id="i7A-SG-f6i"/>
+            </connections>
             <point key="canvasLocation" x="-79.5" y="-126.5"/>
         </collectionViewCell>
     </objects>

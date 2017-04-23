@@ -69,7 +69,8 @@ static FindSalonViewController *sharedInstance = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
+    
 //    self.automaticallyAdjustsScrollViewInsets = YES;
     self.tblView.rowHeight = UITableViewAutomaticDimension;
     self.tblView.estimatedRowHeight = 59;

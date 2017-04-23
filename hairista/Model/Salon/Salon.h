@@ -46,5 +46,5 @@
 @property (nonatomic, strong) NSString *wallpaper;
 @property (nonatomic, strong) NSString *openTime;
 @property (nonatomic, strong) NSString *closeTime;
-
+@property (nonatomic, strong) NSArray *childs;
 @end

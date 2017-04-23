@@ -80,7 +80,7 @@
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CwD-Dc-MCB">
                             <rect key="frame" x="9" y="155" width="292" height="80"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.98919203367875652" green="0.98919203367875652" blue="0.98919203367875652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="OCT-Xb-Ou6"/>
                             </constraints>

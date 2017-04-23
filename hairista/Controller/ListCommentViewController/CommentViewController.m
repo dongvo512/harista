@@ -69,11 +69,23 @@
 #pragma mark - Action
 - (IBAction)touchBtnComment:(id)sender {
     
-    CommentDetailView *commentView = [[CommentDetailView alloc] initWithFrame:CGRectMake(0, 0, SW, SH)];
+    CommentDetailView *commentView = [[CommentDetailView alloc] initWithFrame:CGRectMake(0, 0, SW, SH) salon:salonCurr];
+    commentView.delegate = self;
     [[[SlideMenuViewController sharedInstance] view] addSubview:commentView];
     
 }
 
+#pragma mark - CommentDetailViewDelegate
+-(void)commented:(Comment *)comment{
+
+    [self.arrComments insertObject:comment atIndex:0];
+    
+    [self.tblView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+    
+//    [self.tblView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+    
+    [self.tblView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
 #pragma mark - Method
 -(void)getListComment{
 
@@ -99,26 +111,7 @@
     
 }
 
-//-(void)createDataTemp{
-//
-//    self.arrComments = [NSMutableArray array];
-//    
-//    Comment *cm_1 = [[Comment alloc] init];
-//    cm_1.strName = @"Trần Thu Hà";
-//    cm_1.imgName = @"bg_avatar";
-//    cm_1.numLike = @"1";
-//    cm_1.comment = @"Tiệm quá tuyệt vời, không còn gì để có thể diễn tả hết độ tuyệt với chưa tiệm";
-//    [self.arrComments addObject:cm_1];
-//    
-//    Comment *cm_2 = [[Comment alloc] init];
-//    cm_2.strName = @"Võ Nguyên Đông";
-//    cm_2.imgName = @"bg_avatar";
-//    cm_2.numLike = @"1";
-//    cm_2.comment = @"Trên cả tuyệt vời";
-//    [self.arrComments addObject:cm_2];
-//    
-//    
-//}
+
 - (IBAction)touchTblView:(id)sender {
     
     [self.view endEditing:YES];
@@ -201,12 +194,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
 }
-
-/*- (CGFloat)tableView:(UITableView *)tableView
- heightForRowAtIndexPath:(NSIndexPath *)indexPath{
- 
- return 60;
- }*/
 
 
 @end

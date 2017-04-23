@@ -174,6 +174,20 @@ static SalonManage *sharedInstance = nil;
     
     return img;
 }
+-(Comment *)parsesendMessage:(NSDictionary *)responseDataObject{
+    
+    Comment *comment = [[Comment alloc] init];
+    comment.createdAt =  CHECK_NIL([responseDataObject objectForKey:@"createdAt"]);
+    comment.updatedAt =  CHECK_NIL([responseDataObject objectForKey:@"updatedAt"]);
+    comment.idComment =  CHECK_NIL([responseDataObject objectForKey:@"id"]);
+    comment.message =  CHECK_NIL([responseDataObject objectForKey:@"message"]);
+    comment.rate =  CHECK_NIL([responseDataObject objectForKey:@"rate"]);
+
+    return comment;
+    
+}
+//sendMessage
+
 #pragma mark - Call API
 
 //- (void)getDetailSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult{
@@ -302,20 +316,22 @@ static SalonManage *sharedInstance = nil;
     NSString *url = [NSString stringWithFormat:@"%@/%@",URL_POST_COMMENT_SALON,idSalon];
     
     
-    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+    NSDictionary *dicBody = @{@"message":message, @"rate":rate};
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_POST withRequestBody:dicBody callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         
         if(isError){
             
-            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorGetListCommentSalon", nil)};
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorSendCommentSalon", nil)};
             
-            NSError *error = [[NSError alloc]initWithDomain:@"ErrorGetListCommentSalon" code:1 userInfo:userInfo];
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorSendCommentSalon" code:1 userInfo:userInfo];
             dataApiResult(error, nil);
         }
         else{
             
-            NSMutableArray *arrCommentSalon = [self parseListCommentSalon:responseDataObject];
+            Comment *comment = [self parsesendMessage:responseDataObject];
             
-            dataApiResult(nil, arrCommentSalon);
+            dataApiResult(nil, comment);
         }
     }];
 }

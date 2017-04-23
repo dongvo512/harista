@@ -8,7 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class Salon,Comment;
+
 @interface CommentDetailView : UIView
+
+-(id)initWithFrame:(CGRect)frame salon:(Salon *)salon;
+
+@property (nonatomic, weak) id delegate;
+
 @property (strong, nonatomic) IBOutlet UIView *view;
+
+@end
+@protocol CommentDetailViewDelegate <NSObject>
+
+-(void)commented:(Comment *)comment;
 
 @end

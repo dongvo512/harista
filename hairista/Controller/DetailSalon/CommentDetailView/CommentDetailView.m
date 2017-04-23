@@ -8,16 +8,23 @@
 
 #import "CommentDetailView.h"
 #import "CommentStarCell.h"
+#import "StarRate.h"
+#import "SalonManage.h"
+#import "Salon.h"
+#import "Comment.h"
 
 
 @interface CommentDetailView ()<UIGestureRecognizerDelegate>{
 
     CGFloat widthItem;
+    Salon *salonCurr;
+    
+    NSInteger countStarSelected;
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *txtView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
+@property (nonatomic, strong) NSMutableArray *arrStars;
 @end
 
 @implementation CommentDetailView
@@ -30,12 +37,14 @@
 }
 */
 
--(id)initWithFrame:(CGRect)frame{
+-(id)initWithFrame:(CGRect)frame salon:(Salon *)salon{
 
     self = [super initWithFrame:frame];
     
     if(self){
-    
+   
+        salonCurr = salon;
+        countStarSelected = 0;
         [self setup];
     }
     
@@ -66,7 +75,10 @@
     
     widthItem = (SW - 64) / 5;
     
+    [self createListStar];
+    
 }
+
 #pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
@@ -84,17 +96,108 @@
     
     [self.view endEditing:YES];
     
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self cache:YES];
-    [self removeFromSuperview];
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         
+                         [self setAlpha:0];
+                         
+                     }
+                     completion:^(BOOL finished){
+                         
+                         [self removeFromSuperview];
+                     }];
     [UIView commitAnimations];
-
 }
 - (IBAction)touchBtnSend:(id)sender {
     
+    if([self checkValidate]){
+        
+        return;
+    }
     
+      [self.view endEditing:YES];
+    
+    [MBProgressHUD showHUDAddedTo:self animated:YES];
+    
+    [[SalonManage sharedInstance] sendMessage:salonCurr.idSalon message:self.txtView.text rate:[NSString stringWithFormat:@"%ld",(long)countStarSelected] dataResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self animated:YES];
+        
+        if(error){
+        
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+        
+            Comment *comment = idObject;
+            
+            if(comment){
+                
+                comment.user = Appdelegate_hairista.sessionUser;
+                
+                if([[self delegate] respondsToSelector:@selector(commented:)]){
+                
+                    [[self delegate] commented:comment];
+                }
+            }
+        }
+        
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             
+                             [self setAlpha:0];
+                             
+                         }
+                         completion:^(BOOL finished){
+                             
+                             [self removeFromSuperview];
+                         }];
+        [UIView commitAnimations];
+        
+    }];
+
+}
+
+-(BOOL)checkValidate{
+
+    BOOL isValidate = NO;
+    
+    if(self.txtView.text.length == 0){
+    
+        [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:@"Bạn chưa nhập bình luận" buttonClick:nil];
+        isValidate = YES;
+    }
+    
+    
+    for(StarRate *star in self.arrStars){
+        
+        if(star.isSelected){
+        
+            countStarSelected ++;
+        }
+    }
+
+    if(countStarSelected == 0){
+    
+         [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:@"Bạn chưa chọn sao cho Salon" buttonClick:nil];
+        
+        isValidate = YES;
+    }
+    
+    return isValidate;
+}
+
+-(void)createListStar{
+
+    self.arrStars = [NSMutableArray array];
+    
+    for(int i = 0; i < 5; i++){
+    
+        StarRate *star = [[StarRate alloc] init];
+        
+        [self.arrStars addObject:star];
+    }
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -106,12 +209,24 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-   return 5;
+   return self.arrStars.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     CommentStarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CommentStarCell" forIndexPath:indexPath];
+    
+    StarRate *star = [self.arrStars objectAtIndex:indexPath.row];
+    
+    if(star.isSelected){
+    
+        [cell.imgStar setImage:[UIImage imageNamed:@"btn_star_larg_yellow"]];
+    }
+    else{
+    
+        [cell.imgStar setImage:[UIImage imageNamed:@"btn_star_larg_grey"]];
+    }
+    
     return cell;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -127,6 +242,23 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    [self updateStarWithIndex:indexPath.row];
 }
+-(void)updateStarWithIndex:(NSInteger)index{
+
+    for(int i = 0; i <= index; i++){
+    
+        StarRate *star = [self.arrStars objectAtIndex:i];
+        star.isSelected = YES;
+    }
+    
+    for(NSInteger j = index; j < 4; j++){
+    
+        StarRate *star = [self.arrStars objectAtIndex:j + 1];
+        star.isSelected = NO;
+    }
+    
+    [self.collectionView reloadData];
+}
+
 @end

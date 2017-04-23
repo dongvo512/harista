@@ -10,4 +10,6 @@
 
 @interface CommentStarCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgStar;
+
 @end
