@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlbumImageViewController">
             <connections>
+                <outlet property="collectionView" destination="2GR-0K-NMd" id="WAk-Cq-bdO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -90,12 +91,30 @@
                         <constraint firstAttribute="height" constant="72" id="z9Z-vH-ZSP"/>
                     </constraints>
                 </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2GR-0K-NMd">
+                    <rect key="frame" x="0.0" y="72" width="320" height="408"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VVV-7m-imV">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="K41-Ia-u0R"/>
+                        <outlet property="delegate" destination="-1" id="Dto-bj-K2x"/>
+                    </connections>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="2GR-0K-NMd" secondAttribute="trailing" id="48E-y8-PkI"/>
+                <constraint firstItem="2GR-0K-NMd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4L5-zG-2JE"/>
                 <constraint firstItem="51t-OT-8nu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KZ3-iv-o9I"/>
                 <constraint firstAttribute="trailing" secondItem="51t-OT-8nu" secondAttribute="trailing" id="MlS-hl-xhB"/>
+                <constraint firstItem="2GR-0K-NMd" firstAttribute="top" secondItem="51t-OT-8nu" secondAttribute="bottom" id="SQB-Qm-oqm"/>
                 <constraint firstItem="51t-OT-8nu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aSA-zd-632"/>
+                <constraint firstAttribute="bottom" secondItem="2GR-0K-NMd" secondAttribute="bottom" id="y7o-g9-ET8"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

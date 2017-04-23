@@ -22,6 +22,8 @@
 
 -(void)sendMessage:(NSString *)idSalon message:(NSString *)message rate:(NSString *)rate dataResult:(DataAPIResult)dataApiResult;
 
+-(void)getListCategoriesProduct:(DataAPIResult)dataApiResult;
+
 //- (void)getDetailSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult;
 
 @end

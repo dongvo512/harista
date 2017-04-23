@@ -8,7 +8,7 @@
 
 #import "AuthenticateManage.h"
 #import "SessionUser.h"
-
+#import "Image.h"
 
 static AuthenticateManage *sharedInstance = nil;
 
@@ -121,6 +121,31 @@ static AuthenticateManage *sharedInstance = nil;
     
     Appdelegate_hairista.sessionUser.wallpaper = CHECK_NIL([dic objectForKey:@"wallpaper"]);
 }
+
+- (NSMutableArray *)parseListImageUser:(NSDictionary *)responseDataObject{
+    
+    NSArray *arrDic = [responseDataObject objectForKey:@"data"];
+    
+    NSMutableArray *arrData = [NSMutableArray array];
+    
+    for(NSDictionary *dic in arrDic){
+    
+        Image *img = [[Image alloc] init];
+        
+        img.idImage = CHECK_NIL([dic objectForKey:@"id"]);
+        img.createdAt = CHECK_NIL([dic objectForKey:@"createdAt"]);
+        img.forUserId = CHECK_NIL([dic objectForKey:@"forUserId"]);
+        img.name = CHECK_NIL([dic objectForKey:@"name"]);
+        img.path = CHECK_NIL([dic objectForKey:@"path"]);
+        img.updatedAt = CHECK_NIL([dic objectForKey:@"updatedAt"]);
+        img.url = CHECK_NIL([dic objectForKey:@"url"]);
+        img.userId = CHECK_NIL([dic objectForKey:@"userId"]);
+        [arrData addObject:img];
+    }
+
+    return arrData;
+}
+
 #pragma mark - CallAPI
 
 -(void)uploadUrlImage:(NSString *)imgUrl dataResult:(DataAPIResult)dataApiResult{
@@ -233,6 +258,30 @@ static AuthenticateManage *sharedInstance = nil;
             dataApiResult(nil, @"OK");
         }
     }];
+}
+
+-(void)getListImageUser:(NSString *)pageIndex limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult{
+
+    NSString *url = [NSString stringWithFormat:@"%@?page=%@&limit=%@",URL_GET_IMAGE_USER,pageIndex,limit];
+    
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorChangePassword", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorChangePassword" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSMutableArray *arrData = [self parseListImageUser:responseDataObject];
+            
+            dataApiResult(nil, arrData);
+        }
+    }];
+
 }
 
 @end

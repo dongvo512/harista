@@ -89,7 +89,11 @@
 #pragma mark - Method
 -(void)getListComment{
 
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [[SalonManage sharedInstance] getListCommentSalon:salonCurr.idSalon page:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
         

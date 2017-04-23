@@ -53,7 +53,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_rate" translatesAutoresizingMaskIntoConstraints="NO" id="w2h-Lw-3V6">
+                            <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_start_grey" translatesAutoresizingMaskIntoConstraints="NO" id="fCA-5I-r0S">
+                                <rect key="frame" x="232" y="22" width="80" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Ovk-YS-8jc"/>
+                                    <constraint firstAttribute="width" constant="80" id="eLT-bg-pnE"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_yellow" translatesAutoresizingMaskIntoConstraints="NO" id="w2h-Lw-3V6">
                                 <rect key="frame" x="232" y="22" width="80" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="6aP-ss-8th"/>
@@ -73,15 +80,17 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="fCA-5I-r0S" secondAttribute="bottom" id="6my-za-hjn"/>
                             <constraint firstAttribute="trailing" secondItem="w2h-Lw-3V6" secondAttribute="trailing" constant="8" id="7xt-bz-UQ4"/>
+                            <constraint firstAttribute="trailing" secondItem="fCA-5I-r0S" secondAttribute="trailing" constant="8" id="8dT-yp-9sa"/>
                             <constraint firstItem="DIV-pW-fDj" firstAttribute="leading" secondItem="CaK-Bb-Tez" secondAttribute="leading" constant="8" id="ETh-nE-QSS"/>
                             <constraint firstItem="w2h-Lw-3V6" firstAttribute="top" secondItem="Emc-PI-neO" secondAttribute="bottom" constant="2" id="MNf-wp-dIM"/>
+                            <constraint firstItem="fCA-5I-r0S" firstAttribute="leading" secondItem="DIV-pW-fDj" secondAttribute="trailing" constant="17" id="N4e-Ac-bEG"/>
                             <constraint firstAttribute="height" constant="42" id="TQY-d2-ae1"/>
                             <constraint firstItem="Emc-PI-neO" firstAttribute="leading" secondItem="FW6-HV-hHd" secondAttribute="trailing" constant="8" id="U6T-YG-at8"/>
                             <constraint firstItem="DIV-pW-fDj" firstAttribute="top" secondItem="FW6-HV-hHd" secondAttribute="bottom" id="Vs8-pO-IE6"/>
                             <constraint firstAttribute="trailing" secondItem="Emc-PI-neO" secondAttribute="trailing" constant="8" id="gO2-Rs-XIT"/>
                             <constraint firstItem="FW6-HV-hHd" firstAttribute="top" secondItem="CaK-Bb-Tez" secondAttribute="top" id="iTz-QF-OYY"/>
-                            <constraint firstItem="w2h-Lw-3V6" firstAttribute="leading" secondItem="DIV-pW-fDj" secondAttribute="trailing" constant="17" id="vcs-oa-njF"/>
                             <constraint firstItem="FW6-HV-hHd" firstAttribute="leading" secondItem="CaK-Bb-Tez" secondAttribute="leading" constant="8" id="y1b-9k-gk3"/>
                             <constraint firstItem="Emc-PI-neO" firstAttribute="top" secondItem="CaK-Bb-Tez" secondAttribute="top" id="zBH-50-j0n"/>
                         </constraints>
@@ -105,11 +114,14 @@
                 <outlet property="lblSalonName" destination="FW6-HV-hHd" id="eZ6-Bh-lMm"/>
                 <outlet property="lblSalonPhone" destination="DIV-pW-fDj" id="vio-fd-RAi"/>
                 <outlet property="lblSalonTimeOpen" destination="Emc-PI-neO" id="dOI-Rd-hdv"/>
+                <outlet property="trailingStar" destination="7xt-bz-UQ4" id="h12-xI-42g"/>
+                <outlet property="widthContraint" destination="GrW-nh-o4x" id="7B5-ly-dO1"/>
             </connections>
             <point key="canvasLocation" x="39" y="-101"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic_rate" width="80" height="20"/>
+        <image name="ic_star_yellow" width="80" height="20"/>
+        <image name="ic_start_grey" width="80" height="20"/>
     </resources>
 </document>

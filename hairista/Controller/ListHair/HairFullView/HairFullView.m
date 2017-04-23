@@ -38,6 +38,13 @@
     self.view = [[NSBundle mainBundle] loadNibNamed:@"HairFullView" owner:self options:nil].firstObject;
     
     self.view.frame = self.bounds;
+    self.alpha = 0;
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.alpha = 1.0;
+                     }
+                     completion:nil];
+    
     [self addSubview:self.view];
     
     [self.imgViewHair sd_setImageWithURL:[NSURL URLWithString:imgName] placeholderImage:IMG_DEFAULT];

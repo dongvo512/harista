@@ -22,4 +22,6 @@
 
 - (void)uploadUrlImage:(NSString *)imgUrl dataResult:(DataAPIResult)dataApiResult;
 
+-(void)getListImageUser:(NSString *)pageIndex limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult;
+
 @end

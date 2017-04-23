@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblSalonPhone;
 @property (weak, nonatomic) IBOutlet UILabel *lblSalonTimeOpen;
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewRating;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthContraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingStar;
 
 @end
 
@@ -29,10 +31,18 @@
 -(void)setDataForCell:(Salon *)salon{
 
   //  self.imgViewBanner.image = [UIImage imageNamed:salon.strSalonUrl];
+    
+   // salon.avgRate = @"3";
+    
     [self.imgViewBanner sd_setImageWithURL:[NSURL URLWithString:salon.avatar] placeholderImage:IMG_DEFAULT];
     self.lblSalonName.text = salon.name;
     self.lblSalonPhone.text = salon.phone;
-   // self.lblSalonTimeOpen.text = salon.openTime;
+    
+    self.widthContraint.constant = (80/5)*salon.avgRate.integerValue;
+    
+    self.trailingStar.constant = (80 - (80/5)*salon.avgRate.integerValue) + 8;
+    
+    self.lblSalonTimeOpen.text = [NSString stringWithFormat:@"%@ - %@",salon.openTime,salon.closeTime];
 }
 
 @end

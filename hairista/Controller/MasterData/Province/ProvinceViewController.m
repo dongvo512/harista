@@ -53,7 +53,7 @@
     self.arrProvinces = [NSMutableArray array];
     self.arrSearchData = [NSMutableArray array];
     
-    [self createDataTemp];
+  //  [self createDataTemp];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,38 +80,38 @@
 
 }
 
--(void)createDataTemp{
-
-    Province *province_1 = [[Province alloc] init];
-    province_1.idProvince = @"111111111";
-    province_1.provinceName = @"TP.Hồ chí minh";
-    [self.arrProvinces addObject:province_1];
-    
-    Province *province_2 = [[Province alloc] init];
-    province_2.idProvince = @"123123";
-    province_2.provinceName = @"TP.Hà nội";
-    [self.arrProvinces addObject:province_2];
-
-    
-    Province *province_3 = [[Province alloc] init];
-    province_3.idProvince = @"24123123";
-    province_3.provinceName = @"Long an";
-    [self.arrProvinces addObject:province_3];
-
-    
-    Province *province_4 = [[Province alloc] init];
-    province_4.idProvince = @"1827389172";
-    province_4.provinceName = @"Sóc trăng";
-    [self.arrProvinces addObject:province_4];
-
-    
-    Province *province_5 = [[Province alloc] init];
-    province_5.idProvince = @"12318238";
-    province_5.provinceName = @"Hà tĩnh";
-    [self.arrProvinces addObject:province_5];
-
-    self.arrSearchData = self.arrProvinces;
-}
+//-(void)createDataTemp{
+//
+//    Province *province_1 = [[Province alloc] init];
+//    province_1.idProvince = @"111111111";
+//    province_1.provinceName = @"TP.Hồ chí minh";
+//    [self.arrProvinces addObject:province_1];
+//    
+//    Province *province_2 = [[Province alloc] init];
+//    province_2.idProvince = @"123123";
+//    province_2.provinceName = @"TP.Hà nội";
+//    [self.arrProvinces addObject:province_2];
+//
+//    
+//    Province *province_3 = [[Province alloc] init];
+//    province_3.idProvince = @"24123123";
+//    province_3.provinceName = @"Long an";
+//    [self.arrProvinces addObject:province_3];
+//
+//    
+//    Province *province_4 = [[Province alloc] init];
+//    province_4.idProvince = @"1827389172";
+//    province_4.provinceName = @"Sóc trăng";
+//    [self.arrProvinces addObject:province_4];
+//
+//    
+//    Province *province_5 = [[Province alloc] init];
+//    province_5.idProvince = @"12318238";
+//    province_5.provinceName = @"Hà tĩnh";
+//    [self.arrProvinces addObject:province_5];
+//
+//    self.arrSearchData = self.arrProvinces;
+//}
 
 #pragma mark - Table view DataSource - Delegate
 

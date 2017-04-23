@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B802B11E1EAC761C007FE0D0 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B802B11D1EAC761C007FE0D0 /* Category.m */; };
 		B8033DFC1E43EF86006B2C0F /* SlideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8033DFB1E43EF86006B2C0F /* SlideMenuViewController.xib */; };
 		B8033DFF1E43F046006B2C0F /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8033DFE1E43F046006B2C0F /* Annotation.m */; };
 		B803D0B41E3B88E30078857E /* NearByViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B803D0B21E3B88E30078857E /* NearByViewController.m */; };
@@ -212,6 +213,8 @@
 		30DBF0C8678551EB89283328 /* Pods-hairista.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hairista.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hairista/Pods-hairista.debug.xcconfig"; sourceTree = "<group>"; };
 		3CA585DE927194AC1C684CE1 /* Pods_hairista.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hairista.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		687B89FD25C533B1A7DD16C0 /* Pods-hairista.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hairista.release.xcconfig"; path = "Pods/Target Support Files/Pods-hairista/Pods-hairista.release.xcconfig"; sourceTree = "<group>"; };
+		B802B11C1EAC761C007FE0D0 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
+		B802B11D1EAC761C007FE0D0 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
 		B8033DFB1E43EF86006B2C0F /* SlideMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlideMenuViewController.xib; sourceTree = "<group>"; };
 		B8033DFD1E43F046006B2C0F /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
 		B8033DFE1E43F046006B2C0F /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
@@ -508,6 +511,15 @@
 				687B89FD25C533B1A7DD16C0 /* Pods-hairista.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B802B11B1EAC760E007FE0D0 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				B802B11C1EAC761C007FE0D0 /* Category.h */,
+				B802B11D1EAC761C007FE0D0 /* Category.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		B803D0B01E3B88D00078857E /* NearBy */ = {
@@ -1456,6 +1468,7 @@
 		B8EC1C5F1E291C9900D2D1E6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B802B11B1EAC760E007FE0D0 /* Category */,
 				B83F39971EAAFFC30068C947 /* StarRate */,
 				B85D99141EA506AA00C3F305 /* Image */,
 				B864FBA51E97649B00EABC66 /* SessionUser */,
@@ -1785,6 +1798,7 @@
 				B8033DFF1E43F046006B2C0F /* Annotation.m in Sources */,
 				B8ACAAA01E5881DD00F9AF05 /* UserCell.m in Sources */,
 				B82E6D201E44685900C51770 /* CatagoriesHairViewController.m in Sources */,
+				B802B11E1EAC761C007FE0D0 /* Category.m in Sources */,
 				B8A103191E45878B00C4E376 /* HairFullView.m in Sources */,
 				B8356C831E501D3F00C16AA3 /* ManageBookingViewController.m in Sources */,
 				B82E6D251E44721000C51770 /* Catagories.m in Sources */,

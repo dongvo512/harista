@@ -11,6 +11,8 @@
 #import "Image.h"
 #import "SessionUser.h"
 #import "Comment.h"
+#import "Category.h"
+#import "Service.h"
 
 
 static SalonManage *sharedInstance = nil;
@@ -186,6 +188,57 @@ static SalonManage *sharedInstance = nil;
     return comment;
     
 }
+
+- (NSMutableArray *)parseListService:(NSArray *)responseDataObject{
+    
+    NSMutableArray *arrData = [NSMutableArray array];
+    
+    for(NSDictionary *dic in responseDataObject){
+    
+        Category *cat = [[Category alloc] init];
+        cat.idCategory = CHECK_NIL([dic objectForKey:@"id"]);
+        cat.name = CHECK_NIL([dic objectForKey:@"name"]);
+        cat.name_slug = CHECK_NIL([dic objectForKey:@"name_slug"]);
+        cat.userId = CHECK_NIL([dic objectForKey:@"userId"]);
+        cat.createdAt = CHECK_NIL([dic objectForKey:@"createdAt"]);
+        cat.updatedAt = CHECK_NIL([dic objectForKey:@"updatedAt"]);
+        cat.arrServices = [NSMutableArray array];
+        NSArray *arrService = [dic objectForKey:@"services"];
+        [arrData addObject:cat];
+        for(NSDictionary *dicService in arrService){
+        
+            Service *service = [[Service alloc] init];
+            service.idService = CHECK_NIL([dicService objectForKey:@"id"]);
+            
+            service.name = CHECK_NIL([dicService objectForKey:@"name"]);
+
+            service.name_slug = CHECK_NIL([dicService objectForKey:@"name_slug"]);
+
+            service.price = CHECK_NIL([dicService objectForKey:@"price"]);
+
+            service.priceDiscount = CHECK_NIL([dicService objectForKey:@"priceDiscount"]);
+
+            service.image = CHECK_NIL([dicService objectForKey:@"image"]);
+
+            service.userId = CHECK_NIL([dicService objectForKey:@"userId"]);
+            
+            service.ordering = CHECK_NIL([dicService objectForKey:@"ordering"]);
+            
+            service.categoryId = CHECK_NIL([dicService objectForKey:@"categoryId"]);
+            
+            service.createdAt = CHECK_NIL([dicService objectForKey:@"createdAt"]);
+            
+            service.updatedAt = CHECK_NIL([dicService objectForKey:@"updatedAt"]);
+
+            [cat.arrServices addObject:service];
+        }
+        
+    }
+    
+    return arrData;
+    
+}
+
 //sendMessage
 
 #pragma mark - Call API
@@ -335,5 +388,28 @@ static SalonManage *sharedInstance = nil;
         }
     }];
 }
+
+-(void)getListCategoriesProduct:(DataAPIResult)dataApiResult{
+    
+    [APIRequestHandler initWithURLString:URL_GET_CATEGORIES_PRODUCT withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorCategoriesProduct", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorCategoriesProduct" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+           NSArray *arrData = [self parseListService:responseDataObject];
+            
+            dataApiResult(nil, arrData);
+            
+        }
+    }];
+
+}
+
 
 @end
