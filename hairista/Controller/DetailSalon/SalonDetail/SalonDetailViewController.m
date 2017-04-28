@@ -15,6 +15,7 @@
 #import "Image.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "HairFullView.h"
+#import "MapDetailSalonViewController.h"
 
 #define LIMIT_ITEM @"14"
 
@@ -146,14 +147,24 @@
     if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
       
         HeaderSalonView *headerSalonView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderSalonView" forIndexPath:indexPath];
+        headerSalonView.delegate = self;
         [headerSalonView setDataForView:salonCurr];
         reusableview = headerSalonView;
     }
    
     return reusableview;
 }
+#pragma mark - HeaderSalonViewDelegate
+-(void)selectFavorite:(Salon *)salon{
 
+    
+}
+-(void)selectLocation{
 
+    MapDetailSalonViewController *vcMapDetailSalon = [[MapDetailSalonViewController alloc] initWithNibName:@"MapDetailSalonViewController" bundle:nil Salon:salonCurr];
+    
+    [self.rootVC.navigationController pushViewController:vcMapDetailSalon animated:YES];
+}
 /*
 #pragma mark - Navigation
 

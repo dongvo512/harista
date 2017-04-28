@@ -12,8 +12,13 @@
 
 @interface HeaderSalonView : UICollectionReusableView
 
+@property (nonatomic, weak) id delegate;
 -(void)setDataForView:(Salon *)salon;
 
+@end
+@protocol HeaderSalonViewDelegate <NSObject>
 
+-(void)selectFavorite;
+-(void)selectLocation;
 
 @end

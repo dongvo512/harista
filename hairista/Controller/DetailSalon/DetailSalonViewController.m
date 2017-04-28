@@ -78,6 +78,7 @@
 - (void)createTabSalon{
     
     self.vcSalonDetal = [[SalonDetailViewController alloc] initWithNibName:@"SalonDetailViewController" bundle:nil salon:salon];
+    self.vcSalonDetal.rootVC = self;
     
     self.vcComment = [[CommentViewController alloc] initWithNibName:@"CommentViewController" bundle:nil salon:salon];
     

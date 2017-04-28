@@ -77,6 +77,9 @@
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
                             <state key="normal" image="ic_favorite"/>
+                            <connections>
+                                <action selector="clickFavorite:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="37d-GL-lDM"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7l-D3-Ohf">
                             <rect key="frame" x="338" y="46" width="30" height="30"/>
@@ -85,6 +88,9 @@
                                 <constraint firstAttribute="width" constant="30" id="QBT-0q-TyG"/>
                             </constraints>
                             <state key="normal" image="ic_map"/>
+                            <connections>
+                                <action selector="clickBtnLocation:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="FSo-Az-BC6"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKV-yh-pq7">
                             <rect key="frame" x="0.0" y="95" width="375" height="1"/>

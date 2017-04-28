@@ -118,6 +118,7 @@ static SalonManage *sharedInstance = nil;
         
             Salon *salon = [[Salon alloc] init];
             salon.idSalon = CHECK_NIL([dic objectForKey:@"id"]);
+            salon.name = CHECK_NIL([dic objectForKey:@"name"]);
             salon.name_slug = CHECK_NIL([dic objectForKey:@"name_slug"]) ;
             salon.avatarId = CHECK_NIL([dic objectForKey:@"avatarId"]);
             salon.wallpaperId = CHECK_NIL([dic objectForKey:@"wallpaperId"]);

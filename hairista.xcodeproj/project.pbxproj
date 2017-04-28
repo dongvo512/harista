@@ -133,6 +133,8 @@
 		B8C32B501E2E11B200FB0E11 /* SalonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C32B4E1E2E11B200FB0E11 /* SalonCell.m */; };
 		B8C32B511E2E11B200FB0E11 /* SalonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C32B4F1E2E11B200FB0E11 /* SalonCell.xib */; };
 		B8CAD11A246065E35860C86F /* Pods_hairista.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA585DE927194AC1C684CE1 /* Pods_hairista.framework */; };
+		B8CB12181EB2FA8F00ECD857 /* MapDetailSalonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CB12161EB2FA8F00ECD857 /* MapDetailSalonViewController.m */; };
+		B8CB12191EB2FA8F00ECD857 /* MapDetailSalonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CB12171EB2FA8F00ECD857 /* MapDetailSalonViewController.xib */; };
 		B8CF1DC51E50AB500008C6EC /* ManageListBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CF1DC31E50AB500008C6EC /* ManageListBookingViewController.m */; };
 		B8CF1DC61E50AB500008C6EC /* ManageListBookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CF1DC41E50AB500008C6EC /* ManageListBookingViewController.xib */; };
 		B8CF1DCB1E50AFD90008C6EC /* ManageBookingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CF1DC91E50AFD90008C6EC /* ManageBookingCell.m */; };
@@ -412,6 +414,9 @@
 		B8C32B4D1E2E11B200FB0E11 /* SalonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalonCell.h; sourceTree = "<group>"; };
 		B8C32B4E1E2E11B200FB0E11 /* SalonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalonCell.m; sourceTree = "<group>"; };
 		B8C32B4F1E2E11B200FB0E11 /* SalonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SalonCell.xib; sourceTree = "<group>"; };
+		B8CB12151EB2FA8F00ECD857 /* MapDetailSalonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDetailSalonViewController.h; sourceTree = "<group>"; };
+		B8CB12161EB2FA8F00ECD857 /* MapDetailSalonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailSalonViewController.m; sourceTree = "<group>"; };
+		B8CB12171EB2FA8F00ECD857 /* MapDetailSalonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapDetailSalonViewController.xib; sourceTree = "<group>"; };
 		B8CF1DC21E50AB500008C6EC /* ManageListBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageListBookingViewController.h; sourceTree = "<group>"; };
 		B8CF1DC31E50AB500008C6EC /* ManageListBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageListBookingViewController.m; sourceTree = "<group>"; };
 		B8CF1DC41E50AB500008C6EC /* ManageListBookingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManageListBookingViewController.xib; sourceTree = "<group>"; };
@@ -762,6 +767,7 @@
 		B8565EB41E9F1A72002E72A5 /* SalonDetail */ = {
 			isa = PBXGroup;
 			children = (
+				B8CB12141EB2FA7E00ECD857 /* MapDetailSalon */,
 				B87872AA1EA4C00A005BFC6F /* ChooseImageView */,
 				B83D4EF01EA275D300F39BD4 /* ImageCell */,
 				B83D4EEA1EA26FC100F39BD4 /* HeaderSalonView */,
@@ -1273,6 +1279,16 @@
 			path = SalonCell;
 			sourceTree = "<group>";
 		};
+		B8CB12141EB2FA7E00ECD857 /* MapDetailSalon */ = {
+			isa = PBXGroup;
+			children = (
+				B8CB12151EB2FA8F00ECD857 /* MapDetailSalonViewController.h */,
+				B8CB12161EB2FA8F00ECD857 /* MapDetailSalonViewController.m */,
+				B8CB12171EB2FA8F00ECD857 /* MapDetailSalonViewController.xib */,
+			);
+			path = MapDetailSalon;
+			sourceTree = "<group>";
+		};
 		B8CF1DC11E50AB450008C6EC /* ManageListBooking */ = {
 			isa = PBXGroup;
 			children = (
@@ -1713,6 +1729,7 @@
 				B8DE7ED01E390A450008769C /* OpenSans-Bold.ttf in Resources */,
 				B862EB351E4A134A00BBAB79 /* CommentViewController.xib in Resources */,
 				B8DE7ED11E390A450008769C /* OpenSans-BoldItalic.ttf in Resources */,
+				B8CB12191EB2FA8F00ECD857 /* MapDetailSalonViewController.xib in Resources */,
 				B83134731E94A284001A3465 /* RegisterViewController.xib in Resources */,
 				B8DE7EDF1E390A450008769C /* Roboto-Light.ttf in Resources */,
 				B8B5BAD31E3A57D500586CBE /* HeaderBannerView.xib in Resources */,
@@ -1893,6 +1910,7 @@
 				B80F91BD1E41F88900649C88 /* ProvinceViewController.m in Sources */,
 				B8EC1C651E291CCA00D2D1E6 /* AppDelegate.m in Sources */,
 				B8B5BAD81E3A5ABB00586CBE /* HeaderBannerCell.m in Sources */,
+				B8CB12181EB2FA8F00ECD857 /* MapDetailSalonViewController.m in Sources */,
 				B80F91C51E42222F00649C88 /* Province.m in Sources */,
 				B85D99171EA506B900C3F305 /* Image.m in Sources */,
 				B8B5BAD11E3A57C900586CBE /* HeaderBannerView.m in Sources */,

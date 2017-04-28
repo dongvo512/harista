@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTotalComment;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthContraintStar;
-
+@property (nonatomic, strong) Salon *salonCurr;
 @end
 
 @implementation HeaderSalonView
@@ -34,9 +34,25 @@
     [super awakeFromNib];
     // Initialization code
 }
+- (IBAction)clickBtnLocation:(id)sender {
+    
+    if([[self delegate] respondsToSelector:@selector(selectLocation)]){
+    
+        [[self delegate] selectLocation];
+    }
+}
+- (IBAction)clickFavorite:(id)sender {
+    
+    if([[self delegate] respondsToSelector:@selector(selectFavorite)]){
+        
+        [[self delegate] selectFavorite];
+    }
+}
 
 -(void)setDataForView:(Salon *)salon{
 
+    self.salonCurr = salon;
+    
     [self.imgSalon sd_setImageWithURL:[NSURL URLWithString:salon.avatar] placeholderImage:IMG_DEFAULT];
     self.lblSalonName.text = salon.name;
     
@@ -44,7 +60,7 @@
     
     self.lblPhone.text = salon.phone;
     
-    self.lblOpenTime.text = [NSString stringWithFormat:@"Mở cửa:%@ - %@", salon.openTime, salon.closeTime];
+    self.lblOpenTime.text = [NSString stringWithFormat:@"Mở cửa: %@ - %@", salon.openTime, salon.closeTime];
     
     self.widthContraintStar.constant = salon.avgRate.integerValue *WIDTH_STAR;
     
