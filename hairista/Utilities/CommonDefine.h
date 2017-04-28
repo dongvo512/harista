@@ -153,3 +153,13 @@
 
 #define URL_GET_IMAGE_USER @"https://salonhair.herokuapp.com/api/v1/users/me/image"
 
+#define URL_POST_FAVOURTIE  @"https://salonhair.herokuapp.com/api/v1/favorites/"
+
+#define URL_GET_LIST_FAVOURTIE  @"https://salonhair.herokuapp.com/api/v1/users/me/favorites"
+
+#define URL_GET_LIST_PROVINCE @"https://salonhair.herokuapp.com/api/v1/provinces"
+
+#define URL_GET_LIST_DISTRICT @"https://salonhair.herokuapp.com/api/v1/districts/"
+
+#define URL_GET_LIST_SALON_NEARBY @"https://salonhair.herokuapp.com/api/v1/salons/nearly"
+

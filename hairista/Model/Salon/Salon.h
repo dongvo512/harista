@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "District.h"
+#import "Province.h"
+#import "District.h"
 
 @interface Salon : NSObject
 
@@ -47,4 +50,8 @@
 @property (nonatomic, strong) NSString *openTime;
 @property (nonatomic, strong) NSString *closeTime;
 @property (nonatomic, strong) NSArray *childs;
+@property (nonatomic, strong) NSString *districtId;
+@property (nonatomic, strong) NSString *provinceId;
+@property (nonatomic, strong) Province *provinceObject;
+@property (nonatomic, strong) District *districtObject;
 @end

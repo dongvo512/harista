@@ -58,6 +58,9 @@
 		B862EB3B1E4A140100BBAB79 /* CommentCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B862EB391E4A140100BBAB79 /* CommentCellTableViewCell.xib */; };
 		B862EB3F1E4A1A9C00BBAB79 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = B862EB3E1E4A1A9C00BBAB79 /* Comment.m */; };
 		B864FBA81E9764A900EABC66 /* SessionUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B864FBA71E9764A900EABC66 /* SessionUser.m */; };
+		B867D1EC1EB1A98A0028B06D /* DistrictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B867D1EA1EB1A98A0028B06D /* DistrictViewController.m */; };
+		B867D1ED1EB1A98A0028B06D /* DistrictViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B867D1EB1EB1A98A0028B06D /* DistrictViewController.xib */; };
+		B867D1F11EB1AA5F0028B06D /* District.m in Sources */ = {isa = PBXBuildFile; fileRef = B867D1F01EB1AA5F0028B06D /* District.m */; };
 		B86D04371E5B3FAB0089E95F /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86D04361E5B3FAB0089E95F /* TabBarViewController.xib */; };
 		B86D28481E2E22E3005491E6 /* NCSearchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B86D28461E2E22E3005491E6 /* NCSearchBarView.m */; };
 		B86D28491E2E22E3005491E6 /* NCSearchBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86D28471E2E22E3005491E6 /* NCSearchBarView.xib */; };
@@ -295,6 +298,11 @@
 		B862EB3E1E4A1A9C00BBAB79 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		B864FBA61E9764A900EABC66 /* SessionUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionUser.h; sourceTree = "<group>"; };
 		B864FBA71E9764A900EABC66 /* SessionUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionUser.m; sourceTree = "<group>"; };
+		B867D1E91EB1A98A0028B06D /* DistrictViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistrictViewController.h; sourceTree = "<group>"; };
+		B867D1EA1EB1A98A0028B06D /* DistrictViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistrictViewController.m; sourceTree = "<group>"; };
+		B867D1EB1EB1A98A0028B06D /* DistrictViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistrictViewController.xib; sourceTree = "<group>"; };
+		B867D1EF1EB1AA5F0028B06D /* District.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = District.h; sourceTree = "<group>"; };
+		B867D1F01EB1AA5F0028B06D /* District.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = District.m; sourceTree = "<group>"; };
 		B86D04361E5B3FAB0089E95F /* TabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
 		B86D28451E2E22E3005491E6 /* NCSearchBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCSearchBarView.h; sourceTree = "<group>"; };
 		B86D28461E2E22E3005491E6 /* NCSearchBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSearchBarView.m; sourceTree = "<group>"; };
@@ -576,6 +584,7 @@
 		B80F91B81E41F86E00649C88 /* MasterData */ = {
 			isa = PBXGroup;
 			children = (
+				B867D1E81EB1A9780028B06D /* District */,
 				B80F91B91E41F86E00649C88 /* Province */,
 			);
 			path = MasterData;
@@ -828,6 +837,25 @@
 				B864FBA71E9764A900EABC66 /* SessionUser.m */,
 			);
 			path = SessionUser;
+			sourceTree = "<group>";
+		};
+		B867D1E81EB1A9780028B06D /* District */ = {
+			isa = PBXGroup;
+			children = (
+				B867D1E91EB1A98A0028B06D /* DistrictViewController.h */,
+				B867D1EA1EB1A98A0028B06D /* DistrictViewController.m */,
+				B867D1EB1EB1A98A0028B06D /* DistrictViewController.xib */,
+			);
+			path = District;
+			sourceTree = "<group>";
+		};
+		B867D1EE1EB1AA4F0028B06D /* District */ = {
+			isa = PBXGroup;
+			children = (
+				B867D1EF1EB1AA5F0028B06D /* District.h */,
+				B867D1F01EB1AA5F0028B06D /* District.m */,
+			);
+			path = District;
 			sourceTree = "<group>";
 		};
 		B86D04351E5B3F9C0089E95F /* TabBar */ = {
@@ -1468,6 +1496,7 @@
 		B8EC1C5F1E291C9900D2D1E6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B867D1EE1EB1AA4F0028B06D /* District */,
 				B802B11B1EAC760E007FE0D0 /* Category */,
 				B83F39971EAAFFC30068C947 /* StarRate */,
 				B85D99141EA506AA00C3F305 /* Image */,
@@ -1624,6 +1653,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B867D1ED1EB1A98A0028B06D /* DistrictViewController.xib in Resources */,
 				B8DE7EEC1E390A450008769C /* UTM Impact.ttf in Resources */,
 				B8EC1C6D1E291FF800D2D1E6 /* LaunchScreen.storyboard in Resources */,
 				B8DE7ED31E390A450008769C /* OpenSans-ExtraBoldItalic.ttf in Resources */,
@@ -1814,6 +1844,7 @@
 				B8AA6B131E4090DB002716A7 /* SearchSalonAdvanceViewController.m in Sources */,
 				B8A103021E4555AA00C4E376 /* CatagoriesCell.m in Sources */,
 				B8EC1C521E291B6700D2D1E6 /* hairista.xcdatamodeld in Sources */,
+				B867D1EC1EB1A98A0028B06D /* DistrictViewController.m in Sources */,
 				B8EF74BA1E4CBC7E001466C4 /* TimeView.m in Sources */,
 				B8B470D01E476E6D0063CE2C /* ServiceHeaderView.m in Sources */,
 				B88D7CA81E3A1342006B8019 /* BookingsViewController.m in Sources */,
@@ -1867,6 +1898,7 @@
 				B8B5BAD11E3A57C900586CBE /* HeaderBannerView.m in Sources */,
 				B8E5F9551E2A03E9007E5A81 /* Common.m in Sources */,
 				B862EB3A1E4A140100BBAB79 /* CommentCellTableViewCell.m in Sources */,
+				B867D1F11EB1AA5F0028B06D /* District.m in Sources */,
 				B83F399A1EAAFFD40068C947 /* StarRate.m in Sources */,
 				B8C32B411E2DEB0A00FB0E11 /* FindSalonViewController.m in Sources */,
 				B83D4EEE1EA26FEA00F39BD4 /* HeaderSalonView.m in Sources */,

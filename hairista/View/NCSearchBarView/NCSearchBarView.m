@@ -9,7 +9,7 @@
 #import "NCSearchBarView.h"
 #import "NCTextFieldView.h"
 #import "CommonDefine.h"
-
+#import "IQKeyboardManager.h"
 
 @interface NCSearchBarView()
 {
@@ -62,6 +62,7 @@ static NCSearchBarView *sharedInstance = nil;
     self.tfSearch.txtTextField.clearButtonMode = UITextFieldViewModeNever;
     self.tfSearch.delegate = self;
     
+    [[IQKeyboardManager sharedManager] setEnable:NO];
 }
 
 -(void)showSearchBar{
@@ -94,6 +95,8 @@ static NCSearchBarView *sharedInstance = nil;
     [self setHidden:YES];
     self.tfSearch.txtTextField.text = _CM_STRING_EMPTY;
     
+    [[IQKeyboardManager sharedManager] setEnable:YES];
+    
 }
 - (IBAction)closeSearchBar:(id)sender {
    
@@ -103,7 +106,7 @@ static NCSearchBarView *sharedInstance = nil;
     
         [[self delegate] selectedBtnClose];
     }
-    
+   
 }
 #pragma mark - NCTextFieldDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textFieldControl andTextFieldName:(NSString *) strTextFieldName{

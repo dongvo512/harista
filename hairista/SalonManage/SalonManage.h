@@ -24,6 +24,16 @@
 
 -(void)getListCategoriesProduct:(DataAPIResult)dataApiResult;
 
+-(void)calFavourite:(NSString *)idSalon dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)getListFavoriteSalon:(NSString *)indexPage limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult;
+
+-(void)getListProvince:(DataAPIResult)dataApiResult;
+
+-(void)getListDistrict:(NSString *)idProvince dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)getListSalonNearBy:(NSString *)lateitude longLocation:(NSString *)longitude pageindex:(NSString *)pageIndex limit:(NSString *)limit provinceid:(NSString *)provinceID district:(NSString *)districtID name:(NSString *)name dataApiResult:(DataAPIResult)dataApiResult;
+
 //- (void)getDetailSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult;
 
 @end

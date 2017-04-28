@@ -13,6 +13,8 @@
 #import "Comment.h"
 #import "Category.h"
 #import "Service.h"
+#import "Province.h"
+#import "District.h"
 
 
 static SalonManage *sharedInstance = nil;
@@ -149,8 +151,36 @@ static SalonManage *sharedInstance = nil;
             salon.avatar = CHECK_NIL([dic objectForKey:@"avatar"]);
             salon.wallpaper = CHECK_NIL([dic objectForKey:@"wallpaper"]);
             
-             salon.wallpaper = CHECK_NIL([dic objectForKey:@"openTime"]);
-             salon.wallpaper = CHECK_NIL([dic objectForKey:@"closeTime"]);
+             salon.openTime = CHECK_NIL([dic objectForKey:@"openTime"]);
+             salon.closeTime = CHECK_NIL([dic objectForKey:@"closeTime"]);
+            salon.districtId = CHECK_NIL([dic objectForKey:@"districtId"]);
+            salon.provinceId = CHECK_NIL([dic objectForKey:@"provinceId"]);
+            
+            NSDictionary *dicProvince = [dic objectForKey:@"province"];
+            
+            if(![dicProvince isKindOfClass:[NSNull class]]){
+            
+                salon.provinceObject = [[Province alloc] init];
+                
+                salon.provinceObject.idProvince = CHECK_NIL([dicProvince objectForKey:@"id"]);
+                salon.provinceObject.provinceName = CHECK_NIL([dicProvince objectForKey:@"name"]);
+                salon.provinceObject.type = CHECK_NIL([dicProvince objectForKey:@"type"]);
+
+            }
+            
+            NSDictionary *dicDistrict = [dic objectForKey:@"district"];
+            
+            if(![dicDistrict isKindOfClass:[NSNull class]]){
+            
+                salon.districtObject = [[District alloc] init];
+                
+                salon.districtObject.idDistrict = CHECK_NIL([dicDistrict objectForKey:@"id"]);
+                salon.districtObject.idProvince = CHECK_NIL([dicDistrict objectForKey:@"provinceId"]);
+                salon.districtObject.type = CHECK_NIL([dicDistrict objectForKey:@"type"]);
+                salon.districtObject.location = CHECK_NIL([dicDistrict objectForKey:@"location"]);
+                 salon.districtObject.name = CHECK_NIL([dicDistrict objectForKey:@"name"]);
+
+            }
             
             [arrListSalons addObject:salon];
         }
@@ -233,6 +263,44 @@ static SalonManage *sharedInstance = nil;
             [cat.arrServices addObject:service];
         }
         
+    }
+    
+    return arrData;
+    
+}
+
+-(NSMutableArray *)parseListProvince:(NSArray *)responseDataObject{
+
+    NSMutableArray *arrData = [NSMutableArray array];
+    
+    for(NSDictionary *dic in responseDataObject){
+    
+        Province *province = [[Province alloc] init];
+        province.idProvince = CHECK_NIL([dic objectForKey:@"id"]);
+        province.provinceName = CHECK_NIL([dic objectForKey:@"name"]);
+        province.type = CHECK_NIL([dic objectForKey:@"type"]);
+        
+        [arrData addObject:province];
+    }
+    
+    return arrData;
+
+}
+
+-(NSMutableArray *)parseListDistrict:(NSArray *)responseDataObject{
+    
+    NSMutableArray *arrData = [NSMutableArray array];
+    
+    for(NSDictionary *dic in responseDataObject){
+        
+        District *district = [[District alloc] init];
+        district.idDistrict = CHECK_NIL([dic objectForKey:@"id"]);
+         district.idProvince = CHECK_NIL([dic objectForKey:@"provinceId"]);
+        district.name = CHECK_NIL([dic objectForKey:@"name"]);
+        district.type = CHECK_NIL([dic objectForKey:@"type"]);
+        district.location = CHECK_NIL([dic objectForKey:@"location"]);
+        
+        [arrData addObject:district];
     }
     
     return arrData;
@@ -411,5 +479,145 @@ static SalonManage *sharedInstance = nil;
 
 }
 
+-(void)calFavourite:(NSString *)idSalon dataApiResult:(DataAPIResult)dataApiResult{
+
+    NSString *url = [NSString stringWithFormat:@"%@%@",URL_POST_FAVOURTIE,idSalon];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_POST withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorFavoriteSalon", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorFavoriteSalon" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            dataApiResult(nil, @"OK");
+            
+        }
+    }];
+
+}
+-(void)getListFavoriteSalon:(NSString *)indexPage limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult{
+
+    NSString *url = [NSString stringWithFormat:@"%@?page=%@&limit=%@",URL_GET_LIST_FAVOURTIE,indexPage,limit];
+
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorListFavoriteSalon", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorListFavoriteSalon" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            dataApiResult(nil, @"OK");
+            
+        }
+    }];
+}
+
+#pragma mark - Province, District
+-(void)getListProvince:(DataAPIResult)dataApiResult{
+
+    [APIRequestHandler initWithURLString:URL_GET_LIST_PROVINCE withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorListProvince", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorListProvince" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSMutableArray *arrData = [self parseListProvince:responseDataObject];
+            
+            dataApiResult(nil, arrData);
+            
+        }
+    }];
+
+}
+-(void)getListDistrict:(NSString *)idProvince dataApiResult:(DataAPIResult)dataApiResult{
+
+    NSString *urlDistrict = [NSString stringWithFormat:@"%@%@",URL_GET_LIST_DISTRICT,idProvince];
+    
+    
+    [APIRequestHandler initWithURLString:urlDistrict withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorListDistrict", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorListDistrict" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSMutableArray *arrData = [self parseListDistrict:responseDataObject];
+            
+            dataApiResult(nil, arrData);
+            
+        }
+    }];
+
+}
+
+-(void)getListSalonNearBy:(NSString *)lateitude longLocation:(NSString *)longitude pageindex:(NSString *)pageIndex limit:(NSString *)limit provinceid:(NSString *)provinceID district:(NSString *)districtID name:(NSString *)name dataApiResult:(DataAPIResult)dataApiResult{
+
+    NSMutableString *strUrl = [NSMutableString stringWithFormat:@"%@?page=%@&limit=%@",URL_GET_LIST_SALON_NEARBY,pageIndex,limit];
+    
+    if(lateitude.length > 0){
+    
+        [strUrl appendFormat:@"&lat=%@",lateitude];
+    }
+    
+    if(longitude.length > 0){
+    
+        [strUrl appendFormat:@"&lng=%@",longitude];
+    }
+    
+    if(provinceID.length > 0){
+    
+        [strUrl appendFormat:@"&provinceId=%@",provinceID];
+    }
+    
+    if(districtID.length > 0){
+    
+        [strUrl appendFormat:@"&districtId=%@",districtID];
+    }
+    
+    if(name.length > 0){
+    
+        [strUrl appendFormat:@"&name=%@",name];
+    }
+    
+    
+    
+    [APIRequestHandler initWithURLString:strUrl withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorListNearby", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorListNearby" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSMutableArray *arrData = [self parseListSalons:responseDataObject];
+            
+            dataApiResult(nil, arrData);
+            
+        }
+    }];
+  //  NSString *url = [NSString stringWithFormat:@"%@?lat=%@&lng=%@&"]
+
+}
 
 @end

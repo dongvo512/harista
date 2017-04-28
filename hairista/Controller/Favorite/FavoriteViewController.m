@@ -8,8 +8,15 @@
 
 #import "FavoriteViewController.h"
 #import "SlideMenuViewController.h"
+#import "SalonManage.h"
 
-@interface FavoriteViewController ()
+
+#define LIMIT_ITEM @"14"
+
+@interface FavoriteViewController (){
+
+    NSInteger indexPage;
+}
 
 @end
 
@@ -17,7 +24,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    indexPage = 0;
+    
     // Do any additional setup after loading the view from its nib.
+   // [self favourite];
+    [self getListFavouriteSalon];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,12 +37,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - CallData
 
+-(void)getListFavouriteSalon{
+
+    [[SalonManage sharedInstance] getListFavoriteSalon:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+        
+        
+        
+    }];
+}
+
+-(void)favourite{
+
+    [[SalonManage sharedInstance] calFavourite:@"4" dataApiResult:^(NSError *error, id idObject) {
+        
+        
+    }];
+}
 
 #pragma mark - Method
 - (IBAction)showMenu:(id)sender {
     
     [[SlideMenuViewController sharedInstance] toggle];
 }
+
+
 
 @end

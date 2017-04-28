@@ -18,7 +18,7 @@
 #import "DetailSalonViewController.h"
 #import "SalonManage.h"
 
-#define LIMIT_ITEM @"1"
+#define LIMIT_ITEM @"4"
 
 typedef NS_ENUM(NSInteger, TypeSalon) {
     
@@ -81,6 +81,9 @@ static FindSalonViewController *sharedInstance = nil;
    // [self createListSalon];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    pageIndex = 1;
+    
     [self getListSalonHot];
     [self getListSalons];
     
@@ -91,7 +94,7 @@ static FindSalonViewController *sharedInstance = nil;
     
     refreshControlBottom = [[UIRefreshControl alloc]init];
     refreshControlBottom.triggerVerticalOffset = 100.;
-    [refreshControlBottom addTarget:self action:@selector(refreshTableBottom) forControlEvents:UIControlEventValueChanged];
+//    [refreshControlBottom addTarget:self action:@selector(refreshTableBottom) forControlEvents:UIControlEventValueChanged];
     self.tblView.bottomRefreshControl = refreshControlBottom;
 }
 

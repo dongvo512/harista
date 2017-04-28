@@ -10,7 +10,14 @@
 
 @interface Province : NSObject
 
-@property (nonatomic, strong) NSString *idProvince;
+@property (nonatomic, strong) NSNumber *idProvince;
 @property (nonatomic, strong) NSString *provinceName;
-
+@property (nonatomic, strong) NSString *type;
 @end
+/*
+ {
+ "id": 89,
+ "name": "An Giang",
+ "type": "Tỉnh"
+ }
+*/

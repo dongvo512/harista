@@ -34,7 +34,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    indexPage = 0;
+    indexPage = 1;
     
     CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init];
     layout.sectionInset = UIEdgeInsetsMake(8, 8, 8, 8);

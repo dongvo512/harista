@@ -33,11 +33,6 @@
                             <constraint firstAttribute="height" constant="64" id="5qH-ob-dvV"/>
                             <constraint firstAttribute="width" constant="64" id="P7P-0Z-kL1"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="32"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salon beautyfull " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0F-al-ule">
                         <rect key="frame" x="80" y="8" width="266" height="22"/>
@@ -74,7 +69,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="0.89411764705882346" green="0.83921568627450982" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="QJZ-qz-GyK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="1hY-7D-5tL"/>
                     <constraint firstAttribute="trailing" secondItem="zAu-vY-YVB" secondAttribute="trailing" id="7F0-dh-I5R"/>

@@ -1,45 +1,48 @@
 //
-//  ProvinceViewController.m
+//  DistrictViewController.m
 //  hairista
 //
 //  Created by Dong Vo on 2/1/17.
 //  Copyright © 2017 Dong Vo. All rights reserved.
 //
 
-#import "ProvinceViewController.h"
+#import "DistrictViewController.h"
 #import "NCSearchBarView.h"
 #import "NCSearchBarView.h"
-#import "Province.h"
+#import "District.h"
 #import "SingleMasterDataCell.h"
 #import "NCScrollLabelView.h"
 #import "CommonDefine.h"
 #import "SalonManage.h"
 
 
-@interface ProvinceViewController ()<UITableViewDelegate, UITableViewDataSource>{
-
+@interface DistrictViewController ()<UITableViewDelegate, UITableViewDataSource>{
+    
     NCSearchBarView *searchBarView;
     
-    Province *provinceSelected;
+    District *districtSelected;
+    
+    NSString *idProvince;
 }
-@property (weak, nonatomic) IBOutlet UITableView *tblViewProvince;
+@property (weak, nonatomic) IBOutlet UITableView *tblViewDistrict;
 @property (nonatomic, strong) NSMutableArray *arrSearchData;
-@property (nonatomic, strong) NSMutableArray *arrProvinces;
+@property (nonatomic, strong) NSMutableArray *arrDistricts;
 
 @end
 
-@implementation ProvinceViewController
+@implementation DistrictViewController
 
 
 #pragma mark - Init
 
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil provinceSelected:(Province *)aProvinceSelected{
-
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil districtSelected:(District *)aDistrictSelected province:(NSString *)idProvinceParent{
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if(self){
-    
-        provinceSelected = aProvinceSelected;
+        
+        districtSelected = aDistrictSelected;
+        idProvince = idProvinceParent;
     }
     
     return self;
@@ -50,13 +53,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.tblViewProvince registerNib:[UINib nibWithNibName:@"SingleMasterDataCell" bundle:nil] forCellReuseIdentifier:@"SingleMasterDataCell"];
+    [self.tblViewDistrict registerNib:[UINib nibWithNibName:@"SingleMasterDataCell" bundle:nil] forCellReuseIdentifier:@"SingleMasterDataCell"];
     
-    self.arrProvinces = [NSMutableArray array];
+    self.arrDistricts = [NSMutableArray array];
     self.arrSearchData = [NSMutableArray array];
     
-  //  [self createDataTemp];
-    [self getListProvince];
+    //  [self createDataTemp];
+    [self getListDistrict];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,30 +69,34 @@
 
 #pragma mark - Method
 
--(void)getListProvince{
-
+-(void)getListDistrict{
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[SalonManage sharedInstance] getListProvince:^(NSError *error, id idObject) {
+    
+    [[SalonManage sharedInstance] getListDistrict:idProvince dataApiResult:^(NSError *error, id idObject) {
         
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
-        
+
             [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
         }
         else{
         
-            NSArray *arrData = idObject;
-           
-            if(arrData.count > 0){
+            NSArray *arrDistrict = idObject;
             
-                self.arrProvinces = [NSMutableArray arrayWithArray:arrData];
-                self.arrSearchData = self.arrProvinces;
-                [self.tblViewProvince reloadData];
+            if(arrDistrict.count > 0){
+            
+                self.arrDistricts = [NSMutableArray arrayWithArray:arrDistrict];
+                self.arrSearchData = self.arrDistricts;
+                
+                [self.tblViewDistrict reloadData];
             }
         }
     }];
+    
+    
 }
 
 - (IBAction)clickBtnBack:(id)sender {
@@ -108,7 +115,7 @@
     searchBarView.delegate = self;
     
     [searchBarView showSearchBar];
-
+    
 }
 
 #pragma mark - Table view DataSource - Delegate
@@ -126,25 +133,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     SingleMasterDataCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SingleMasterDataCell"];
-   
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    Province *province = [self.arrSearchData objectAtIndex:indexPath.row];
+    District *district = [self.arrSearchData objectAtIndex:indexPath.row];
     
-    if([province.idProvince.stringValue isEqualToString:provinceSelected.idProvince.stringValue]){
-    
+    if([district.idDistrict.stringValue isEqualToString:districtSelected.idDistrict.stringValue]){
+        
         [cell.imgVSelected setHidden:NO];
         
-        [cell.scrName setText:province.provinceName andFont:[UIFont fontWithName:FONT_ROBOTO_MEDIUM size:16.0f]];
+        [cell.scrName setText:district.name andFont:[UIFont fontWithName:FONT_ROBOTO_MEDIUM size:16.0f]];
         
     }
     else{
-    
+        
         [cell.imgVSelected setHidden:YES];
         
-        [cell.scrName setText:province.provinceName andFont:[UIFont fontWithName:FONT_ROBOTO_REGULAR size:16.0f]];
+        [cell.scrName setText:district.name andFont:[UIFont fontWithName:FONT_ROBOTO_REGULAR size:16.0f]];
     }
-   
+    
     return cell;
 }
 
@@ -156,15 +163,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    Province *province = [self.arrSearchData objectAtIndex:indexPath.row];
     
-    if([[self delegate] respondsToSelector:@selector(selectedProvince:controller:)]){
+    District *district = [self.arrSearchData objectAtIndex:indexPath.row];
     
-        [[self delegate] selectedProvince:province controller:self];
+    if([[self delegate] respondsToSelector:@selector(selectedDistrict:controller:)]){
+        
+        [[self delegate] selectedDistrict:district controller:self];
     }
     
-    [searchBarView close];
+     [searchBarView close];
 }
 #pragma mark - NCSearchBarViewDelegate
 
@@ -174,30 +181,31 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (textField.text.length == 0) {
         
         self.arrSearchData = nil;
-        self.arrSearchData = [NSMutableArray arrayWithArray:self.arrProvinces];
-        [self.tblViewProvince reloadData];
+        self.arrSearchData = [NSMutableArray arrayWithArray:self.arrDistricts];
+        [self.tblViewDistrict reloadData];
         return;
     }
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"provinceName contains[cd] %@", textField.text];
-   // NSLog(@"%@",textField.text);
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@", textField.text];
+    // NSLog(@"%@",textField.text);
     
     self.arrSearchData = nil;
-    self.arrSearchData = [NSMutableArray arrayWithArray: [self.arrProvinces filteredArrayUsingPredicate:predicate]];
+    self.arrSearchData = [NSMutableArray arrayWithArray: [self.arrDistricts filteredArrayUsingPredicate:predicate]];
     
-    [self.tblViewProvince reloadData];
+    [self.tblViewDistrict reloadData];
     
 }
--(void)selectedBtnClose{
 
+-(void)selectedBtnClose{
+    
     self.arrSearchData = nil;
-    self.arrSearchData = [NSMutableArray arrayWithArray:self.arrProvinces];
-    [self.tblViewProvince reloadData];
+    self.arrSearchData = [NSMutableArray arrayWithArray:self.arrDistricts];
+    [self.tblViewDistrict reloadData];
 }
 - (void)selectedBtnClearText{
     
     self.arrSearchData = nil;
-    self.arrSearchData = [NSMutableArray arrayWithArray:self.arrProvinces];
-    [self.tblViewProvince reloadData];
+    self.arrSearchData = [NSMutableArray arrayWithArray:self.arrDistricts];
+    [self.tblViewDistrict reloadData];
 }
 @end

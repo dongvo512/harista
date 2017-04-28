@@ -14,14 +14,15 @@
 
 @property (weak, nonatomic) IBOutlet NCComboboxNewView *cboProvince;
 @property (weak, nonatomic) IBOutlet NCComboboxNewView *cboDistrict;
-@property (weak, nonatomic) IBOutlet NCComboboxNewView *cboNumberStar;
 
 @property (nonatomic, weak) id delegate;
 
--(void)setDataForCell:(BOOL)isShowSearchOption;
+-(void)setDataForCell:(BOOL)isShowSearchOption location:(BOOL)isLocation;
 @end
 
 @protocol SearchOptionSalonCellDelegate <NSObject>
+
+-(void)switchChangeValue:(BOOL)isSwitchOn;
 
 -(void)selectedBtnSearch;
 
@@ -29,9 +30,9 @@
 
 -(void)touchCBOProvince;
 -(void)touchCBODistrict;
--(void)touchCBONumberStar;
+
 
 -(void)clearCboProvice;
 -(void)clearCboDistrict;
--(void)clearCboNumberStar;
+
 @end

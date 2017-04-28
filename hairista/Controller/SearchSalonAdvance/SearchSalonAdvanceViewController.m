@@ -14,17 +14,37 @@
 #import "Salon.h"
 #import "SalonCell.h"
 #import "MBProgressHUD.h"
+#import "DistrictViewController.h"
+#import "District.h"
+#import "SalonManage.h"
+#import "DetailSalonViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
-#define HEIGHT_OPTION_CELL_SHOW 351
+#define HEIGHT_OPTION_CELL_SHOW 307
+
 #define HEIGHT_OPTION_CELL_NOT_SHOW 44
 
-@interface SearchSalonAdvanceViewController (){
+#define LIMIT_ITEM @"14"
+
+@interface SearchSalonAdvanceViewController ()<CLLocationManagerDelegate>{
 
     BOOL isShowSearchOption;
     
+    BOOL isLocationUser;
+    
     Province *provinceSelected;
+    District *districtSelected;
     
     SearchOptionSalonCell *cellSearchOption;
+    
+    CLLocationManager *localManager;
+    
+    NSString *latLocation;
+    NSString *longLocation;
+    
+    BOOL isSwitchOnCurr;
+    
+    NSInteger indexPage;
 }
 @property (nonatomic, strong) NSMutableArray *arrData;
 @property (nonatomic, strong) NSMutableArray *arrSalon;
@@ -37,6 +57,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+   // latLocation = @"10.777924";
+   // longLocation = @"106.690980";
+    indexPage = 1;
+    self.arrSalon = [NSMutableArray array];
+    
+    latLocation = @"";
+    longLocation = @"";
     
     isShowSearchOption = YES;
     
@@ -51,6 +79,20 @@
     self.arrSalon = [NSMutableArray array];
     [self.arrData addObject:@"Search Option"];
     [self.arrData addObject:self.arrSalon];
+    
+    
+    localManager = [[CLLocationManager alloc] init];
+    
+    localManager.delegate = self;
+    localManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    
+    if([localManager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
+        
+         [localManager requestWhenInUseAuthorization];
+        
+         [localManager startUpdatingLocation];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,97 +100,96 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Method
+#pragma mark - GetData
 
-//-(void)createDataSalon{
-//    
-//    
-//    Salon *salon_1 = [[Salon alloc] init];
-//    salon_1.strAddress = @"158 Nguyễn Văn Cừ, Quận 1 Tp.HCM";
-//    salon_1.strSalonName = @"Beauty Salon 2233";
-//    salon_1.strPhone = @"0932188608";
-//    salon_1.strSalonUrl = @"salon_1";
-//    [self.arrSalon addObject:salon_1];
-//    
-//    Salon *salon_2 = [[Salon alloc] init];
-//    salon_2.strAddress = @"250 Nguyễn Huệ, Quận 1 Tp.HCM";
-//    salon_2.strSalonName = @"Beauty Salon 1234";
-//    salon_2.strPhone = @"093123123";
-//    salon_2.strSalonUrl = @"salon_2";
-//    [self.arrSalon addObject:salon_2];
-//    
-//    
-//    Salon *salon_3 = [[Salon alloc] init];
-//    salon_3.strAddress = @"168 Thành Thái Q.10 Tp.HCM";
-//    salon_3.strSalonName = @"Beauty Salon 7876";
-//    salon_3.strPhone = @"092135433";
-//    salon_3.strSalonUrl = @"salon_3";
-//    [self.arrSalon addObject:salon_3];
-//    
-//    
-//    Salon *salon_4 = [[Salon alloc] init];
-//    salon_4.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-//    salon_4.strSalonName = @"Beauty Salon 999";
-//    salon_4.strPhone = @"0936r464";
-//    salon_4.strSalonUrl = @"salon_4";
-//    [self.arrSalon addObject:salon_4];
-//    
-//    Salon *salon_5 = [[Salon alloc] init];
-//    salon_5.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-//    salon_5.strSalonName = @"Beauty Salon 999";
-//    salon_5.strPhone = @"091112231";
-//    salon_5.strSalonUrl = @"salon_3";
-//    [self.arrSalon addObject:salon_5];
-//    
-//    Salon *salon_6 = [[Salon alloc] init];
-//    salon_6.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-//    salon_6.strSalonName = @"Beauty Salon 999";
-//    salon_6.strPhone = @"09456343";
-//    salon_6.strSalonUrl = @"salon_2";
-//    [self.arrSalon addObject:salon_6];
-//    
-//    Salon *salon_7 = [[Salon alloc] init];
-//    salon_7.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-//    salon_7.strSalonName = @"Beauty Salon 999";
-//    salon_7.strPhone = @"09999977543";
-//    salon_7.strSalonUrl = @"salon_1";
-//    [self.arrSalon addObject:salon_7];
-//    
-//    Salon *salon_8 = [[Salon alloc] init];
-//    salon_8.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-//    salon_8.strSalonName = @"Beauty Salon 999";
-//    salon_8.strPhone = @"092214353";
-//    salon_8.strSalonUrl = @"salon_4";
-//    [self.arrSalon addObject:salon_8];
-//    
-//    Salon *salon_9 = [[Salon alloc] init];
-//    salon_9.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-//    salon_9.strSalonName = @"Beauty Salon 999";
-//    salon_9.strPhone = @"090834532";
-//    salon_9.strSalonUrl = @"salon_5";
-//    [self.arrSalon addObject:salon_9];
-//    
-//    Salon *salon_10 = [[Salon alloc] init];
-//    salon_10.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-//    salon_10.strSalonName = @"Beauty Salon 999";
-//    salon_10.strPhone = @"09992212121";
-//    salon_10.strSalonUrl = @"salon_3";
-//    [self.arrSalon addObject:salon_10];
-//    
-//    Salon *salon_11 = [[Salon alloc] init];
-//    salon_11.strAddress = @"123 Nguyễn Thị Minh Khai Q.3 Tp.HCM";
-//    salon_11.strSalonName = @"Beauty Salon 999";
-//    salon_11.strPhone = @"0977882211";
-//    salon_11.strSalonUrl = @"salon_1";
-//    [self.arrSalon addObject:salon_11];
-//    
-//}
+-(void)getListSalonNearby{
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[SalonManage sharedInstance] getListSalonNearBy:(isSwitchOnCurr)?latLocation:@"" longLocation:(isSwitchOnCurr)?longLocation:@"" pageindex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM provinceid:provinceSelected.idProvince.stringValue district:districtSelected.idDistrict.stringValue name:@"" dataApiResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+        
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            self.arrSalon = idObject;
+            
+            if(self.arrSalon.count == 0){
+            
+                [Common showAlert:self title:@"Thông báo" message:@"Không tìm thấy Salon nào" buttonClick:nil];
+                
+                isShowSearchOption = YES;
+            }
+            
+            [self.tblSearchSalon reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 2)] withRowAnimation:UITableViewRowAnimationFade];
+
+        }
+        
+    }];
+}
+
+#pragma mark - Method
 
 - (IBAction)touchBtnBack:(id)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    
+    NSLog(@"didUpdateToLocation: %@", newLocation);
+    CLLocation *currentLocation = newLocation;
+    
+    if (currentLocation != nil) {
+        
+        isLocationUser = YES;
+        
+        latLocation = [NSString stringWithFormat:@"%f", currentLocation.coordinate.longitude];
+        longLocation = [NSString stringWithFormat:@"%f", currentLocation.coordinate.latitude];
+        
+//        latLocation = @"";
+//        longLocation = @"";
+        
+        //NSLog(@"long: %@",latLocation);
+        //NSLog(@"lat: %@",longLocation);
+        
+         [self.tblSearchSalon reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    // Stop Location Manager
+    [localManager stopUpdatingLocation];
+}
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    
+    // NSLog(@"%@",error.userInfo);
+    if([CLLocationManager locationServicesEnabled]){
+        
+        NSLog(@"Location Services Enabled");
+        
+        if([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
+            
+        isLocationUser = NO;
+        [Common showAlert:self title:@"Thông báo" message:@"Bạn chưa xác nhận định vị toạ độ" buttonClick:nil];
+        }
+    }
+}
+
+#pragma mark - DistrictViewControllerDelegte
+-(void)selectedDistrict:(District *)district controller:(DistrictViewController *)controller{
+
+    districtSelected = district;
+    
+    [cellSearchOption.cboDistrict setTextName:districtSelected.name];
+    
+   [controller.navigationController popViewControllerAnimated:YES];
+
+}
 #pragma mark - ProvinceViewControllerDelegte
 -(void)selectedProvince:(Province *)province controller:(ProvinceViewController *)controller{
 
@@ -156,26 +197,20 @@
     
     [cellSearchOption.cboProvince setTextName:provinceSelected.provinceName];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    [controller.navigationController popViewControllerAnimated:YES];
 }
+
 #pragma mark - SearchOptionSalonCellDelegate
 
--(void)selectedBtnSearch{
+-(void)switchChangeValue:(BOOL)isSwitchOn{
 
-    //[self createDataSalon];
+    isSwitchOnCurr = isSwitchOn;
+}
+-(void)selectedBtnSearch{
     
     isShowSearchOption = NO;
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-   
-    [self performSelector:@selector(reload) withObject:nil afterDelay:0.5];
-}
-
--(void)reload{
-
-     [self.tblSearchSalon reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 2)] withRowAnimation:UITableViewRowAnimationFade];
-    
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self getListSalonNearby];
     
 }
 
@@ -187,23 +222,28 @@
 }
 -(void)touchCBODistrict{
 
-    
-}
--(void)touchCBONumberStar{
+    if(!provinceSelected){
+        
+        [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:@"Bạn chưa chọn tỉnh/thành" buttonClick:nil];
+        return;
+    }
 
+    
+    DistrictViewController *vcDistrict = [[DistrictViewController alloc] initWithNibName:@"DistrictViewController" bundle:nil districtSelected:districtSelected province:provinceSelected.idProvince.stringValue];
+   
+    vcDistrict.delegate = self;
+    [self.navigationController pushViewController:vcDistrict animated:YES];
 }
 
 -(void)clearCboProvice{
 
     provinceSelected = nil;
 }
+
 -(void)clearCboDistrict{
 
 }
--(void)clearCboNumberStar{
 
-    
-}
 -(void)selectedBtnShowMore:(UIButton *)btnSelected{
 
     isShowSearchOption = !isShowSearchOption;
@@ -238,7 +278,7 @@
         cellSearchOption = [tableView dequeueReusableCellWithIdentifier:@"SearchOptionSalonCell"];
         cellSearchOption.delegate = self;
         cellSearchOption.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cellSearchOption setDataForCell:isShowSearchOption];
+        [cellSearchOption setDataForCell:isShowSearchOption location:isLocationUser];
         return cellSearchOption;
     }
     else{
@@ -261,7 +301,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
         if(isShowSearchOption){
         
-             height = HEIGHT_OPTION_CELL_SHOW;
+            height = (isLocationUser)?HEIGHT_OPTION_CELL_SHOW:HEIGHT_OPTION_CELL_SHOW - 44;
         }
         else{
         
@@ -275,5 +315,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     return height;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    Salon *salon = [self.arrSalon objectAtIndex:indexPath.row];
+    
+    DetailSalonViewController *vcDetail = [[DetailSalonViewController alloc] initWithNibName:@"DetailSalonViewController" bundle:nil salon:salon];
+    
+    [self.navigationController pushViewController:vcDetail animated:YES];
+    
+}
 @end

@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
 @property (weak, nonatomic) IBOutlet UIButton *btnShowMore;
 @property (weak, nonatomic) IBOutlet UIView *viewOption;
+@property (weak, nonatomic) IBOutlet UIView *viewNearBy;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightContraintNearby;
+@property (weak, nonatomic) IBOutlet UISwitch *switchNearby;
 
 @end
 
@@ -36,10 +39,26 @@
     [self.cboDistrict setPlaceHolder:@"Quận huyện"];
     self.cboDistrict.delegate = self;
     
-    [self.cboNumberStar.view setBackgroundColor:[UIColor whiteColor]];
-    [self.cboNumberStar setPlaceHolder:@"Số sao"];
-    self.cboNumberStar.delegate = self;
+}
+- (IBAction)changeSwitch:(id)sender {
     
+    UISwitch *mySwitch = (UISwitch *)sender;
+   
+    BOOL isSwitchOn;
+    
+    if ([mySwitch isOn]) {
+      
+        isSwitchOn = YES;
+        
+    } else {
+        
+        isSwitchOn = NO;
+    }
+    
+    if([[self delegate] respondsToSelector:@selector(switchChangeValue:)]){
+    
+        [[self delegate] switchChangeValue:isSwitchOn];
+    }
 }
 
 - (IBAction)touchBtnSearch:(id)sender {
@@ -59,20 +78,31 @@
     }
 }
 
--(void)setDataForCell:(BOOL)isShowSearchOption{
+-(void)setDataForCell:(BOOL)isShowSearchOption location:(BOOL)isLocation{
 
     if(isShowSearchOption){
     
         [self.btnShowMore setImage:[UIImage imageNamed:@"ic_show_up"] forState:UIControlStateNormal];
         [self.viewOption setHidden:NO];
-    }
+           }
     else{
     
         [self.btnShowMore setImage:[UIImage imageNamed:@"ic_show_down"] forState:UIControlStateNormal];
         [self.viewOption setHidden:YES];
+        
     }
     
+    if(isLocation){
+        
+        self.heightContraintNearby.constant = 44;
+        [self.viewNearBy setHidden:NO];
+
+    }
+    else{
     
+        self.heightContraintNearby.constant = 0;
+        [self.viewNearBy setHidden:YES];
+    }
 }
 
 #pragma mark - NCComboboxNewViewDelegate
@@ -94,10 +124,7 @@
     }
     else{
     
-        if([[self delegate] respondsToSelector:@selector(touchCBOProvince)]){
-            
-            [[self delegate] touchCBONumberStar];
-        }
+        
     }
 }
 
@@ -119,10 +146,7 @@
     }
     else{
         
-        if([[self delegate] respondsToSelector:@selector(clearCboNumberStar)]){
-            
-            [[self delegate] clearCboNumberStar];
-        }
+       
     }
 }
 
