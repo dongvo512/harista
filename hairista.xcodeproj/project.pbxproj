@@ -135,6 +135,11 @@
 		B8CAD11A246065E35860C86F /* Pods_hairista.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA585DE927194AC1C684CE1 /* Pods_hairista.framework */; };
 		B8CB12181EB2FA8F00ECD857 /* MapDetailSalonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CB12161EB2FA8F00ECD857 /* MapDetailSalonViewController.m */; };
 		B8CB12191EB2FA8F00ECD857 /* MapDetailSalonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CB12171EB2FA8F00ECD857 /* MapDetailSalonViewController.xib */; };
+		B8CB121D1EB3364700ECD857 /* ListNearBySalonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CB121B1EB3364700ECD857 /* ListNearBySalonViewController.m */; };
+		B8CB121E1EB3364700ECD857 /* ListNearBySalonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CB121C1EB3364700ECD857 /* ListNearBySalonViewController.xib */; };
+		B8CB12221EB3379C00ECD857 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CB12211EB3379C00ECD857 /* iCarousel.m */; };
+		B8CB12261EB338BA00ECD857 /* SalonNearByView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CB12251EB338BA00ECD857 /* SalonNearByView.m */; };
+		B8CB12281EB338C900ECD857 /* SalonNearByView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CB12271EB338C900ECD857 /* SalonNearByView.xib */; };
 		B8CF1DC51E50AB500008C6EC /* ManageListBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CF1DC31E50AB500008C6EC /* ManageListBookingViewController.m */; };
 		B8CF1DC61E50AB500008C6EC /* ManageListBookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CF1DC41E50AB500008C6EC /* ManageListBookingViewController.xib */; };
 		B8CF1DCB1E50AFD90008C6EC /* ManageBookingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CF1DC91E50AFD90008C6EC /* ManageBookingCell.m */; };
@@ -417,6 +422,14 @@
 		B8CB12151EB2FA8F00ECD857 /* MapDetailSalonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDetailSalonViewController.h; sourceTree = "<group>"; };
 		B8CB12161EB2FA8F00ECD857 /* MapDetailSalonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailSalonViewController.m; sourceTree = "<group>"; };
 		B8CB12171EB2FA8F00ECD857 /* MapDetailSalonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapDetailSalonViewController.xib; sourceTree = "<group>"; };
+		B8CB121A1EB3364700ECD857 /* ListNearBySalonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListNearBySalonViewController.h; sourceTree = "<group>"; };
+		B8CB121B1EB3364700ECD857 /* ListNearBySalonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListNearBySalonViewController.m; sourceTree = "<group>"; };
+		B8CB121C1EB3364700ECD857 /* ListNearBySalonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListNearBySalonViewController.xib; sourceTree = "<group>"; };
+		B8CB12201EB3379C00ECD857 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		B8CB12211EB3379C00ECD857 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		B8CB12241EB338BA00ECD857 /* SalonNearByView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalonNearByView.h; sourceTree = "<group>"; };
+		B8CB12251EB338BA00ECD857 /* SalonNearByView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalonNearByView.m; sourceTree = "<group>"; };
+		B8CB12271EB338C900ECD857 /* SalonNearByView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SalonNearByView.xib; sourceTree = "<group>"; };
 		B8CF1DC21E50AB500008C6EC /* ManageListBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageListBookingViewController.h; sourceTree = "<group>"; };
 		B8CF1DC31E50AB500008C6EC /* ManageListBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageListBookingViewController.m; sourceTree = "<group>"; };
 		B8CF1DC41E50AB500008C6EC /* ManageListBookingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManageListBookingViewController.xib; sourceTree = "<group>"; };
@@ -538,10 +551,14 @@
 		B803D0B01E3B88D00078857E /* NearBy */ = {
 			isa = PBXGroup;
 			children = (
+				B8CB12231EB3389000ECD857 /* SalonNearByView */,
 				B803D0B91E3BA1F90078857E /* Annotation */,
 				B803D0B11E3B88E30078857E /* NearByViewController.h */,
 				B803D0B21E3B88E30078857E /* NearByViewController.m */,
 				B803D0B31E3B88E30078857E /* NearByViewController.xib */,
+				B8CB121A1EB3364700ECD857 /* ListNearBySalonViewController.h */,
+				B8CB121B1EB3364700ECD857 /* ListNearBySalonViewController.m */,
+				B8CB121C1EB3364700ECD857 /* ListNearBySalonViewController.xib */,
 			);
 			path = NearBy;
 			sourceTree = "<group>";
@@ -1289,6 +1306,25 @@
 			path = MapDetailSalon;
 			sourceTree = "<group>";
 		};
+		B8CB121F1EB3379C00ECD857 /* ICarousel */ = {
+			isa = PBXGroup;
+			children = (
+				B8CB12201EB3379C00ECD857 /* iCarousel.h */,
+				B8CB12211EB3379C00ECD857 /* iCarousel.m */,
+			);
+			path = ICarousel;
+			sourceTree = "<group>";
+		};
+		B8CB12231EB3389000ECD857 /* SalonNearByView */ = {
+			isa = PBXGroup;
+			children = (
+				B8CB12241EB338BA00ECD857 /* SalonNearByView.h */,
+				B8CB12251EB338BA00ECD857 /* SalonNearByView.m */,
+				B8CB12271EB338C900ECD857 /* SalonNearByView.xib */,
+			);
+			path = SalonNearByView;
+			sourceTree = "<group>";
+		};
 		B8CF1DC11E50AB450008C6EC /* ManageListBooking */ = {
 			isa = PBXGroup;
 			children = (
@@ -1404,6 +1440,7 @@
 		B8E5F94D1E2A0355007E5A81 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				B8CB121F1EB3379C00ECD857 /* ICarousel */,
 				B8E5F94E1E2A035E007E5A81 /* ImagePickerViewController */,
 			);
 			path = Library;
@@ -1698,12 +1735,14 @@
 				B8E5F94C1E29E8D1007E5A81 /* UserInfoViewController.xib in Resources */,
 				B8DE7EE51E390A450008769C /* Roboto-ThinItalic.ttf in Resources */,
 				B8A103031E4555AA00C4E376 /* CatagoriesCell.xib in Resources */,
+				B8CB12281EB338C900ECD857 /* SalonNearByView.xib in Resources */,
 				B86D284F1E2E2305005491E6 /* NCTextFieldView.xib in Resources */,
 				B8DE7EE71E390A450008769C /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				B8DE7EDD1E390A450008769C /* Roboto-BoldItalic.ttf in Resources */,
 				B8B5BAD91E3A5ABB00586CBE /* HeaderBannerCell.xib in Resources */,
 				B8EF74C51E4CBE7C001466C4 /* NCCalendarSingleViewController_iPhone.xib in Resources */,
 				B8ACAAB31E589CC300F9AF05 /* ProfileUserCell.xib in Resources */,
+				B8CB121E1EB3364700ECD857 /* ListNearBySalonViewController.xib in Resources */,
 				B8B470D11E476E6D0063CE2C /* ServiceHeaderView.xib in Resources */,
 				B8A103051E455AFB00C4E376 /* Images.xcassets in Resources */,
 				B8DE7EE11E390A450008769C /* Roboto-Medium.ttf in Resources */,
@@ -1877,6 +1916,7 @@
 				B88D7CAD1E3A134E006B8019 /* FavoriteViewController.m in Sources */,
 				B8EC1C461E291B6700D2D1E6 /* main.m in Sources */,
 				B80F91D01E42241900649C88 /* SingleMasterDataCell.m in Sources */,
+				B8CB12261EB338BA00ECD857 /* SalonNearByView.m in Sources */,
 				B8ACAAA61E58943400F9AF05 /* ProfileUserViewController.m in Sources */,
 				B8EF74CB1E4CBEA1001466C4 /* AJRBackgroundDimmer.m in Sources */,
 				B899E8FD1E5858E900CC268B /* User.m in Sources */,
@@ -1913,6 +1953,7 @@
 				B8CB12181EB2FA8F00ECD857 /* MapDetailSalonViewController.m in Sources */,
 				B80F91C51E42222F00649C88 /* Province.m in Sources */,
 				B85D99171EA506B900C3F305 /* Image.m in Sources */,
+				B8CB121D1EB3364700ECD857 /* ListNearBySalonViewController.m in Sources */,
 				B8B5BAD11E3A57C900586CBE /* HeaderBannerView.m in Sources */,
 				B8E5F9551E2A03E9007E5A81 /* Common.m in Sources */,
 				B862EB3A1E4A140100BBAB79 /* CommentCellTableViewCell.m in Sources */,
@@ -1920,6 +1961,7 @@
 				B83F399A1EAAFFD40068C947 /* StarRate.m in Sources */,
 				B8C32B411E2DEB0A00FB0E11 /* FindSalonViewController.m in Sources */,
 				B83D4EEE1EA26FEA00F39BD4 /* HeaderSalonView.m in Sources */,
+				B8CB12221EB3379C00ECD857 /* iCarousel.m in Sources */,
 				B803D0B41E3B88E30078857E /* NearByViewController.m in Sources */,
 				B862EB341E4A134A00BBAB79 /* CommentViewController.m in Sources */,
 				B8ACAA9E1E5881DD00F9AF05 /* ListUserViewController.m in Sources */,

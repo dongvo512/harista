@@ -13,7 +13,8 @@
 #import "HeaderBannerView.h"
 #import "CommonDefine.h"
 #import "UIScrollView+BottomRefreshControl.h"
-#import "NearByViewController.h"
+//#import "NearByViewController.h"
+#import "ListNearBySalonViewController.h"
 #import "SearchSalonAdvanceViewController.h"
 #import "DetailSalonViewController.h"
 #import "SalonManage.h"
@@ -115,9 +116,12 @@ static FindSalonViewController *sharedInstance = nil;
 
 - (IBAction)touchBtnNearBy:(id)sender {
     
-    NearByViewController *vcNearBy = [[NearByViewController alloc] initWithNibName:@"NearByViewController" bundle:nil];
-    [self.navigationController pushViewController:vcNearBy animated:YES];
+    ListNearBySalonViewController *vcListNearBySalon = [[ListNearBySalonViewController alloc] initWithNibName:@"ListNearBySalonViewController" bundle:nil];
+    [self.navigationController pushViewController:vcListNearBySalon animated:YES];
     
+    
+//    NearByViewController *vcNearBy = [[NearByViewController alloc] initWithNibName:@"NearByViewController" bundle:nil];
+//    [self.navigationController pushViewController:vcNearBy animated:YES];
 }
 
 #pragma mark - Get Data

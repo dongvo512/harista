@@ -62,6 +62,9 @@
                                         <constraint firstAttribute="height" constant="50" id="qAG-Nh-f44"/>
                                     </constraints>
                                     <state key="normal" image="ic_back"/>
+                                    <connections>
+                                        <action selector="touchBtnBack:" destination="-1" eventType="touchUpInside" id="mEX-0O-dQc"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -105,7 +108,7 @@
                 <constraint firstAttribute="trailing" secondItem="Kbt-8w-uNC" secondAttribute="trailing" id="cmO-B9-fB4"/>
                 <constraint firstItem="Kbt-8w-uNC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tSl-N1-CbX"/>
             </constraints>
-            <point key="canvasLocation" x="-167.5" y="-74.5"/>
+            <point key="canvasLocation" x="-206" y="-110"/>
         </view>
     </objects>
     <resources>

@@ -61,6 +61,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Action
+- (IBAction)touchBtnBack:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - Method
 - (void)drawLineLocation:(CLLocationCoordinate2D )fromLocation desLocation:(CLLocationCoordinate2D )desLocation{
     
@@ -238,16 +244,7 @@
         if(!pinView){
             
             pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-            UIButton *btnGo = [UIButton buttonWithType:UIButtonTypeCustom];
-            // NSLog(@"%d",[arrAnnotations indexOfObject:annotation]);
-            [btnGo setTag:[arrAnnotations indexOfObject:annotation]];
             
-            [btnGo setImage:[UIImage imageNamed:@"ic_go"] forState:UIControlStateNormal];
-            
-           // [btnGo addTarget:self action:@selector(touchBtnGo:) forControlEvents:UIControlEventTouchUpInside];
-            btnGo.frame =
-            CGRectMake(0, 0, 26, 26);
-            [pinView setRightCalloutAccessoryView:btnGo];
             pinView.enabled = YES;
             pinView.canShowCallout = YES;
             pinView.calloutOffset = CGPointMake(0, 4);
