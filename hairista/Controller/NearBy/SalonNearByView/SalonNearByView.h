@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Salon;
+
 
 @interface SalonNearByView : UIView
 @property (strong, nonatomic) IBOutlet UIView *view;
-
+-(void)setDataForView:(Salon *)salon;
 @end

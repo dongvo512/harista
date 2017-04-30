@@ -8,14 +8,15 @@
 
 #import "SalonNearByView.h"
 #import "Salon.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SalonNearByView()
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewSalon;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
 @property (weak, nonatomic) IBOutlet UILabel *lblPhone;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthContraintStar;
+@property (weak, nonatomic) IBOutlet UILabel *lblOpenTime;
+
 @property (weak, nonatomic) IBOutlet UIView *viewContent;
 
 @end
@@ -51,7 +52,11 @@
 
 -(void)setDataForView:(Salon *)salon{
 
-    
+    [self.imgViewSalon sd_setImageWithURL:[NSURL URLWithString:salon.avatar] placeholderImage:IMG_DEFAULT];
+    self.lblPhone.text = salon.phone;
+    self.lblName.text = salon.name;
+    self.lblAddress.text = salon.homeAddress;
+    self.lblOpenTime.text = [NSString stringWithFormat:@"%@ - %@",salon.openTime, salon.closeTime];
 }
 
 @end

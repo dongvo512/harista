@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListNearBySalonViewController">
             <connections>
                 <outlet property="iCarousel" destination="JZv-qb-UXW" id="AsP-4S-Mac"/>
+                <outlet property="mapKit" destination="wBg-NY-6yr" id="pLQ-A6-VDn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -62,6 +63,9 @@
                                         <constraint firstAttribute="width" constant="50" id="tp0-ax-srx"/>
                                     </constraints>
                                     <state key="normal" image="ic_back"/>
+                                    <connections>
+                                        <action selector="touchBtnBack:" destination="-1" eventType="touchUpInside" id="DaY-Ua-mVO"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -90,6 +94,9 @@
                 </view>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wBg-NY-6yr">
                     <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="EfM-KC-SDc"/>
+                    </connections>
                 </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZv-qb-UXW" customClass="iCarousel">
                     <rect key="frame" x="0.0" y="573" width="375" height="90"/>

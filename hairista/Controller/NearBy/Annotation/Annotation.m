@@ -43,6 +43,11 @@
 
     return coordinateCurr;
 }
+
+-(void)setImage:(UIImage *)newImage{
+
+    imgAnnotaion = newImage;
+}
 -(UIImage *)getImage{
 
     return imgAnnotaion;

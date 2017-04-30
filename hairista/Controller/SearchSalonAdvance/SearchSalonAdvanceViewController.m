@@ -45,6 +45,8 @@
     BOOL isSwitchOnCurr;
     
     NSInteger indexPage;
+    
+    BOOL isFullData;
 }
 @property (nonatomic, strong) NSMutableArray *arrData;
 @property (nonatomic, strong) NSMutableArray *arrSalon;
@@ -132,6 +134,38 @@
     }];
 }
 
+-(void)loadMore{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[SalonManage sharedInstance] getListSalonNearBy:(isSwitchOnCurr)?latLocation:@"" longLocation:(isSwitchOnCurr)?longLocation:@"" pageindex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM provinceid:provinceSelected.idProvince.stringValue district:districtSelected.idDistrict.stringValue name:@"" dataApiResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+            
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            NSArray *arrData = idObject;
+            
+            if(arrData.count > 0){
+            
+                [self.arrSalon addObjectsFromArray:arrData];
+                
+                [self.tblSearchSalon reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 2)] withRowAnimation:UITableViewRowAnimationFade];
+            }
+            
+            if(arrData.count < LIMIT_ITEM.integerValue){
+            
+                isFullData = YES;
+            }
+        }
+        
+    }];
+}
+
 #pragma mark - Method
 
 - (IBAction)touchBtnBack:(id)sender {
@@ -210,6 +244,9 @@
     
     isShowSearchOption = NO;
     
+    indexPage = 1;
+    isFullData = NO;
+    
     [self getListSalonNearby];
     
 }
@@ -287,6 +324,13 @@
         Salon *salon = [self.arrSalon objectAtIndex:indexPath.row];
         [cell setDataForCell:salon];
         [cell.contentView setBackgroundColor:[UIColor whiteColor]];
+        
+        if(indexPath.row == self.arrSalon.count - 1 && !isFullData){
+        
+            indexPage ++;
+            [self loadMore];
+        }
+        
         return cell;
     }
 

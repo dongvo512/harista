@@ -8,9 +8,10 @@
 
 #import "NearByViewController.h"
 #import <MapKit/MapKit.h>
-#import <CoreLocation/CoreLocation.h>
 #import "Annotation.h"
+#import "SalonManage.h"
 
+#define LIMIT_ITEM @"14"
 
 @interface NearByViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>{
 
@@ -25,6 +26,8 @@
     NSArray *arrAnnotations;
     
     MKCoordinateRegion coordinateGroupAnnotatons;
+    
+    NSInteger indexPage;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapKit;
 @property (weak, nonatomic) IBOutlet UIButton *btnNearByAnnotation;
@@ -67,6 +70,7 @@
 
 
 #pragma mark - Method
+
 -(void)touchBtnGo:(UIButton *)btn{
     
     Annotation *annotation = [arrAnnotations objectAtIndex:btn.tag];

@@ -14,5 +14,9 @@
 
 -(id)init:(NSString *)aTitle address:(NSString *)address coordinate:(CLLocationCoordinate2D)coordinate imageSalon:(UIImage *)imageSalon;
 -(UIImage *)getImage;
+-(void)setImage:(UIImage *)newImage;
 -(CLLocationCoordinate2D)getCoordinate;
+
+@property (nonatomic) BOOL isSelected;
+
 @end

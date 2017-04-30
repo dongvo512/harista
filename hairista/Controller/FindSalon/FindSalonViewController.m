@@ -34,8 +34,6 @@ typedef NS_ENUM(NSInteger, TypeSalon) {
     
     UIRefreshControl *refreshControl;
     
-    UIRefreshControl *refreshControlBottom;
-    
     BOOL isLoadingData;
     
     BOOL isFullData;
@@ -93,10 +91,7 @@ static FindSalonViewController *sharedInstance = nil;
     [self.tblView addSubview:refreshControl];
     [refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
     
-    refreshControlBottom = [[UIRefreshControl alloc]init];
-    refreshControlBottom.triggerVerticalOffset = 100.;
-//    [refreshControlBottom addTarget:self action:@selector(refreshTableBottom) forControlEvents:UIControlEventValueChanged];
-    self.tblView.bottomRefreshControl = refreshControlBottom;
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,9 +114,6 @@ static FindSalonViewController *sharedInstance = nil;
     ListNearBySalonViewController *vcListNearBySalon = [[ListNearBySalonViewController alloc] initWithNibName:@"ListNearBySalonViewController" bundle:nil];
     [self.navigationController pushViewController:vcListNearBySalon animated:YES];
     
-    
-//    NearByViewController *vcNearBy = [[NearByViewController alloc] initWithNibName:@"NearByViewController" bundle:nil];
-//    [self.navigationController pushViewController:vcNearBy animated:YES];
 }
 
 #pragma mark - Get Data
@@ -258,8 +250,6 @@ static FindSalonViewController *sharedInstance = nil;
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    pageIndex ++;
-    
     isLoadingData = YES;
     
     [[SalonManage sharedInstance] getListSalons:NO page:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
@@ -281,13 +271,13 @@ static FindSalonViewController *sharedInstance = nil;
                 [self.arrSalons addObjectsFromArray:arrData];
                 
                 [self.tblView reloadSections:[NSIndexSet indexSetWithIndex:List_Salon] withRowAnimation:UITableViewRowAnimationFade];
-                
-                if(arrData.count < LIMIT_ITEM.integerValue){
-                
-                    isFullData = YES;
                 }
-            }
             
+            if(arrData.count < LIMIT_ITEM.integerValue){
+                
+                isFullData = YES;
+            }
+
         }
         
     }];
@@ -348,6 +338,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if(indexPath.row == self.arrSalons.count - 1 && !isLoadingData &&!isFullData){
     
+        pageIndex ++;
         [self loadMoreSalon];
     }
 
