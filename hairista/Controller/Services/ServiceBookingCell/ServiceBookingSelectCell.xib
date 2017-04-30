@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ServiceBookingSelectCell" id="gTV-IL-0wX" customClass="ServiceBookingSelectCell">
+            <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wash_hair_1" translatesAutoresizingMaskIntoConstraints="NO" id="Wn0-om-Oim">
+                        <rect key="frame" x="4" y="0.0" width="126" height="130"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Scf-Od-AqD">
+                        <rect key="frame" x="3" y="100" width="127" height="30"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gội đầu" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmc-wL-xXq">
+                                <rect key="frame" x="6" y="0.0" width="113" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JeR-uC-DFz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.29698503521126762" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="BU0-OS-K96"/>
+                            <constraint firstItem="rmc-wL-xXq" firstAttribute="centerY" secondItem="Scf-Od-AqD" secondAttribute="centerY" id="ZJR-cX-d1U"/>
+                            <constraint firstItem="rmc-wL-xXq" firstAttribute="leading" secondItem="Scf-Od-AqD" secondAttribute="leading" constant="6" id="gyg-K8-DrW"/>
+                            <constraint firstAttribute="trailing" secondItem="rmc-wL-xXq" secondAttribute="trailing" constant="8" id="zdf-E4-U3j"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tamgiac" translatesAutoresizingMaskIntoConstraints="NO" id="VSg-6B-nAN">
+                        <rect key="frame" x="0.0" y="18" width="4" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="Iq6-oB-671"/>
+                            <constraint firstAttribute="width" constant="4" id="fDp-Il-fel"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2T-l8-FAk">
+                        <rect key="frame" x="0.0" y="0.0" width="54" height="20"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJT-r7-jNY">
+                                <rect key="frame" x="0.0" y="0.0" width="54" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="2DM-o9-6Ua"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="54" id="Irh-Z3-9hs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZJT-r7-jNY" firstAttribute="leading" secondItem="N2T-l8-FAk" secondAttribute="leading" id="4yV-kc-vij"/>
+                            <constraint firstAttribute="trailing" secondItem="ZJT-r7-jNY" secondAttribute="trailing" id="DGj-CL-hCC"/>
+                            <constraint firstItem="ZJT-r7-jNY" firstAttribute="top" secondItem="N2T-l8-FAk" secondAttribute="top" id="YoJ-jK-qkd"/>
+                            <constraint firstAttribute="height" constant="20" id="c8Q-86-URl"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_check_black" translatesAutoresizingMaskIntoConstraints="NO" id="TZR-uT-kzY">
+                        <rect key="frame" x="40" y="40" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="3ne-H3-oCg"/>
+                            <constraint firstAttribute="height" constant="50" id="SPe-jr-UH0"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Scf-Od-AqD" secondAttribute="trailing" id="AOg-Rg-pea"/>
+                <constraint firstItem="VSg-6B-nAN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BQr-C4-OVr"/>
+                <constraint firstItem="Scf-Od-AqD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="Dez-Gv-go0"/>
+                <constraint firstItem="TZR-uT-kzY" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="EUu-Sh-BdL"/>
+                <constraint firstItem="TZR-uT-kzY" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="IF0-Ti-c7H"/>
+                <constraint firstItem="Wn0-om-Oim" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="MlQ-tv-GjD"/>
+                <constraint firstItem="N2T-l8-FAk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="OhG-GM-GQJ"/>
+                <constraint firstItem="VSg-6B-nAN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="18" id="RJV-2g-DEK"/>
+                <constraint firstAttribute="bottom" secondItem="Wn0-om-Oim" secondAttribute="bottom" id="Xac-BI-zbK"/>
+                <constraint firstAttribute="trailing" secondItem="Wn0-om-Oim" secondAttribute="trailing" id="bCr-uR-t2A"/>
+                <constraint firstItem="Wn0-om-Oim" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dLe-9G-2vu"/>
+                <constraint firstAttribute="bottom" secondItem="Scf-Od-AqD" secondAttribute="bottom" id="iht-6A-mEs"/>
+                <constraint firstItem="N2T-l8-FAk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lwh-if-1kg"/>
+            </constraints>
+            <size key="customSize" width="129" height="129"/>
+            <connections>
+                <outlet property="imgSelect" destination="TZR-uT-kzY" id="H2p-Gt-2ia"/>
+                <outlet property="imgService" destination="Wn0-om-Oim" id="QTs-bs-Gip"/>
+                <outlet property="lblPrice" destination="ZJT-r7-jNY" id="I0X-ff-3Ll"/>
+                <outlet property="lblServiceName" destination="rmc-wL-xXq" id="Yhg-Tp-TNi"/>
+            </connections>
+            <point key="canvasLocation" x="-232" y="-221"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_check_black" width="50" height="50"/>
+        <image name="tamgiac" width="29" height="116"/>
+        <image name="wash_hair_1" width="674" height="449"/>
+    </resources>
+</document>

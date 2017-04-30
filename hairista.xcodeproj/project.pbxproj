@@ -22,6 +22,12 @@
 		B80F91C51E42222F00649C88 /* Province.m in Sources */ = {isa = PBXBuildFile; fileRef = B80F91C41E42222F00649C88 /* Province.m */; };
 		B80F91D01E42241900649C88 /* SingleMasterDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B80F91CE1E42241900649C88 /* SingleMasterDataCell.m */; };
 		B80F91D11E42241900649C88 /* SingleMasterDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80F91CF1E42241900649C88 /* SingleMasterDataCell.xib */; };
+		B814EEBB1EB62E7600B6475C /* ServerBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B814EEB91EB62E7600B6475C /* ServerBookingViewController.m */; };
+		B814EEBC1EB62E7600B6475C /* ServerBookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814EEBA1EB62E7600B6475C /* ServerBookingViewController.xib */; };
+		B814EEC11EB6368500B6475C /* ServiceBookingSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B814EEBF1EB6368500B6475C /* ServiceBookingSelectCell.m */; };
+		B814EEC21EB6368500B6475C /* ServiceBookingSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814EEC01EB6368500B6475C /* ServiceBookingSelectCell.xib */; };
+		B814EEC71EB645E100B6475C /* ServerSelectedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B814EEC51EB645E100B6475C /* ServerSelectedCell.m */; };
+		B814EEC81EB645E100B6475C /* ServerSelectedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814EEC61EB645E100B6475C /* ServerSelectedCell.xib */; };
 		B81732591E5B08B300DD8586 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81732571E5B08B300DD8586 /* Fabric.framework */; };
 		B817325A1E5B08B300DD8586 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81732581E5B08B300DD8586 /* Crashlytics.framework */; };
 		B82E6D201E44685900C51770 /* CatagoriesHairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82E6D1E1E44685900C51770 /* CatagoriesHairViewController.m */; };
@@ -246,6 +252,15 @@
 		B80F91CD1E42241900649C88 /* SingleMasterDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleMasterDataCell.h; sourceTree = "<group>"; };
 		B80F91CE1E42241900649C88 /* SingleMasterDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleMasterDataCell.m; sourceTree = "<group>"; };
 		B80F91CF1E42241900649C88 /* SingleMasterDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleMasterDataCell.xib; sourceTree = "<group>"; };
+		B814EEB81EB62E7600B6475C /* ServerBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerBookingViewController.h; sourceTree = "<group>"; };
+		B814EEB91EB62E7600B6475C /* ServerBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerBookingViewController.m; sourceTree = "<group>"; };
+		B814EEBA1EB62E7600B6475C /* ServerBookingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServerBookingViewController.xib; sourceTree = "<group>"; };
+		B814EEBE1EB6368500B6475C /* ServiceBookingSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceBookingSelectCell.h; sourceTree = "<group>"; };
+		B814EEBF1EB6368500B6475C /* ServiceBookingSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceBookingSelectCell.m; sourceTree = "<group>"; };
+		B814EEC01EB6368500B6475C /* ServiceBookingSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceBookingSelectCell.xib; sourceTree = "<group>"; };
+		B814EEC41EB645E100B6475C /* ServerSelectedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerSelectedCell.h; sourceTree = "<group>"; };
+		B814EEC51EB645E100B6475C /* ServerSelectedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerSelectedCell.m; sourceTree = "<group>"; };
+		B814EEC61EB645E100B6475C /* ServerSelectedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServerSelectedCell.xib; sourceTree = "<group>"; };
 		B81732571E5B08B300DD8586 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		B81732581E5B08B300DD8586 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		B82E6D1D1E44685900C51770 /* CatagoriesHairViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatagoriesHairViewController.h; sourceTree = "<group>"; };
@@ -641,6 +656,36 @@
 			path = SingleMasterDataCell;
 			sourceTree = "<group>";
 		};
+		B814EEB71EB62E7600B6475C /* ServerBookingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B814EEB81EB62E7600B6475C /* ServerBookingViewController.h */,
+				B814EEB91EB62E7600B6475C /* ServerBookingViewController.m */,
+				B814EEBA1EB62E7600B6475C /* ServerBookingViewController.xib */,
+			);
+			path = ServerBookingViewController;
+			sourceTree = "<group>";
+		};
+		B814EEBD1EB6368500B6475C /* ServiceBookingCell */ = {
+			isa = PBXGroup;
+			children = (
+				B814EEBE1EB6368500B6475C /* ServiceBookingSelectCell.h */,
+				B814EEBF1EB6368500B6475C /* ServiceBookingSelectCell.m */,
+				B814EEC01EB6368500B6475C /* ServiceBookingSelectCell.xib */,
+			);
+			path = ServiceBookingCell;
+			sourceTree = "<group>";
+		};
+		B814EEC31EB645D100B6475C /* ServerSelectedCell */ = {
+			isa = PBXGroup;
+			children = (
+				B814EEC41EB645E100B6475C /* ServerSelectedCell.h */,
+				B814EEC51EB645E100B6475C /* ServerSelectedCell.m */,
+				B814EEC61EB645E100B6475C /* ServerSelectedCell.xib */,
+			);
+			path = ServerSelectedCell;
+			sourceTree = "<group>";
+		};
 		B82E6D1C1E44684600C51770 /* CatagoriesHair */ = {
 			isa = PBXGroup;
 			children = (
@@ -967,6 +1012,7 @@
 		B880C6B81E45FCE200AA2B72 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B814EEBD1EB6368500B6475C /* ServiceBookingCell */,
 				B8B470CC1E476E480063CE2C /* ServiceHeaderView */,
 				B8A2D1A71E46F7D900A357BC /* ServiceCell */,
 				B880C6B91E45FD1B00AA2B72 /* ServicesViewController.h */,
@@ -1604,6 +1650,8 @@
 		B8EF74B11E4CB6A8001466C4 /* Booking */ = {
 			isa = PBXGroup;
 			children = (
+				B814EEC31EB645D100B6475C /* ServerSelectedCell */,
+				B814EEB71EB62E7600B6475C /* ServerBookingViewController */,
 				B8EF74B71E4CBC6E001466C4 /* TimeView */,
 				B8EF74B21E4CB6BB001466C4 /* BookingViewController.h */,
 				B8EF74B31E4CB6BB001466C4 /* BookingViewController.m */,
@@ -1725,6 +1773,7 @@
 				B87543CB1EAA6D190047213A /* CommentStarCell.xib in Resources */,
 				B85346CB1E535BE500B74D9F /* DetailBookingViewController.xib in Resources */,
 				B8C32B511E2E11B200FB0E11 /* SalonCell.xib in Resources */,
+				B814EEC81EB645E100B6475C /* ServerSelectedCell.xib in Resources */,
 				B8ACAAA11E5881DD00F9AF05 /* UserCell.xib in Resources */,
 				B80F91B11E41CF0E00649C88 /* NCComboboxNewView.xib in Resources */,
 				B87543C51EAA63860047213A /* CommentDetailView.xib in Resources */,
@@ -1756,6 +1805,7 @@
 				B8EF74C81E4CBE7C001466C4 /* NCCalendarViewController_iPhone.xib in Resources */,
 				B8ACAAAD1E5895B100F9AF05 /* UserInfoView.xib in Resources */,
 				B8DE7EDA1E390A450008769C /* Roboto-Black.ttf in Resources */,
+				B814EEBC1EB62E7600B6475C /* ServerBookingViewController.xib in Resources */,
 				B8DE7ED41E390A450008769C /* OpenSans-Italic.ttf in Resources */,
 				B8A103151E457FBF00C4E376 /* HairCell.xib in Resources */,
 				B83D4EEF1EA26FEA00F39BD4 /* HeaderSalonView.xib in Resources */,
@@ -1766,6 +1816,7 @@
 				B8DE7ED91E390A450008769C /* OpenSans-SemiboldItalic.ttf in Resources */,
 				B8DE7EFE1E391FF40008769C /* MenuLeftView.xib in Resources */,
 				B8DE7ED01E390A450008769C /* OpenSans-Bold.ttf in Resources */,
+				B814EEC21EB6368500B6475C /* ServiceBookingSelectCell.xib in Resources */,
 				B862EB351E4A134A00BBAB79 /* CommentViewController.xib in Resources */,
 				B8DE7ED11E390A450008769C /* OpenSans-BoldItalic.ttf in Resources */,
 				B8CB12191EB2FA8F00ECD857 /* MapDetailSalonViewController.xib in Resources */,
@@ -1894,6 +1945,7 @@
 				B831346D1E949730001A3465 /* AuthenticateManage.m in Sources */,
 				B8EF74B51E4CB6BB001466C4 /* BookingViewController.m in Sources */,
 				B8DE7EF11E3911CE0008769C /* SlideMenuViewController.m in Sources */,
+				B814EEC11EB6368500B6475C /* ServiceBookingSelectCell.m in Sources */,
 				B8565EB91E9F1B1D002E72A5 /* SalonDetailViewController.m in Sources */,
 				B8EC1C691E291CD600D2D1E6 /* LoginViewController.m in Sources */,
 				B87543C31EAA62790047213A /* CommentDetailView.m in Sources */,
@@ -1905,6 +1957,7 @@
 				B8B470D01E476E6D0063CE2C /* ServiceHeaderView.m in Sources */,
 				B88D7CA81E3A1342006B8019 /* BookingsViewController.m in Sources */,
 				B8A1030A1E4569F000C4E376 /* ListHairViewController.m in Sources */,
+				B814EEBB1EB62E7600B6475C /* ServerBookingViewController.m in Sources */,
 				B86D284E1E2E2305005491E6 /* NCTextFieldView.m in Sources */,
 				B8AA6B191E40920F002716A7 /* SearchOptionSalonCell.m in Sources */,
 				B85695481E93931600523074 /* APIRequestHandler.m in Sources */,
@@ -1924,6 +1977,7 @@
 				B8CF1DD01E50B1D20008C6EC /* Booking.m in Sources */,
 				B87D7D301E43466F00CD5D54 /* DetailSalonViewController.m in Sources */,
 				B87543CA1EAA6D190047213A /* CommentStarCell.m in Sources */,
+				B814EEC71EB645E100B6475C /* ServerSelectedCell.m in Sources */,
 				B8DE7EFC1E391FDE0008769C /* MenuLeftView.m in Sources */,
 				B88D7CA21E3A0B0E006B8019 /* ItemMenu.m in Sources */,
 				B83D4EE91EA267D600F39BD4 /* CHTCollectionViewWaterfallLayout.m in Sources */,

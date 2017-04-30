@@ -16,7 +16,7 @@
 #import "Annotation.h"
 #import "DetailSalonViewController.h"
 
-#define LIMIT_ITEM @"4"
+#define LIMIT_ITEM @"14"
 
 @interface ListNearBySalonViewController ()<CLLocationManagerDelegate>{
 
@@ -114,13 +114,12 @@
         isRegionFirstAnnotation = YES;
     }
     
-    //[self.mapKit showAnnotations:arrAnnotation animated:YES];
 }
 
 -(void)scrollToAnnotation:(Annotation *)annotation{
 
      [self.mapKit showAnnotations:@[annotation] animated:YES];
-    //[self.mapKit selectAnnotation:annotation animated:YES];
+    [self.mapKit selectAnnotation:annotation animated:YES];
 }
 
 -(void)loadMore{

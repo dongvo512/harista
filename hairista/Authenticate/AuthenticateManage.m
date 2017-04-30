@@ -45,6 +45,8 @@ static AuthenticateManage *sharedInstance = nil;
         Appdelegate_hairista.sessionUser.homeAddress = CHECK_NIL([responseDataObject objectForKey:@"homeAddress"]);
     
         Appdelegate_hairista.sessionUser.email = CHECK_NIL([responseDataObject objectForKey:@"email"]);
+       
+        Appdelegate_hairista.sessionUser.avatar = CHECK_NIL([responseDataObject objectForKey:@"avatar"]);
     }
 }
 

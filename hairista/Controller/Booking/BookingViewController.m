@@ -10,20 +10,25 @@
 #import "UIColor+Method.h"
 #import "NCComboboxNewView.h"
 #import "NCCalendarViewController.h"
-#import "ServicesViewController.h"
+#import "ServerBookingViewController.h"
 #import "Common.h"
 #import "Service.h"
+#import "NCTextFieldView.h"
+#import "ServerSelectedCell.h"
 
 @interface BookingViewController (){
 
     NSDate *dateTime;
-    NSArray *arrSelected;
+    NSMutableArray *arrSelected;
 }
 @property (weak, nonatomic) IBOutlet NCComboboxNewView *cboTime;
 @property (weak, nonatomic) IBOutlet NCComboboxNewView *cboService;
-@property (weak, nonatomic) IBOutlet UICollectionView *cllService;
+@property (weak, nonatomic) IBOutlet UITableView *tblService;
 @property (weak, nonatomic) IBOutlet UILabel *lbltotalPrice;
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
+
+@property (weak, nonatomic) IBOutlet NCTextFieldView *txtFullName;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightContraint;
 
 @end
@@ -36,8 +41,15 @@
     
     self.heightContraint.constant = 0;
     
+    [self.tblService registerNib:[UINib nibWithNibName:@"ServerSelectedCell" bundle:nil] forCellReuseIdentifier:@"ServerSelectedCell"];
+    
     self.btnSearch.layer.borderWidth = 0.5;
     self.btnSearch.layer.borderColor = [UIColor grayTextCombobox].CGColor;
+    
+    [self.txtFullName setBackgroundColor:[UIColor whiteColor]];
+    [self.txtFullName.txtTextField setPlaceholder:@"Nhập họ và tên"];
+    self.txtFullName.delegate = self;
+
     
     [self.cboTime.view setBackgroundColor:[UIColor whiteColor]];
     [self.cboTime setPlaceHolder:@"Chọn thời gian"];
@@ -117,22 +129,25 @@
     }
     else{
     
-        ServicesViewController *vcServices = [[ServicesViewController alloc] initWithNibName:@"ServicesViewController" bundle:nil isSelectItem:YES arrSelected:arrSelected];
+        ServerBookingViewController *vcServices = [[ServerBookingViewController alloc] initWithNibName:@"ServerBookingViewController" bundle:nil arrSelected:arrSelected];
         vcServices.delegate = self;
         [self.navigationController pushViewController:vcServices animated:YES];
     }
-    
-   
+
 }
 
 - (void)clearCombobox:(NCComboboxNewView *)comboboxCurr{
 
     arrSelected = nil;
     self.lbltotalPrice.text = @"0 VNĐ";
+    
+    self.heightContraint.constant = 0;
+    
+    [self.tblService reloadData];
 }
 
-#pragma mar - ServicesViewControllerDelegate
--(void)selectedItems:(NSMutableArray *)arrItems controller:(ServicesViewController *)controller{
+#pragma mar - ServerBookingViewControllerDelegate
+-(void)selectedItems:(NSMutableArray *)arrItems controller:(ServerBookingViewController *)controller{
 
     NSMutableString *strServices = [NSMutableString string];
     
@@ -153,10 +168,64 @@
     [self.cboService setTextName:strServices];
     self.lbltotalPrice.text = [NSString stringWithFormat:@"%ld ngàn đồng", (long)totalPrice];
     
-    arrSelected = [NSArray arrayWithArray:arrItems];
+    arrSelected = [NSMutableArray arrayWithArray:arrItems];
     
-    [controller.navigationController popViewControllerAnimated:YES];
+    self.heightContraint.constant = arrSelected.count * 50;
     
+    [self.tblService reloadData];
+    
+}
+#pragma mark - Table view DataSource - Delegate
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return arrSelected.count;
+
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    Service *service = [arrSelected objectAtIndex:indexPath.row];
+    
+    ServerSelectedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ServerSelectedCell"];
+   
+   [cell setDataForCell:service];
+    
+    return cell;
+}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+       
+        [arrSelected removeObjectAtIndex:indexPath.row];
+        
+        NSMutableString *strServices = [NSMutableString stringWithString:@""];
+        
+        NSInteger totalPrice = 0;
+        for(Service *service in arrSelected){
+            
+            [strServices appendFormat:@"%@, ",service.name];
+            
+            totalPrice += service.price.integerValue;
+            
+        }
+        
+        if(strServices.length > 0){
+            
+            [strServices deleteCharactersInRange:NSMakeRange(strServices.length - 2, 2)];
+        }
+        
+        [self.cboService setTextName:strServices];
+        self.lbltotalPrice.text = [NSString stringWithFormat:@"%ld ngàn đồng", (long)totalPrice];
+
+        self.heightContraint.constant = 50 * arrSelected.count;
+        [self.tblService reloadData];
+    }
 }
 #pragma mark - NCCalendarViewControllerDelegate
 

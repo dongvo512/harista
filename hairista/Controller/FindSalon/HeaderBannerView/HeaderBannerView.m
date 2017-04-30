@@ -117,6 +117,14 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    Salon *salon = [self.arrSalonsHeader objectAtIndex:indexPath.row];
+    
+    if([[self delegate] respondsToSelector:@selector(selectSalonHeaderView:)]){
+    
+        [[self delegate] selectSalonHeaderView:salon];
+    }
+    
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{

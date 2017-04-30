@@ -10,7 +10,7 @@
 
 @interface Service : NSObject
 
-@property (nonatomic, strong) NSString *idService;
+@property (nonatomic, strong) NSNumber *idService;
 
 @property (nonatomic, strong) NSString *name;
 

@@ -1,15 +1,14 @@
 //
-//  ServicesViewController.m
+//  ServerBookingViewController.m
 //  hairista
 //
 //  Created by Dong Vo on 2/4/17.
 //  Copyright © 2017 Dong Vo. All rights reserved.
 //
 
-#import "ServicesViewController.h"
-#import "GroupService.h"
+#import "ServerBookingViewController.h"
 #import "Service.h"
-#import "ServiceCell.h"
+#import "ServiceBookingSelectCell.h"
 #import "CommonDefine.h"
 #import "ServiceHeaderView.h"
 #import "HairFullView.h"
@@ -21,10 +20,8 @@
 #define NUM_ITEM 2
 #define MARGIN 8
 
-@interface ServicesViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ServerBookingViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 {
-    BOOL isSelectedItem;
-
     NSMutableArray *arrSelected;
 }
 @property (nonatomic, strong) NSMutableArray *arrGroupService;
@@ -33,17 +30,15 @@
 
 @end
 
-@implementation ServicesViewController
+@implementation ServerBookingViewController
 
 #pragma mark - Init
 
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil isSelectItem:(BOOL)isSelectItem arrSelected:(NSArray *)aArrSelected{
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil arrSelected:(NSArray *)aArrSelected{
 
     self = [super init];
     
     if(self){
-    
-        isSelectedItem = isSelectItem;
         
         arrSelected = [NSMutableArray arrayWithArray:aArrSelected];
         
@@ -65,14 +60,9 @@
     
     //[self createDataTemp];
     
-    [self.cllService registerNib:[UINib nibWithNibName:@"ServiceCell" bundle:nil] forCellWithReuseIdentifier:@"ServiceCell"];
+    [self.cllService registerNib:[UINib nibWithNibName:@"ServiceBookingSelectCell" bundle:nil] forCellWithReuseIdentifier:@"ServiceBookingSelectCell"];
     
      [self.cllService registerNib:[UINib nibWithNibName:@"ServiceHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ServiceHeader"];
-    
-    [self.btnChecked setHidden:!isSelectedItem];
-    
-    
-    [self checkSelected];
     
 }
 
@@ -82,6 +72,10 @@
 }
 
 #pragma mark - Method
+- (IBAction)touchBtnBack:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 -(void)getListService{
 
@@ -102,7 +96,7 @@
             if(arrService.count > 0){
             
                 self.arrGroupService = [NSMutableArray arrayWithArray:arrService];
-                
+                [self checkSelected];
                 [self.cllService reloadData];
             }
             
@@ -116,11 +110,11 @@
         
         for(Service *serviceSelected in arrSelected){
             
-            for(GroupService *group in self.arrGroupService){
+            for(Category *group in self.arrGroupService){
                 
-                for(Service *service in group.arrSerives){
+                for(Service *service in group.arrServices){
                 
-                    if([service.name isEqualToString:serviceSelected.name]){
+                    if(service.idService.integerValue == serviceSelected.idService.integerValue){
                     
                         service.isSelected = YES;
                     }
@@ -135,9 +129,9 @@
     
     NSMutableArray *arrItemSelected = [NSMutableArray array];
     
-    for(GroupService *group in self.arrGroupService){
+    for(Category *group in self.arrGroupService){
     
-        for(Service *service in group.arrSerives){
+        for(Service *service in group.arrServices){
         
             if(service.isSelected){
                 
@@ -181,8 +175,8 @@
     
     Service *serice = [cat.arrServices objectAtIndex:indexPath.row];
     
-    ServiceCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ServiceCell" forIndexPath:indexPath];
-    
+    ServiceBookingSelectCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ServiceBookingSelectCell" forIndexPath:indexPath];
+    cell.delegate = self;
     [cell setDataForCell:serice];
     return cell;
 }
@@ -213,33 +207,21 @@
     
     return reusableview;
 }
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//
-//    if(isSelectedItem){
-//        
-//        GroupService *group = [self.arrGroupService objectAtIndex:indexPath.section];
-//        
-//        Service *service = [group.arrSerives objectAtIndex:indexPath.row];
-//        service.isSelected = !service.isSelected;
-//        
-//    }
-//    else{
-//    
-//        GroupService *group = [self.arrGroupService objectAtIndex:indexPath.section];
-//        
-//        Service *serice = [group.arrSerives objectAtIndex:indexPath.row];
-//        
-//        HairFullView *hairFull = [[HairFullView alloc] initWithFrame:self.view.bounds imgName:serice.name title:serice.name];
-//        
-//        [UIView transitionWithView:self.view duration:0.5
-//                           options:UIViewAnimationOptionTransitionCrossDissolve //change to whatever animation you like
-//                        animations:^ { [self.view addSubview:hairFull];
-//                            
-//                        }
-//                        completion:nil];
-//
-//    }
-//}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+
+    Category *group = [self.arrGroupService objectAtIndex:indexPath.section];
+    
+    Service *service = [group.arrServices objectAtIndex:indexPath.row];
+    service.isSelected = !service.isSelected;
+    
+    [self.cllService reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]]];
+
+}
+
+#pragma mark - ServiceBookingSelectCellDelegate
+-(void)selectItem:(Service *)service{
+
+    }
 @end
 
 

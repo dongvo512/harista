@@ -65,6 +65,8 @@
     [[SlideMenuViewController sharedInstance] toggle];
 }
 #pragma mark - GetData
+
+
 -(void)getListImageUser{
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];

@@ -7,9 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Salon;
+
 
 @interface HeaderBannerView : UIView
+
 @property (strong, nonatomic) IBOutlet UIView *view;
 
 - (id)initWithFrame:(CGRect)frame listSalonHot:(NSArray *)arraySalonHot;
+@property (nonatomic, weak) id delegate;
+
+@end
+@protocol HeaderBannerViewDelegate <NSObject>
+
+-(void)selectSalonHeaderView:(Salon *)salon;
+
 @end

@@ -50,6 +50,13 @@
         [self.imgUpload setImage:self.imageUpoadCurr];
     }
 }
+- (IBAction)stopUpload:(id)sender {
+    
+    [Appdelegate_hairista.progressCurr cancel];
+    
+    [self closeProgress];
+    
+}
 
 -(void)closeProgress{
 

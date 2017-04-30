@@ -19,7 +19,7 @@
 #import "DetailSalonViewController.h"
 #import "SalonManage.h"
 
-#define LIMIT_ITEM @"4"
+#define LIMIT_ITEM @"14"
 
 typedef NS_ENUM(NSInteger, TypeSalon) {
     
@@ -358,6 +358,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
         if(!headerView){
             
             headerView = [[HeaderBannerView alloc] initWithFrame:CGRectMake(0, 0, SW, SW/2) listSalonHot:self.arrSalonsHot];
+            headerView.delegate = self;
         }
         
         view = headerView;
@@ -388,5 +389,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return CGFLOAT_MIN;
     
 }
+
+#pragma mark - HeaderBannerViewDelegate
+-(void)selectSalonHeaderView:(Salon *)salon{
+
+    DetailSalonViewController *vcDetail = [[DetailSalonViewController alloc] initWithNibName:@"DetailSalonViewController" bundle:nil salon:salon];
+    
+    [self.navigationController pushViewController:vcDetail animated:YES];
+}
+
 
 @end
