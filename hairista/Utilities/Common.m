@@ -84,6 +84,28 @@
     return convertString;
     
 }
+
++ (NSString *)getString3DigitsDot:(NSInteger )number{
+
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+    
+    NSString *formatted = [formatter stringFromNumber:[NSNumber numberWithInteger:number]];
+
+    return formatted;
+}
++(NSDate *)getDateFromStringFormat:(NSString *)dateString format:(NSString *)format{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    // this is imporant - we set our input date format to match our input string
+    // if format doesn't match you'll get nil from your string, so be careful
+    [dateFormatter setDateFormat:format];
+    NSDate *dateFromString;
+    // voila!
+    dateFromString = [dateFormatter dateFromString:dateString];
+    
+    return dateFromString;
+}
 + (NSString *)formattedDateTimeWithDateString:(NSString *)inputDateString inputFormat:(NSString *)inputFormat outputFormat:(NSString *)outputFormat
 {
     NSString *formattedDateTime = @"";

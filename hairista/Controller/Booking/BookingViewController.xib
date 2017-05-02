@@ -26,6 +26,7 @@
                 <outlet property="cboService" destination="3EY-Hl-BVa" id="sBg-V9-U9b"/>
                 <outlet property="cboTime" destination="vvA-Wr-JC7" id="YTi-Z6-7hF"/>
                 <outlet property="heightContraint" destination="1im-Zt-938" id="tsJ-W0-Ezo"/>
+                <outlet property="lblTitle" destination="weO-22-ABg" id="0BZ-f5-nzP"/>
                 <outlet property="lbltotalPrice" destination="aQT-Yb-xtV" id="w00-s4-H9W"/>
                 <outlet property="tblService" destination="NPd-6M-xkG" id="t2e-Xl-jar"/>
                 <outlet property="txtFullName" destination="IkG-Bh-5ez" id="L1T-jG-FY5"/>

@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookingsViewController">
             <connections>
+                <outlet property="tblView" destination="7kj-8c-3Xr" id="YJI-n9-eIA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -90,12 +91,24 @@
                         <constraint firstAttribute="trailing" secondItem="GXO-cS-hbx" secondAttribute="trailing" id="hK1-hR-KMu"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7kj-8c-3Xr">
+                    <rect key="frame" x="0.0" y="72" width="320" height="408"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="qJG-qf-gqC"/>
+                        <outlet property="delegate" destination="-1" id="t6U-o5-b7g"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="i5O-wZ-6Y2" secondAttribute="trailing" id="Fax-wQ-lQ5"/>
+                <constraint firstAttribute="bottom" secondItem="7kj-8c-3Xr" secondAttribute="bottom" id="aST-EM-ow4"/>
+                <constraint firstItem="7kj-8c-3Xr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bfe-9W-FnD"/>
+                <constraint firstItem="7kj-8c-3Xr" firstAttribute="top" secondItem="i5O-wZ-6Y2" secondAttribute="bottom" id="fvu-HE-J2t"/>
                 <constraint firstItem="i5O-wZ-6Y2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kjh-4z-J9P"/>
                 <constraint firstItem="i5O-wZ-6Y2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tOv-YR-A01"/>
+                <constraint firstAttribute="trailing" secondItem="7kj-8c-3Xr" secondAttribute="trailing" id="ws1-VI-rMa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

@@ -163,3 +163,6 @@
 
 #define URL_GET_LIST_SALON_NEARBY @"https://salonhair.herokuapp.com/api/v1/salons/nearly"
 
+#define URL_POST_CREATE_BOOKING @"https://salonhair.herokuapp.com/api/v1/salons/"
+
+#define URL_GET_LIST_BOOKING_OF_ME @"https://salonhair.herokuapp.com/api/v1/bookings/me"

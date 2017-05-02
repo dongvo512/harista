@@ -63,6 +63,7 @@
 }
 - (void)viewDidAppear:(BOOL)animated{
 
+    [super viewDidAppear:animated];
      [self loadTabbar];
 }
 - (void)didReceiveMemoryWarning {
@@ -188,7 +189,7 @@
 
 - (IBAction)touchBooking:(id)sender {
     
-    BookingViewController *vcBooking = [[BookingViewController alloc] initWithNibName:@"BookingViewController" bundle:nil];
+    BookingViewController *vcBooking = [[BookingViewController alloc] initWithNibName:@"BookingViewController" bundle:nil Salon:salon];
     [self.navigationController pushViewController:vcBooking animated:YES];
 }
 

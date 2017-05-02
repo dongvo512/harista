@@ -15,11 +15,16 @@
 #import "Service.h"
 #import "NCTextFieldView.h"
 #import "ServerSelectedCell.h"
+#import "BookingManage.h"
+#import "Salon.h"
+
 
 @interface BookingViewController (){
 
     NSDate *dateTime;
     NSMutableArray *arrSelected;
+    NSInteger totalPrice;
+    Salon *salonCurr;
 }
 @property (weak, nonatomic) IBOutlet NCComboboxNewView *cboTime;
 @property (weak, nonatomic) IBOutlet NCComboboxNewView *cboService;
@@ -30,14 +35,29 @@
 @property (weak, nonatomic) IBOutlet NCTextFieldView *txtFullName;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightContraint;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
 @end
 
 @implementation BookingViewController
 
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil Salon:(Salon *)salon{
+
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if(self){
+    
+        salonCurr = salon;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.lblTitle.text = salonCurr.name;
     
     self.heightContraint.constant = 0;
     
@@ -68,7 +88,6 @@
 
 - (IBAction)create:(id)sender {
     
-    
     if(!dateTime){
     
         
@@ -96,11 +115,11 @@
         [self presentViewController:vcAlert animated:YES completion:nil];
         
     }
-
     
-    if([self.cboTime getText].length > 0 && [self.cboService getText].length > 0){
-    
-        UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:@"Thông báo" message:@"Đã gửi lịch hẹn của bạn thành công" preferredStyle:UIAlertControllerStyleAlert];
+    if(self.txtFullName.txtTextField.text.length == 0){
+        
+        
+        UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:@"Thông báo" message:@"Bạn chưa nhập họ và tên" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         
@@ -108,8 +127,78 @@
         [vcAlert addAction:Oke];
         
         [self presentViewController:vcAlert animated:YES completion:nil];
-
+        
     }
+
+
+    
+    if([self.cboTime getText].length > 0 && [self.cboService getText].length > 0 && self.txtFullName.txtTextField.text.length > 0){
+    
+        
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        
+        [dic setObject:self.txtFullName.txtTextField.text forKey:@"name"];
+        
+        [dic setObject:[self createListPrice:arrSelected] forKey:@"price"];
+        
+        [dic setObject:[NSString stringWithFormat:@"%ld",totalPrice] forKey:@"totalPrice"];
+        
+        [dic setObject:[Common getStringDisplayFormDate:[NSDate date] andFormatString:@"yyyy-MM-dd HH:mm"] forKey:@"startDate"];
+        
+        [dic setObject:[self createListId:arrSelected] forKey:@"items"];
+        
+        
+        [[BookingManage sharedInstance] createBooking:dic idSalon:salonCurr.idSalon dataResult:^(NSError *error, id idObject) {
+            
+            if(error){
+            
+                [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            }
+            else{
+               
+              NSString *message = [NSString stringWithFormat:@"Bạn đã đặt chỗ thành công đến Salon:%@",salonCurr.name];
+                [Common showAlert:self title:@"Thông báo" message:message buttonClick:nil];
+            }
+        }];
+        
+    }
+}
+
+-(NSString *)createListId:(NSArray *)arrService{
+
+    NSMutableString *strId = [NSMutableString string];
+    
+    for(Service *service in arrService){
+        
+        [strId appendFormat:@"%@,",service.idService];
+        
+    }
+    
+    if(strId.length > 0){
+        
+        [strId deleteCharactersInRange:NSMakeRange(strId.length - 1, 1)];
+    }
+    
+    return strId;
+
+}
+
+-(NSString *)createListPrice:(NSArray *)arrService{
+
+    NSMutableString *strPrice = [NSMutableString string];
+    
+    for(Service *service in arrService){
+        
+        [strPrice appendFormat:@"%@,",service.price];
+        
+    }
+    
+    if(strPrice.length > 0){
+        
+        [strPrice deleteCharactersInRange:NSMakeRange(strPrice.length - 1, 1)];
+    }
+    
+    return strPrice;
 }
 
 - (IBAction)back:(id)sender {
@@ -141,6 +230,8 @@
     arrSelected = nil;
     self.lbltotalPrice.text = @"0 VNĐ";
     
+    totalPrice = 0;
+    
     self.heightContraint.constant = 0;
     
     [self.tblService reloadData];
@@ -149,9 +240,11 @@
 #pragma mar - ServerBookingViewControllerDelegate
 -(void)selectedItems:(NSMutableArray *)arrItems controller:(ServerBookingViewController *)controller{
 
+    totalPrice = 0;
+    
     NSMutableString *strServices = [NSMutableString string];
     
-    NSInteger totalPrice = 0;
+
     for(Service *service in arrItems){
     
         [strServices appendFormat:@"%@, ",service.name];
@@ -172,11 +265,11 @@
     
     self.heightContraint.constant = arrSelected.count * 50;
     
+    
     [self.tblService reloadData];
     
 }
 #pragma mark - Table view DataSource - Delegate
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -206,7 +299,7 @@
         
         NSMutableString *strServices = [NSMutableString stringWithString:@""];
         
-        NSInteger totalPrice = 0;
+        totalPrice = 0;
         for(Service *service in arrSelected){
             
             [strServices appendFormat:@"%@, ",service.name];
@@ -224,7 +317,7 @@
         self.lbltotalPrice.text = [NSString stringWithFormat:@"%ld ngàn đồng", (long)totalPrice];
 
         self.heightContraint.constant = 50 * arrSelected.count;
-        [self.tblService reloadData];
+        [self.tblService deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 #pragma mark - NCCalendarViewControllerDelegate

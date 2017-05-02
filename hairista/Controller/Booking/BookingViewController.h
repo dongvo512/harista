@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BookingViewController : UIViewController
+@class Salon;
 
+@interface BookingViewController : UIViewController
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil Salon:(Salon *)salon;
 @end

@@ -52,12 +52,12 @@
 }
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSString *str = [NSString stringWithFormat:@"Device Token=%@",deviceToken];
+  //  NSString *str = [NSString stringWithFormat:@"Device Token=%@",deviceToken];
     NSLog(@"This is device token%@", deviceToken);
 }
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
-    NSString *str = [NSString stringWithFormat: @"Error: %@", err];
+  //  NSString *str = [NSString stringWithFormat: @"Error: %@", err];
     NSLog(@"Error %@",err.localizedDescription);
 }
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -36,7 +36,7 @@ static AuthenticateManage *sharedInstance = nil;
     return strImgUrl;
 }
 
-- (void)parseUpdateUserInfo:(NSDictionary *)responseDataObject error:(NSError **)error{
+- (void)parseUpdateUserInfo:(NSDictionary *)responseDataObject{
     
     if(Appdelegate_hairista.sessionUser){
    
@@ -50,7 +50,7 @@ static AuthenticateManage *sharedInstance = nil;
     }
 }
 
-- (void)parseIntroductionScreen:(NSDictionary *)responseDataObject error:(NSError **)error{
+- (void)parseIntroductionScreen:(NSDictionary *)responseDataObject{
     
     NSDictionary *dic = [responseDataObject objectForKey:@"profile"];
     
@@ -210,8 +210,7 @@ static AuthenticateManage *sharedInstance = nil;
         }
         else{
             
-            NSError *error = nil;
-            [self parseUpdateUserInfo:responseDataObject error:&error];
+            [self parseUpdateUserInfo:responseDataObject];
             dataApiResult(nil, @"OK");
         }
     }];
@@ -233,8 +232,7 @@ static AuthenticateManage *sharedInstance = nil;
         }
         else{
             
-            NSError *error;
-            [self parseIntroductionScreen:responseDataObject error:&error];
+            [self parseIntroductionScreen:responseDataObject];
             
             dataApiResult(nil, @"OK");
         }

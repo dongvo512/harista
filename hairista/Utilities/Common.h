@@ -43,4 +43,6 @@ typedef void (^CallAPIResult)(BOOL isError, NSString *stringError, id responseDa
 + (NSString *)formattedDateTimeWithDateString:(NSString *)inputDateString inputFormat:(NSString *)inputFormat outputFormat:(NSString *)outputFormat;
 #pragma mark - Alert
 +(void)showAlert:(UIViewController *)controller title:(NSString *)title message:(NSString *)message buttonClick:(ButtonClick)buttonClick;
++ (NSString *)getString3DigitsDot:(NSInteger )number;
++(NSDate *)getDateFromStringFormat:(NSString *)dateString format:(NSString *)format;
 @end
