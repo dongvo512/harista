@@ -16,12 +16,15 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "HairFullView.h"
 #import "MapDetailSalonViewController.h"
+#import "APIRequestHandler.h"
 
 #define LIMIT_ITEM @"14"
 
 @interface SalonDetailViewController ()<CHTCollectionViewDelegateWaterfallLayout>{
 
     Salon *salonCurr;
+    
+    HeaderSalonView *headerSalonView;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *arrImages;
@@ -47,6 +50,7 @@
     
     self.arrImages = [NSMutableArray array];
     
+    [self getDetailSalon];
     [self getListImageSalon];
     
     CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init];
@@ -70,6 +74,34 @@
 }
 
 #pragma mark - Get data
+
+-(void)getDetailSalon{
+
+    NSString *url = [NSString stringWithFormat:@"%@%@",URL_GET_DETAIL_SALON,salonCurr.idSalon];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorSalonDetail", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorSalonDetail" code:1 userInfo:userInfo];
+            
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+           
+        }
+        else{
+            
+            salonCurr.isFavorite = [responseDataObject objectForKey:@"isFavorite"];
+            
+            [headerSalonView.btnFavourite setHidden:NO];
+            [headerSalonView.btnFavourite setImage:[UIImage imageNamed:([salonCurr.isFavorite boolValue])?@"ic_favorite":@"ic_favorite_none"] forState:UIControlStateNormal];
+
+        }
+    }];
+
+}
+
 -(void)getListImageSalon{
 
     [[SalonManage sharedInstance] getListImageSalon:salonCurr.idSalon page:@"1" limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
@@ -146,7 +178,7 @@
     
     if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
       
-        HeaderSalonView *headerSalonView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderSalonView" forIndexPath:indexPath];
+        headerSalonView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderSalonView" forIndexPath:indexPath];
         headerSalonView.delegate = self;
         [headerSalonView setDataForView:salonCurr];
         reusableview = headerSalonView;
@@ -155,9 +187,49 @@
     return reusableview;
 }
 #pragma mark - HeaderSalonViewDelegate
--(void)selectFavorite:(Salon *)salon{
-
+-(void)selectFavorite:(UIButton *)btnCurr{
     
+    
+    if([salonCurr.isFavorite boolValue]){
+    
+        [btnCurr setEnabled:NO];
+        
+        [btnCurr setImage:[UIImage imageNamed:@"ic_favorite_none"] forState:UIControlStateNormal];
+        
+        [[SalonManage sharedInstance] deleteFavorite:salonCurr.idSalon dataApiResult:^(NSError *error, id idObject) {
+            
+            if(error){
+            
+                [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            }
+            else{
+            
+                salonCurr.isFavorite = @(0);
+                
+                [btnCurr setEnabled:YES];
+            }
+        }];
+    }
+    else{
+        
+         [btnCurr setEnabled:NO];
+         [btnCurr setImage:[UIImage imageNamed:@"ic_favorite"] forState:UIControlStateNormal];
+        
+        [[SalonManage sharedInstance] favorite:salonCurr.idSalon dataApiResult:^(NSError *error, id idObject) {
+            
+            if(error){
+                
+                [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            }
+            else{
+                
+                salonCurr.isFavorite = @(1);
+                
+                [btnCurr setEnabled:YES];
+            }
+        }];
+
+    }
 }
 -(void)selectLocation{
 

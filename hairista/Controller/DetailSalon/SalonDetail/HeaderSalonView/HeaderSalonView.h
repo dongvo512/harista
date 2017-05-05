@@ -14,11 +14,11 @@
 
 @property (nonatomic, weak) id delegate;
 -(void)setDataForView:(Salon *)salon;
-
+@property (weak, nonatomic) IBOutlet UIButton *btnFavourite;
 @end
 @protocol HeaderSalonViewDelegate <NSObject>
 
--(void)selectFavorite;
+-(void)selectFavorite:(UIButton *)btnCurr;
 -(void)selectLocation;
 
 @end

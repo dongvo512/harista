@@ -185,7 +185,7 @@
     self.lblEmail.text = Appdelegate_hairista.sessionUser.email;
     self.lblPhone.text = Appdelegate_hairista.sessionUser.phone;
     self.lblAddress.text = Appdelegate_hairista.sessionUser.homeAddress;
-    [self.imgAvatar sd_setImageWithURL:[NSURL URLWithString:Appdelegate_hairista.sessionUser.avatar] placeholderImage:IMG_DEFAULT];
+    [self.imgAvatar sd_setImageWithURL:[NSURL URLWithString:Appdelegate_hairista.sessionUser.avatar] placeholderImage:IMG_USER_DEFAULT];
     [self clearText];
     
     [[[SlideMenuViewController sharedInstance] viewMenuLeft] loadUserInfo];

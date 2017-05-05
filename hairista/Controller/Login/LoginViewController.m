@@ -64,7 +64,7 @@
     
     self.btnRegister.layer.cornerRadius = heightCurr/2;
     
-    self.txtPhone.text = @"0932188608";
+    self.txtPhone.text = @"0908123456";
     self.txtPassword.text = @"123456";
     
 }
@@ -143,6 +143,11 @@
         }
         else{
            
+            if([Appdelegate_hairista.sessionUser.role isEqualToString:@"salon"]){
+            
+                isUserManger = YES;
+            }
+        
             SlideMenuViewController *vcSlideMenu = [SlideMenuViewController sharedInstance];
             vcSlideMenu.isUserManager = isUserManger;
             [self presentViewController:vcSlideMenu animated:YES completion:nil];

@@ -90,15 +90,15 @@
     
     if(!dateTime){
     
-        
         UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:@"Thông báo" message:@"Bạn chưa chọn thời gian" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         
-        
         [vcAlert addAction:Oke];
         
         [self presentViewController:vcAlert animated:YES completion:nil];
+        
+        return;
 
     }
     
@@ -114,10 +114,11 @@
         
         [self presentViewController:vcAlert animated:YES completion:nil];
         
+        return;
+        
     }
     
     if(self.txtFullName.txtTextField.text.length == 0){
-        
         
         UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:@"Thông báo" message:@"Bạn chưa nhập họ và tên" preferredStyle:UIAlertControllerStyleAlert];
         
@@ -128,9 +129,9 @@
         
         [self presentViewController:vcAlert animated:YES completion:nil];
         
+        return;
+        
     }
-
-
     
     if([self.cboTime getText].length > 0 && [self.cboService getText].length > 0 && self.txtFullName.txtTextField.text.length > 0){
     
@@ -141,14 +142,17 @@
         
         [dic setObject:[self createListPrice:arrSelected] forKey:@"price"];
         
-        [dic setObject:[NSString stringWithFormat:@"%ld",totalPrice] forKey:@"totalPrice"];
+        [dic setObject:[NSString stringWithFormat:@"%ld",(long)totalPrice] forKey:@"totalPrice"];
         
-        [dic setObject:[Common getStringDisplayFormDate:[NSDate date] andFormatString:@"yyyy-MM-dd HH:mm"] forKey:@"startDate"];
+        [dic setObject:[Common formattedDateTimeWithDateString:@"dd/MM/yyyy HH:mm" inputFormat:self.cboTime.scrlbName.lblText.text outputFormat:@"yyyy-MM-dd HH:mm"] forKey:@"startDate"];
         
         [dic setObject:[self createListId:arrSelected] forKey:@"items"];
         
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         [[BookingManage sharedInstance] createBooking:dic idSalon:salonCurr.idSalon dataResult:^(NSError *error, id idObject) {
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             
             if(error){
             

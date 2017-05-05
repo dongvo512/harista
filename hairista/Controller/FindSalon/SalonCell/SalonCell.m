@@ -13,11 +13,14 @@
 @interface SalonCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgSalon;
+@property (weak, nonatomic) IBOutlet UILabel *lblOpenTime;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingStar;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblSalonName;
 @property (weak, nonatomic) IBOutlet UILabel *lblSalonPhone;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblSalonAddress;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthContraintStart;
 
 @end
 
@@ -40,6 +43,23 @@
     self.lblSalonPhone.text = salon.phone;
     self.lblSalonName.text = salon.name;
     self.lblSalonAddress.text = salon.homeAddress;
+    
+    if(salon.openTime.length > 0 && salon.closeTime.length > 0){
+        
+        NSString *openTime = [salon.openTime substringWithRange:NSMakeRange(0, salon.openTime.length - 3)];
+        
+        NSString *closeTime = [salon.closeTime substringWithRange:NSMakeRange(0, salon.closeTime.length - 3)];
+        
+        self.lblOpenTime.text = [NSString stringWithFormat:@"%@ - %@", openTime, closeTime];
+    }
+    else{
+        
+        self.lblOpenTime.text = @"";
+    }
+
+    self.widthContraintStart.constant = (80/5)*salon.avgRate.integerValue;
+    
+    self.trailingStar.constant = (80 - (80/5)*salon.avgRate.integerValue) + 8;
 
 }
 

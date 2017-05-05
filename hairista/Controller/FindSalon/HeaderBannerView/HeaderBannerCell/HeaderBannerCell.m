@@ -29,10 +29,6 @@
 }
 
 -(void)setDataForCell:(Salon *)salon{
-
-  //  self.imgViewBanner.image = [UIImage imageNamed:salon.strSalonUrl];
-    
-   // salon.avgRate = @"3";
     
     [self.imgViewBanner sd_setImageWithURL:[NSURL URLWithString:salon.avatar] placeholderImage:IMG_DEFAULT];
     self.lblSalonName.text = salon.name;
@@ -42,7 +38,18 @@
     
     self.trailingStar.constant = (80 - (80/5)*salon.avgRate.integerValue) + 8;
     
-    self.lblSalonTimeOpen.text = [NSString stringWithFormat:@"%@ - %@",salon.openTime,salon.closeTime];
+    if(salon.openTime.length > 0 && salon.closeTime.length > 0){
+        
+        NSString *openTime = [salon.openTime substringWithRange:NSMakeRange(0, salon.openTime.length - 3)];
+        
+        NSString *closeTime = [salon.closeTime substringWithRange:NSMakeRange(0, salon.closeTime.length - 3)];
+        
+        self.lblSalonTimeOpen.text = [NSString stringWithFormat:@"%@ - %@", openTime, closeTime];
+    }
+    else{
+    
+        self.lblSalonTimeOpen.text = @"";
+    }
 }
 
 @end

@@ -34,6 +34,11 @@
 
 -(void)getListSalonNearBy:(NSString *)lateitude longLocation:(NSString *)longitude pageindex:(NSString *)pageIndex limit:(NSString *)limit provinceid:(NSString *)provinceID district:(NSString *)districtID name:(NSString *)name dataApiResult:(DataAPIResult)dataApiResult;
 
+-(void)deleteFavorite:(NSString *)idSalon dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)favorite:(NSString *)idSalon dataApiResult:(DataAPIResult)dataApiResult;
+
+
 //- (void)getDetailSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult;
 
 @end

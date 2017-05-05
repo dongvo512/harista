@@ -50,6 +50,7 @@
 @property (nonatomic, strong) NSString *openTime;
 @property (nonatomic, strong) NSString *closeTime;
 @property (nonatomic, strong) NSArray *childs;
+@property (nonatomic, strong) NSNumber *isFavorite;
 @property (nonatomic, strong) NSString *districtId;
 @property (nonatomic, strong) NSString *provinceId;
 @property (nonatomic, strong) Province *provinceObject;

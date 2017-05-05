@@ -318,6 +318,7 @@ static FindSalonViewController *sharedInstance = nil;
     
     SalonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SalonCell"];
     Salon *salon = [self.arrSalons objectAtIndex:indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setDataForCell:salon];
     
     return cell;

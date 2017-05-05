@@ -190,7 +190,43 @@ static SalonManage *sharedInstance = nil;
     return arrListSalons;
 }
 
-
+-(NSMutableArray *)parseListSalonsFavorite:(NSDictionary *)responseDataObject{
+    
+    NSArray *arrData = [responseDataObject objectForKey:@"data"];
+    NSMutableArray *arrListSalons = nil;
+    if(arrData.count > 0){
+    
+         arrListSalons = [NSMutableArray array];
+    }
+   
+    for(NSDictionary *dic in arrData){
+    
+        NSDictionary *dicSalon = [dic objectForKey:@"user"];
+       
+        if(dicSalon){
+        
+            Salon *salon = [[Salon alloc] init];
+            salon.idSalon = CHECK_NIL([dicSalon objectForKey:@"id"]);
+            salon.avatar = CHECK_NIL([dicSalon objectForKey:@"avatar"]);
+            salon.avgRate = CHECK_NIL([dicSalon objectForKey:@"avgRate"]);
+            salon.openTime = CHECK_NIL([dicSalon objectForKey:@"openTime"]);
+            salon.closeTime = CHECK_NIL([dicSalon objectForKey:@"closeTime"]);
+            salon.email = CHECK_NIL([dicSalon objectForKey:@"email"]);
+            salon.homeAddress = CHECK_NIL([dicSalon objectForKey:@"homeAddress"]);
+            salon.name = CHECK_NIL([dicSalon objectForKey:@"name"]);
+            salon.phone = CHECK_NIL([dicSalon objectForKey:@"phone"]);
+            salon.lastLat = CHECK_NIL([dicSalon objectForKey:@"lastLat"]);
+            salon.lastLng = CHECK_NIL([dicSalon objectForKey:@"lastLng"]);
+            salon.totalComment = CHECK_NIL([dicSalon objectForKey:@"totalComment"]);
+            
+            
+            [arrListSalons addObject:salon];
+        }
+      
+    }
+    
+    return arrListSalons;
+}
 
 - (Image *)uploadUrlImageForSalon:(NSDictionary *)responseDataObject error:(NSError **)error{
     
@@ -311,7 +347,7 @@ static SalonManage *sharedInstance = nil;
 //sendMessage
 
 #pragma mark - Call API
-
+//
 //- (void)getDetailSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult{
 //
 //    
@@ -512,6 +548,51 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorListFavoriteSalon", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorListFavoriteSalon" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSMutableArray *arrData = [self parseListSalonsFavorite:responseDataObject];
+            
+            dataApiResult(nil, arrData);
+            
+        }
+    }];
+}
+
+-(void)deleteFavorite:(NSString *)idSalon dataApiResult:(DataAPIResult)dataApiResult{
+
+    NSString *url = [NSString stringWithFormat:@"%@%@/delete",URL_DELETE_FAVORITE,idSalon];
+    
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_DELETE withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorDeleteFavorite", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorDeleteFavorite" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            dataApiResult(nil, @"OK");
+            
+        }
+    }];
+}
+-(void)favorite:(NSString *)idSalon dataApiResult:(DataAPIResult)dataApiResult{
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@",URL_FAVORITE,idSalon];
+    
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_POST withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorFavorite", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorFavorite" code:1 userInfo:userInfo];
             dataApiResult(error, nil);
         }
         else{

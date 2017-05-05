@@ -138,6 +138,7 @@
 #define kHTTP_METHOD_POST   @"POST"
 #define kHTTP_METHOD_GET    @"GET"
 #define kHTTP_METHOD_PUT    @"PUT"
+#define kHTTP_METHOD_DELETE @"DELETE"
 
 #define URL_POST_REGISTER @"https://salonhair.herokuapp.com/api/v1/register"
 #define URL_POST_LOGIN @"https://salonhair.herokuapp.com/api/v1/login"
@@ -166,3 +167,8 @@
 #define URL_POST_CREATE_BOOKING @"https://salonhair.herokuapp.com/api/v1/salons/"
 
 #define URL_GET_LIST_BOOKING_OF_ME @"https://salonhair.herokuapp.com/api/v1/bookings/me"
+
+#define URL_DELETE_FAVORITE @"https://salonhair.herokuapp.com/api/v1/favorites/"
+
+#define URL_FAVORITE @"https://salonhair.herokuapp.com/api/v1/favorites/"
+

@@ -28,8 +28,6 @@
 		B814EEC21EB6368500B6475C /* ServiceBookingSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814EEC01EB6368500B6475C /* ServiceBookingSelectCell.xib */; };
 		B814EEC71EB645E100B6475C /* ServerSelectedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B814EEC51EB645E100B6475C /* ServerSelectedCell.m */; };
 		B814EEC81EB645E100B6475C /* ServerSelectedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814EEC61EB645E100B6475C /* ServerSelectedCell.xib */; };
-		B81732591E5B08B300DD8586 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81732571E5B08B300DD8586 /* Fabric.framework */; };
-		B817325A1E5B08B300DD8586 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81732581E5B08B300DD8586 /* Crashlytics.framework */; };
 		B82E6D201E44685900C51770 /* CatagoriesHairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82E6D1E1E44685900C51770 /* CatagoriesHairViewController.m */; };
 		B82E6D211E44685900C51770 /* CatagoriesHairViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82E6D1F1E44685900C51770 /* CatagoriesHairViewController.xib */; };
 		B82E6D251E44721000C51770 /* Catagories.m in Sources */ = {isa = PBXBuildFile; fileRef = B82E6D241E44721000C51770 /* Catagories.m */; };
@@ -86,8 +84,9 @@
 		B880C6BD1E45FD1B00AA2B72 /* ServicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B880C6BB1E45FD1B00AA2B72 /* ServicesViewController.xib */; };
 		B880C6C11E45FED400AA2B72 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = B880C6C01E45FED400AA2B72 /* Service.m */; };
 		B880C6C51E45FFEA00AA2B72 /* GroupService.m in Sources */ = {isa = PBXBuildFile; fileRef = B880C6C41E45FFEA00AA2B72 /* GroupService.m */; };
-		B8818F931E9D1A8500868FA7 /* Pods_hairista.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA585DE927194AC1C684CE1 /* Pods_hairista.framework */; };
-		B8818F941E9D1A8500868FA7 /* Pods_hairista.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA585DE927194AC1C684CE1 /* Pods_hairista.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B88A3C7F1EB9C6F200234671 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81732571E5B08B300DD8586 /* Fabric.framework */; };
+		B88A3C811EB9C6F700234671 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81732581E5B08B300DD8586 /* Crashlytics.framework */; };
+		B88A3C841EB9CC3600234671 /* Pods_hairista.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A3C831EB9CC3600234671 /* Pods_hairista.framework */; };
 		B88D7CA21E3A0B0E006B8019 /* ItemMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D7CA11E3A0B0E006B8019 /* ItemMenu.m */; };
 		B88D7CA81E3A1342006B8019 /* BookingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D7CA61E3A1342006B8019 /* BookingsViewController.m */; };
 		B88D7CA91E3A1342006B8019 /* BookingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88D7CA71E3A1342006B8019 /* BookingsViewController.xib */; };
@@ -138,7 +137,6 @@
 		B8C32B4B1E2E0FAB00FB0E11 /* Salon.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C32B4A1E2E0FAB00FB0E11 /* Salon.m */; };
 		B8C32B501E2E11B200FB0E11 /* SalonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C32B4E1E2E11B200FB0E11 /* SalonCell.m */; };
 		B8C32B511E2E11B200FB0E11 /* SalonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C32B4F1E2E11B200FB0E11 /* SalonCell.xib */; };
-		B8CAD11A246065E35860C86F /* Pods_hairista.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA585DE927194AC1C684CE1 /* Pods_hairista.framework */; };
 		B8CB12181EB2FA8F00ECD857 /* MapDetailSalonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CB12161EB2FA8F00ECD857 /* MapDetailSalonViewController.m */; };
 		B8CB12191EB2FA8F00ECD857 /* MapDetailSalonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CB12171EB2FA8F00ECD857 /* MapDetailSalonViewController.xib */; };
 		B8CB121D1EB3364700ECD857 /* ListNearBySalonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CB121B1EB3364700ECD857 /* ListNearBySalonViewController.m */; };
@@ -213,20 +211,6 @@
 		B8EF74C81E4CBE7C001466C4 /* NCCalendarViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EF74C31E4CBE7C001466C4 /* NCCalendarViewController_iPhone.xib */; };
 		B8EF74CB1E4CBEA1001466C4 /* AJRBackgroundDimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EF74CA1E4CBEA1001466C4 /* AJRBackgroundDimmer.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		B8818F951E9D1A8600868FA7 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B8818F941E9D1A8500868FA7 /* Pods_hairista.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		30DBF0C8678551EB89283328 /* Pods-hairista.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hairista.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hairista/Pods-hairista.debug.xcconfig"; sourceTree = "<group>"; };
@@ -359,6 +343,7 @@
 		B880C6C31E45FFEA00AA2B72 /* GroupService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupService.h; sourceTree = "<group>"; };
 		B880C6C41E45FFEA00AA2B72 /* GroupService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupService.m; sourceTree = "<group>"; };
 		B8818F961E9D1D4C00868FA7 /* hairista.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = hairista.entitlements; sourceTree = "<group>"; };
+		B88A3C831EB9CC3600234671 /* Pods_hairista.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_hairista.framework; path = "Pods/../build/Release-iphoneos/Pods_hairista.framework"; sourceTree = "<group>"; };
 		B88D7CA01E3A0B0E006B8019 /* ItemMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemMenu.h; sourceTree = "<group>"; };
 		B88D7CA11E3A0B0E006B8019 /* ItemMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemMenu.m; sourceTree = "<group>"; };
 		B88D7CA51E3A1342006B8019 /* BookingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingsViewController.h; sourceTree = "<group>"; };
@@ -540,13 +525,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B88A3C841EB9CC3600234671 /* Pods_hairista.framework in Frameworks */,
+				B88A3C7F1EB9C6F200234671 /* Fabric.framework in Frameworks */,
 				B846AB021EA0C92B00C2B858 /* MobileCoreServices.framework in Frameworks */,
+				B88A3C811EB9C6F700234671 /* Crashlytics.framework in Frameworks */,
 				B846AB001EA0C91F00C2B858 /* ImageIO.framework in Frameworks */,
 				B803D0B81E3BA1340078857E /* MapKit.framework in Frameworks */,
-				B8818F931E9D1A8500868FA7 /* Pods_hairista.framework in Frameworks */,
-				B817325A1E5B08B300DD8586 /* Crashlytics.framework in Frameworks */,
-				B81732591E5B08B300DD8586 /* Fabric.framework in Frameworks */,
-				B8CAD11A246065E35860C86F /* Pods_hairista.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +573,7 @@
 		B803D0B61E3BA1330078857E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B88A3C831EB9CC3600234671 /* Pods_hairista.framework */,
 				B846AB011EA0C92B00C2B858 /* MobileCoreServices.framework */,
 				B846AAFF1EA0C91F00C2B858 /* ImageIO.framework */,
 				B803D0B71E3BA1340078857E /* MapKit.framework */,
@@ -1728,7 +1713,6 @@
 				110ADD2908F0496015AA7BCF /* [CP] Embed Pods Frameworks */,
 				2D52EF98CCEC6F52E91821E6 /* [CP] Copy Pods Resources */,
 				B81732561E5B085500DD8586 /* ShellScript */,
-				B8818F951E9D1A8600868FA7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2112,10 +2096,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "f86f1e74-05eb-442e-b7d2-7db4706d2f54";
+				PROVISIONING_PROFILE = "f5cdc673-ff82-4bb1-9bb8-54e4099296ca";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2157,9 +2141,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "f86f1e74-05eb-442e-b7d2-7db4706d2f54";
+				PROVISIONING_PROFILE = "f5cdc673-ff82-4bb1-9bb8-54e4099296ca";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2174,19 +2158,21 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = hairista/hairista.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Thin Tran (YN248DF397)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thin Tran (YN248DF397)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = YN248DF397;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
 				);
 				GCC_PREFIX_HEADER = harista.pch;
 				INFOPLIST_FILE = hairista/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cenvisco.hairistas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f5cdc673-ff82-4bb1-9bb8-54e4099296ca";
-				PROVISIONING_PROFILE_SPECIFIER = hairista_disss;
+				PROVISIONING_PROFILE = "6956b992-912f-42c0-8d3a-2fb1dc811dd7";
+				PROVISIONING_PROFILE_SPECIFIER = hairista;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2199,19 +2185,21 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = hairista/hairista.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Thin Tran (YN248DF397)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thin Tran (YN248DF397)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = YN248DF397;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
 				);
 				GCC_PREFIX_HEADER = harista.pch;
 				INFOPLIST_FILE = hairista/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cenvisco.hairistas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f5cdc673-ff82-4bb1-9bb8-54e4099296ca";
-				PROVISIONING_PROFILE_SPECIFIER = hairista_disss;
+				PROVISIONING_PROFILE = "6956b992-912f-42c0-8d3a-2fb1dc811dd7";
+				PROVISIONING_PROFILE_SPECIFIER = hairista;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

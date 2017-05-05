@@ -154,8 +154,12 @@
                      }
                      completion:^(BOOL finished){
                          
-                         [self.tblView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(self.arrComments.count -1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                         if(self.arrComments.count > 0){
+                         
+                             [self.tblView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(self.arrComments.count -1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 
+                         }
+                        
                      }];
     }
 
