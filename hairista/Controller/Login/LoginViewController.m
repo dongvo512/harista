@@ -118,11 +118,6 @@
 
 - (IBAction)login:(id)sender {
     
-//    if([self.txtEmail.text isEqualToString:@"Manager"] && [self.txtPassword.text isEqualToString:@"123456"]){
-//    
-//        isUserManger = YES;
-//    }
-    
     if([self checkValidateLogin]){
     
         return;
@@ -142,7 +137,12 @@
 
         }
         else{
-           
+            
+            NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:idObject];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:encodedObject forKey:@"FirstRun"];
+            [defaults synchronize];
+            
             if([Appdelegate_hairista.sessionUser.role isEqualToString:@"salon"]){
             
                 isUserManger = YES;

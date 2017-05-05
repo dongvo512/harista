@@ -8,13 +8,13 @@
 
 #import "ManageBookingCell.h"
 #import "Booking.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ManageBookingCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewAvatar;
 @property (weak, nonatomic) IBOutlet UILabel *lblUserName;
-@property (weak, nonatomic) IBOutlet UILabel *lblServiceName;
+@property (weak, nonatomic) IBOutlet UILabel *lblTotalPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblUserPhone;
 @property (weak, nonatomic) IBOutlet UILabel *lblTimeBooking;
 
@@ -35,15 +35,23 @@
 
 - (void)setDataForCell:(Booking *)booking{
 
-    self.imgViewAvatar.image = [UIImage imageNamed:booking.imgAvtarName];
+     [self.imgViewAvatar sd_setImageWithURL:[NSURL URLWithString:booking.user.avatar] placeholderImage:IMG_USER_DEFAULT];
     
-    self.lblUserName.text = booking.strUserNameBooking;
+    self.lblUserName.text = booking.name;
     
-    self.lblUserPhone.text = booking.strUserPhone;
+    self.lblUserPhone.text = booking.user.phone;
     
-    self.lblServiceName.text = booking.strListService;
+    if(booking.totalPrice.length > 0){
     
-    self.lblTimeBooking.text = booking.strDate;
+        NSString *strTotal = [Common getString3DigitsDot:booking.totalPrice.integerValue];
+        self.lblTotalPrice.text = [NSString stringWithFormat:@"%@ đ",strTotal];
+    }
+    
+    NSString *dayName = [Common getDayInWeekVietNamese:[Common getDateFromStringFormat:booking.startDate format:@"yyyy-MM-dd HH:mm:ss"]];
+    
+    NSString *strStartTime = [Common formattedDateTimeWithDateString:booking.startDate inputFormat:@"yyyy-MM-dd HH:mm:ss" outputFormat:@"dd/MM/yyyy HH:mm"];
+    
+    self.lblTimeBooking.text = [NSString stringWithFormat:@"%@, %@",dayName,strStartTime];
     
 }
 

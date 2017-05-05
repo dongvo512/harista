@@ -59,6 +59,16 @@ static SlideMenuViewController *sharedInstance = nil;
     
 }
 
++ (void)resetSharedInstance {
+    
+    @synchronized(self) {
+        
+        sharedInstance = nil;
+        
+    }
+}
+
+
 #pragma mark - Init
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
 

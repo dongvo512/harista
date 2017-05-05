@@ -14,11 +14,16 @@
 #import "CommonDefine.h"
 #import "DetailBookingViewController.h"
 #import "ManageBookingViewController.h"
+#import "BookingManage.h"
+#import "Date.h"
+
+#define LIMIT_ITEM @"14"
 
 @interface ManageListBookingViewController (){
 
     HeaderViewBooking *headerView;
     NSInteger typeBooking;
+    NSInteger indexPage;
 }
 
 typedef NS_ENUM(NSInteger, TypeBooking) {
@@ -62,7 +67,14 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
     
     [self.tblBooking registerNib:[UINib nibWithNibName:@"ManageBookingCell" bundle:nil] forCellReuseIdentifier:@"ManageBookingCell"];
     
-    [self createDataTemp];
+    switch (typeBooking) {
+        case InWeek:
+            [self getListBookingWeek];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,62 +82,36 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Metho
-- (void)createDataTemp{
+#pragma mark - Method
+-(void)getListBookingWeek{
 
-    self.arrBooking = [NSMutableArray array];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    Booking *booking_1 = [[Booking alloc] init];
-    booking_1.strDate = @"9:30 AM";
-    booking_1.imgAvtarName = @"ngan_1";
-    booking_1.strUserNameBooking = @"Hồ Ngọc Hà";
-    booking_1.strUserPhone = @"093123343";
-    booking_1.strListService = @"Cắt tóc, gội đầu";
-    [self.arrBooking addObject:booking_1];
+    Date *dateWeek = [Common getStartEndDate:NSCalendarUnitWeekOfMonth formatOutPut:@"yyyy-MM-dd"];
     
-    Booking *booking_2 = [[Booking alloc] init];
-    booking_2.strDate = @"11:30 AM";
-    booking_2.imgAvtarName = @"ngan_2";
-    booking_2.strUserNameBooking = @"Nguyễn Hồng Nhung";
-    booking_2.strUserPhone = @"093111111";
-    booking_2.strListService = @"Cắt tóc, Matxa";
-    [self.arrBooking addObject:booking_2];
-    
-    Booking *booking_3 = [[Booking alloc] init];
-    booking_3.strDate = @"7:30 PM";
-    booking_3.strUserNameBooking = @"Tiên Cookie";
-    booking_3.strUserPhone = @"0908073123";
-    booking_3.imgAvtarName = @"ngan_3";
-    booking_3.strListService = @"Nhuộm tóc";
-    [self.arrBooking addObject:booking_3];
+    [[BookingManage sharedInstance] getListBookingOfMe:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:dateWeek.startDate endDate:dateWeek.endDate dataResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+        
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+        
+            NSArray *arrData = idObject;
+            
+            if(arrData.count > 0){
+            
+                self.arrBooking = [NSMutableArray arrayWithArray:arrData];
+                [self.tblBooking reloadData];
+            }
+        }
+        
+    }];
 }
-
 
 #pragma mark - Table view DataSource - Delegate
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    NSInteger num = 0;
-    
-    switch (typeBooking) {
-        case Today:
-            num = 1;
-            break;
-            
-        case InWeek:
-            num = 7;
-            break;
-            
-        case InMonth:
-            num = 30;
-            break;
-            
-        default:
-            break;
-    }
-    
-    return num;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -139,7 +125,6 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setDataForCell:booking];
 
-    
     return cell;
 }
 
@@ -147,36 +132,6 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
 
     DetailBookingViewController *vcDetailBooking = [[DetailBookingViewController alloc] initWithNibName:@"DetailBookingViewController" bundle:nil];
     [self.vcManageBooking.navigationController pushViewController:vcDetailBooking animated:YES];
-}
-
-#pragma mark - Header
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    
-    UIView *view = nil;
-    
-     headerView = [[HeaderViewBooking alloc] initWithFrame:CGRectMake(0, 0, SW, 50)];
-    
-   /* if(!headerView){
-        
-       
-    }*/
-    
-    view = headerView;
-    return view;
-}
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    
-    return nil;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    return 50;
-    
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    
-    return CGFLOAT_MIN;
-    
 }
 
 @end

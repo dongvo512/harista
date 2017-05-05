@@ -12,6 +12,7 @@
 @interface SlideMenuViewController : UIViewController
 
 + (id)sharedInstance;
++ (void)resetSharedInstance;
 @property (nonatomic, strong) MenuLeftView *viewMenuLeft;
 @property (nonatomic) BOOL isUserManager;
 // nhấn nút menu.

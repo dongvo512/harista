@@ -12,6 +12,7 @@
 #import "SlideMenuViewController.h"
 #import "UIColor+Method.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "LoginViewController.h"
 
 #define HEIGHT_CELL_MENU 60
 
@@ -91,8 +92,19 @@
     
 }
 
-
 #pragma mark - Action
+- (IBAction)touchLogout:(id)sender {
+    
+    Appdelegate_hairista.sessionUser = nil;
+    
+    LoginViewController *vcLogin = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    
+    [[SlideMenuViewController sharedInstance] presentViewController:vcLogin animated:YES completion:^{
+        
+        [SlideMenuViewController resetSharedInstance];
+    }];
+}
+
 - (IBAction)touchBtnUpdateUserInfo:(id)sender {
     
     [[SlideMenuViewController sharedInstance] selectedItemInMenu:Item_InfoUser];

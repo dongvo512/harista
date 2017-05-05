@@ -144,7 +144,7 @@
         
         [dic setObject:[NSString stringWithFormat:@"%ld",(long)totalPrice] forKey:@"totalPrice"];
         
-        [dic setObject:[Common formattedDateTimeWithDateString:@"dd/MM/yyyy HH:mm" inputFormat:self.cboTime.scrlbName.lblText.text outputFormat:@"yyyy-MM-dd HH:mm"] forKey:@"startDate"];
+        [dic setObject:[Common formattedDateTimeWithDateString:self.cboTime.scrlbName.lblText.text inputFormat:@"dd/MM/yyyy HH:mm" outputFormat:@"yyyy-MM-dd HH:mm"] forKey:@"startDate"];
         
         [dic setObject:[self createListId:arrSelected] forKey:@"items"];
         
@@ -214,6 +214,8 @@
 
 - (void)didSelect:(CGRect)frame inView:(UIView *)vieParent andType:(NSInteger)type andCombobox:(NCComboboxNewView*)comboboxCurr{
 
+    [self.view endEditing:YES];
+    
     if([comboboxCurr isEqual:self.cboTime]){
     
         NCCalendarViewController *vcCalendar = [[NCCalendarViewController alloc] initWithDate:dateTime andType:1];

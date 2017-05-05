@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -100,6 +99,26 @@
                                 <action selector="touchBtnUpdateUserInfo:" destination="-1" eventType="touchUpInside" id="1eH-DJ-LME"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntP-0b-VIS">
+                            <rect key="frame" x="22" y="105" width="46" height="19"/>
+                            <color key="backgroundColor" red="0.91311123704663211" green="0.91311123704663211" blue="0.91311123704663211" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="46" id="XQI-DA-2Lb"/>
+                                <constraint firstAttribute="height" constant="19" id="uEF-ku-FNI"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="Thoát">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="touchLogout:" destination="-1" eventType="touchUpInside" id="9Xc-vh-ha5"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -116,8 +135,10 @@
                         <constraint firstAttribute="trailing" secondItem="s8Q-2b-ubP" secondAttribute="trailing" constant="8" id="Vxl-qs-T93"/>
                         <constraint firstItem="7IM-FT-FeU" firstAttribute="top" secondItem="89H-Sn-eTB" secondAttribute="top" id="ZO5-Wa-OsE"/>
                         <constraint firstAttribute="trailing" secondItem="75B-DX-jID" secondAttribute="trailing" constant="8" id="aBC-70-kW4"/>
+                        <constraint firstItem="ntP-0b-VIS" firstAttribute="leading" secondItem="89H-Sn-eTB" secondAttribute="leading" constant="22" id="aFL-zR-LhA"/>
                         <constraint firstItem="YbH-Vj-l9E" firstAttribute="centerY" secondItem="89H-Sn-eTB" secondAttribute="centerY" id="gXy-HX-HeA"/>
                         <constraint firstAttribute="trailing" secondItem="7IM-FT-FeU" secondAttribute="trailing" id="k0b-jq-yzW"/>
+                        <constraint firstItem="ntP-0b-VIS" firstAttribute="top" secondItem="YbH-Vj-l9E" secondAttribute="bottom" constant="6" id="kf8-sz-8qe"/>
                         <constraint firstItem="75B-DX-jID" firstAttribute="top" secondItem="SGm-eD-oaw" secondAttribute="bottom" constant="3" id="lC6-ab-ma1"/>
                         <constraint firstItem="75B-DX-jID" firstAttribute="leading" secondItem="YbH-Vj-l9E" secondAttribute="trailing" constant="16" id="ntO-OX-hmz"/>
                         <constraint firstItem="7IM-FT-FeU" firstAttribute="leading" secondItem="89H-Sn-eTB" secondAttribute="leading" id="wH6-ay-tfn"/>

@@ -50,7 +50,7 @@ static AuthenticateManage *sharedInstance = nil;
     }
 }
 
-- (void)parseIntroductionScreen:(NSDictionary *)responseDataObject{
+- (SessionUser *)parseIntroductionScreen:(NSDictionary *)responseDataObject{
     
     NSDictionary *dic = [responseDataObject objectForKey:@"profile"];
     
@@ -122,6 +122,9 @@ static AuthenticateManage *sharedInstance = nil;
     Appdelegate_hairista.sessionUser.avatar = CHECK_NIL([dic objectForKey:@"avatar"]);
     
     Appdelegate_hairista.sessionUser.wallpaper = CHECK_NIL([dic objectForKey:@"wallpaper"]);
+    
+    return Appdelegate_hairista.sessionUser;
+    
 }
 
 - (NSMutableArray *)parseListImageUser:(NSDictionary *)responseDataObject{
@@ -232,9 +235,9 @@ static AuthenticateManage *sharedInstance = nil;
         }
         else{
             
-            [self parseIntroductionScreen:responseDataObject];
+             SessionUser *user = [self parseIntroductionScreen:responseDataObject];
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, user);
         }
     }];
     

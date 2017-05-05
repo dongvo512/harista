@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class Date;
+
 #define MAX_TOTAL_MB_FILE 4*1024*1024
 
 @interface Common : NSObject
@@ -45,4 +47,6 @@ typedef void (^CallAPIResult)(BOOL isError, NSString *stringError, id responseDa
 +(void)showAlert:(UIViewController *)controller title:(NSString *)title message:(NSString *)message buttonClick:(ButtonClick)buttonClick;
 + (NSString *)getString3DigitsDot:(NSInteger )number;
 +(NSDate *)getDateFromStringFormat:(NSString *)dateString format:(NSString *)format;
++ (Date *)getStartEndDate:(NSCalendarUnit)typeOutput formatOutPut:(NSString *)format;
++ (NSString *)getDayInWeekVietNamese:(NSDate *)date;
 @end

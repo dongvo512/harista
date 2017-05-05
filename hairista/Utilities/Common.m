@@ -9,6 +9,7 @@
 #import "Common.h"
 #import "CommonDefine.h"
 #import "Reachability.h"
+#import "Date.h"
 
 @interface Common()
 
@@ -106,6 +107,56 @@
     
     return dateFromString;
 }
++ (NSString *)getDayInWeekVietNamese:(NSDate *)date{
+    
+    NSString  *strDay = STRING_EMPTY;
+    
+    NSDateFormatter *weekday = [[NSDateFormatter alloc] init];
+    [weekday setDateFormat: @"EEEE"];
+    
+    NSString *strDayInWeek = [weekday stringFromDate:date];
+    
+    if([strDayInWeek isEqualToString:@"Monday"]){
+        
+        strDay = @"Thứ hai";
+    }
+    
+    
+    if([strDayInWeek isEqualToString:@"Tuesday"]){
+        
+        strDay = @"Thứ ba";
+    }
+    
+    
+    if([strDayInWeek isEqualToString:@"Wednesday"]){
+        
+        strDay = @"Thứ tư";
+    }
+    
+    if([strDayInWeek isEqualToString:@"Thursday"]){
+        
+        strDay = @"Thứ năm";
+    }
+    
+    if([strDayInWeek isEqualToString:@"Friday"]){
+        
+        strDay = @"Thứ sáu";
+    }
+    
+    if([strDayInWeek isEqualToString:@"Saturday"]){
+        
+        strDay = @"Thứ bảy";
+    }
+    
+    if([strDayInWeek isEqualToString:@"Sunday"]){
+        
+        strDay = @"Chủ nhật";
+    }
+    
+    return strDay;
+}
+
+
 + (NSString *)formattedDateTimeWithDateString:(NSString *)inputDateString inputFormat:(NSString *)inputFormat outputFormat:(NSString *)outputFormat
 {
     NSString *formattedDateTime = @"";
@@ -186,6 +237,29 @@
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:date];
     
     return [components second];
+}
+
++ (Date *)getStartEndDate:(NSCalendarUnit)typeOutput formatOutPut:(NSString *)format{
+
+    Date *date = [[Date alloc] init];
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDate *now = [NSDate date];
+    NSDate *startOfTheWeek;
+    NSDate *endOfWeek;
+    NSTimeInterval interval;
+    [cal rangeOfUnit:typeOutput
+           startDate:&startOfTheWeek
+            interval:&interval
+             forDate:now];
+    //startOfWeek holds now the first day of the week, according to locale (monday vs. sunday)
+    
+    endOfWeek = [startOfTheWeek dateByAddingTimeInterval:interval-1];
+    
+    date.startDate = [self getStringDisplayFormDate:startOfTheWeek andFormatString:format];
+    date.endDate = [self getStringDisplayFormDate:endOfWeek andFormatString:format];
+    return date;
+    
 }
 
 + (NSString *)upperFirstLetter:(NSString *)strKeyWord{

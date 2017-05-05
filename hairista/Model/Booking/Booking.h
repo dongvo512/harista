@@ -27,9 +27,6 @@
 @property (nonatomic, strong) SessionUser *user;
 @property (nonatomic, strong) NSString *userId;
 
-
-
-
 @property (nonatomic, strong) NSString *imgAvtarName;
 @property (nonatomic, strong) NSString *strDate;
 @property (nonatomic, strong) NSString *strUserNameBooking;

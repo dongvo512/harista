@@ -12,7 +12,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "IQKeyboardManager.h"
 #import "ImgurAnonymousAPIClient.h"
-
+#import "SessionUser.h"
 
 @interface AppDelegate ()
 @end
@@ -32,8 +32,33 @@
 
     [[IQKeyboardManager sharedManager] setEnable:YES];
     
-    LoginViewController *vcLogin = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    [self.window setRootViewController:vcLogin];
+    
+    NSUserDefaults * defaults =  [NSUserDefaults standardUserDefaults];
+    
+    NSData *encodedObject = [defaults objectForKey:@"FirstRun"];
+    SessionUser *object = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+    
+    if(!object){
+        
+         LoginViewController *vcLogin = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        [self.window setRootViewController:vcLogin];
+    }
+    else{
+        
+        Appdelegate_hairista.sessionUser = object;
+        BOOL isUserManger = NO;
+       
+        if([Appdelegate_hairista.sessionUser.role isEqualToString:@"salon"]){
+            
+            isUserManger = YES;
+        }
+        
+        SlideMenuViewController *vcSlideMenu = [SlideMenuViewController sharedInstance];
+        vcSlideMenu.isUserManager = isUserManger;
+        [self.window setRootViewController:vcSlideMenu];
+
+    }
+    
     self.window.backgroundColor = [UIColor clearColor];
     [self.window makeKeyAndVisible];
     
