@@ -12,6 +12,8 @@
 #import "UIScrollView+BottomRefreshControl.h"
 #import "ProfileUserViewController.h"
 #import "SlideMenuViewController.h"
+#import "AuthenticateManage.h"
+
 
 @interface ListUserViewController ()
     <UISearchBarDelegate>
@@ -39,7 +41,9 @@
    
     [self configUI];
     
-    [self createDataTemp];
+    [self searchListUser];
+    
+   // [self createDataTemp];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,6 +59,14 @@
 
 #pragma mark - Method
 
+-(void)searchListUser{
+
+    [[AuthenticateManage sharedInstance] searchListUser:@"" pageIndex:@"1" limit:@"14" dataResult:^(NSError *error, id idObject) {
+        
+        
+        
+    }];
+}
 -(void)configUI{
 
     refreshControl = [[UIRefreshControl alloc]init];

@@ -23,6 +23,8 @@
     NSInteger indexPage;
     
     BOOL isFullData;
+    
+    BOOL isLoading;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *arrImages;
@@ -71,10 +73,12 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
+    isLoading = YES;
+    
     [[AuthenticateManage sharedInstance] getListImageUser:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
+        isLoading = NO;
         if(error){
             
             [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
@@ -128,10 +132,11 @@
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
         img.heightImage = (SW -24)/2 * image.size.height/image.size.width;
-        [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
+      //  [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
+        [self.collectionView.collectionViewLayout invalidateLayout];
     }];
     
-    if(indexPath.row == self.arrImages.count - 1 && !isFullData){
+    if(indexPath.row == self.arrImages.count - 1 && !isFullData && !isLoading){
     
         indexPage ++;
         

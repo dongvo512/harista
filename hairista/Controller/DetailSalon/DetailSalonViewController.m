@@ -58,6 +58,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    vcImagePicker = [[ImagePickerViewController alloc] init];
+    vcImagePicker.delegateImg = self;
+    vcImagePicker.vcParent = self;
+
+    
     [self createTabSalon];
     
 }
@@ -192,18 +197,47 @@
     BookingViewController *vcBooking = [[BookingViewController alloc] initWithNibName:@"BookingViewController" bundle:nil Salon:salon];
     [self.navigationController pushViewController:vcBooking animated:YES];
 }
+- (IBAction)takePhoto:(id)sender{
 
-
-- (IBAction)takePhoto:(id)sender {
+    UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:@"Hình ảnh" message:nil preferredStyle:UIAlertControllerStyleAlert];
     
-    if(!vcImagePicker){
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        vcImagePicker = [[ImagePickerViewController alloc] init];
-        vcImagePicker.delegateImg = self;
-    }
+        [vcImagePicker takeAPickture:self];
+        
+    }];
     
-    [vcImagePicker takeAPickture:self];
+    UIAlertAction *photoLibrary = [UIAlertAction actionWithTitle:@"Photo Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [vcImagePicker cameraRoll:self];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [vcAlert dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    [vcAlert addAction:camera];
+    [vcAlert addAction:photoLibrary];
+    [vcAlert addAction:cancel];
+    
+    [self presentViewController:vcAlert animated:YES completion:nil];
+    
 }
+
+/*
+ 
+ */
+//- (IBAction)takePhoto:(id)sender {
+//    
+//    if(!vcImagePicker){
+//        
+//        vcImagePicker = [[ImagePickerViewController alloc] init];
+//        vcImagePicker.delegateImg = self;
+//    }
+//    
+//    [vcImagePicker takeAPickture:self];
+//}
 
 - (IBAction)touchComments:(id)sender {
     
@@ -246,38 +280,6 @@
                         
                     }
                     completion:nil];
-//    NSData *data= nil;
-//    float imgValue = MAX(image.size.width, image.size.height);
-//    
-//    if(imgValue > 3000){
-//        
-//        data = UIImageJPEGRepresentation(image, 0.1);
-//    }
-//    
-//    else if(imgValue > 2000){
-//        
-//        data = UIImageJPEGRepresentation(image, 0.3);
-//    }
-//    else{
-//        
-//        data = UIImagePNGRepresentation(image);
-//    }
-//    
-//    Appdelegate_hairista.progressCurr =  [[ImgurAnonymousAPIClient client] uploadImageData:data
-//                                                                              withFilename:@"image.jpg"
-//                                                                         completionHandler:^(NSURL *imgurURL, NSError *error) {
-//                                                                             
-//                                                                             [Appdelegate_hairista closeProgress];
-//                                                                             
-////                                                                             strUrlAvart = imgurURL.absoluteString;
-////                                                                             
-////                                                                             [self uploadImagUrl:strUrlAvart];
-//                                                                             
-//                                                                         }];
-//    [Appdelegate_hairista showProcessBar:image];
-//    
-    
-    //[progress cancel];
     
 }
 @end

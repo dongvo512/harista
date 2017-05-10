@@ -18,7 +18,8 @@
 @property (nonatomic, strong) NSProgress *progressCurr;
 
 #pragma mark - Popup Golbal
--(void)showProcessBar:(UIImage *)image;
+
+-(void)showProcessBar:(UIImage *)image progress:(NSProgress *)progressCurr;
 -(void)closeProgress;
 @end
 

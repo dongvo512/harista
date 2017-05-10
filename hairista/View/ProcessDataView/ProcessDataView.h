@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ProcessDataView : UIView
--(id)initWithFrame:(CGRect)frame withImage:(UIImage *)image;
 
+-(id)initWithFrame:(CGRect)frame withImage:(UIImage *)image progress:(NSProgress *)progress;
 -(void)closeProgress;
 @end

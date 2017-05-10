@@ -215,6 +215,7 @@
         data = UIImagePNGRepresentation(image);
     }
     
+    
    Appdelegate_hairista.progressCurr =  [[ImgurAnonymousAPIClient client] uploadImageData:data
                                          withFilename:@"image.jpg"
                                                                         completionHandler:^(NSURL *imgurURL, NSError *error) {
@@ -234,9 +235,10 @@
                                                                             //  [self uploadImagUrl:strUrlAvart];
                                                                             
                                                                         }];
-    [Appdelegate_hairista showProcessBar:image];
     
+  //  [Appdelegate_hairista showProcessBar:image];
     
+    [Appdelegate_hairista showProcessBar:image progress:Appdelegate_hairista.progressCurr];
     //[progress cancel];
 
 }

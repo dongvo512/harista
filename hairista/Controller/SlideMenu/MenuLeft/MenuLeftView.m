@@ -99,6 +99,11 @@
     
     LoginViewController *vcLogin = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:nil forKey:@"FirstRun"];
+    [defaults synchronize];
+
+    
     [[SlideMenuViewController sharedInstance] presentViewController:vcLogin animated:YES completion:^{
         
         [SlideMenuViewController resetSharedInstance];

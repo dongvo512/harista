@@ -71,6 +71,12 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
         case InWeek:
             [self getListBookingWeek];
             break;
+        case Today:
+            [self getListBookingToday];
+            break;
+        case InMonth:
+            [self getListBookingMonth];
+            break;
             
         default:
             break;
@@ -83,6 +89,63 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
 }
 
 #pragma mark - Method
+
+-(void)getListBookingToday{
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+   NSString *today = [Common getStringDisplayFormDate:[NSDate date] andFormatString:@"yyyy-MM-dd"];
+    
+    [[BookingManage sharedInstance] getListBookingOfMe:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:today endDate:today dataResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+            
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            NSArray *arrData = idObject;
+            
+            if(arrData.count > 0){
+                
+                self.arrBooking = [NSMutableArray arrayWithArray:arrData];
+                [self.tblBooking reloadData];
+            }
+        }
+        
+    }];
+}
+
+-(void)getListBookingMonth{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+     Date *dateWeek = [Common getStartEndDate:NSCalendarUnitMonth formatOutPut:@"yyyy-MM-dd"];
+    
+    [[BookingManage sharedInstance] getListBookingOfMe:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:dateWeek.startDate endDate:dateWeek.endDate dataResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+            
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            NSArray *arrData = idObject;
+            
+            if(arrData.count > 0){
+                
+                self.arrBooking = [NSMutableArray arrayWithArray:arrData];
+                [self.tblBooking reloadData];
+            }
+        }
+        
+    }];
+}
+
 -(void)getListBookingWeek{
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];

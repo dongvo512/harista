@@ -172,3 +172,7 @@
 
 #define URL_FAVORITE @"https://salonhair.herokuapp.com/api/v1/favorites/"
 
+#define URL_GET_SEARCH_USER @"https://salonhair.herokuapp.com/api/v1/searchUser"
+
+//{{url}}searchUser?keywords=1232
+

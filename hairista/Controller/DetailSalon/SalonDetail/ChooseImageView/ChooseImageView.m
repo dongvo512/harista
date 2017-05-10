@@ -99,15 +99,8 @@
                                                                         [self uploadImageForSalon:imgurURL.absoluteString];
                                                                         
                                                                     }
-                                                                             
-                                                          //                   [Appdelegate_hairista closeProgress];
-                                                                             
-                                                                             //                                                                             strUrlAvart = imgurURL.absoluteString;
-                                                                             //
-                                                                             //                                                                             [self uploadImagUrl:strUrlAvart];
-                                                                             
-                                                                         }];
-    [Appdelegate_hairista showProcessBar:imgCurr];
+                           }];
+    [Appdelegate_hairista showProcessBar:imgCurr progress: Appdelegate_hairista.progressCurr];
     
     [UIView animateWithDuration:0.5
                      animations:^{self.alpha = 0.0;}

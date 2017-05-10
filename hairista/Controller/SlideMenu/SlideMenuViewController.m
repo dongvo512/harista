@@ -16,13 +16,14 @@
 #import "BookingsViewController.h"
 #import "ManageBookingViewController.h"
 #import "ListUserViewController.h"
-
+#import "EditServiceViewController.h"
 
 
 typedef NS_ENUM(NSInteger, ItemMenuManage) {
     
     ItemManagerBooking,
-    ItemMangeUser
+    ItemMangeUser,
+    ItemManageService
     
 };
 
@@ -163,8 +164,19 @@ static SlideMenuViewController *sharedInstance = nil;
             [vcNavigation setViewControllers:@[vcManageListUser] animated:YES];
         }
             break;
-
-            //ItemMangeUser
+        case ItemManageService:{
+            
+            EditServiceViewController *vcEditService = [[EditServiceViewController alloc] initWithNibName:@"EditServiceViewController" bundle:nil];
+            [vcNavigation setViewControllers:@[vcEditService] animated:YES];
+        }
+            break;
+        case Item_InfoUser:{
+            
+            UserInfoViewController *vcUpdateUser = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
+            [vcNavigation setViewControllers:@[vcUpdateUser] animated:YES];
+        }
+            break;
+       
         default:
             break;
     }

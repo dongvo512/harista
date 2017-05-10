@@ -55,7 +55,7 @@
     
     CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init];
     layout.sectionInset = UIEdgeInsetsMake(8, 8, 8, 8);
-    layout.headerHeight = 256;
+    layout.headerHeight = 457;
     layout.footerHeight = 0;
     layout.columnCount = 2;
     layout.minimumColumnSpacing = 8;
@@ -159,7 +159,8 @@
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
         img.heightImage = (SW -24)/2 * image.size.height/image.size.width;
-        [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
+      //  [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
+        [self.collectionView.collectionViewLayout invalidateLayout];
     }];
     return cell;
 }

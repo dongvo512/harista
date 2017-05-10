@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,6 +19,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProcessDataView">
             <connections>
                 <outlet property="imgUpload" destination="7qc-qz-lhD" id="Yjp-SG-0CR"/>
+                <outlet property="progressView" destination="Tmf-IX-EPc" id="9qa-JA-Mce"/>
                 <outlet property="view" destination="iN0-l3-epB" id="4F7-kN-0Qy"/>
             </connections>
         </placeholder>
@@ -75,6 +75,12 @@
                         <action selector="stopUpload:" destination="-1" eventType="touchUpInside" id="aUh-di-Wyd"/>
                     </connections>
                 </button>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tmf-IX-EPc">
+                    <rect key="frame" x="85" y="38" width="172" height="2"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="gSJ-k4-evx"/>
+                    </constraints>
+                </progressView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
             <constraints>
@@ -82,7 +88,10 @@
                 <constraint firstItem="4uw-nc-rGV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7j5-Yh-Zvr"/>
                 <constraint firstAttribute="trailing" secondItem="7A5-7K-OGi" secondAttribute="trailing" constant="9" id="B6S-bl-XGe"/>
                 <constraint firstItem="tgh-Yd-K9R" firstAttribute="leading" secondItem="4uw-nc-rGV" secondAttribute="trailing" constant="8" id="FfI-Ed-ZfF"/>
+                <constraint firstItem="Tmf-IX-EPc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="85" id="IBK-HC-CZ1"/>
+                <constraint firstAttribute="trailing" secondItem="Tmf-IX-EPc" secondAttribute="trailing" constant="63" id="M0X-BI-ure"/>
                 <constraint firstItem="7A5-7K-OGi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="S67-P5-hej"/>
+                <constraint firstAttribute="bottom" secondItem="Tmf-IX-EPc" secondAttribute="bottom" constant="10" id="V72-88-U05"/>
                 <constraint firstItem="tgh-Yd-K9R" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="V7u-T2-SfR"/>
                 <constraint firstItem="4uw-nc-rGV" firstAttribute="leading" secondItem="7qc-qz-lhD" secondAttribute="trailing" constant="8" id="bkK-iw-UrK"/>
                 <constraint firstItem="7qc-qz-lhD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="mNj-dD-7WN"/>

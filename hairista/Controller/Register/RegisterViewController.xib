@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -175,11 +174,10 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ffh-Sp-W0S">
-                    <rect key="frame" x="18" y="360" width="341" height="44"/>
+                    <rect key="frame" x="16" y="360" width="343" height="44"/>
                     <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="KlP-ON-M3p"/>
-                        <constraint firstAttribute="width" constant="341" id="dky-xO-3ef"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                     <state key="normal" title="Hoàn tất">
@@ -197,17 +195,18 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Ffh-Sp-W0S" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="1" id="0Lb-vi-Vbu"/>
                 <constraint firstItem="rHE-he-LzP" firstAttribute="top" secondItem="UfW-w5-HCp" secondAttribute="bottom" constant="8" id="4ip-tr-0qx"/>
                 <constraint firstItem="g9k-y0-8cN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="4st-oR-wLI"/>
                 <constraint firstItem="FIM-zm-eZN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="62b-FL-cIz"/>
                 <constraint firstItem="feX-42-g34" firstAttribute="top" secondItem="FIM-zm-eZN" secondAttribute="bottom" constant="8" id="8gl-3p-r3p"/>
                 <constraint firstAttribute="trailing" secondItem="f5p-Q9-p1y" secondAttribute="trailing" constant="16" id="BGW-2i-42Q"/>
+                <constraint firstItem="Ffh-Sp-W0S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="CiD-Dy-q4K"/>
                 <constraint firstItem="0Ua-Z5-QzR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="GRs-sZ-WHc"/>
                 <constraint firstItem="6WN-mO-GhF" firstAttribute="top" secondItem="LLz-jX-arg" secondAttribute="bottom" constant="8" id="KOD-ge-A7f"/>
                 <constraint firstAttribute="trailing" secondItem="0Ua-Z5-QzR" secondAttribute="trailing" constant="16" id="NmT-3m-MBQ"/>
                 <constraint firstItem="Ffh-Sp-W0S" firstAttribute="top" secondItem="f5p-Q9-p1y" secondAttribute="bottom" constant="20" id="PUN-Sc-f82"/>
                 <constraint firstItem="LLz-jX-arg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="RWJ-5Y-cMv"/>
+                <constraint firstAttribute="trailing" secondItem="Ffh-Sp-W0S" secondAttribute="trailing" constant="16" id="SKi-W9-cQR"/>
                 <constraint firstAttribute="trailing" secondItem="feX-42-g34" secondAttribute="trailing" constant="16" id="Ubj-Ls-eT4"/>
                 <constraint firstItem="g9k-y0-8cN" firstAttribute="top" secondItem="6WN-mO-GhF" secondAttribute="bottom" constant="4" id="UuI-8L-Qej"/>
                 <constraint firstAttribute="trailing" secondItem="g9k-y0-8cN" secondAttribute="trailing" constant="16" id="Vtf-LD-6xe"/>

@@ -121,11 +121,11 @@
     }
 }
 
--(void)showProcessBar:(UIImage *)image{
+-(void)showProcessBar:(UIImage *)image progress:(NSProgress *)progressCurr{
 
     if(!self.processDataView){
     
-        self.processDataView = [[ProcessDataView alloc] initWithFrame:CGRectMake(0, SH, SW, 50) withImage:image];
+        self.processDataView = [[ProcessDataView alloc] initWithFrame:CGRectMake(0, SH, SW, 50) withImage:image progress:progressCurr];
        
         self.processDataView.clipsToBounds = YES;
         [self.window addSubview:self.processDataView];

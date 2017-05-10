@@ -152,6 +152,8 @@
 		B8CF1DD01E50B1D20008C6EC /* Booking.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CF1DCF1E50B1D20008C6EC /* Booking.m */; };
 		B8CF1DD41E50B6560008C6EC /* HeaderViewBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CF1DD31E50B6560008C6EC /* HeaderViewBooking.m */; };
 		B8CF1DD61E50B6610008C6EC /* HeaderViewBooking.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CF1DD51E50B6610008C6EC /* HeaderViewBooking.xib */; };
+		B8D4825E1EBDCD1D0029DA9B /* EditServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D4825C1EBDCD1D0029DA9B /* EditServiceViewController.m */; };
+		B8D4825F1EBDCD1D0029DA9B /* EditServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D4825D1EBDCD1D0029DA9B /* EditServiceViewController.xib */; };
 		B8DE7ECD1E390A450008769C /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = B8DE7EAD1E390A450008769C /* Apache License.txt */; };
 		B8DE7ECE1E390A450008769C /* HIMPACT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B8DE7EAE1E390A450008769C /* HIMPACT.TTF */; };
 		B8DE7ECF1E390A450008769C /* LATINWD.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B8DE7EAF1E390A450008769C /* LATINWD.TTF */; };
@@ -447,6 +449,9 @@
 		B8CF1DD21E50B6560008C6EC /* HeaderViewBooking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderViewBooking.h; sourceTree = "<group>"; };
 		B8CF1DD31E50B6560008C6EC /* HeaderViewBooking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderViewBooking.m; sourceTree = "<group>"; };
 		B8CF1DD51E50B6610008C6EC /* HeaderViewBooking.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderViewBooking.xib; sourceTree = "<group>"; };
+		B8D4825B1EBDCD1D0029DA9B /* EditServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditServiceViewController.h; sourceTree = "<group>"; };
+		B8D4825C1EBDCD1D0029DA9B /* EditServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditServiceViewController.m; sourceTree = "<group>"; };
+		B8D4825D1EBDCD1D0029DA9B /* EditServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditServiceViewController.xib; sourceTree = "<group>"; };
 		B8DE7EAD1E390A450008769C /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		B8DE7EAE1E390A450008769C /* HIMPACT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = HIMPACT.TTF; sourceTree = "<group>"; };
 		B8DE7EAF1E390A450008769C /* LATINWD.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = LATINWD.TTF; sourceTree = "<group>"; };
@@ -735,6 +740,7 @@
 		B8356C7E1E501D2700C16AA3 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				B8D4825A1EBDCD0A0029DA9B /* Service */,
 				B8ACAAA21E58942500F9AF05 /* ProfileUser */,
 				B8ACAA961E5881DD00F9AF05 /* ListUser */,
 				B85346C61E535BCE00B74D9F /* DetailBooking */,
@@ -1418,6 +1424,16 @@
 			path = HeaderViewBooking;
 			sourceTree = "<group>";
 		};
+		B8D4825A1EBDCD0A0029DA9B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B8D4825B1EBDCD1D0029DA9B /* EditServiceViewController.h */,
+				B8D4825C1EBDCD1D0029DA9B /* EditServiceViewController.m */,
+				B8D4825D1EBDCD1D0029DA9B /* EditServiceViewController.xib */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		B8DE7EAC1E390A450008769C /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1595,10 +1611,10 @@
 		B8EC1C5E1E291C9900D2D1E6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B8356C7E1E501D2700C16AA3 /* Manager */,
 				B8780FFE1E9A013000D0B104 /* ChangePassword */,
 				B831346E1E94A273001A3465 /* Register */,
 				B86D04351E5B3F9C0089E95F /* TabBar */,
-				B8356C7E1E501D2700C16AA3 /* Manager */,
 				B8EF74B11E4CB6A8001466C4 /* Booking */,
 				B8A103061E4569E100C4E376 /* ListHair */,
 				B82E6D1C1E44684600C51770 /* CatagoriesHair */,
@@ -1813,6 +1829,7 @@
 				B8CB12281EB338C900ECD857 /* SalonNearByView.xib in Resources */,
 				B86D284F1E2E2305005491E6 /* NCTextFieldView.xib in Resources */,
 				B8DE7EE71E390A450008769C /* RobotoCondensed-BoldItalic.ttf in Resources */,
+				B8D4825F1EBDCD1D0029DA9B /* EditServiceViewController.xib in Resources */,
 				B8DE7EDD1E390A450008769C /* Roboto-BoldItalic.ttf in Resources */,
 				B8B5BAD91E3A5ABB00586CBE /* HeaderBannerCell.xib in Resources */,
 				B8EF74C51E4CBE7C001466C4 /* NCCalendarSingleViewController_iPhone.xib in Resources */,
@@ -1979,6 +1996,7 @@
 				B8EC1C691E291CD600D2D1E6 /* LoginViewController.m in Sources */,
 				B87543C31EAA62790047213A /* CommentDetailView.m in Sources */,
 				B8AA6B131E4090DB002716A7 /* SearchSalonAdvanceViewController.m in Sources */,
+				B8D4825E1EBDCD1D0029DA9B /* EditServiceViewController.m in Sources */,
 				B8A103021E4555AA00C4E376 /* CatagoriesCell.m in Sources */,
 				B8EC1C521E291B6700D2D1E6 /* hairista.xcdatamodeld in Sources */,
 				B867D1EC1EB1A98A0028B06D /* DistrictViewController.m in Sources */,

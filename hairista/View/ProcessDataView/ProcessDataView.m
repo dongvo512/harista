@@ -12,6 +12,8 @@
 @property (strong, nonatomic) IBOutlet ProcessDataView *view;
 @property (weak, nonatomic) IBOutlet UIImageView *imgUpload;
 @property (nonatomic, weak) UIImage *imageUpoadCurr;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (nonatomic, weak) NSProgress *progressCurr;
 @end
 
 @implementation ProcessDataView
@@ -23,7 +25,19 @@
     // Drawing code
 }
 */
+-(id)initWithFrame:(CGRect)frame withImage:(UIImage *)image progress:(NSProgress *)progress{
 
+    self = [super initWithFrame:frame];
+    if(self){
+        
+        self.imageUpoadCurr = image;
+        self.progressCurr = progress;
+        [self setup];
+    }
+    
+    return self;
+
+}
 -(id)initWithFrame:(CGRect)frame withImage:(UIImage *)image{
    
     self = [super initWithFrame:frame];
@@ -49,6 +63,30 @@
     
         [self.imgUpload setImage:self.imageUpoadCurr];
     }
+    
+   
+    [self.progressCurr setTotalUnitCount:1];
+    [self.progressCurr addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:NULL];
+    
+   
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+   
+    if ([keyPath isEqualToString:@"fractionCompleted"] && [object isKindOfClass:[NSProgress class]]) {
+        NSProgress *progress = (NSProgress *)object;
+      
+        NSLog(@"%.21g",progress.fractionCompleted);
+        
+        if(progress.fractionCompleted <= 1){
+        
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.progressView setProgress:progress.fractionCompleted animated:YES];
+            });
+        }
+       
+    }
 }
 - (IBAction)stopUpload:(id)sender {
     
@@ -68,6 +106,7 @@
                      completion:^(BOOL finished) {
                          
                          [self removeFromSuperview];
+                         [Appdelegate_hairista.progressCurr cancel];
                          Appdelegate_hairista.processDataView = nil;
                          
                      }];

@@ -64,8 +64,8 @@
     
     self.btnRegister.layer.cornerRadius = heightCurr/2;
     
-    self.txtPhone.text = @"0908123456";
-    self.txtPassword.text = @"123456";
+   // self.txtPhone.text = @"0908123456";
+   // self.txtPassword.text = @"123456";
     
 }
 

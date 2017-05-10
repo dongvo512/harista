@@ -79,6 +79,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1f3-JS-mNP">
+                        <rect key="frame" x="8" y="118" width="312" height="0.5"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="0fU-t2-je9"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="npw-1H-Bza" firstAttribute="leading" secondItem="k1Z-SC-YYK" secondAttribute="trailing" constant="11" id="3fT-rZ-EAr"/>
@@ -90,6 +97,9 @@
                     <constraint firstItem="v5z-IV-gjj" firstAttribute="top" secondItem="npw-1H-Bza" secondAttribute="bottom" constant="7" id="NQS-X6-QaD"/>
                     <constraint firstItem="sTZ-kK-h5L" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="RRP-rS-y49"/>
                     <constraint firstItem="npw-1H-Bza" firstAttribute="top" secondItem="F57-6g-4B4" secondAttribute="bottom" constant="14" id="VAX-Af-al1"/>
+                    <constraint firstAttribute="trailing" secondItem="1f3-JS-mNP" secondAttribute="trailing" id="aBB-fH-mPe"/>
+                    <constraint firstItem="1f3-JS-mNP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="aZR-25-gkk"/>
+                    <constraint firstAttribute="bottom" secondItem="1f3-JS-mNP" secondAttribute="bottom" id="dyt-kQ-8Fh"/>
                     <constraint firstItem="k1Z-SC-YYK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="pT8-VH-KoL"/>
                     <constraint firstItem="npw-1H-Bza" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="uEa-YY-3FZ"/>
                     <constraint firstItem="F57-6g-4B4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="wcf-zl-5bL"/>

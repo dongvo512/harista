@@ -287,4 +287,32 @@ static AuthenticateManage *sharedInstance = nil;
 
 }
 
+-(void)searchListUser:(NSString *)keyword pageIndex:(NSString *)pageIndex limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult{
+
+     //URL_GET_SEARCH_USER
+    
+    NSString *url = [NSString stringWithFormat:@"%@?keywords=%@&page=%@&limit=%@",URL_GET_SEARCH_USER,keyword,pageIndex,limit];
+    
+    //  NSString *url = [NSString stringWithFormat:@"%@?keywords=%@",URL_GET_SEARCH_USER,keyword];
+    
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorSearchUser", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorSearchUser" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSMutableArray *arrData = [self parseListImageUser:responseDataObject];
+            
+            dataApiResult(nil, arrData);
+        }
+    }];
+
+}
+
 @end
