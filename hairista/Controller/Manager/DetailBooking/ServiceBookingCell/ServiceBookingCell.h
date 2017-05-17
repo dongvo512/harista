@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Service;
+
 @interface ServiceBookingCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *lblSerivceName;
+
+-(void)setDataForCell:(Service *)service;
 
 @end

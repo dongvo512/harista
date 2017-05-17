@@ -8,14 +8,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Roboto-Bold.ttf">
-            <string>Roboto-Bold</string>
-        </array>
         <array key="Roboto-Light.ttf">
             <string>Roboto-Light</string>
-        </array>
-        <array key="Roboto-Medium.ttf">
-            <string>Roboto-Medium</string>
         </array>
         <array key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -36,8 +30,8 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="iHq-8j-g0Z"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
-                            <color key="textColor" red="0.35499856891982273" green="0.37546450819832983" blue="0.38287207684986335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akj-gn-8FG">
@@ -84,7 +78,8 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="BGS-3u-si3"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                            <color key="textColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dongvo512@gmail.com" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28f-Mo-pvi">
@@ -100,8 +95,8 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="Qsd-aU-7hz"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
-                            <color key="textColor" red="0.35499856889999998" green="0.37546450819999999" blue="0.38287207680000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                            <color key="textColor" red="1" green="0.31328328704135355" blue="0.16705806514157118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="salon_1" translatesAutoresizingMaskIntoConstraints="NO" id="bat-yl-bAe">

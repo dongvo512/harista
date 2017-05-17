@@ -7,7 +7,9 @@
 //
 
 #import "EditServiceViewController.h"
-
+#import "ManageCategoriesCell.h"
+#import "Category.h"
+#import "ListManageServiceViewController.h"
 
 @interface EditServiceViewController ()
 
@@ -20,7 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"ManageCategoriesCell" bundle:nil] forCellWithReuseIdentifier:@"ManageCategoriesCell"];
+    
+    [self createCategories];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,42 +40,70 @@
 
 #pragma mark - Method
 
+-(void)createCategories{
+
+    self.arrCategories = [NSMutableArray array];
+    
+    Category *cat_1 = [[Category alloc] init];
+    cat_1.name = @"Cắt";
+    cat_1.image = @"ngan_1";
+    [self.arrCategories addObject:cat_1];
+    
+    Category *cat_2 = [[Category alloc] init];
+    cat_2.name = @"Nhuộm";
+    cat_2.image = @"ngan_2";
+    [self.arrCategories addObject:cat_2];
+    
+    Category *cat_3 = [[Category alloc] init];
+    cat_3.name = @"Nối";
+    cat_3.image = @"ngan_3";
+    [self.arrCategories addObject:cat_3];
+    
+    Category *cat_4 = [[Category alloc] init];
+    cat_4.name = @"Sấy";
+    cat_4.image = @"ngan_4";
+    [self.arrCategories addObject:cat_4];
+    
+    Category *cat_5 = [[Category alloc] init];
+    cat_5.name = @"Duỗi";
+    cat_5.image = @"ngan_5";
+    [self.arrCategories addObject:cat_5];
+    
+    [self.collectionView reloadData];
+}
 
 #pragma mark - UICollectionViewDataSource
 
-//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-//    
-//    return self.arrGroupService.count;
-//}
-//
-//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-//    
-//    Category *cat = [self.arrGroupService objectAtIndex:section];
-//    
-//    return cat.arrServices.count;
-//}
-//
-//- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    Category *cat = [self.arrGroupService objectAtIndex:indexPath.section];
-//    
-//    Service *serice = [cat.arrServices objectAtIndex:indexPath.row];
-//    
-//    ServiceCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ServiceCell" forIndexPath:indexPath];
-//    
-//    [cell setDataForCell:serice];
-//    return cell;
-//}
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    CGFloat width = (SW - ((NUM_ITEM + 1) *MARGIN ))/NUM_ITEM;
-//    
-//    return CGSizeMake(width, width);
-//}
-//
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-//    
-//    return UIEdgeInsetsMake(8, 8, 8, 8);
-//}
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    
+    return self.arrCategories.count;
+}
 
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    Category *cat = [self.arrCategories objectAtIndex:indexPath.row];
+    
+    ManageCategoriesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ManageCategoriesCell" forIndexPath:indexPath];
+    
+    [cell setDataForCell:cat];
+    return cell;
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGFloat width = (SW - 24)/2;
+    
+    return CGSizeMake(width, width);
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    
+    return UIEdgeInsetsMake(8, 8, 8, 8);
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    Category *cat = [self.arrCategories objectAtIndex:indexPath.row];
+    ListManageServiceViewController *manageServices = [[ListManageServiceViewController alloc] initWithNibName:@"ListManageServiceViewController" bundle:nil];
+    manageServices.titleCategories = cat.name;
+    [self.navigationController pushViewController:manageServices animated:YES];
+}
 @end

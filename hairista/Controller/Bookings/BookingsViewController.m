@@ -51,7 +51,8 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[BookingManage sharedInstance] getListBookingOfMe:[NSString stringWithFormat:@"%ld",pageIndex] limit:LIMIT_ITEM startDate:@"" endDate:@"" dataResult:^(NSError *error, id idObject) {
+    
+    [[BookingManage sharedInstance] getListBookingOfMe:[NSString stringWithFormat:@"%ld",pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -85,7 +86,7 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[BookingManage sharedInstance] getListBookingOfMe:@"1" limit:LIMIT_ITEM startDate:@"" endDate:@"" dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] getListBookingOfMe:@"1" limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -94,28 +95,29 @@
         if(arrBooking.count > 0){
             
             self.arrBooking = [NSMutableArray arrayWithArray:arrBooking];
-    
+            
             NSSortDescriptor *dateDescriptor = [NSSortDescriptor
                                                 sortDescriptorWithKey:@"startDate"
                                                 ascending:NO];
             NSArray *sortDescriptors = [NSArray arrayWithObject:dateDescriptor];
             NSArray *arrSort = [self.arrBooking
-                                         sortedArrayUsingDescriptors:sortDescriptors];
+                                sortedArrayUsingDescriptors:sortDescriptors];
             self.arrBooking = [NSMutableArray arrayWithArray:arrSort];
             
             [self.tblView reloadData];
             
             if(arrBooking.count < LIMIT_ITEM.integerValue){
-            
+                
                 isFullData = YES;
             }
         }
         else{
-        
+            
             [Common showAlert:self title:@"Thông báo" message:@"Bạn  chưa đặt chỗ" buttonClick:nil];
         }
         
     }];
+    
 }
 
 - (IBAction)showMenu:(id)sender {

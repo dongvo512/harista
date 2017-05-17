@@ -373,11 +373,11 @@ static SalonManage *sharedInstance = nil;
 //    
 //}
 
--(void)uploadUrlImageForSalon:(NSString *)imgUrl idSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult{
+-(void)uploadUrlImageForSalon:(NSString *)imgUrl name:(NSString *)name idSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult{
     
     NSString *url = [NSString stringWithFormat:@"%@/%@",URL_POST_URL_IMAGE,idSalon];
     
-    NSDictionary *dicBody = @{@"images":imgUrl};
+    NSDictionary *dicBody = @{@"images":imgUrl,@"name":name};
     
     [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_POST withRequestBody:dicBody callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         

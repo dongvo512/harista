@@ -36,8 +36,6 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
 @property (weak, nonatomic) IBOutlet UITableView *tblBooking;
 @property (nonatomic,strong) NSMutableArray *arrBooking;
 
-@property (nonatomic, strong) NSArray *arrDate;
-
 @end
 
 @implementation ManageListBookingViewController
@@ -61,6 +59,8 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    indexPage = 1;
+    
     self.tblBooking.rowHeight = UITableViewAutomaticDimension;
     self.tblBooking.estimatedRowHeight = 79;
 
@@ -96,7 +96,7 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
     
    NSString *today = [Common getStringDisplayFormDate:[NSDate date] andFormatString:@"yyyy-MM-dd"];
     
-    [[BookingManage sharedInstance] getListBookingOfMe:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:today endDate:today dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] getListBookingOfSalon:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:today endDate:today dataResult:^(NSError *error, id idObject) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -115,7 +115,30 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
             }
         }
         
+        
     }];
+    
+    
+//    [[BookingManage sharedInstance] getListBookingOfMe:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:today endDate:today dataResult:^(NSError *error, id idObject) {
+//        
+//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+//        
+//        if(error){
+//            
+//            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+//        }
+//        else{
+//            
+//            NSArray *arrData = idObject;
+//            
+//            if(arrData.count > 0){
+//                
+//                self.arrBooking = [NSMutableArray arrayWithArray:arrData];
+//                [self.tblBooking reloadData];
+//            }
+//        }
+//        
+//    }];
 }
 
 -(void)getListBookingMonth{
@@ -124,7 +147,7 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
     
      Date *dateWeek = [Common getStartEndDate:NSCalendarUnitMonth formatOutPut:@"yyyy-MM-dd"];
     
-    [[BookingManage sharedInstance] getListBookingOfMe:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:dateWeek.startDate endDate:dateWeek.endDate dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] getListBookingOfSalon:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:dateWeek.startDate endDate:dateWeek.endDate dataResult:^(NSError *error, id idObject) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -152,7 +175,7 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
     
     Date *dateWeek = [Common getStartEndDate:NSCalendarUnitWeekOfMonth formatOutPut:@"yyyy-MM-dd"];
     
-    [[BookingManage sharedInstance] getListBookingOfMe:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:dateWeek.startDate endDate:dateWeek.endDate dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] getListBookingOfSalon:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:dateWeek.startDate endDate:dateWeek.endDate dataResult:^(NSError *error, id idObject) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -193,8 +216,28 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    DetailBookingViewController *vcDetailBooking = [[DetailBookingViewController alloc] initWithNibName:@"DetailBookingViewController" bundle:nil];
+    Booking *booking = [self.arrBooking objectAtIndex:indexPath.row];
+    
+    DetailBookingViewController *vcDetailBooking = [[DetailBookingViewController alloc] initWithNibName:@"DetailBookingViewController" bundle:nil booking:booking];
+    vcDetailBooking.delegate = self;
     [self.vcManageBooking.navigationController pushViewController:vcDetailBooking animated:YES];
+}
+#pragma mark - DetailBookingViewControllerDelegate
+
+-(void)finishAceptBooking:(Booking *)booking{
+
+    if([self.arrBooking containsObject:booking]){
+    
+        [self.tblBooking reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.arrBooking indexOfObject:booking] inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+-(void)finishCancelBooking:(Booking *)booking{
+
+    if([self.arrBooking containsObject:booking]){
+        
+        [self.tblBooking reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.arrBooking indexOfObject:booking] inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    }
+
 }
 
 @end

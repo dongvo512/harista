@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Roboto-Light.ttf">
-            <string>Roboto-Light</string>
-        </array>
         <array key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
         </array>
@@ -21,10 +17,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileUserCell" rowHeight="99" id="KGk-i7-Jjw" customClass="ProfileUserCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+            <rect key="frame" x="0.0" y="0.0" width="367" height="99"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="98"/>
+                <rect key="frame" x="0.0" y="0.0" width="367" height="98.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GCv-JM-7s4">
@@ -51,35 +47,39 @@
                             <constraint firstAttribute="height" constant="83" id="jQH-By-QZR"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thứ 2 - Lúc 9:40 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKq-WB-tQE">
-                        <rect key="frame" x="99" y="16" width="213" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thứ 2 - Lúc 9:40 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKq-WB-tQE">
+                        <rect key="frame" x="111" y="16" width="248" height="24"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cắt tóc gội đầu, nhuôm sấy " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebF-qC-VVJ">
-                        <rect key="frame" x="99" y="44" width="213" height="23"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000000 đ" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebF-qC-VVJ">
+                        <rect key="frame" x="111" y="54" width="248" height="23"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="ulq-RB-oDF"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="16"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                        <color key="textColor" red="1" green="0.31328328700000002" blue="0.16705806510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" red="0.95498689242771695" green="0.96387929575783871" blue="0.96719931193760467" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="ebF-qC-VVJ" firstAttribute="top" secondItem="NKq-WB-tQE" secondAttribute="bottom" constant="4" id="A6h-hC-TwQ"/>
+                    <constraint firstItem="ebF-qC-VVJ" firstAttribute="top" secondItem="NKq-WB-tQE" secondAttribute="bottom" constant="14" id="A6h-hC-TwQ"/>
                     <constraint firstItem="NKq-WB-tQE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="BvC-qj-w5X"/>
                     <constraint firstItem="ebF-qC-VVJ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Pel-x3-FS5"/>
                     <constraint firstItem="NKq-WB-tQE" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Qyr-nb-Ww5"/>
-                    <constraint firstItem="ebF-qC-VVJ" firstAttribute="leading" secondItem="GCv-JM-7s4" secondAttribute="trailing" constant="8" id="UkZ-2m-BLO"/>
+                    <constraint firstItem="ebF-qC-VVJ" firstAttribute="leading" secondItem="GCv-JM-7s4" secondAttribute="trailing" constant="20" id="UkZ-2m-BLO"/>
                     <constraint firstItem="GCv-JM-7s4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cbQ-Bf-tEP"/>
-                    <constraint firstItem="NKq-WB-tQE" firstAttribute="leading" secondItem="GCv-JM-7s4" secondAttribute="trailing" constant="8" id="gqy-f5-oGA"/>
+                    <constraint firstItem="NKq-WB-tQE" firstAttribute="leading" secondItem="GCv-JM-7s4" secondAttribute="trailing" constant="20" id="gqy-f5-oGA"/>
                     <constraint firstItem="GCv-JM-7s4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="gvb-KP-mgH"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="lblDate" destination="fq8-SC-fpR" id="CxT-N3-y2f"/>
+                <outlet property="lblDay" destination="6ac-zh-caw" id="8dL-vn-dQl"/>
+                <outlet property="lblThuAndTime" destination="NKq-WB-tQE" id="UiZ-JA-jyU"/>
+                <outlet property="lblTotalPrice" destination="ebF-qC-VVJ" id="iI4-f6-BQs"/>
                 <outlet property="viewDateBooking" destination="GCv-JM-7s4" id="KkE-NH-4jq"/>
             </connections>
             <point key="canvasLocation" x="-112" y="-150.5"/>

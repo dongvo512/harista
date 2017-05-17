@@ -47,7 +47,6 @@
         
         arrSelected = [NSMutableArray arrayWithArray:aArrSelected];
         
-        
     }
     
     return self;
@@ -72,7 +71,7 @@
     [self.btnChecked setHidden:!isSelectedItem];
     
     
-    [self checkSelected];
+   // [self checkSelected];
     
 }
 
@@ -213,33 +212,6 @@
     
     return reusableview;
 }
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//
-//    if(isSelectedItem){
-//        
-//        GroupService *group = [self.arrGroupService objectAtIndex:indexPath.section];
-//        
-//        Service *service = [group.arrSerives objectAtIndex:indexPath.row];
-//        service.isSelected = !service.isSelected;
-//        
-//    }
-//    else{
-//    
-//        GroupService *group = [self.arrGroupService objectAtIndex:indexPath.section];
-//        
-//        Service *serice = [group.arrSerives objectAtIndex:indexPath.row];
-//        
-//        HairFullView *hairFull = [[HairFullView alloc] initWithFrame:self.view.bounds imgName:serice.name title:serice.name];
-//        
-//        [UIView transitionWithView:self.view duration:0.5
-//                           options:UIViewAnimationOptionTransitionCrossDissolve //change to whatever animation you like
-//                        animations:^ { [self.view addSubview:hairFull];
-//                            
-//                        }
-//                        completion:nil];
-//
-//    }
-//}
 @end
 
 

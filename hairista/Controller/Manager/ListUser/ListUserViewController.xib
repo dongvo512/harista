@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Roboto-Medium.ttf">
             <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -92,8 +94,8 @@
                         <constraint firstItem="3Wc-3b-0vk" firstAttribute="leading" secondItem="YEt-7s-oVO" secondAttribute="leading" id="z7K-r3-W8Q"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v19-4s-zH5">
-                    <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v19-4s-zH5">
+                    <rect key="frame" x="0.0" y="163" width="375" height="504"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="foY-8Q-D7M"/>
@@ -111,17 +113,56 @@
                         <outlet property="delegate" destination="-1" id="Z0l-Lk-saS"/>
                     </connections>
                 </searchBar>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEi-Yt-Wp1">
+                    <rect key="frame" x="295" y="116" width="80" height="48"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="Utr-jM-T8B"/>
+                        <constraint firstAttribute="width" constant="80" id="k2B-TB-3mm"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="leM-Lv-uAV"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="oSX-2T-lC4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                    <state key="normal" title="Tất cả ">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15 kết quả tìm kiếm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfI-Zf-tXT">
+                    <rect key="frame" x="16" y="130" width="165" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                    <color key="textColor" red="1" green="0.31328328700000002" blue="0.16705806510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vs-NJ-1PX">
+                    <rect key="frame" x="205" y="116" width="90" height="48"/>
+                    <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="WM0-oc-qQF"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="WpA-nS-eIa"/>
+                        <constraint firstAttribute="height" constant="48" id="Z9f-wj-tls"/>
+                        <constraint firstAttribute="width" constant="90" id="esZ-pf-15t"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                    <state key="normal" title="Tại Salon">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="f6n-Sc-Wd1" secondAttribute="trailing" id="1ip-FI-irG"/>
                 <constraint firstAttribute="bottom" secondItem="v19-4s-zH5" secondAttribute="bottom" id="B8i-KH-ouX"/>
-                <constraint firstItem="v19-4s-zH5" firstAttribute="top" secondItem="f6n-Sc-Wd1" secondAttribute="bottom" id="Ken-Pf-P7i"/>
+                <constraint firstItem="sEi-Yt-Wp1" firstAttribute="top" secondItem="f6n-Sc-Wd1" secondAttribute="bottom" id="E4V-qT-he4"/>
+                <constraint firstItem="v19-4s-zH5" firstAttribute="top" secondItem="f6n-Sc-Wd1" secondAttribute="bottom" constant="47" id="Ken-Pf-P7i"/>
                 <constraint firstAttribute="trailing" secondItem="v19-4s-zH5" secondAttribute="trailing" id="KpM-So-fiY"/>
                 <constraint firstItem="f6n-Sc-Wd1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="f75-vl-j3k"/>
                 <constraint firstAttribute="trailing" secondItem="YEt-7s-oVO" secondAttribute="trailing" id="fAz-WL-vlq"/>
                 <constraint firstItem="YEt-7s-oVO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fQS-rY-o6d"/>
                 <constraint firstItem="v19-4s-zH5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fgn-ur-e83"/>
+                <constraint firstItem="sEi-Yt-Wp1" firstAttribute="leading" secondItem="4vs-NJ-1PX" secondAttribute="trailing" id="hKR-t7-TdH"/>
+                <constraint firstItem="4vs-NJ-1PX" firstAttribute="top" secondItem="f6n-Sc-Wd1" secondAttribute="bottom" id="lwc-Zk-676"/>
+                <constraint firstAttribute="trailing" secondItem="sEi-Yt-Wp1" secondAttribute="trailing" id="mXH-rM-71I"/>
                 <constraint firstItem="YEt-7s-oVO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yqA-IE-QCf"/>
                 <constraint firstItem="f6n-Sc-Wd1" firstAttribute="top" secondItem="YEt-7s-oVO" secondAttribute="bottom" id="yu7-Kf-yog"/>
             </constraints>

@@ -21,7 +21,7 @@
 
     self.lblServiceName.text = service.name;
     
-    self.lblServicePrice.text = service.price;
+    self.lblServicePrice.text = service.price.stringValue;
 }
 
 - (void)awakeFromNib {

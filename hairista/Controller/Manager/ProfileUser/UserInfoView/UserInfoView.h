@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class User;
+@class SessionUser;
 
 @interface UserInfoView : UIView
 
-- (id)initWithFrame:(CGRect)frame User:(User *)aUser;
+- (id)initWithFrame:(CGRect)frame User:(SessionUser *)aUser;
 
 @end

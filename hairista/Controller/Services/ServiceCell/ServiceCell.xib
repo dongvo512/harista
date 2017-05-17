@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,14 +57,14 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2T-l8-FAk">
-                        <rect key="frame" x="0.0" y="0.0" width="54" height="20"/>
+                        <rect key="frame" x="0.0" y="0.0" width="55.5" height="20"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJT-r7-jNY">
-                                <rect key="frame" x="0.0" y="0.0" width="54" height="20"/>
+                                <rect key="frame" x="4" y="0.0" width="47.5" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="2DM-o9-6Ua"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="54" id="Irh-Z3-9hs"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Irh-Z3-9hs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,8 +73,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ZJT-r7-jNY" firstAttribute="leading" secondItem="N2T-l8-FAk" secondAttribute="leading" id="4yV-kc-vij"/>
-                            <constraint firstAttribute="trailing" secondItem="ZJT-r7-jNY" secondAttribute="trailing" id="DGj-CL-hCC"/>
+                            <constraint firstItem="ZJT-r7-jNY" firstAttribute="leading" secondItem="N2T-l8-FAk" secondAttribute="leading" constant="4" id="4yV-kc-vij"/>
+                            <constraint firstAttribute="trailing" secondItem="ZJT-r7-jNY" secondAttribute="trailing" constant="4" id="DGj-CL-hCC"/>
                             <constraint firstItem="ZJT-r7-jNY" firstAttribute="top" secondItem="N2T-l8-FAk" secondAttribute="top" id="YoJ-jK-qkd"/>
                             <constraint firstAttribute="height" constant="20" id="c8Q-86-URl"/>
                         </constraints>

@@ -12,7 +12,13 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+   
+    self.layer.masksToBounds = NO;
+    self.layer.cornerRadius = 4; // if you like rounded corners
+    self.layer.shadowOffset = CGSizeMake(0, 0);
+    self.layer.shadowRadius = 5;
+    self.layer.shadowOpacity = 0.2;
+    
 }
 
 @end

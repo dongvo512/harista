@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class User;
+@class SessionUser;
 
 @interface UserCell : UITableViewCell
 
--(void)setDataForCell:(User *)user;
+-(void)setDataForCell:(SessionUser *)user;
 
 @end

@@ -32,8 +32,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbltotalPrice;
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
 
-@property (weak, nonatomic) IBOutlet NCTextFieldView *txtFullName;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightContraint;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
@@ -65,11 +63,6 @@
     
     self.btnSearch.layer.borderWidth = 0.5;
     self.btnSearch.layer.borderColor = [UIColor grayTextCombobox].CGColor;
-    
-    [self.txtFullName setBackgroundColor:[UIColor whiteColor]];
-    [self.txtFullName.txtTextField setPlaceholder:@"Nhập họ và tên"];
-    self.txtFullName.delegate = self;
-
     
     [self.cboTime.view setBackgroundColor:[UIColor whiteColor]];
     [self.cboTime setPlaceHolder:@"Chọn thời gian"];
@@ -118,27 +111,13 @@
         
     }
     
-    if(self.txtFullName.txtTextField.text.length == 0){
-        
-        UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:@"Thông báo" message:@"Bạn chưa nhập họ và tên" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-        
-        
-        [vcAlert addAction:Oke];
-        
-        [self presentViewController:vcAlert animated:YES completion:nil];
-        
-        return;
-        
-    }
     
-    if([self.cboTime getText].length > 0 && [self.cboService getText].length > 0 && self.txtFullName.txtTextField.text.length > 0){
+    if([self.cboTime getText].length > 0 && [self.cboService getText].length > 0 ){
     
         
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         
-        [dic setObject:self.txtFullName.txtTextField.text forKey:@"name"];
+        [dic setObject:Appdelegate_hairista.sessionUser.name forKey:@"name"];
         
         [dic setObject:[self createListPrice:arrSelected] forKey:@"price"];
         
@@ -193,7 +172,7 @@
     
     for(Service *service in arrService){
         
-        [strPrice appendFormat:@"%@,",service.price];
+        [strPrice appendFormat:@"%@,",service.price.stringValue];
         
     }
     

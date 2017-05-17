@@ -156,6 +156,16 @@
     ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     
     Image *img = [self.arrImages objectAtIndex:indexPath.row];
+    
+    if(img.name.length == 0){
+    
+        cell.lblImageName.text = @"Hình của khách";
+    }
+    else{
+    
+        cell.lblImageName.text = img.name;
+    }
+    
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
         img.heightImage = (SW -24)/2 * image.size.height/image.size.width;
@@ -169,7 +179,9 @@
     
     Image *img = [self.arrImages objectAtIndex:indexPath.row];
     
-    return CGSizeMake((SW -24)/2, (img.heightImage == 0)?(SW -24)/2:img.heightImage);
+    CGFloat heightImgName = [Common findHeightForText:img.name havingWidth:(SW - 36)/2 andFont:[UIFont fontWithName:FONT_ROBOTO_REGULAR size:15.0f]];
+    
+    return CGSizeMake((SW -24)/2, (img.heightImage == 0)?(SW -24)/2 + heightImgName:img.heightImage + heightImgName);
 }
 
 #pragma mark - Header

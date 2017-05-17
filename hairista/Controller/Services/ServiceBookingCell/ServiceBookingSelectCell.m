@@ -35,8 +35,8 @@
     [self.imgSelect setHidden:(service.isSelected)?NO:YES];
     
     [self.imgService sd_setImageWithURL:[NSURL URLWithString:service.image] placeholderImage:IMG_DEFAULT];
-    self.lblPrice.text = service.price;
-    self.lblPrice.text = service.price;
+    self.lblPrice.text = service.price.stringValue;
+  
     self.lblServiceName.text = service.name;
  
 }

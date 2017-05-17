@@ -7,20 +7,25 @@
 //
 
 #import "UserInfoView.h"
-#import "User.h"
-
+#import "SessionUser.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface UserInfoView (){
 
-    User *user;
+    SessionUser *user;
 }
+@property (weak, nonatomic) IBOutlet UILabel *lblHomeAddress;
 @property (strong, nonatomic) IBOutlet UIView *view;
+@property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UILabel *lblEmail;
+@property (weak, nonatomic) IBOutlet UILabel *lblPhone;
 
 @end
 
 @implementation UserInfoView
 
-- (id)initWithFrame:(CGRect)frame User:(User *)aUser{
+- (id)initWithFrame:(CGRect)frame User:(SessionUser *)aUser{
     
     if(self = [super initWithFrame:frame]){
         
@@ -35,7 +40,16 @@
     
     self.view.frame = self.bounds;
     [self addSubview:self.view];
+    [self loadDataForUI];
     
+}
+-(void)loadDataForUI{
+    
+    [self.imgAvatar sd_setImageWithURL:[NSURL URLWithString:user.avatar] placeholderImage:IMG_USER_DEFAULT];
+    self.lblName.text = user.name;
+    self.lblEmail.text = user.email;
+    self.lblPhone.text = user.phone;
+    self.lblHomeAddress.text = user.homeAddress;
 }
 
 @end

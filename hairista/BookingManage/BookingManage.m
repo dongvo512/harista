@@ -10,7 +10,7 @@
 #import "Booking.h"
 #import "Salon.h"
 #import "SessionUser.h"
-
+#import "Service.h"
 
 static BookingManage *sharedInstance = nil;
 @implementation BookingManage
@@ -171,6 +171,36 @@ static BookingManage *sharedInstance = nil;
     return arrBooking;
 }
 
+-(NSMutableArray *)parseListServiceFromBooking:(NSDictionary *)responseDataObject{
+
+    NSArray *arrData = [responseDataObject objectForKey:@"data"];
+    NSMutableArray *arrSerice = [NSMutableArray array];
+    
+    for(NSDictionary *dic in arrData){
+        
+        NSDictionary *dicService = [dic objectForKey:@"service"];
+        
+        if(dicService){
+        
+            Service *service = [[Service alloc] init];
+            service.categoryId = CHECK_NIL([dicService objectForKey:@"categoryId"]);
+            service.createdAt = CHECK_NIL([dicService objectForKey:@"createdAt"]);
+            service.idService = CHECK_NIL([dicService objectForKey:@"id"]);
+            service.image = CHECK_NIL([dicService objectForKey:@"image"]);
+            service.name = CHECK_NIL([dicService objectForKey:@"name"]);
+            service.name_slug = CHECK_NIL([dicService objectForKey:@"name_slug"]);
+            service.ordering = CHECK_NIL([dicService objectForKey:@"ordering"]);
+            service.price = CHECK_NIL([dicService objectForKey:@"price"]);
+            service.priceDiscount = CHECK_NIL([dicService objectForKey:@"priceDiscount"]);
+            service.updatedAt = CHECK_NIL([dicService objectForKey:@"updatedAt"]);
+            
+            [arrSerice addObject:service];
+        }
+    }
+
+    return arrSerice;
+}
+
 #pragma mark - Call Api
 -(void)createBooking:(NSDictionary *)dicBody idSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult {
 
@@ -192,17 +222,18 @@ static BookingManage *sharedInstance = nil;
     }];
     
 }
--(void)getListBookingOfMe:(NSString *)indexPage limit:(NSString *)limit startDate:(NSString *)startDate endDate:(NSString *)endDate dataResult:(DataAPIResult)dataApiResult{
 
-    NSString *url = [NSString stringWithFormat:@"%@?limit=%@&page=%@&startDate=%@&endDate=%@",URL_GET_LIST_BOOKING_OF_ME,limit,indexPage,startDate,endDate];
-   
+-(void)getListBookingOfSalon:(NSString *)indexPage limit:(NSString *)limit startDate:(NSString *)startDate endDate:(NSString *)endDate dataResult:(DataAPIResult)dataApiResult{
+
+    NSString *url = [NSString stringWithFormat:@"%@?limit=%@&page=%@&startDate=%@&endDate=%@",URL_GET_LIST_BOOKING_OF_SALON,limit,indexPage,startDate,endDate];
+    
     [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         
         if(isError){
             
-            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorBookingOfMe", nil)};
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorBookingOfSalon", nil)};
             
-            NSError *error = [[NSError alloc]initWithDomain:@"ErrorBookingOfMe" code:1 userInfo:userInfo];
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorBookingOfSalon" code:1 userInfo:userInfo];
             dataApiResult(error, nil);
         }
         else{
@@ -213,6 +244,100 @@ static BookingManage *sharedInstance = nil;
         }
     }];
 
-    
 }
+
+-(void)getListBookingOfUser:(NSString *)idUser indexPage:(NSString *)indexPage limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult{
+
+    NSString *url = [NSString stringWithFormat:@"%@%@/booking?limit=%@&page=%@",URL_GET_LIST_BOOKING_OF_USER,idUser,limit,indexPage];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorBookingOfUser", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorBookingOfUser" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSMutableArray *arrData = [self parseBooking:responseDataObject];
+            
+            dataApiResult(nil, arrData);
+        }
+    }];
+}
+
+-(void)getListBookingOfMe:(NSString *)indexPage limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult{
+
+        NSString *url = [NSString stringWithFormat:@"%@?limit=%@&page=%@",URL_GET_LIST_BOOKING_OF_ME,limit,indexPage];
+    
+        [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+    
+            if(isError){
+    
+                NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorBookingOfMe", nil)};
+    
+                NSError *error = [[NSError alloc]initWithDomain:@"ErrorBookingOfMe" code:1 userInfo:userInfo];
+                dataApiResult(error, nil);
+            }
+            else{
+    
+                NSMutableArray *arrData = [self parseBooking:responseDataObject];
+    
+                dataApiResult(nil, arrData);
+            }
+        }];
+
+}
+
+
+-(void)getDetailBooking:(NSString *)idBooking dataResult:(DataAPIResult)dataApiResult{
+
+    NSString *url = [NSString stringWithFormat:@"%@%@",URL_GET_DETAIL_BOOKING,idBooking];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorDetailBooking", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorDetailBooking" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSMutableArray *arrData = [self parseListServiceFromBooking:responseDataObject];
+            
+            dataApiResult(nil, arrData);
+        }
+    }];
+
+}
+
+-(void)updateBooking:(NSString *)idBooking status:(NSString *)status dataResult:(DataAPIResult)dataApiResult{
+
+    
+   // NSDictionary *dic = @{@"name":booking.name, @"price":booking.price, @"totalPrice":booking.totalPrice, @"startDate":booking.startDate};
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@/%@",URL_PUT_UPDATE_BOOKING,idBooking,status];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_PUT withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateBooking", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateBooking" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+          //  NSMutableArray *arrData = [self parseListServiceFromBooking:responseDataObject];
+            
+            dataApiResult(nil, @"OK");
+        }
+    }];
+}
+
 @end

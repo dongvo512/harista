@@ -10,6 +10,10 @@
 #import "Booking.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+#define STATUS_PENDING @"pending"
+#define STATUS_DONE @"done"
+#define STATUS_CANCEL @"cancel"
+
 @interface ManageBookingCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewAvatar;
@@ -17,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTotalPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblUserPhone;
 @property (weak, nonatomic) IBOutlet UILabel *lblTimeBooking;
+@property (weak, nonatomic) IBOutlet UIImageView *imgStatus;
 
 @end
 
@@ -35,6 +40,25 @@
 
 - (void)setDataForCell:(Booking *)booking{
 
+    if([booking.status isEqualToString:STATUS_PENDING]){
+    
+        [self.imgStatus setHidden:NO];
+        [self.imgStatus setImage:[UIImage imageNamed:@"ic_note_booking"]];
+    }
+    
+    if([booking.status isEqualToString:STATUS_CANCEL]){
+    
+        
+        [self.imgStatus setHidden:NO];
+        [self.imgStatus setImage:[UIImage imageNamed:@"ic_delete_booking"]];
+    }
+    
+    if([booking.status isEqualToString:STATUS_DONE]){
+       
+        [self.imgStatus setHidden:NO];
+        [self.imgStatus setImage:[UIImage imageNamed:@"ic_checked_booking"]];
+    }
+    
      [self.imgViewAvatar sd_setImageWithURL:[NSURL URLWithString:booking.user.avatar] placeholderImage:IMG_USER_DEFAULT];
     
     self.lblUserName.text = booking.name;

@@ -13,6 +13,7 @@
 
 #define Appdelegate_hairista ((AppDelegate *)[[UIApplication sharedApplication] delegate])
 
+
 #define _CM_IPAD @"IPAD"
 #define _CM_IPAD_PRO @"IPAD PRO"
 #define _CM_IPHONE_3_5_INCH     @"IPHONE 3.5 INCH"
@@ -166,13 +167,21 @@
 
 #define URL_POST_CREATE_BOOKING @"https://salonhair.herokuapp.com/api/v1/salons/"
 
-#define URL_GET_LIST_BOOKING_OF_ME @"https://salonhair.herokuapp.com/api/v1/bookings/me"
+#define URL_GET_LIST_BOOKING_OF_ME @"https://salonhair.herokuapp.com/api/v1/users/me/booking"
+
+#define URL_GET_LIST_BOOKING_OF_USER @"https://salonhair.herokuapp.com/api/v1/users/"
+
+#define URL_GET_LIST_BOOKING_OF_SALON @"https://salonhair.herokuapp.com/api/v1/users/me/booking"
 
 #define URL_DELETE_FAVORITE @"https://salonhair.herokuapp.com/api/v1/favorites/"
 
 #define URL_FAVORITE @"https://salonhair.herokuapp.com/api/v1/favorites/"
 
 #define URL_GET_SEARCH_USER @"https://salonhair.herokuapp.com/api/v1/searchUser"
+
+#define URL_GET_DETAIL_BOOKING @"https://salonhair.herokuapp.com/api/v1/bookings/"
+
+#define URL_PUT_UPDATE_BOOKING @"https://salonhair.herokuapp.com/api/v1/bookings/"
 
 //{{url}}searchUser?keywords=1232
 

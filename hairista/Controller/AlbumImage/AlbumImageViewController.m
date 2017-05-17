@@ -150,6 +150,8 @@
     
     Image *img = [self.arrImages objectAtIndex:indexPath.row];
     
-    return CGSizeMake((SW -24)/2, (img.heightImage == 0)?(SW -24)/2:img.heightImage);
+    CGFloat heightImgName = [Common findHeightForText:img.name havingWidth:(SW - 36)/2 andFont:[UIFont fontWithName:FONT_ROBOTO_REGULAR size:15.0f]];
+    
+    return CGSizeMake((SW -24)/2, (img.heightImage == 0)?(SW -24)/2 + heightImgName:img.heightImage + heightImgName);
 }
 @end

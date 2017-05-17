@@ -7,14 +7,15 @@
 //
 
 #import "UserCell.h"
-#import "User.h"
-
+#import "SessionUser.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface UserCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgUser;
 @property (weak, nonatomic) IBOutlet UILabel *lblFullName;
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
+@property (weak, nonatomic) IBOutlet UILabel *lblPhone;
 
 @end
 
@@ -33,11 +34,13 @@
 
 #pragma mark - Method
 
--(void)setDataForCell:(User *)user{
-
-    self.imgUser.image = [UIImage imageNamed:user.strImgAvatar];
-    self.lblAddress.text = user.strAddress;
-    self.lblFullName.text = user.strFullName;
+-(void)setDataForCell:(SessionUser *)user{
+    
+     [self.imgUser sd_setImageWithURL:[NSURL URLWithString:user.avatar] placeholderImage:IMG_USER_DEFAULT];
+    
+    self.lblAddress.text = user.homeAddress;
+    self.lblFullName.text = user.name;
+    self.lblPhone.text = user.phone;
     
 }
 

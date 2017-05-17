@@ -261,7 +261,15 @@
     return date;
     
 }
-
++ (CGFloat)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font {
+    CGSize size = CGSizeZero;
+    if (text) {
+        //iOS 7
+        CGRect frame = [text boundingRectWithSize:CGSizeMake(widthValue, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName:font } context:nil];
+        size = CGSizeMake(frame.size.width, frame.size.height + 1);
+    }
+    return size.height;
+}
 + (NSString *)upperFirstLetter:(NSString *)strKeyWord{
     
     NSString *capitalisedSentence = _CM_STRING_EMPTY;

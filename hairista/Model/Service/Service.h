@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) NSString *name_slug;
 
-@property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSNumber *price;
 
 @property (nonatomic, strong) NSString *priceDiscount;
 

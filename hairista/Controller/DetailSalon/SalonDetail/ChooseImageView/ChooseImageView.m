@@ -17,8 +17,10 @@
     NSString *title;
     Salon *salonCurr;
 }
+
 @property (strong, nonatomic) IBOutlet UIView *view;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet UITextField *tfImageName;
 
 @end
 
@@ -65,6 +67,13 @@
 }
 - (IBAction)touchBtnShare:(id)sender {
     
+    if(self.tfImageName.text.length == 0){
+    
+        [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:@"Bạn chưa nhập tên hình ảnh" buttonClick:nil];
+        
+        return;
+    }
+    
         NSData *data= nil;
         float imgValue = MAX(imgCurr.size.width, imgCurr.size.height);
     
@@ -110,7 +119,7 @@
 }
 -(void)uploadImageForSalon:(NSString *)urlImage{
 
-    [[SalonManage sharedInstance] uploadUrlImageForSalon:urlImage idSalon:salonCurr.idSalon dataResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] uploadUrlImageForSalon:urlImage name:self.tfImageName.text idSalon:salonCurr.idSalon dataResult:^(NSError *error, id idObject) {
         
         if(error){
             

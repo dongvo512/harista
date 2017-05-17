@@ -98,6 +98,8 @@
     
     self.arrViews = [NSArray arrayWithObjects:self.vcSalonDetal.view, self.vcService.view, self.vcComment.view, nil];
     
+    //self.arrViews = [NSArray arrayWithObjects:self.vcSalonDetal.view,self.vcService.view, nil];
+    
     for (int i = 0 ; i< self.arrViews.count;i++) {
         
         UIView * view = self.arrViews[i];

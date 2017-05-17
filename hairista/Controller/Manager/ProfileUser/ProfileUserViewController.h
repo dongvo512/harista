@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class User;
+@class SessionUser;
 
 @interface ProfileUserViewController : UIViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil User:(User *)aUser;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil User:(SessionUser *)aUser;
 
 @end

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,8 +47,8 @@
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="cQs-ju-uNC"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                        <color key="textColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAu-vY-YVB">
@@ -75,6 +74,7 @@
                             <constraint firstAttribute="width" constant="80" id="fee-aL-TSh"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_start_grey" translatesAutoresizingMaskIntoConstraints="NO" id="kGb-Xf-Gl2">

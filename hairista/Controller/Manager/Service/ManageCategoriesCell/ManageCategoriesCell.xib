@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ManageCategoriesCell" id="gTV-IL-0wX" customClass="ManageCategoriesCell">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nhuom_bach_kim" translatesAutoresizingMaskIntoConstraints="NO" id="gE2-RJ-bTb">
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGD-6Z-urx">
+                        <rect key="frame" x="0.0" y="130" width="160" height="30"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cắt tóc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLQ-ro-Ht7">
+                                <rect key="frame" x="8" y="5" width="144" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Qgv-oh-K3E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.29571963028169013" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Gxh-37-Ddc"/>
+                            <constraint firstAttribute="trailing" secondItem="NLQ-ro-Ht7" secondAttribute="trailing" constant="8" id="hJf-b3-SsM"/>
+                            <constraint firstItem="NLQ-ro-Ht7" firstAttribute="leading" secondItem="mGD-6Z-urx" secondAttribute="leading" constant="8" id="maC-od-fpB"/>
+                            <constraint firstItem="NLQ-ro-Ht7" firstAttribute="centerY" secondItem="mGD-6Z-urx" secondAttribute="centerY" id="xlp-XT-Gzr"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="mGD-6Z-urx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8lc-RJ-Jd3"/>
+                <constraint firstAttribute="bottom" secondItem="mGD-6Z-urx" secondAttribute="bottom" id="BmV-Uc-Ga2"/>
+                <constraint firstItem="gE2-RJ-bTb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Dl9-Ra-MIo"/>
+                <constraint firstAttribute="bottom" secondItem="gE2-RJ-bTb" secondAttribute="bottom" id="Rdd-IW-NW8"/>
+                <constraint firstAttribute="trailing" secondItem="mGD-6Z-urx" secondAttribute="trailing" id="sV8-Xg-Jwh"/>
+                <constraint firstItem="gE2-RJ-bTb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vYQ-ad-KSx"/>
+                <constraint firstAttribute="trailing" secondItem="gE2-RJ-bTb" secondAttribute="trailing" id="z97-Yt-BFD"/>
+            </constraints>
+            <size key="customSize" width="177" height="199"/>
+            <connections>
+                <outlet property="imgView" destination="gE2-RJ-bTb" id="fPm-Sk-D89"/>
+                <outlet property="lblCategoriyName" destination="NLQ-ro-Ht7" id="0HL-JM-x2u"/>
+            </connections>
+            <point key="canvasLocation" x="-32" y="-119"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="nhuom_bach_kim" width="292" height="440"/>
+    </resources>
+</document>

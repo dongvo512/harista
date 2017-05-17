@@ -14,7 +14,7 @@
 
 - (void)getListSalons:(BOOL)isShowOnBoard page:(NSString *)page limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult;
 
--(void)uploadUrlImageForSalon:(NSString *)imgUrl idSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult;
+-(void)uploadUrlImageForSalon:(NSString *)imgUrl name:(NSString *)name idSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult;
 
 -(void)getListImageSalon:(NSString *)idSalon page:(NSString *)page limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult;
 

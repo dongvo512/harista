@@ -49,4 +49,5 @@ typedef void (^CallAPIResult)(BOOL isError, NSString *stringError, id responseDa
 +(NSDate *)getDateFromStringFormat:(NSString *)dateString format:(NSString *)format;
 + (Date *)getStartEndDate:(NSCalendarUnit)typeOutput formatOutPut:(NSString *)format;
 + (NSString *)getDayInWeekVietNamese:(NSDate *)date;
++ (CGFloat)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font;
 @end

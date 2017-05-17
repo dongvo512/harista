@@ -27,6 +27,31 @@ static AuthenticateManage *sharedInstance = nil;
 
 #pragma mark - Parse
 
+- (NSMutableArray *)parseListUserSearch:(NSDictionary *)responseDataObject{
+
+     NSArray *array = [responseDataObject objectForKey:@"data"];
+    
+    NSMutableArray *arrUser = [NSMutableArray array];
+    
+    for(NSDictionary *dic in array){
+    
+        SessionUser *user = [[SessionUser alloc] init];
+        user.totalRate = CHECK_NIL([dic objectForKey:@"totalRate"]);
+        user.isOnline = CHECK_NIL([dic objectForKey:@"isOnline"]);
+        user.updatedAt = CHECK_NIL([dic objectForKey:@"updatedAt"]);
+        user.idUser = CHECK_NIL([dic objectForKey:@"id"]);
+        user.email = CHECK_NIL([dic objectForKey:@"email"]);
+        user.name = CHECK_NIL([dic objectForKey:@"name"]);
+        user.homeAddress = CHECK_NIL([dic objectForKey:@"homeAddress"]);
+        user.avatar = CHECK_NIL([dic objectForKey:@"avatar"]);
+        user.phone = CHECK_NIL([dic objectForKey:@"phone"]);
+        
+        [arrUser addObject:user];
+    }
+    
+    return arrUser;
+}
+
 - (NSString *)parseuploadUrlImage:(NSDictionary *)responseDataObject error:(NSError **)error{
     
     NSString *strImgUrl = @"";
@@ -293,9 +318,6 @@ static AuthenticateManage *sharedInstance = nil;
     
     NSString *url = [NSString stringWithFormat:@"%@?keywords=%@&page=%@&limit=%@",URL_GET_SEARCH_USER,keyword,pageIndex,limit];
     
-    //  NSString *url = [NSString stringWithFormat:@"%@?keywords=%@",URL_GET_SEARCH_USER,keyword];
-    
-    
     [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         
         if(isError){
@@ -307,7 +329,7 @@ static AuthenticateManage *sharedInstance = nil;
         }
         else{
             
-            NSMutableArray *arrData = [self parseListImageUser:responseDataObject];
+            NSMutableArray *arrData = [self parseListUserSearch:responseDataObject];
             
             dataApiResult(nil, arrData);
         }

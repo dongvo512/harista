@@ -7,6 +7,14 @@
 //
 
 #import "ServiceBookingCell.h"
+#import "Service.h"
+
+@interface ServiceBookingCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *lblSerivceName;
+@property (weak, nonatomic) IBOutlet UILabel *lblServicePrice;
+
+@end
 
 @implementation ServiceBookingCell
 
@@ -20,5 +28,10 @@
 
     // Configure the view for the selected state
 }
+-(void)setDataForCell:(Service *)service{
 
+    self.lblSerivceName.text = service.name;
+    
+    self.lblServicePrice.text = [Common getString3DigitsDot:service.price.integerValue];
+}
 @end

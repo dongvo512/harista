@@ -7,9 +7,15 @@
 //
 
 #import "ProfileUserCell.h"
+#import "Booking.h"
 
 @interface ProfileUserCell ()
+
 @property (weak, nonatomic) IBOutlet UIView *viewDateBooking;
+@property (weak, nonatomic) IBOutlet UILabel *lblDay;
+@property (weak, nonatomic) IBOutlet UILabel *lblDate;
+@property (weak, nonatomic) IBOutlet UILabel *lblThuAndTime;
+@property (weak, nonatomic) IBOutlet UILabel *lblTotalPrice;
 
 @end
 
@@ -29,5 +35,22 @@
 
     // Configure the view for the selected state
 }
+-(void)setDataForCell:(Booking *)booking{
 
+    NSString *dayName = [Common getDayInWeekVietNamese:[Common getDateFromStringFormat:booking.startDate format:@"yyyy-MM-dd HH:mm:ss"]];
+    
+    NSString *strStartTime = [Common formattedDateTimeWithDateString:booking.startDate inputFormat:@"yyyy-MM-dd HH:mm:ss" outputFormat:@"HH:mm"];
+    
+    self.lblThuAndTime.text = [NSString stringWithFormat:@"%@ lúc %@",dayName,strStartTime];
+    
+    NSString *strDay = [Common formattedDateTimeWithDateString:booking.startDate inputFormat:@"yyyy-MM-dd HH:mm:ss" outputFormat:@"dd"];
+
+    self.lblDay.text = strDay;
+    
+    self.lblDate.text = [Common formattedDateTimeWithDateString:booking.startDate inputFormat:@"yyyy-MM-dd HH:mm:ss" outputFormat:@"dd/MM/yyyy"];
+    
+    NSString *totalPrice = [Common getString3DigitsDot:booking.totalPrice.integerValue];
+    
+    self.lblTotalPrice.text = [NSString stringWithFormat:@"%@ đ",totalPrice];
+}
 @end

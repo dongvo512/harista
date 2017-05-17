@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Booking;
 
 @interface ProfileUserCell : UITableViewCell
-
+-(void)setDataForCell:(Booking *)booking;
 @end

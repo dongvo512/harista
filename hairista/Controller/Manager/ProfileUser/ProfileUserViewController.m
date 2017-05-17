@@ -9,19 +9,28 @@
 #import "ProfileUserViewController.h"
 #import "UserInfoView.h"
 #import "CommonDefine.h"
-#import "User.h"
+#import "SessionUser.h"
 #import "ProfileUserCell.h"
+#import "BookingManage.h"
+#import "Booking.h"
+#import "DetailBookingViewController.h"
 
 #define HEIGHT_CELL 100
+#define LIMIT_ITEM @"14"
 
 @interface ProfileUserViewController (){
 
     UserInfoView *headerView;
-    User *user;
+    SessionUser *user;
+    NSInteger indexPage;
+    
+    BOOL isFullData;
+    
+    BOOL isLoading;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tblView;
-@property (nonatomic, strong) NSMutableArray *arrData;
+@property (nonatomic, strong) NSMutableArray *arrDataBooking;
 
 @end
 
@@ -29,7 +38,7 @@
 
 #pragma mark - Init
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil User:(User *)aUser{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil User:(SessionUser *)aUser{
 
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
@@ -46,7 +55,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    indexPage = 1;
+    
     [self.tblView registerNib:[UINib nibWithNibName:@"ProfileUserCell" bundle:nil] forCellReuseIdentifier:@"ProfileUserCell"];
+    
+    [self getListBookingByUser];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,7 +75,63 @@
 }
 
 #pragma mark - Method
+-(void)getListBookingByUser{
 
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    isLoading = YES;
+    
+    [[BookingManage sharedInstance] getListBookingOfUser:user.idUser indexPage:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+        
+        isLoading = NO;
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+        
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+        
+            self.arrDataBooking = [NSMutableArray arrayWithArray:idObject];
+            
+            if(self.arrDataBooking.count < LIMIT_ITEM.integerValue){
+            
+                isFullData = YES;
+            }
+            
+            [self.tblView reloadData];
+        }
+    }];
+}
+
+-(void)loadMore{
+
+    isLoading = YES;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[BookingManage sharedInstance] getListBookingOfUser:user.idUser indexPage:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+       
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        isLoading = NO;
+        
+        if(error){
+            
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            NSArray *arrData = idObject;
+            [self.arrDataBooking addObjectsFromArray:arrData];
+           
+            if(arrData.count < LIMIT_ITEM.integerValue){
+                
+                isFullData = YES;
+            }
+
+            [self.tblView reloadData];
+        }
+    }];
+
+}
 
 #pragma mark - Table view DataSource - Delegate
 
@@ -73,15 +142,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 20;
+    return self.arrDataBooking.count;
 }
 
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
    ProfileUserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileUserCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  //  User *user = [self.arrDataSearch objectAtIndex:indexPath.row];
-   // [cell setDataForCell:user];
+     Booking *booking = [self.arrDataBooking objectAtIndex:indexPath.row];
+    [cell setDataForCell:booking];
     
     return cell;
 }
@@ -89,8 +158,30 @@
 - (CGFloat)tableView:(UITableView *)tableView
  heightForRowAtIndexPath:(NSIndexPath *)indexPath{
  
- return HEIGHT_CELL;
- }
+    return HEIGHT_CELL;
+
+}
+
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if( indexPath.row == self.arrDataBooking.count - 1 && !isLoading &&!isFullData){
+        
+        indexPage ++;
+        [self loadMore];
+    }
+    
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    Booking *booking = [self.arrDataBooking objectAtIndex:indexPath.row];
+    
+    DetailBookingViewController *vcDetailBooking = [[DetailBookingViewController alloc] initWithNibName:@"DetailBookingViewController" bundle:nil booking:booking];
+    
+    [self.navigationController pushViewController:vcDetailBooking animated:YES];
+}
+
 #pragma mark - Header
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
@@ -98,7 +189,7 @@
     
     if(!headerView){
         
-        headerView = [[UserInfoView alloc] initWithFrame:CGRectMake(0, 0, SW, SW*2/3) User:user];
+        headerView = [[UserInfoView alloc] initWithFrame:CGRectMake(0, 0, SW, SW/2) User:user];
     }
     
     view = headerView;
@@ -106,11 +197,13 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
-    return nil;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    return view;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return SW*2/3;
+    return SW/2;
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{

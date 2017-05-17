@@ -49,6 +49,8 @@
     
     [request setValue:[NSString stringWithFormat:@"Bearer {{%@}}",Appdelegate_hairista.sessionUser.token] forHTTPHeaderField:@"Authorization"];
     
+    NSLog(@"%@",[NSString stringWithFormat:@"Bearer {{%@}}",Appdelegate_hairista.sessionUser.token]);
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
    
     NSURLSessionDataTask *dataTask;
