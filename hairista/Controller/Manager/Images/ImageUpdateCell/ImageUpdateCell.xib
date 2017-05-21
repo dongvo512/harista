@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageUpdateCell" id="gTV-IL-0wX" customClass="ImageUpdateCell">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="156"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="120" height="156"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M9b-2l-2re">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="126"/>
+                    </imageView>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tên hình ảnh" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4kH-Eu-CXb">
+                        <rect key="frame" x="6" y="126" width="114" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="i1p-al-eu9"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVR-uf-u3K">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="156"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kZ-09-5q0" customClass="MBCircularProgressBarView">
+                                <rect key="frame" x="30" y="48" width="60" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1gT-ny-dcP"/>
+                                    <constraint firstAttribute="width" constant="60" id="7R4-o5-RDF"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressAngle">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressRotationAngle">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressStrokeColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="emptyCapType">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_error" translatesAutoresizingMaskIntoConstraints="NO" id="GT7-Vc-vdu">
+                                <rect key="frame" x="30" y="48" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="PlJ-XF-X3s"/>
+                                    <constraint firstAttribute="width" constant="60" id="p7L-ee-Wdj"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.30031360035211269" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6kZ-09-5q0" firstAttribute="centerX" secondItem="cVR-uf-u3K" secondAttribute="centerX" id="1uy-vv-fDN"/>
+                            <constraint firstItem="6kZ-09-5q0" firstAttribute="centerY" secondItem="cVR-uf-u3K" secondAttribute="centerY" id="jvr-uQ-Ab5"/>
+                            <constraint firstItem="GT7-Vc-vdu" firstAttribute="centerX" secondItem="cVR-uf-u3K" secondAttribute="centerX" id="q1H-pj-fqk"/>
+                            <constraint firstItem="GT7-Vc-vdu" firstAttribute="centerY" secondItem="cVR-uf-u3K" secondAttribute="centerY" id="w6q-u4-6OQ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="4kH-Eu-CXb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="5Kt-qM-RFO"/>
+                <constraint firstAttribute="bottom" secondItem="4kH-Eu-CXb" secondAttribute="bottom" id="BJu-NU-RB3"/>
+                <constraint firstAttribute="bottom" secondItem="cVR-uf-u3K" secondAttribute="bottom" id="Hvp-NB-592"/>
+                <constraint firstAttribute="trailing" secondItem="4kH-Eu-CXb" secondAttribute="trailing" id="WOs-K2-6Tb"/>
+                <constraint firstAttribute="trailing" secondItem="M9b-2l-2re" secondAttribute="trailing" id="Wmu-ud-zKu"/>
+                <constraint firstItem="cVR-uf-u3K" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dD4-fe-IfJ"/>
+                <constraint firstItem="4kH-Eu-CXb" firstAttribute="top" secondItem="M9b-2l-2re" secondAttribute="bottom" id="imM-Sd-WHa"/>
+                <constraint firstItem="4kH-Eu-CXb" firstAttribute="top" secondItem="M9b-2l-2re" secondAttribute="bottom" id="nrp-Cd-7ED"/>
+                <constraint firstItem="cVR-uf-u3K" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pKJ-Yv-zhT"/>
+                <constraint firstItem="M9b-2l-2re" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="r4Y-1e-YRz"/>
+                <constraint firstItem="M9b-2l-2re" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tYW-T6-gGp"/>
+                <constraint firstAttribute="trailing" secondItem="cVR-uf-u3K" secondAttribute="trailing" id="xVC-z7-W7G"/>
+            </constraints>
+            <size key="customSize" width="120" height="156"/>
+            <connections>
+                <outlet property="imgView" destination="M9b-2l-2re" id="L9j-Hc-pyi"/>
+                <outlet property="imgViewError" destination="GT7-Vc-vdu" id="zI7-oW-W60"/>
+                <outlet property="tfName" destination="4kH-Eu-CXb" id="uNL-Kv-tWJ"/>
+                <outlet property="viewProgress" destination="6kZ-09-5q0" id="A6R-0b-fVU"/>
+                <outlet property="viewUpload" destination="cVR-uf-u3K" id="Y0m-Qz-bxm"/>
+            </connections>
+            <point key="canvasLocation" x="-131" y="-98"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_error" width="50" height="50"/>
+    </resources>
+</document>

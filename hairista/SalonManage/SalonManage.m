@@ -702,4 +702,26 @@ static SalonManage *sharedInstance = nil;
 
 }
 
+-(void)uploadMultiImage:(NSArray *)arrDic dataApiResult:(DataAPIResult)dataApiResult{
+
+
+    [APIRequestHandler initWithURLString:URL_PUT_MULTI_IMAGE withHttpMethod:kHTTP_METHOD_PUT withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUploadMultiImage", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorUploadMultiImage" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSMutableArray *arrData = [self parseListSalons:responseDataObject];
+            
+            dataApiResult(nil, arrData);
+            
+        }
+    }];
+}
+
 @end

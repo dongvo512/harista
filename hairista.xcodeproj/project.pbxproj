@@ -13,6 +13,8 @@
 		B803D0B41E3B88E30078857E /* NearByViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B803D0B21E3B88E30078857E /* NearByViewController.m */; };
 		B803D0B51E3B88E30078857E /* NearByViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B803D0B31E3B88E30078857E /* NearByViewController.xib */; };
 		B803D0B81E3BA1340078857E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B803D0B71E3BA1340078857E /* MapKit.framework */; };
+		B80BE2B21ED1D34200C7C6C4 /* ImgIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B80BE2B01ED1D34200C7C6C4 /* ImgIndexCell.m */; };
+		B80BE2B31ED1D34200C7C6C4 /* ImgIndexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80BE2B11ED1D34200C7C6C4 /* ImgIndexCell.xib */; };
 		B80F91B01E41CF0E00649C88 /* NCComboboxNewView.m in Sources */ = {isa = PBXBuildFile; fileRef = B80F91AE1E41CF0E00649C88 /* NCComboboxNewView.m */; };
 		B80F91B11E41CF0E00649C88 /* NCComboboxNewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80F91AF1E41CF0E00649C88 /* NCComboboxNewView.xib */; };
 		B80F91B61E41CFCA00649C88 /* NCScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = B80F91B41E41CFCA00649C88 /* NCScrollLabelView.m */; };
@@ -87,6 +89,8 @@
 		B88A3C7F1EB9C6F200234671 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81732571E5B08B300DD8586 /* Fabric.framework */; };
 		B88A3C811EB9C6F700234671 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81732581E5B08B300DD8586 /* Crashlytics.framework */; };
 		B88A3C841EB9CC3600234671 /* Pods_hairista.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A3C831EB9CC3600234671 /* Pods_hairista.framework */; };
+		B88B542C1ED19C3B000B98C7 /* MBCircularProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B88B54291ED19C3B000B98C7 /* MBCircularProgressBarLayer.m */; };
+		B88B542D1ED19C3B000B98C7 /* MBCircularProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B88B542B1ED19C3B000B98C7 /* MBCircularProgressBarView.m */; };
 		B88D7CA21E3A0B0E006B8019 /* ItemMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D7CA11E3A0B0E006B8019 /* ItemMenu.m */; };
 		B88D7CA81E3A1342006B8019 /* BookingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D7CA61E3A1342006B8019 /* BookingsViewController.m */; };
 		B88D7CA91E3A1342006B8019 /* BookingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88D7CA71E3A1342006B8019 /* BookingsViewController.xib */; };
@@ -106,6 +110,25 @@
 		B8A1031B1E45879300C4E376 /* HairFullView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A1031A1E45879300C4E376 /* HairFullView.xib */; };
 		B8A2D1AB1E46F7E800A357BC /* ServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A2D1A91E46F7E800A357BC /* ServiceCell.m */; };
 		B8A2D1AC1E46F7E800A357BC /* ServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A2D1AA1E46F7E800A357BC /* ServiceCell.xib */; };
+		B8A758011ECD450100EDB9D2 /* ImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A757FF1ECD450100EDB9D2 /* ImagesViewController.m */; };
+		B8A758021ECD450100EDB9D2 /* ImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A758001ECD450100EDB9D2 /* ImagesViewController.xib */; };
+		B8A758071ECD8A4F00EDB9D2 /* UploadImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A758051ECD8A4F00EDB9D2 /* UploadImageViewController.m */; };
+		B8A758081ECD8A4F00EDB9D2 /* UploadImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A758061ECD8A4F00EDB9D2 /* UploadImageViewController.xib */; };
+		B8A758211ECD8C5000EDB9D2 /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7580B1ECD8C5000EDB9D2 /* ELCAlbumPickerController.m */; };
+		B8A758221ECD8C5000EDB9D2 /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7580D1ECD8C5000EDB9D2 /* ELCAsset.m */; };
+		B8A758231ECD8C5000EDB9D2 /* ELCAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7580F1ECD8C5000EDB9D2 /* ELCAssetCell.m */; };
+		B8A758241ECD8C5000EDB9D2 /* ELCAssetTablePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A758131ECD8C5000EDB9D2 /* ELCAssetTablePicker.m */; };
+		B8A758251ECD8C5000EDB9D2 /* ELCConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A758151ECD8C5000EDB9D2 /* ELCConsole.m */; };
+		B8A758261ECD8C5000EDB9D2 /* ELCImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A758171ECD8C5000EDB9D2 /* ELCImagePickerController.m */; };
+		B8A758271ECD8C5000EDB9D2 /* ELCOverlayImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7581A1ECD8C5000EDB9D2 /* ELCOverlayImageView.m */; };
+		B8A758281ECD8C5000EDB9D2 /* ELCAlbumPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A7581C1ECD8C5000EDB9D2 /* ELCAlbumPickerController.xib */; };
+		B8A758291ECD8C5000EDB9D2 /* ELCAssetPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A7581D1ECD8C5000EDB9D2 /* ELCAssetPicker.xib */; };
+		B8A7582A1ECD8C5000EDB9D2 /* ELCAssetTablePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A7581E1ECD8C5000EDB9D2 /* ELCAssetTablePicker.xib */; };
+		B8A7582B1ECD8C5000EDB9D2 /* Overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = B8A7581F1ECD8C5000EDB9D2 /* Overlay.png */; };
+		B8A7582C1ECD8C5000EDB9D2 /* Overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8A758201ECD8C5000EDB9D2 /* Overlay@2x.png */; };
+		B8A758301ECD937C00EDB9D2 /* ImageUploadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7582F1ECD937C00EDB9D2 /* ImageUploadObject.m */; };
+		B8A758351ECDA5F300EDB9D2 /* ImageUpdateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A758331ECDA5F300EDB9D2 /* ImageUpdateCell.m */; };
+		B8A758361ECDA5F300EDB9D2 /* ImageUpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A758341ECDA5F300EDB9D2 /* ImageUpdateCell.xib */; };
 		B8AA6B131E4090DB002716A7 /* SearchSalonAdvanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8AA6B111E4090DB002716A7 /* SearchSalonAdvanceViewController.m */; };
 		B8AA6B141E4090DB002716A7 /* SearchSalonAdvanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AA6B121E4090DB002716A7 /* SearchSalonAdvanceViewController.xib */; };
 		B8AA6B191E40920F002716A7 /* SearchOptionSalonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8AA6B171E40920F002716A7 /* SearchOptionSalonCell.m */; };
@@ -231,6 +254,9 @@
 		B803D0B21E3B88E30078857E /* NearByViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByViewController.m; sourceTree = "<group>"; };
 		B803D0B31E3B88E30078857E /* NearByViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByViewController.xib; sourceTree = "<group>"; };
 		B803D0B71E3BA1340078857E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B80BE2AF1ED1D34200C7C6C4 /* ImgIndexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgIndexCell.h; sourceTree = "<group>"; };
+		B80BE2B01ED1D34200C7C6C4 /* ImgIndexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgIndexCell.m; sourceTree = "<group>"; };
+		B80BE2B11ED1D34200C7C6C4 /* ImgIndexCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImgIndexCell.xib; sourceTree = "<group>"; };
 		B80F91AD1E41CF0E00649C88 /* NCComboboxNewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCComboboxNewView.h; sourceTree = "<group>"; };
 		B80F91AE1E41CF0E00649C88 /* NCComboboxNewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCComboboxNewView.m; sourceTree = "<group>"; };
 		B80F91AF1E41CF0E00649C88 /* NCComboboxNewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCComboboxNewView.xib; sourceTree = "<group>"; };
@@ -351,6 +377,10 @@
 		B880C6C41E45FFEA00AA2B72 /* GroupService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupService.m; sourceTree = "<group>"; };
 		B8818F961E9D1D4C00868FA7 /* hairista.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = hairista.entitlements; sourceTree = "<group>"; };
 		B88A3C831EB9CC3600234671 /* Pods_hairista.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_hairista.framework; path = "Pods/../build/Release-iphoneos/Pods_hairista.framework"; sourceTree = "<group>"; };
+		B88B54281ED19C3B000B98C7 /* MBCircularProgressBarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCircularProgressBarLayer.h; sourceTree = "<group>"; };
+		B88B54291ED19C3B000B98C7 /* MBCircularProgressBarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCircularProgressBarLayer.m; sourceTree = "<group>"; };
+		B88B542A1ED19C3B000B98C7 /* MBCircularProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCircularProgressBarView.h; sourceTree = "<group>"; };
+		B88B542B1ED19C3B000B98C7 /* MBCircularProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCircularProgressBarView.m; sourceTree = "<group>"; };
 		B88D7CA01E3A0B0E006B8019 /* ItemMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemMenu.h; sourceTree = "<group>"; };
 		B88D7CA11E3A0B0E006B8019 /* ItemMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemMenu.m; sourceTree = "<group>"; };
 		B88D7CA51E3A1342006B8019 /* BookingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingsViewController.h; sourceTree = "<group>"; };
@@ -381,6 +411,39 @@
 		B8A2D1A81E46F7E800A357BC /* ServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCell.h; sourceTree = "<group>"; };
 		B8A2D1A91E46F7E800A357BC /* ServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCell.m; sourceTree = "<group>"; };
 		B8A2D1AA1E46F7E800A357BC /* ServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceCell.xib; sourceTree = "<group>"; };
+		B8A757FE1ECD450100EDB9D2 /* ImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesViewController.h; sourceTree = "<group>"; };
+		B8A757FF1ECD450100EDB9D2 /* ImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesViewController.m; sourceTree = "<group>"; };
+		B8A758001ECD450100EDB9D2 /* ImagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagesViewController.xib; sourceTree = "<group>"; };
+		B8A758041ECD8A4F00EDB9D2 /* UploadImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageViewController.h; sourceTree = "<group>"; };
+		B8A758051ECD8A4F00EDB9D2 /* UploadImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageViewController.m; sourceTree = "<group>"; };
+		B8A758061ECD8A4F00EDB9D2 /* UploadImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadImageViewController.xib; sourceTree = "<group>"; };
+		B8A7580A1ECD8C5000EDB9D2 /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
+		B8A7580B1ECD8C5000EDB9D2 /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
+		B8A7580C1ECD8C5000EDB9D2 /* ELCAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAsset.h; sourceTree = "<group>"; };
+		B8A7580D1ECD8C5000EDB9D2 /* ELCAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAsset.m; sourceTree = "<group>"; };
+		B8A7580E1ECD8C5000EDB9D2 /* ELCAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetCell.h; sourceTree = "<group>"; };
+		B8A7580F1ECD8C5000EDB9D2 /* ELCAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetCell.m; sourceTree = "<group>"; };
+		B8A758101ECD8C5000EDB9D2 /* ELCAssetPickerFilterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetPickerFilterDelegate.h; sourceTree = "<group>"; };
+		B8A758111ECD8C5000EDB9D2 /* ELCAssetSelectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetSelectionDelegate.h; sourceTree = "<group>"; };
+		B8A758121ECD8C5000EDB9D2 /* ELCAssetTablePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetTablePicker.h; sourceTree = "<group>"; };
+		B8A758131ECD8C5000EDB9D2 /* ELCAssetTablePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetTablePicker.m; sourceTree = "<group>"; };
+		B8A758141ECD8C5000EDB9D2 /* ELCConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCConsole.h; sourceTree = "<group>"; };
+		B8A758151ECD8C5000EDB9D2 /* ELCConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCConsole.m; sourceTree = "<group>"; };
+		B8A758161ECD8C5000EDB9D2 /* ELCImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerController.h; sourceTree = "<group>"; };
+		B8A758171ECD8C5000EDB9D2 /* ELCImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCImagePickerController.m; sourceTree = "<group>"; };
+		B8A758181ECD8C5000EDB9D2 /* ELCImagePickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerHeader.h; sourceTree = "<group>"; };
+		B8A758191ECD8C5000EDB9D2 /* ELCOverlayImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCOverlayImageView.h; sourceTree = "<group>"; };
+		B8A7581A1ECD8C5000EDB9D2 /* ELCOverlayImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCOverlayImageView.m; sourceTree = "<group>"; };
+		B8A7581C1ECD8C5000EDB9D2 /* ELCAlbumPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAlbumPickerController.xib; sourceTree = "<group>"; };
+		B8A7581D1ECD8C5000EDB9D2 /* ELCAssetPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetPicker.xib; sourceTree = "<group>"; };
+		B8A7581E1ECD8C5000EDB9D2 /* ELCAssetTablePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetTablePicker.xib; sourceTree = "<group>"; };
+		B8A7581F1ECD8C5000EDB9D2 /* Overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Overlay.png; sourceTree = "<group>"; };
+		B8A758201ECD8C5000EDB9D2 /* Overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Overlay@2x.png"; sourceTree = "<group>"; };
+		B8A7582E1ECD937C00EDB9D2 /* ImageUploadObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUploadObject.h; sourceTree = "<group>"; };
+		B8A7582F1ECD937C00EDB9D2 /* ImageUploadObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUploadObject.m; sourceTree = "<group>"; };
+		B8A758321ECDA5F300EDB9D2 /* ImageUpdateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUpdateCell.h; sourceTree = "<group>"; };
+		B8A758331ECDA5F300EDB9D2 /* ImageUpdateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUpdateCell.m; sourceTree = "<group>"; };
+		B8A758341ECDA5F300EDB9D2 /* ImageUpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageUpdateCell.xib; sourceTree = "<group>"; };
 		B8AA6B101E4090DB002716A7 /* SearchSalonAdvanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSalonAdvanceViewController.h; sourceTree = "<group>"; };
 		B8AA6B111E4090DB002716A7 /* SearchSalonAdvanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSalonAdvanceViewController.m; sourceTree = "<group>"; };
 		B8AA6B121E4090DB002716A7 /* SearchSalonAdvanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchSalonAdvanceViewController.xib; sourceTree = "<group>"; };
@@ -607,6 +670,16 @@
 			path = Annotation;
 			sourceTree = "<group>";
 		};
+		B80BE2AE1ED1D32300C7C6C4 /* ImgIndexCell */ = {
+			isa = PBXGroup;
+			children = (
+				B80BE2AF1ED1D34200C7C6C4 /* ImgIndexCell.h */,
+				B80BE2B01ED1D34200C7C6C4 /* ImgIndexCell.m */,
+				B80BE2B11ED1D34200C7C6C4 /* ImgIndexCell.xib */,
+			);
+			path = ImgIndexCell;
+			sourceTree = "<group>";
+		};
 		B80F91AC1E41CF0E00649C88 /* NCComboboxNew */ = {
 			isa = PBXGroup;
 			children = (
@@ -748,6 +821,7 @@
 		B8356C7E1E501D2700C16AA3 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				B8A757FD1ECD44EF00EDB9D2 /* Images */,
 				B8D4825A1EBDCD0A0029DA9B /* Service */,
 				B8ACAAA21E58942500F9AF05 /* ProfileUser */,
 				B8ACAA961E5881DD00F9AF05 /* ListUser */,
@@ -1052,9 +1126,21 @@
 			path = GroupService;
 			sourceTree = "<group>";
 		};
+		B88B54271ED19C3B000B98C7 /* MBCircularProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				B88B54281ED19C3B000B98C7 /* MBCircularProgressBarLayer.h */,
+				B88B54291ED19C3B000B98C7 /* MBCircularProgressBarLayer.m */,
+				B88B542A1ED19C3B000B98C7 /* MBCircularProgressBarView.h */,
+				B88B542B1ED19C3B000B98C7 /* MBCircularProgressBarView.m */,
+			);
+			path = MBCircularProgressBar;
+			sourceTree = "<group>";
+		};
 		B88C3DE51E3C6C2200723F8C /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				B8A758091ECD8C5000EDB9D2 /* ELCImagePicker */,
 				B83D4EE61EA267D600F39BD4 /* CHTCollectionViewWaterfallLayout */,
 				B85695491E93936300523074 /* Reachability */,
 				B8356C851E501DF200C16AA3 /* DKScrollingTabController */,
@@ -1178,6 +1264,86 @@
 				B8A2D1AA1E46F7E800A357BC /* ServiceCell.xib */,
 			);
 			path = ServiceCell;
+			sourceTree = "<group>";
+		};
+		B8A757FD1ECD44EF00EDB9D2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B80BE2AE1ED1D32300C7C6C4 /* ImgIndexCell */,
+				B8A758311ECDA5DA00EDB9D2 /* ImageUpdateCell */,
+				B8A7582D1ECD936F00EDB9D2 /* ImageUploadObject */,
+				B8A758031ECD8A4400EDB9D2 /* UploadImageViewController */,
+				B8A757FE1ECD450100EDB9D2 /* ImagesViewController.h */,
+				B8A757FF1ECD450100EDB9D2 /* ImagesViewController.m */,
+				B8A758001ECD450100EDB9D2 /* ImagesViewController.xib */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		B8A758031ECD8A4400EDB9D2 /* UploadImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B8A758041ECD8A4F00EDB9D2 /* UploadImageViewController.h */,
+				B8A758051ECD8A4F00EDB9D2 /* UploadImageViewController.m */,
+				B8A758061ECD8A4F00EDB9D2 /* UploadImageViewController.xib */,
+			);
+			path = UploadImageViewController;
+			sourceTree = "<group>";
+		};
+		B8A758091ECD8C5000EDB9D2 /* ELCImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				B8A7580A1ECD8C5000EDB9D2 /* ELCAlbumPickerController.h */,
+				B8A7580B1ECD8C5000EDB9D2 /* ELCAlbumPickerController.m */,
+				B8A7580C1ECD8C5000EDB9D2 /* ELCAsset.h */,
+				B8A7580D1ECD8C5000EDB9D2 /* ELCAsset.m */,
+				B8A7580E1ECD8C5000EDB9D2 /* ELCAssetCell.h */,
+				B8A7580F1ECD8C5000EDB9D2 /* ELCAssetCell.m */,
+				B8A758101ECD8C5000EDB9D2 /* ELCAssetPickerFilterDelegate.h */,
+				B8A758111ECD8C5000EDB9D2 /* ELCAssetSelectionDelegate.h */,
+				B8A758121ECD8C5000EDB9D2 /* ELCAssetTablePicker.h */,
+				B8A758131ECD8C5000EDB9D2 /* ELCAssetTablePicker.m */,
+				B8A758141ECD8C5000EDB9D2 /* ELCConsole.h */,
+				B8A758151ECD8C5000EDB9D2 /* ELCConsole.m */,
+				B8A758161ECD8C5000EDB9D2 /* ELCImagePickerController.h */,
+				B8A758171ECD8C5000EDB9D2 /* ELCImagePickerController.m */,
+				B8A758181ECD8C5000EDB9D2 /* ELCImagePickerHeader.h */,
+				B8A758191ECD8C5000EDB9D2 /* ELCOverlayImageView.h */,
+				B8A7581A1ECD8C5000EDB9D2 /* ELCOverlayImageView.m */,
+				B8A7581B1ECD8C5000EDB9D2 /* Resources */,
+			);
+			path = ELCImagePicker;
+			sourceTree = "<group>";
+		};
+		B8A7581B1ECD8C5000EDB9D2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B8A7581C1ECD8C5000EDB9D2 /* ELCAlbumPickerController.xib */,
+				B8A7581D1ECD8C5000EDB9D2 /* ELCAssetPicker.xib */,
+				B8A7581E1ECD8C5000EDB9D2 /* ELCAssetTablePicker.xib */,
+				B8A7581F1ECD8C5000EDB9D2 /* Overlay.png */,
+				B8A758201ECD8C5000EDB9D2 /* Overlay@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B8A7582D1ECD936F00EDB9D2 /* ImageUploadObject */ = {
+			isa = PBXGroup;
+			children = (
+				B8A7582E1ECD937C00EDB9D2 /* ImageUploadObject.h */,
+				B8A7582F1ECD937C00EDB9D2 /* ImageUploadObject.m */,
+			);
+			path = ImageUploadObject;
+			sourceTree = "<group>";
+		};
+		B8A758311ECDA5DA00EDB9D2 /* ImageUpdateCell */ = {
+			isa = PBXGroup;
+			children = (
+				B8A758321ECDA5F300EDB9D2 /* ImageUpdateCell.h */,
+				B8A758331ECDA5F300EDB9D2 /* ImageUpdateCell.m */,
+				B8A758341ECDA5F300EDB9D2 /* ImageUpdateCell.xib */,
+			);
+			path = ImageUpdateCell;
 			sourceTree = "<group>";
 		};
 		B8AA6B0F1E4090CB002716A7 /* SearchSalonAdvance */ = {
@@ -1681,6 +1847,7 @@
 		B8EC1C601E291C9900D2D1E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B88B54271ED19C3B000B98C7 /* MBCircularProgressBar */,
 				B8353F291EA1BE8E00627F60 /* ProcessDataView */,
 				B8EF74BD1E4CBE7C001466C4 /* NCCalendar */,
 				B80F91CC1E42241900649C88 /* SingleMasterDataCell */,
@@ -1818,9 +1985,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8C725E21EC42164000B70B8 /* ManageCategoriesCell.xib in Resources */,
+				B8A7582A1ECD8C5000EDB9D2 /* ELCAssetTablePicker.xib in Resources */,
 				B867D1ED1EB1A98A0028B06D /* DistrictViewController.xib in Resources */,
 				B8DE7EEC1E390A450008769C /* UTM Impact.ttf in Resources */,
 				B8EC1C6D1E291FF800D2D1E6 /* LaunchScreen.storyboard in Resources */,
+				B8A7582C1ECD8C5000EDB9D2 /* Overlay@2x.png in Resources */,
 				B8DE7ED31E390A450008769C /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				B8C725E81EC438FB000B70B8 /* ListManageServiceViewController.xib in Resources */,
 				B8DE7EE41E390A450008769C /* Roboto-Thin.ttf in Resources */,
@@ -1842,6 +2011,8 @@
 				B8ACAAA11E5881DD00F9AF05 /* UserCell.xib in Resources */,
 				B80F91B11E41CF0E00649C88 /* NCComboboxNewView.xib in Resources */,
 				B87543C51EAA63860047213A /* CommentDetailView.xib in Resources */,
+				B8A7582B1ECD8C5000EDB9D2 /* Overlay.png in Resources */,
+				B8A758021ECD450100EDB9D2 /* ImagesViewController.xib in Resources */,
 				B8BA2E7F1E9CEF1300E1C9FA /* MenuCell.xib in Resources */,
 				B880C6BD1E45FD1B00AA2B72 /* ServicesViewController.xib in Resources */,
 				B8A1031B1E45879300C4E376 /* HairFullView.xib in Resources */,
@@ -1853,6 +2024,7 @@
 				B86D284F1E2E2305005491E6 /* NCTextFieldView.xib in Resources */,
 				B8DE7EE71E390A450008769C /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				B8D4825F1EBDCD1D0029DA9B /* EditServiceViewController.xib in Resources */,
+				B8A758081ECD8A4F00EDB9D2 /* UploadImageViewController.xib in Resources */,
 				B8DE7EDD1E390A450008769C /* Roboto-BoldItalic.ttf in Resources */,
 				B8B5BAD91E3A5ABB00586CBE /* HeaderBannerCell.xib in Resources */,
 				B8EF74C51E4CBE7C001466C4 /* NCCalendarSingleViewController_iPhone.xib in Resources */,
@@ -1870,6 +2042,7 @@
 				B8DE7ED71E390A450008769C /* OpenSans-Regular.ttf in Resources */,
 				B8EF74C81E4CBE7C001466C4 /* NCCalendarViewController_iPhone.xib in Resources */,
 				B8ACAAAD1E5895B100F9AF05 /* UserInfoView.xib in Resources */,
+				B8A758361ECDA5F300EDB9D2 /* ImageUpdateCell.xib in Resources */,
 				B8DE7EDA1E390A450008769C /* Roboto-Black.ttf in Resources */,
 				B814EEBC1EB62E7600B6475C /* ServerBookingViewController.xib in Resources */,
 				B8DE7ED41E390A450008769C /* OpenSans-Italic.ttf in Resources */,
@@ -1912,13 +2085,16 @@
 				B8DE7EEB1E390A450008769C /* RobotoCondensed-Regular.ttf in Resources */,
 				B80F91D11E42241900649C88 /* SingleMasterDataCell.xib in Resources */,
 				B80F91BE1E41F88900649C88 /* ProvinceViewController.xib in Resources */,
+				B8A758281ECD8C5000EDB9D2 /* ELCAlbumPickerController.xib in Resources */,
 				B8DE7ECE1E390A450008769C /* HIMPACT.TTF in Resources */,
 				B803D0B51E3B88E30078857E /* NearByViewController.xib in Resources */,
 				B82E6D211E44685900C51770 /* CatagoriesHairViewController.xib in Resources */,
 				B88D7CAE1E3A134E006B8019 /* FavoriteViewController.xib in Resources */,
 				B8CF1DCC1E50AFD90008C6EC /* ManageBookingCell.xib in Resources */,
+				B80BE2B31ED1D34200C7C6C4 /* ImgIndexCell.xib in Resources */,
 				B862EB3B1E4A140100BBAB79 /* CommentCellTableViewCell.xib in Resources */,
 				B8DE7EDE1E390A450008769C /* Roboto-Italic.ttf in Resources */,
+				B8A758291ECD8C5000EDB9D2 /* ELCAssetPicker.xib in Resources */,
 				B8AA6B1A1E40920F002716A7 /* SearchOptionSalonCell.xib in Resources */,
 				B8DE7ECD1E390A450008769C /* Apache License.txt in Resources */,
 			);
@@ -1998,6 +2174,7 @@
 				B8A103141E457FBF00C4E376 /* HairCell.m in Sources */,
 				B8E5F94B1E29E8D1007E5A81 /* UserInfoViewController.m in Sources */,
 				B8353F2F1EA1C0E300627F60 /* ProcessDataView.m in Sources */,
+				B8A758241ECD8C5000EDB9D2 /* ELCAssetTablePicker.m in Sources */,
 				B8033DFF1E43F046006B2C0F /* Annotation.m in Sources */,
 				B8ACAAA01E5881DD00F9AF05 /* UserCell.m in Sources */,
 				B82E6D201E44685900C51770 /* CatagoriesHairViewController.m in Sources */,
@@ -2005,15 +2182,20 @@
 				B8A103191E45878B00C4E376 /* HairFullView.m in Sources */,
 				B8356C831E501D3F00C16AA3 /* ManageBookingViewController.m in Sources */,
 				B82E6D251E44721000C51770 /* Catagories.m in Sources */,
+				B8A758351ECDA5F300EDB9D2 /* ImageUpdateCell.m in Sources */,
 				B85346D01E53635900B74D9F /* ServiceBookingCell.m in Sources */,
 				B8E984851EB8A9DD002DA2FF /* BookingOfMeCell.m in Sources */,
 				B8BA2E7E1E9CEF1300E1C9FA /* MenuCell.m in Sources */,
 				B864FBA81E9764A900EABC66 /* SessionUser.m in Sources */,
+				B8A758271ECD8C5000EDB9D2 /* ELCOverlayImageView.m in Sources */,
 				B831346D1E949730001A3465 /* AuthenticateManage.m in Sources */,
 				B8EF74B51E4CB6BB001466C4 /* BookingViewController.m in Sources */,
 				B8DE7EF11E3911CE0008769C /* SlideMenuViewController.m in Sources */,
 				B814EEC11EB6368500B6475C /* ServiceBookingSelectCell.m in Sources */,
 				B8E984801EB8A9C0002DA2FF /* BookingManage.m in Sources */,
+				B8A758211ECD8C5000EDB9D2 /* ELCAlbumPickerController.m in Sources */,
+				B8A758231ECD8C5000EDB9D2 /* ELCAssetCell.m in Sources */,
+				B88B542C1ED19C3B000B98C7 /* MBCircularProgressBarLayer.m in Sources */,
 				B8565EB91E9F1B1D002E72A5 /* SalonDetailViewController.m in Sources */,
 				B8EC1C691E291CD600D2D1E6 /* LoginViewController.m in Sources */,
 				B87543C31EAA62790047213A /* CommentDetailView.m in Sources */,
@@ -2035,19 +2217,24 @@
 				B88D7CB31E3A168E006B8019 /* UIColor+Method.m in Sources */,
 				B86D28481E2E22E3005491E6 /* NCSearchBarView.m in Sources */,
 				B8C32B4B1E2E0FAB00FB0E11 /* Salon.m in Sources */,
+				B80BE2B21ED1D34200C7C6C4 /* ImgIndexCell.m in Sources */,
 				B87810021E9A013D00D0B104 /* ChangePassword.m in Sources */,
 				B88D7CAD1E3A134E006B8019 /* FavoriteViewController.m in Sources */,
 				B8EC1C461E291B6700D2D1E6 /* main.m in Sources */,
 				B80F91D01E42241900649C88 /* SingleMasterDataCell.m in Sources */,
+				B8A758301ECD937C00EDB9D2 /* ImageUploadObject.m in Sources */,
 				B8CB12261EB338BA00ECD857 /* SalonNearByView.m in Sources */,
+				B8A758011ECD450100EDB9D2 /* ImagesViewController.m in Sources */,
 				B8ACAAA61E58943400F9AF05 /* ProfileUserViewController.m in Sources */,
 				B8EF74CB1E4CBEA1001466C4 /* AJRBackgroundDimmer.m in Sources */,
+				B8A758071ECD8A4F00EDB9D2 /* UploadImageViewController.m in Sources */,
 				B899E8FD1E5858E900CC268B /* User.m in Sources */,
 				B8C32B501E2E11B200FB0E11 /* SalonCell.m in Sources */,
 				B8CF1DD01E50B1D20008C6EC /* Booking.m in Sources */,
 				B87D7D301E43466F00CD5D54 /* DetailSalonViewController.m in Sources */,
 				B87543CA1EAA6D190047213A /* CommentStarCell.m in Sources */,
 				B814EEC71EB645E100B6475C /* ServerSelectedCell.m in Sources */,
+				B88B542D1ED19C3B000B98C7 /* MBCircularProgressBarView.m in Sources */,
 				B8DE7EFC1E391FDE0008769C /* MenuLeftView.m in Sources */,
 				B88D7CA21E3A0B0E006B8019 /* ItemMenu.m in Sources */,
 				B83D4EE91EA267D600F39BD4 /* CHTCollectionViewWaterfallLayout.m in Sources */,
@@ -2063,6 +2250,7 @@
 				B8E5F9511E2A035E007E5A81 /* ImagePickerViewController.m in Sources */,
 				B8BDC2211E9B82DF0041899A /* SalonManage.m in Sources */,
 				B8EF74C61E4CBE7C001466C4 /* NCCalendarViewController.m in Sources */,
+				B8A758251ECD8C5000EDB9D2 /* ELCConsole.m in Sources */,
 				B80F91B01E41CF0E00649C88 /* NCComboboxNewView.m in Sources */,
 				B8ACAAAB1E58958600F9AF05 /* UserInfoView.m in Sources */,
 				B8C725E71EC438FB000B70B8 /* ListManageServiceViewController.m in Sources */,
@@ -2075,10 +2263,12 @@
 				B80F91BD1E41F88900649C88 /* ProvinceViewController.m in Sources */,
 				B8EC1C651E291CCA00D2D1E6 /* AppDelegate.m in Sources */,
 				B8B5BAD81E3A5ABB00586CBE /* HeaderBannerCell.m in Sources */,
+				B8A758221ECD8C5000EDB9D2 /* ELCAsset.m in Sources */,
 				B8CB12181EB2FA8F00ECD857 /* MapDetailSalonViewController.m in Sources */,
 				B80F91C51E42222F00649C88 /* Province.m in Sources */,
 				B85D99171EA506B900C3F305 /* Image.m in Sources */,
 				B8CB121D1EB3364700ECD857 /* ListNearBySalonViewController.m in Sources */,
+				B8A758261ECD8C5000EDB9D2 /* ELCImagePickerController.m in Sources */,
 				B8B5BAD11E3A57C900586CBE /* HeaderBannerView.m in Sources */,
 				B8E5F9551E2A03E9007E5A81 /* Common.m in Sources */,
 				B862EB3A1E4A140100BBAB79 /* CommentCellTableViewCell.m in Sources */,

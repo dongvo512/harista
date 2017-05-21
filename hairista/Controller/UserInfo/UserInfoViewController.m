@@ -214,7 +214,7 @@
     
         data = UIImagePNGRepresentation(image);
     }
-    
+   
     
    Appdelegate_hairista.progressCurr =  [[ImgurAnonymousAPIClient client] uploadImageData:data
                                          withFilename:@"image.jpg"

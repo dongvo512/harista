@@ -25,6 +25,11 @@
     Salon *salonCurr;
     
     HeaderSalonView *headerSalonView;
+    
+    BOOL isFullData;
+    BOOL isLoading;
+    
+    NSInteger indexPage;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *arrImages;
@@ -47,6 +52,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    indexPage = 1;
     
     self.arrImages = [NSMutableArray array];
     
@@ -79,7 +86,11 @@
 
     NSString *url = [NSString stringWithFormat:@"%@%@",URL_GET_DETAIL_SALON,salonCurr.idSalon];
     
+    isLoading = YES;
+    
     [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        isLoading = NO;
         
         if(isError){
             
@@ -104,7 +115,11 @@
 
 -(void)getListImageSalon{
 
-    [[SalonManage sharedInstance] getListImageSalon:salonCurr.idSalon page:@"1" limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    isLoading = YES;
+    
+    [[SalonManage sharedInstance] getListImageSalon:salonCurr.idSalon page:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+        
+        isLoading = NO;
         
         if(error){
         
@@ -119,6 +134,11 @@
                 [self.arrImages addObjectsFromArray:arrData];
                 
                 [self.collectionView reloadData];
+            }
+            
+            if(arrData.count < LIMIT_ITEM.integerValue){
+            
+                isFullData = YES;
             }
         }
     }];
@@ -172,6 +192,14 @@
       //  [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
         [self.collectionView.collectionViewLayout invalidateLayout];
     }];
+    
+    if(indexPath.row == self.arrImages.count - 1 && !isFullData && !isLoading){
+        
+        indexPage ++;
+        
+        [self getListImageSalon];
+    }
+    
     return cell;
 }
 

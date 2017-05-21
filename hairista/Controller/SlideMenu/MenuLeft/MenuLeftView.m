@@ -160,8 +160,14 @@
         ItemMenu *item_3 = [[ItemMenu alloc] init];
         item_3.itemName = @"Danh sách Dịch vụ";
         item_3.itemIconName = @"ic_favorite";
-        
         [self.arrMenus addObject:item_3];
+
+        
+        ItemMenu *item_4 = [[ItemMenu alloc] init];
+        item_4.itemName = @"Hình ảnh";
+        item_4.itemIconName = @"ic_gallery";
+        
+        [self.arrMenus addObject:item_4];
         
     }
     else{

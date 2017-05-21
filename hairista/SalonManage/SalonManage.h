@@ -38,6 +38,7 @@
 
 -(void)favorite:(NSString *)idSalon dataApiResult:(DataAPIResult)dataApiResult;
 
+-(void)uploadMultiImage:(NSArray *)arrDic dataApiResult:(DataAPIResult)dataApiResult;
 
 //- (void)getDetailSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult;
 

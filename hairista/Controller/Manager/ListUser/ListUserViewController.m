@@ -28,6 +28,8 @@
     BOOL isLoadingData;
     
     BOOL isFullData;
+    
+    BOOL isUserOfSalon;
 }
 
 @property (nonatomic, strong) NSMutableArray *arrUser;
@@ -46,6 +48,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    isUserOfSalon = YES;
+    
     [self configUI];
     
     indexPage = 1;
@@ -83,6 +87,8 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     isLoadingData = YES;
+    
+    
     
     [[AuthenticateManage sharedInstance] searchListUser:keyword pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
         

@@ -183,5 +183,6 @@
 
 #define URL_PUT_UPDATE_BOOKING @"https://salonhair.herokuapp.com/api/v1/bookings/"
 
-//{{url}}searchUser?keywords=1232
+#define URL_PUT_MULTI_IMAGE @"https://salonhair.herokuapp.com/api/v1/imagesUpdateOrder"
+
 
