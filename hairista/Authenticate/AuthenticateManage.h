@@ -26,4 +26,7 @@
 
 -(void)searchListUser:(NSString *)keyword pageIndex:(NSString *)pageIndex limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult;
 
+-(void)searchListUserOfSalon:(NSString *)keyword pageIndex:(NSString *)pageIndex limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult;
+
+-(void)addUserForSalonByID:(NSString *)idUser dataResult:(DataAPIResult)dataApiResult;
 @end

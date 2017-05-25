@@ -12,7 +12,7 @@
 
 @interface DetailBookingViewController : UIViewController
 
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil booking:(Booking *)aBooking;
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil booking:(Booking *)aBooking editing:(BOOL)aEdit;
 @property (nonatomic, weak) id delegate;
 
 @end

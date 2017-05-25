@@ -12,6 +12,13 @@
 
 @interface UserCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIButton *btnAddUser;
+@property (nonatomic, weak) id delegate;
 -(void)setDataForCell:(SessionUser *)user;
+
+@end
+@protocol UserCellDelegate <NSObject>
+
+-(void)touchButtonAddUser:(SessionUser *)user;
 
 @end

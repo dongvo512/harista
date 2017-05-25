@@ -14,10 +14,11 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "SalonManage.h"
 #import "UploadImageViewController.h"
+#import "BVReorderTableView.h"
 
 #define LIMIT_ITEM @"14"
 
-@interface ImagesViewController ()<UITableViewDelegate>{
+@interface ImagesViewController ()<ReorderTableViewDelegate, ReorderTableViewDelegate>{
     
     NSInteger indexPage;
     
@@ -26,7 +27,7 @@
     BOOL isLoading;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *tblView;
+@property (weak, nonatomic) IBOutlet BVReorderTableView *tblView;
 @property (nonatomic, strong) NSMutableArray *arrImages;
 @end
 
@@ -38,14 +39,9 @@
     
     indexPage = 1;
    
-    
     [self.tblView registerNib:[UINib nibWithNibName:@"ImgIndexCell" bundle:nil] forCellReuseIdentifier:@"ImgIndexCell"];
-   
-    [self.tblView setEditing:YES animated:YES];
-
-    self.arrImages = [NSMutableArray array];
     
-    [self getListImageSalon];
+    [self reloadListSalon];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,6 +50,10 @@
 }
 
 #pragma mark - Action
+- (IBAction)touchBtnPin:(id)sender {
+    
+    [self updateListImageWithIndex];
+}
 
 - (IBAction)showMenu:(id)sender {
     
@@ -76,6 +76,54 @@
 }
 #pragma mark - GetData
 
+-(NSDictionary *)createListIndexDic{
+
+    NSMutableArray *arrDic = [NSMutableArray array];
+    
+    NSInteger totalItem = 0;
+  
+    if(self.arrImages.count < 10){
+    
+        totalItem = self.arrImages.count;
+    }
+    else{
+    
+        totalItem = 10;
+    }
+    
+    for(int i = 0; i < totalItem; i++){
+    
+        Image *img = [self.arrImages objectAtIndex:i];
+        NSDictionary *dic = @{@"id":img.idImage,@"order":[NSString stringWithFormat:@"%ld",img.index]};
+        [arrDic addObject:dic];
+    }
+    
+    NSDictionary *dic = @{@"images":arrDic};
+    
+    return dic;
+}
+
+-(void)setUpIndexForList:(NSMutableArray *)listImage{
+
+    NSInteger totalItem = 0;
+    
+    if(listImage.count < LIMIT_ITEM.integerValue){
+    
+        totalItem = listImage.count;
+    }
+    else{
+    
+        totalItem = LIMIT_ITEM.integerValue;
+    }
+    
+    for(int i = 0; i < totalItem; i++){
+    
+        Image *image = [listImage objectAtIndex:i];
+        
+        image.index = i + 1;
+    }
+}
+
 -(void)reloadListSalon{
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -97,7 +145,7 @@
             NSArray *arrData = idObject;
             
             self.arrImages = [NSMutableArray arrayWithArray:arrData];
-            
+            [self setUpIndexForList:self.arrImages];
             [self.tblView reloadData];
             
             if(arrData.count < LIMIT_ITEM.integerValue){
@@ -108,6 +156,31 @@
     }];
 }
 
+-(void)updateListImageWithIndex{
+
+    if(self.arrImages.count == 0){
+    
+        [Common showAlert:self title:@"Thông báo" message:@"Không có hình ảnh để sắp xếp, vui lòng upload thêm hình ảnh" buttonClick:nil];
+        
+        return;
+    }
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+   
+    [[SalonManage sharedInstance] updateMultiIndexImage:[self createListIndexDic] dataApiResult:^(NSError *error, id idObject) {
+       
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+      
+        if(error){
+        
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+        
+            [Common showAlert:self title:@"Thông báo" message:@"Cập nhật thứ tự hình ảnh thành công" buttonClick:nil];
+        }
+    }];
+}
 
 -(void)getListImageSalon{
     
@@ -132,7 +205,6 @@
             if(arrData.count > 0){
                 
                 [self.arrImages addObjectsFromArray:arrData];
-                [self.tblView setEditing:YES animated:YES];
                 [self.tblView reloadData];
             }
             
@@ -144,13 +216,7 @@
     }];
 }
 
-#pragma mark - UITableview DataSource - Delegate
 #pragma mark - Table view DataSource - Delegate
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    return 2;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
@@ -158,36 +224,17 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-     static NSString *CellIdentifier = @"DragCell";
-      UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.showsReorderControl = YES;
-    }
 
+    ImgIndexCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImgIndexCell"];
     
-    
-//    ImgIndexCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImgIndexCell"];
-//    
-//    
-//    Image *img = [self.arrImages objectAtIndex:indexPath.row];
-    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
-   // cell.showsReorderControl = YES;
-   // [cell setDataForCell:img];
+    Image *img = [self.arrImages objectAtIndex:indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell setDataForCell:img indexCurr:indexPath.row];
    
     
     return cell;
 }
 
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//     Image *img = [self.arrImages objectAtIndex:indexPath.row];
-//    
-//    //[self.navigationController pushViewController:vcDetail animated:YES];
-//    
-//}
 - (void)tableView:(UITableView *)tableView
   willDisplayCell:(UITableViewCell *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -200,84 +247,31 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     }
     
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     return 90;
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    return UITableViewCellEditingStyleNone;
-}
-
-- (BOOL) tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-  
-    return YES;
-}
-- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
-}
-- (void)moveRowAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath{
-
-    NSInteger sourceRow = indexPath.row;
-    NSInteger destRow = newIndexPath.row;
-    Image *object = [self.arrImages objectAtIndex:sourceRow];
+- (id)saveObjectAndInsertBlankRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self.arrImages removeObjectAtIndex:sourceRow];
-    [self.arrImages insertObject:object atIndex:destRow];
+    id object = (NSMutableArray *)[self.arrImages objectAtIndex:indexPath.row];
 
+    return object;
 }
-//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-//    
-//    return self.arrImages.count;
-//}
-//
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    Image *image = [self.arrImages objectAtIndex:indexPath.row];
-//    
-//    HairFullView *hairFull = [[HairFullView alloc] initWithFrame:CGRectMake(0, 0, SW, SH) imgName:image.url title:image.name];
-//    
-//    [UIView transitionWithView:self.view duration:0.5
-//                       options:UIViewAnimationOptionTransitionCrossDissolve //change to whatever animation you like
-//                    animations:^ { [[[SlideMenuViewController sharedInstance] view] addSubview:hairFull];
-//                        
-//                    }
-//                    completion:nil];
-//    
-//    
-//}
-//- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
-//    
-//    Image *img = [self.arrImages objectAtIndex:indexPath.row];
-//    
-//    cell.lblImageName.text = img.name;
-//    
-//    [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        
-//        img.heightImage = (SW -24)/2 * image.size.height/image.size.width;
-//        //  [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
-//        [self.collectionView.collectionViewLayout invalidateLayout];
-//    }];
-//    
-//    if(indexPath.row == self.arrImages.count - 1 && !isFullData && !isLoading){
-//        
-//        indexPage ++;
-//        
-//        [self getListImageSalon];
-//    }
-//    
-//    return cell;
-//}
-//
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    Image *img = [self.arrImages objectAtIndex:indexPath.row];
-//    
-//    CGFloat heightImgName = [Common findHeightForText:img.name havingWidth:(SW - 36)/2 andFont:[UIFont fontWithName:FONT_ROBOTO_REGULAR size:15.0f]];
-//    
-//    return CGSizeMake((SW -24)/2, (img.heightImage == 0)?(SW -24)/2 + heightImgName:img.heightImage + heightImgName);
-//}
+
+- (void)moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    
+    id object = [self.arrImages objectAtIndex:fromIndexPath.row];
+    [self.arrImages removeObjectAtIndex:fromIndexPath.row];
+    
+    [self.arrImages insertObject:object atIndex:toIndexPath.row];
+}
+- (void)finishReorderingWithObject:(id)object atIndexPath:(NSIndexPath *)indexPath; {
+    
+    [self.arrImages replaceObjectAtIndex:indexPath.row withObject:object];
+    [self setUpIndexForList:self.arrImages];
+    [self.tblView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+   
+}
 @end

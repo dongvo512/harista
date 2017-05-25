@@ -179,10 +179,13 @@
 
 #define URL_GET_SEARCH_USER @"https://salonhair.herokuapp.com/api/v1/searchUser"
 
+#define URL_GET_SEARCH_USER_SALON @"https://salonhair.herokuapp.com/api/v1/relationships/me"
+
 #define URL_GET_DETAIL_BOOKING @"https://salonhair.herokuapp.com/api/v1/bookings/"
 
 #define URL_PUT_UPDATE_BOOKING @"https://salonhair.herokuapp.com/api/v1/bookings/"
 
 #define URL_PUT_MULTI_IMAGE @"https://salonhair.herokuapp.com/api/v1/imagesUpdateOrder"
 
+#define URL_POST_ADD_USER_FOR_SALON @"https://salonhair.herokuapp.com/api/v1/relationships"
 

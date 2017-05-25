@@ -7,13 +7,14 @@
 //
 
 #import "EditServiceViewController.h"
-#import "ManageCategoriesCell.h"
+#import "CategoriesManageCell.h"
 #import "Category.h"
 #import "ListManageServiceViewController.h"
+#import "SalonManage.h"
 
 @interface EditServiceViewController ()
 
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UITableView *tblView;
 @property (nonatomic, strong) NSMutableArray *arrCategories;
 
 @end
@@ -23,9 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.collectionView registerNib:[UINib nibWithNibName:@"ManageCategoriesCell" bundle:nil] forCellWithReuseIdentifier:@"ManageCategoriesCell"];
+    [self.tblView registerNib:[UINib nibWithNibName:@"CategoriesManageCell" bundle:nil] forCellReuseIdentifier:@"CategoriesManageCell"];
     
-    [self createCategories];
+    [self getListCategories];
+  //  [self createCategories];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,71 +41,76 @@
 }
 
 #pragma mark - Method
-
--(void)createCategories{
-
-    self.arrCategories = [NSMutableArray array];
+-(void)getListCategories{
     
-    Category *cat_1 = [[Category alloc] init];
-    cat_1.name = @"Cắt";
-    cat_1.image = @"ngan_1";
-    [self.arrCategories addObject:cat_1];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    Category *cat_2 = [[Category alloc] init];
-    cat_2.name = @"Nhuộm";
-    cat_2.image = @"ngan_2";
-    [self.arrCategories addObject:cat_2];
-    
-    Category *cat_3 = [[Category alloc] init];
-    cat_3.name = @"Nối";
-    cat_3.image = @"ngan_3";
-    [self.arrCategories addObject:cat_3];
-    
-    Category *cat_4 = [[Category alloc] init];
-    cat_4.name = @"Sấy";
-    cat_4.image = @"ngan_4";
-    [self.arrCategories addObject:cat_4];
-    
-    Category *cat_5 = [[Category alloc] init];
-    cat_5.name = @"Duỗi";
-    cat_5.image = @"ngan_5";
-    [self.arrCategories addObject:cat_5];
-    
-    [self.collectionView reloadData];
+    [[SalonManage sharedInstance] getListCategoriesProduct:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+            
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            NSArray *arrData = idObject;
+            
+            if(arrData.count > 0){
+                
+                self.arrCategories = [NSMutableArray array];
+                
+                [self.tblView reloadData];
+            }
+        }
+    }];
 }
 
-#pragma mark - UICollectionViewDataSource
+#pragma mark - Table view DataSource - Delegate
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return self.arrCategories.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    Category *cat = [self.arrCategories objectAtIndex:indexPath.row];
+    CategoriesManageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoriesManageCell"];
+    Category *category = [self.arrCategories objectAtIndex:indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.lblCategoriesName.text = category.name;
     
-    ManageCategoriesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ManageCategoriesCell" forIndexPath:indexPath];
-    
-    [cell setDataForCell:cat];
     return cell;
 }
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    CGFloat width = (SW - 24)/2;
+//    Salon *salon = [self.arrSalons objectAtIndex:indexPath.row];
+//    
+//    DetailSalonViewController *vcDetail = [[DetailSalonViewController alloc] initWithNibName:@"DetailSalonViewController" bundle:nil salon:salon];
+//    
+//    [self.navigationController pushViewController:vcDetail animated:YES];
     
-    return CGSizeMake(width, width);
+}
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+//    if(indexPath.row == self.arrSalons.count - 1 && !isLoadingData &&!isFullData){
+//        
+//        pageIndex ++;
+//        [self loadMoreSalon];
+//    }
+    
 }
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    
-    return UIEdgeInsetsMake(8, 8, 8, 8);
-}
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    Category *cat = [self.arrCategories objectAtIndex:indexPath.row];
-    ListManageServiceViewController *manageServices = [[ListManageServiceViewController alloc] initWithNibName:@"ListManageServiceViewController" bundle:nil];
-    manageServices.titleCategories = cat.name;
-    [self.navigationController pushViewController:manageServices animated:YES];
-}
+
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    Category *cat = [self.arrCategories objectAtIndex:indexPath.row];
+//    ListManageServiceViewController *manageServices = [[ListManageServiceViewController alloc] initWithNibName:@"ListManageServiceViewController" bundle:nil];
+//    manageServices.titleCategories = cat.name;
+//    [self.navigationController pushViewController:manageServices animated:YES];
+//}
 @end

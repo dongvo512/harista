@@ -18,6 +18,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListUserViewController">
             <connections>
+                <outlet property="btnSearchAll" destination="sEi-Yt-Wp1" id="Ysw-fI-lup"/>
+                <outlet property="btnSearchSalon" destination="4vs-NJ-1PX" id="YLt-jW-Qgd"/>
+                <outlet property="lblResult" destination="DfI-Zf-tXT" id="J7G-MU-z6A"/>
                 <outlet property="searchBar" destination="f6n-Sc-Wd1" id="dUm-Gh-qTh"/>
                 <outlet property="tblView" destination="v19-4s-zH5" id="H0t-NZ-4LL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -126,8 +129,11 @@
                     <state key="normal" title="Tất cả ">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="tpuchBtnSearchAll:" destination="-1" eventType="touchUpInside" id="DpA-En-Ocb"/>
+                    </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15 kết quả tìm kiếm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfI-Zf-tXT">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfI-Zf-tXT">
                     <rect key="frame" x="16" y="130" width="165" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
@@ -147,6 +153,9 @@
                     <state key="normal" title="Tại Salon">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="touchBtnSearchSalon:" destination="-1" eventType="touchUpInside" id="S0y-k8-qZM"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>

@@ -23,6 +23,8 @@
 @interface DetailBookingViewController (){
 
     Booking *bookingCurr;
+    
+    BOOL isEdit;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tblView;
@@ -43,12 +45,12 @@
 
 #pragma mark - Init
 
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil booking:(Booking *)aBooking{
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil booking:(Booking *)aBooking editing:(BOOL)aEdit{
 
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if(self){
-    
+        isEdit = aEdit;
         bookingCurr = aBooking;
     }
     
@@ -70,6 +72,13 @@
          [self.viewBottom setHidden:YES];
     }
 
+    
+    if(!isEdit){
+    
+        self.heightContraintBottom.constant = 0;
+        [self.viewBottom setHidden:YES];
+    }
+    
     
     [self.tblView registerNib:[UINib nibWithNibName:@"ServiceBookingCell" bundle:nil] forCellReuseIdentifier:@"ServiceBookingCell"];
     
@@ -96,9 +105,11 @@
 }
 - (IBAction)touchBtnInfoUser:(id)sender {
     
-    ProfileUserViewController *vcProfile = [[ProfileUserViewController alloc] initWithNibName:@"ProfileUserViewController" bundle:nil User:bookingCurr.user];
-    
-    [self.navigationController pushViewController:vcProfile animated:YES];
+    if(isEdit){
+        ProfileUserViewController *vcProfile = [[ProfileUserViewController alloc] initWithNibName:@"ProfileUserViewController" bundle:nil User:bookingCurr.user];
+        
+        [self.navigationController pushViewController:vcProfile animated:YES];
+    }
 
 }
 - (IBAction)touchBtnAcept:(id)sender {

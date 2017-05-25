@@ -82,6 +82,7 @@
 		B87872AF1EA4C0F7005BFC6F /* ChooseImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87872AE1EA4C0F7005BFC6F /* ChooseImageView.xib */; };
 		B87D7D301E43466F00CD5D54 /* DetailSalonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D7D2E1E43466F00CD5D54 /* DetailSalonViewController.m */; };
 		B87D7D311E43466F00CD5D54 /* DetailSalonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D7D2F1E43466F00CD5D54 /* DetailSalonViewController.xib */; };
+		B87F53921ED5797E00CF2678 /* BVReorderTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B87F53911ED5797E00CF2678 /* BVReorderTableView.m */; };
 		B880C6BC1E45FD1B00AA2B72 /* ServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B880C6BA1E45FD1B00AA2B72 /* ServicesViewController.m */; };
 		B880C6BD1E45FD1B00AA2B72 /* ServicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B880C6BB1E45FD1B00AA2B72 /* ServicesViewController.xib */; };
 		B880C6C11E45FED400AA2B72 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = B880C6C01E45FED400AA2B72 /* Service.m */; };
@@ -215,6 +216,8 @@
 		B8DE7EF11E3911CE0008769C /* SlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DE7EEF1E3911CE0008769C /* SlideMenuViewController.m */; };
 		B8DE7EFC1E391FDE0008769C /* MenuLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DE7EFB1E391FDE0008769C /* MenuLeftView.m */; };
 		B8DE7EFE1E391FF40008769C /* MenuLeftView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8DE7EFD1E391FF40008769C /* MenuLeftView.xib */; };
+		B8DF888D1ED5D2C000651213 /* CategoriesManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DF888B1ED5D2C000651213 /* CategoriesManageCell.m */; };
+		B8DF888E1ED5D2C000651213 /* CategoriesManageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8DF888C1ED5D2C000651213 /* CategoriesManageCell.xib */; };
 		B8E5F94B1E29E8D1007E5A81 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E5F9491E29E8D1007E5A81 /* UserInfoViewController.m */; };
 		B8E5F94C1E29E8D1007E5A81 /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E5F94A1E29E8D1007E5A81 /* UserInfoViewController.xib */; };
 		B8E5F9511E2A035E007E5A81 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E5F9501E2A035E007E5A81 /* ImagePickerViewController.m */; };
@@ -368,6 +371,8 @@
 		B87D7D2D1E43466F00CD5D54 /* DetailSalonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSalonViewController.h; sourceTree = "<group>"; };
 		B87D7D2E1E43466F00CD5D54 /* DetailSalonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSalonViewController.m; sourceTree = "<group>"; };
 		B87D7D2F1E43466F00CD5D54 /* DetailSalonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailSalonViewController.xib; sourceTree = "<group>"; };
+		B87F53901ED5797E00CF2678 /* BVReorderTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReorderTableView.h; sourceTree = "<group>"; };
+		B87F53911ED5797E00CF2678 /* BVReorderTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReorderTableView.m; sourceTree = "<group>"; };
 		B880C6B91E45FD1B00AA2B72 /* ServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesViewController.h; sourceTree = "<group>"; };
 		B880C6BA1E45FD1B00AA2B72 /* ServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesViewController.m; sourceTree = "<group>"; };
 		B880C6BB1E45FD1B00AA2B72 /* ServicesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesViewController.xib; sourceTree = "<group>"; };
@@ -560,6 +565,9 @@
 		B8DE7EFA1E391FDE0008769C /* MenuLeftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLeftView.h; sourceTree = "<group>"; };
 		B8DE7EFB1E391FDE0008769C /* MenuLeftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuLeftView.m; sourceTree = "<group>"; };
 		B8DE7EFD1E391FF40008769C /* MenuLeftView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuLeftView.xib; sourceTree = "<group>"; };
+		B8DF888A1ED5D2C000651213 /* CategoriesManageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesManageCell.h; sourceTree = "<group>"; };
+		B8DF888B1ED5D2C000651213 /* CategoriesManageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesManageCell.m; sourceTree = "<group>"; };
+		B8DF888C1ED5D2C000651213 /* CategoriesManageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesManageCell.xib; sourceTree = "<group>"; };
 		B8E5F9481E29E8D1007E5A81 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		B8E5F9491E29E8D1007E5A81 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		B8E5F94A1E29E8D1007E5A81 /* UserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
@@ -1094,6 +1102,15 @@
 			path = DetailSalon;
 			sourceTree = "<group>";
 		};
+		B87F538F1ED5797E00CF2678 /* BVReorderTableView */ = {
+			isa = PBXGroup;
+			children = (
+				B87F53901ED5797E00CF2678 /* BVReorderTableView.h */,
+				B87F53911ED5797E00CF2678 /* BVReorderTableView.m */,
+			);
+			path = BVReorderTableView;
+			sourceTree = "<group>";
+		};
 		B880C6B81E45FCE200AA2B72 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -1533,6 +1550,7 @@
 		B8C725E31EC438EC000B70B8 /* ListManageServiceViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B8DF88891ED5D29400651213 /* CategoriesManageCell */,
 				B8C725E41EC438FB000B70B8 /* ListManageServiceViewController.h */,
 				B8C725E51EC438FB000B70B8 /* ListManageServiceViewController.m */,
 				B8C725E61EC438FB000B70B8 /* ListManageServiceViewController.xib */,
@@ -1681,6 +1699,16 @@
 				B8DE7EFD1E391FF40008769C /* MenuLeftView.xib */,
 			);
 			path = MenuLeft;
+			sourceTree = "<group>";
+		};
+		B8DF88891ED5D29400651213 /* CategoriesManageCell */ = {
+			isa = PBXGroup;
+			children = (
+				B8DF888A1ED5D2C000651213 /* CategoriesManageCell.h */,
+				B8DF888B1ED5D2C000651213 /* CategoriesManageCell.m */,
+				B8DF888C1ED5D2C000651213 /* CategoriesManageCell.xib */,
+			);
+			path = CategoriesManageCell;
 			sourceTree = "<group>";
 		};
 		B8E5F9471E29E8C4007E5A81 /* UserInfo */ = {
@@ -1847,6 +1875,7 @@
 		B8EC1C601E291C9900D2D1E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B87F538F1ED5797E00CF2678 /* BVReorderTableView */,
 				B88B54271ED19C3B000B98C7 /* MBCircularProgressBar */,
 				B8353F291EA1BE8E00627F60 /* ProcessDataView */,
 				B8EF74BD1E4CBE7C001466C4 /* NCCalendar */,
@@ -2084,6 +2113,7 @@
 				B86D28491E2E22E3005491E6 /* NCSearchBarView.xib in Resources */,
 				B8DE7EEB1E390A450008769C /* RobotoCondensed-Regular.ttf in Resources */,
 				B80F91D11E42241900649C88 /* SingleMasterDataCell.xib in Resources */,
+				B8DF888E1ED5D2C000651213 /* CategoriesManageCell.xib in Resources */,
 				B80F91BE1E41F88900649C88 /* ProvinceViewController.xib in Resources */,
 				B8A758281ECD8C5000EDB9D2 /* ELCAlbumPickerController.xib in Resources */,
 				B8DE7ECE1E390A450008769C /* HIMPACT.TTF in Resources */,
@@ -2207,6 +2237,7 @@
 				B8EF74BA1E4CBC7E001466C4 /* TimeView.m in Sources */,
 				B8B470D01E476E6D0063CE2C /* ServiceHeaderView.m in Sources */,
 				B88D7CA81E3A1342006B8019 /* BookingsViewController.m in Sources */,
+				B8DF888D1ED5D2C000651213 /* CategoriesManageCell.m in Sources */,
 				B8A1030A1E4569F000C4E376 /* ListHairViewController.m in Sources */,
 				B869D3F21EBC6AE000976EF5 /* Date.m in Sources */,
 				B814EEBB1EB62E7600B6475C /* ServerBookingViewController.m in Sources */,
@@ -2263,6 +2294,7 @@
 				B80F91BD1E41F88900649C88 /* ProvinceViewController.m in Sources */,
 				B8EC1C651E291CCA00D2D1E6 /* AppDelegate.m in Sources */,
 				B8B5BAD81E3A5ABB00586CBE /* HeaderBannerCell.m in Sources */,
+				B87F53921ED5797E00CF2678 /* BVReorderTableView.m in Sources */,
 				B8A758221ECD8C5000EDB9D2 /* ELCAsset.m in Sources */,
 				B8CB12181EB2FA8F00ECD857 /* MapDetailSalonViewController.m in Sources */,
 				B80F91C51E42222F00649C88 /* Province.m in Sources */,

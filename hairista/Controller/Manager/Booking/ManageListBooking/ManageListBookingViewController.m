@@ -218,7 +218,7 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
 
     Booking *booking = [self.arrBooking objectAtIndex:indexPath.row];
     
-    DetailBookingViewController *vcDetailBooking = [[DetailBookingViewController alloc] initWithNibName:@"DetailBookingViewController" bundle:nil booking:booking];
+    DetailBookingViewController *vcDetailBooking = [[DetailBookingViewController alloc] initWithNibName:@"DetailBookingViewController" bundle:nil booking:booking editing:YES];
     vcDetailBooking.delegate = self;
     [self.vcManageBooking.navigationController pushViewController:vcDetailBooking animated:YES];
 }

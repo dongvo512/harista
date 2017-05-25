@@ -13,6 +13,7 @@
 #import "ProfileUserViewController.h"
 #import "SlideMenuViewController.h"
 #import "AuthenticateManage.h"
+#import "UIColor+Method.h"
 
 #define LIMIT_ITEM @"14"
 
@@ -30,14 +31,21 @@
     BOOL isFullData;
     
     BOOL isUserOfSalon;
+    
+    NSString *keywordCurr;
+    
+    BOOL isSearchALL;
 }
 
 @property (nonatomic, strong) NSMutableArray *arrUser;
 //@property (nonatomic, strong) NSArray *arrDataSearch;
+@property (weak, nonatomic) IBOutlet UIButton *btnSearchAll;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnSearchSalon;
 
 @property (weak, nonatomic) IBOutlet UITableView *tblView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UILabel *lblResult;
 
 @end
 
@@ -54,7 +62,9 @@
     
     indexPage = 1;
     
-    [self getListUser:@""];
+   // [self getListUser:@""];
+    keywordCurr = @"";
+    [self getListUserSalon:keywordCurr];
     
    // [self createDataTemp];
 }
@@ -65,6 +75,40 @@
 }
 
 #pragma mark - Action
+
+- (IBAction)tpuchBtnSearchAll:(id)sender {
+    
+    if(isSearchALL){
+    
+        return;
+    }
+    
+    isSearchALL = YES;
+    [self.btnSearchAll setBackgroundColor:[UIColor colorFromHexString:@"BF0A6A"]];
+    [self.btnSearchSalon setBackgroundColor:[UIColor lightGrayColor]];
+    
+    indexPage = 1;
+    
+    [self getListUser:keywordCurr];
+}
+
+- (IBAction)touchBtnSearchSalon:(id)sender {
+    
+    if(!isSearchALL){
+    
+        return;
+    }
+    
+    isSearchALL = NO;
+    [self.btnSearchSalon setBackgroundColor:[UIColor colorFromHexString:@"BF0A6A"]];
+    [self.btnSearchAll setBackgroundColor:[UIColor lightGrayColor]];
+    
+    indexPage = 1;
+    
+    [self getListUserSalon:keywordCurr];
+
+}
+
 - (IBAction)touchBtnMenu:(id)sender {
     
     [[SlideMenuViewController sharedInstance] toggle];
@@ -82,15 +126,36 @@
     
 }
 
--(void)getListUser:(NSString *)keyword{
+-(void)addUserForSalon:(SessionUser *)user{
+
+    if(user){
     
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [[AuthenticateManage sharedInstance] addUserForSalonByID:user.idUser dataResult:^(NSError *error, id idObject) {
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            if(error){
+            
+                [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            }
+            else{
+                
+                [Common showAlert:self title:@"Thông báo" message:[NSString stringWithFormat:@"Đã thêm %@ vào salon của bạn",user.name] buttonClick:nil];
+            }
+        }];
+    }
+
+}
+
+-(void)getListUserSalon:(NSString *)keyword{
+
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     isLoadingData = YES;
     
-    
-    
-    [[AuthenticateManage sharedInstance] searchListUser:keyword pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[AuthenticateManage sharedInstance] searchListUserOfSalon:keyword pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
         
         isLoadingData = NO;
         
@@ -110,13 +175,98 @@
             }
             self.arrUser = [NSMutableArray arrayWithArray:arrData];
             
+            if(self.arrUser.count > 0){
+                self.lblResult.text = [NSString stringWithFormat:@"%ld kết quả",self.arrUser.count];
+            }
+            else{
+            
+                self.lblResult.text = @"Không có kết quả";
+            }
+            
+            [self.tblView reloadData];
+        }
+        
+    }];
+}
+-(void)getListUser:(NSString *)keyword{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    isLoadingData = YES;
+    
+    [[AuthenticateManage sharedInstance] searchListUser:keyword pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+        
+        isLoadingData = NO;
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+            
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            NSArray *arrData = idObject;
+            
+            if(arrData.count < LIMIT_ITEM.integerValue){
+                
+                isFullData = YES;
+            }
+            
+            self.arrUser = [NSMutableArray arrayWithArray:arrData];
+           
+            if(self.arrUser.count > 0){
+                self.lblResult.text = [NSString stringWithFormat:@"%ld kết quả",self.arrUser.count];
+            }
+            else{
+                
+                self.lblResult.text = @"Không có kết quả";
+            }
+
             [self.tblView reloadData];
         }
         
     }];
 }
 
--(void)loadMore{
+-(void)loadMoreSalon{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    isLoadingData = YES;
+    
+    [[AuthenticateManage sharedInstance] searchListUser:self.searchBar.text pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+        
+        isLoadingData = NO;
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+            
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            NSArray *arrData = idObject;
+            
+            if(arrData.count > 0){
+                
+                [self.arrUser addObjectsFromArray:arrData];
+                
+                [self.tblView reloadData];
+            }
+            
+            if(arrData.count < LIMIT_ITEM.integerValue){
+                
+                isFullData = YES;
+            }
+        }
+        
+    }];
+}
+
+
+-(void)loadMoreAll{
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
@@ -156,13 +306,22 @@
 #pragma mark - UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
 
+    keywordCurr = searchText;
+    
     if(searchText.length == 0){
    
         indexPage = 1;
-        [self getListUser:@""];
+        
+        if(isSearchALL){
+        
+            [self getListUser:@""];
+        }
+        else{
+        
+            [self getListUserSalon:@""];
+        }
+        
     }
-    
-    //[self performSelector:@selector(filter) withObject:nil afterDelay:0.0];
     
 }
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
@@ -171,7 +330,15 @@
     
     indexPage = 1;
     
-    [self getListUser:searchBar.text];
+    if(isSearchALL){
+        
+        [self getListUser:searchBar.text];
+    }
+    else{
+        
+        [self getListUserSalon:searchBar.text];
+    }
+
 }
 
 
@@ -186,7 +353,17 @@
     
     UserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if(isSearchALL){
+    
+        [cell.btnAddUser setHidden:NO];
+    }
+    else{
+    
+        [cell.btnAddUser setHidden:YES];
+    }
+    
     SessionUser *user = [self.arrUser objectAtIndex:indexPath.row];
+    cell.delegate = self;
     [cell setDataForCell:user];
     
     return cell;
@@ -198,7 +375,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == self.arrUser.count - 1 && !isLoadingData &&!isFullData){
         
         indexPage ++;
-        [self loadMore];
+        
+        if(isSearchALL){
+        
+            [self loadMoreAll];
+        }
+        else{
+        
+            [self loadMoreSalon];
+        }
+        
     }
     
 }
@@ -218,6 +404,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
  
  return 60;
  }*/
+#pragma mark - UserCellDelegate
+-(void)touchButtonAddUser:(SessionUser *)user{
 
+    [self addUserForSalon:user];
+}
 
 @end

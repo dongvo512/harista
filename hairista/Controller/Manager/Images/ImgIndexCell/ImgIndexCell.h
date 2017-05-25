@@ -11,6 +11,6 @@
 
 @interface ImgIndexCell : UITableViewCell
 
--(void)setDataForCell:(Image *)img;
+-(void)setDataForCell:(Image *)img indexCurr:(NSInteger)index;
 
 @end

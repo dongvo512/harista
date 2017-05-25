@@ -15,7 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditServiceViewController">
             <connections>
-                <outlet property="collectionView" destination="RGy-HJ-MK8" id="dag-yu-PkL"/>
+                <outlet property="tblView" destination="pJe-UP-KM8" id="edL-Af-TeG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -98,29 +98,23 @@
                         <constraint firstAttribute="trailing" secondItem="XZY-if-9In" secondAttribute="trailing" id="xRr-52-zND"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RGy-HJ-MK8">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJe-UP-KM8">
                     <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="E75-HK-N1S">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
-                    </collectionViewFlowLayout>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="DZ7-e8-Et3"/>
-                        <outlet property="delegate" destination="-1" id="Sm8-pX-Tk3"/>
+                        <outlet property="dataSource" destination="-1" id="gcW-Sa-VMd"/>
+                        <outlet property="delegate" destination="-1" id="hCb-xv-5JE"/>
                     </connections>
-                </collectionView>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="RGy-HJ-MK8" firstAttribute="top" secondItem="qPN-lZ-62C" secondAttribute="bottom" id="AZg-Sh-ivF"/>
+                <constraint firstAttribute="bottom" secondItem="pJe-UP-KM8" secondAttribute="bottom" id="4df-kB-oHh"/>
                 <constraint firstItem="qPN-lZ-62C" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FRs-LW-96d"/>
+                <constraint firstItem="pJe-UP-KM8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NtK-mB-4ma"/>
                 <constraint firstItem="qPN-lZ-62C" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ugr-2s-572"/>
-                <constraint firstItem="RGy-HJ-MK8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Z2h-FC-jMc"/>
-                <constraint firstAttribute="bottom" secondItem="RGy-HJ-MK8" secondAttribute="bottom" id="hhu-wR-JCI"/>
-                <constraint firstAttribute="trailing" secondItem="RGy-HJ-MK8" secondAttribute="trailing" id="jqY-gy-GiC"/>
+                <constraint firstItem="pJe-UP-KM8" firstAttribute="top" secondItem="qPN-lZ-62C" secondAttribute="bottom" id="pDa-xi-Xn6"/>
+                <constraint firstAttribute="trailing" secondItem="pJe-UP-KM8" secondAttribute="trailing" id="wsJ-ZI-3hR"/>
                 <constraint firstAttribute="trailing" secondItem="qPN-lZ-62C" secondAttribute="trailing" id="ydv-g0-res"/>
             </constraints>
             <point key="canvasLocation" x="26.5" y="51.5"/>

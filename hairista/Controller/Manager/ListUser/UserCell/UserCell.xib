@@ -23,11 +23,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Imz-lo-8Wy">
-                        <rect key="frame" x="8" y="23.5" width="54" height="54"/>
+                        <rect key="frame" x="8" y="23" width="54" height="54"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="54" id="5Au-Qm-GC2"/>
                             <constraint firstAttribute="height" constant="54" id="e88-zO-Kmj"/>
@@ -58,7 +58,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="58/150 Âu cơ, Phường9, Quận Tân Bình, TP. Hồ Chí Minh." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UzR-uG-71b">
-                        <rect key="frame" x="70" y="46" width="297" height="37.5"/>
+                        <rect key="frame" x="70" y="46" width="249" height="42.5"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="gJ0-oI-W7M"/>
                         </constraints>
@@ -67,19 +67,30 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDa-ct-PrY">
-                        <rect key="frame" x="8" y="100" width="367" height="0.5"/>
+                        <rect key="frame" x="8" y="99" width="367" height="0.5"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="KbJ-cY-9AO"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yob-a6-4uY">
+                        <rect key="frame" x="327" y="47" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="GwK-fy-MkX"/>
+                            <constraint firstAttribute="height" constant="44" id="TtK-bX-r9s"/>
+                        </constraints>
+                        <state key="normal" image="ic_add_user"/>
+                        <connections>
+                            <action selector="tpuchBtnAddUser:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Sgg-2n-bqT"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="UzR-uG-71b" secondAttribute="bottom" priority="750" constant="12" id="24q-fq-3lI"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="UzR-uG-71b" secondAttribute="bottom" priority="750" constant="3.5" id="24q-fq-3lI"/>
                     <constraint firstItem="Imz-lo-8Wy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4AP-wp-Yb2"/>
                     <constraint firstItem="UzR-uG-71b" firstAttribute="top" secondItem="6nu-Xb-iv0" secondAttribute="bottom" constant="7" id="7Tb-z9-EbK"/>
                     <constraint firstItem="6nu-Xb-iv0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="PzO-ZW-acK"/>
-                    <constraint firstItem="UzR-uG-71b" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="WA2-up-ggH"/>
+                    <constraint firstItem="UzR-uG-71b" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-48" id="WA2-up-ggH"/>
                     <constraint firstItem="aDa-ct-PrY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ZWk-se-Q8R"/>
                     <constraint firstItem="6nu-Xb-iv0" firstAttribute="leading" secondItem="DSD-Ea-iRg" secondAttribute="trailing" constant="8" id="dPI-SI-sPp"/>
                     <constraint firstItem="DSD-Ea-iRg" firstAttribute="leading" secondItem="Imz-lo-8Wy" secondAttribute="trailing" constant="8" id="dSx-jc-twJ"/>
@@ -87,11 +98,15 @@
                     <constraint firstItem="DSD-Ea-iRg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="fAl-2p-I8c"/>
                     <constraint firstItem="Imz-lo-8Wy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="kxB-EL-UR7"/>
                     <constraint firstItem="UzR-uG-71b" firstAttribute="leading" secondItem="Imz-lo-8Wy" secondAttribute="trailing" constant="8" id="naq-iK-4H0"/>
+                    <constraint firstItem="yob-a6-4uY" firstAttribute="top" secondItem="6nu-Xb-iv0" secondAttribute="bottom" constant="8" id="oyG-UF-k3c"/>
                     <constraint firstAttribute="trailing" secondItem="aDa-ct-PrY" secondAttribute="trailing" id="tCK-jb-KTK"/>
+                    <constraint firstAttribute="trailing" secondItem="yob-a6-4uY" secondAttribute="trailing" constant="4" id="v3V-a9-1Ug"/>
                     <constraint firstAttribute="trailing" secondItem="6nu-Xb-iv0" secondAttribute="trailing" constant="7" id="vVT-X7-l1h"/>
+                    <constraint firstItem="aDa-ct-PrY" firstAttribute="top" secondItem="yob-a6-4uY" secondAttribute="bottom" constant="8" id="zTS-Lx-Gft"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnAddUser" destination="yob-a6-4uY" id="4ou-si-L9u"/>
                 <outlet property="imgUser" destination="Imz-lo-8Wy" id="XO5-2R-Faa"/>
                 <outlet property="lblAddress" destination="UzR-uG-71b" id="iAm-QI-k27"/>
                 <outlet property="lblFullName" destination="DSD-Ea-iRg" id="txW-rh-m6i"/>
@@ -102,5 +117,6 @@
     </objects>
     <resources>
         <image name="bg_avatar" width="183" height="193"/>
+        <image name="ic_add_user" width="36" height="36"/>
     </resources>
 </document>

@@ -53,7 +53,7 @@ static SalonManage *sharedInstance = nil;
             img.userId = CHECK_NIL([dic objectForKey:@"userId"]);
             img.accessMode = CHECK_NIL([dic objectForKey:@"accessMode"]);
             img.allowId = CHECK_NIL([dic objectForKey:@"allowId"]);
-            
+            img.index = -1;
             [arrImageSalon addObject:img];
             
         }
@@ -403,7 +403,6 @@ static SalonManage *sharedInstance = nil;
 
     NSString *url = [NSString stringWithFormat:@"%@%@/image?page=%@&limit=%@",URL_GET_DETAIL_SALON,idSalon,page,limit];
     
-    
     [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         
         if(isError){
@@ -702,10 +701,9 @@ static SalonManage *sharedInstance = nil;
 
 }
 
--(void)uploadMultiImage:(NSArray *)arrDic dataApiResult:(DataAPIResult)dataApiResult{
+-(void)updateMultiIndexImage:(NSDictionary *)dicListImage dataApiResult:(DataAPIResult)dataApiResult{
 
-
-    [APIRequestHandler initWithURLString:URL_PUT_MULTI_IMAGE withHttpMethod:kHTTP_METHOD_PUT withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+    [APIRequestHandler initWithURLString:URL_PUT_MULTI_IMAGE withHttpMethod:kHTTP_METHOD_PUT withRequestBody:dicListImage callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         
         if(isError){
             
@@ -716,9 +714,7 @@ static SalonManage *sharedInstance = nil;
         }
         else{
             
-            NSMutableArray *arrData = [self parseListSalons:responseDataObject];
-            
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, @"OK");
             
         }
     }];

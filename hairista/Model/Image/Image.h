@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSString *updatedAt;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *userId;
+@property (nonatomic) NSInteger index;
 
 @property (nonatomic) CGFloat heightImage;
 

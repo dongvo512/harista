@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
 @property (weak, nonatomic) IBOutlet UILabel *lblPhone;
 
+@property (nonatomic, weak) SessionUser *user;
 @end
 
 @implementation UserCell
@@ -32,11 +33,22 @@
     // Configure the view for the selected state
 }
 
+#pragma mark - Action
+- (IBAction)tpuchBtnAddUser:(id)sender {
+
+    if([[self delegate] respondsToSelector:@selector(touchButtonAddUser:)]){
+    
+        [[self delegate] touchButtonAddUser:self.user];
+    }
+}
+
 #pragma mark - Method
 
 -(void)setDataForCell:(SessionUser *)user{
     
-     [self.imgUser sd_setImageWithURL:[NSURL URLWithString:user.avatar] placeholderImage:IMG_USER_DEFAULT];
+    self.user = user;
+    
+    [self.imgUser sd_setImageWithURL:[NSURL URLWithString:user.avatar] placeholderImage:IMG_USER_DEFAULT];
     
     self.lblAddress.text = user.homeAddress;
     self.lblFullName.text = user.name;

@@ -99,7 +99,6 @@
                 [self checkSelected];
                 [self.cllService reloadData];
             }
-            
         }
     }];
 }

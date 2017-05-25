@@ -312,6 +312,31 @@ static AuthenticateManage *sharedInstance = nil;
 
 }
 
+-(void)searchListUserOfSalon:(NSString *)keyword pageIndex:(NSString *)pageIndex limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult{
+
+    //URL_GET_SEARCH_USER
+    
+    NSString *url = [NSString stringWithFormat:@"%@?keywords=%@&page=%@&limit=%@",URL_GET_SEARCH_USER_SALON,keyword,pageIndex,limit];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorSearchUserSalon", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorSearchUserSalon" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSMutableArray *arrData = [self parseListUserSearch:responseDataObject];
+            
+            dataApiResult(nil, arrData);
+        }
+    }];
+
+}
+
 -(void)searchListUser:(NSString *)keyword pageIndex:(NSString *)pageIndex limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult{
 
      //URL_GET_SEARCH_USER
@@ -336,5 +361,25 @@ static AuthenticateManage *sharedInstance = nil;
     }];
 
 }
+-(void)addUserForSalonByID:(NSString *)idUser dataResult:(DataAPIResult)dataApiResult{
 
+    NSDictionary *dic = @{@"userId":idUser};
+    
+    [APIRequestHandler initWithURLString:URL_POST_ADD_USER_FOR_SALON withHttpMethod:kHTTP_METHOD_POST withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorAddUserForSalon", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorAddUserForSalon" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+//            NSMutableArray *arrData = [self parseListUserSearch:responseDataObject];
+//            
+            dataApiResult(nil, @"OK");
+        }
+    }];
+}
 @end
