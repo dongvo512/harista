@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class Service;
+
 @interface SalonManage : NSObject
 
 + (id)sharedInstance;
@@ -39,6 +41,23 @@
 -(void)favorite:(NSString *)idSalon dataApiResult:(DataAPIResult)dataApiResult;
 
 -(void)updateMultiIndexImage:(NSDictionary *)dicListImage dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)getListSalonUpdateImage:(DataAPIResult)dataApiResult;
+
+-(void)getListServiceBySalonID:(NSString *)salonID dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)createCategory:(NSString *)catName dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)getListServiceByCategoryID:(NSString *)categoryID dataApiResult:(DataAPIResult)dataApiResult;
+
+
+-(void)createServiceByIdCat:(NSString *)idCate service:(Service *)service dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)updateCategory:(NSString *)idCat nameCat:(NSString *)catName dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)updateService:(NSString *)idCate service:(Service *)service dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)deleteImage:(NSString *)idImage dataApiResult:(DataAPIResult)dataApiResult;
 
 //- (void)getDetailSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult;
 

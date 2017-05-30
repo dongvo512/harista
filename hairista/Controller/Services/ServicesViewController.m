@@ -26,6 +26,8 @@
     BOOL isSelectedItem;
 
     NSMutableArray *arrSelected;
+    
+    NSString *salonCurrID;
 }
 @property (nonatomic, strong) NSMutableArray *arrGroupService;
 @property (weak, nonatomic) IBOutlet UICollectionView *cllService;
@@ -37,7 +39,7 @@
 
 #pragma mark - Init
 
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil isSelectItem:(BOOL)isSelectItem arrSelected:(NSArray *)aArrSelected{
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil isSelectItem:(BOOL)isSelectItem arrSelected:(NSArray *)aArrSelected salon:(NSString *)salonId{
 
     self = [super init];
     
@@ -47,6 +49,7 @@
         
         arrSelected = [NSMutableArray arrayWithArray:aArrSelected];
         
+        salonCurrID = salonId;
     }
     
     return self;
@@ -86,7 +89,7 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[SalonManage sharedInstance] getListCategoriesProduct:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListServiceBySalonID:salonCurrID dataApiResult:^(NSError *error, id idObject) {
        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         

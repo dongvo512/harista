@@ -247,7 +247,7 @@ static AuthenticateManage *sharedInstance = nil;
 
 - (void)login:(NSString *)phone password:(NSString *)password dataResult:(DataAPIResult)dataApiResult{
     
-    NSDictionary *dicBody = @{@"phone":phone, @"password":password};
+    NSDictionary *dicBody = @{@"phone":phone, @"password":password, @"deviceToken":Appdelegate_hairista.deviceToken,@"deviceType":@"ios"};
     
     [APIRequestHandler initWithURLString:URL_POST_LOGIN withHttpMethod:kHTTP_METHOD_POST withRequestBody:dicBody callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         

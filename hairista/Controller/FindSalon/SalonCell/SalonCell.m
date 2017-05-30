@@ -40,7 +40,7 @@
 -(void)setDataForCell:(Salon *)salon{
     
     [self.imgSalon sd_setImageWithURL:[NSURL URLWithString:salon.avatar] placeholderImage:IMG_DEFAULT];
-    self.lblSalonPhone.text = salon.phone;
+    self.lblSalonPhone.text = [Common convertPhone84:salon.phone];
     self.lblSalonName.text = salon.name;
     self.lblSalonAddress.text = salon.homeAddress;
     

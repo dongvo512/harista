@@ -13,6 +13,8 @@
 		B803D0B41E3B88E30078857E /* NearByViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B803D0B21E3B88E30078857E /* NearByViewController.m */; };
 		B803D0B51E3B88E30078857E /* NearByViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B803D0B31E3B88E30078857E /* NearByViewController.xib */; };
 		B803D0B81E3BA1340078857E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B803D0B71E3BA1340078857E /* MapKit.framework */; };
+		B80433141ED8039D00059032 /* PopupCreateCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80433121ED8039D00059032 /* PopupCreateCategoryViewController.m */; };
+		B80433151ED8039D00059032 /* PopupCreateCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80433131ED8039D00059032 /* PopupCreateCategoryViewController.xib */; };
 		B80BE2B21ED1D34200C7C6C4 /* ImgIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B80BE2B01ED1D34200C7C6C4 /* ImgIndexCell.m */; };
 		B80BE2B31ED1D34200C7C6C4 /* ImgIndexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80BE2B11ED1D34200C7C6C4 /* ImgIndexCell.xib */; };
 		B80F91B01E41CF0E00649C88 /* NCComboboxNewView.m in Sources */ = {isa = PBXBuildFile; fileRef = B80F91AE1E41CF0E00649C88 /* NCComboboxNewView.m */; };
@@ -24,6 +26,10 @@
 		B80F91C51E42222F00649C88 /* Province.m in Sources */ = {isa = PBXBuildFile; fileRef = B80F91C41E42222F00649C88 /* Province.m */; };
 		B80F91D01E42241900649C88 /* SingleMasterDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B80F91CE1E42241900649C88 /* SingleMasterDataCell.m */; };
 		B80F91D11E42241900649C88 /* SingleMasterDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80F91CF1E42241900649C88 /* SingleMasterDataCell.xib */; };
+		B81483191ED6D23E00DAFAEF /* ListSalonUploadedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B81483171ED6D23E00DAFAEF /* ListSalonUploadedImage.m */; };
+		B814831A1ED6D23E00DAFAEF /* ListSalonUploadedImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81483181ED6D23E00DAFAEF /* ListSalonUploadedImage.xib */; };
+		B814831F1ED6ED9C00DAFAEF /* GetLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B814831D1ED6ED9C00DAFAEF /* GetLocationViewController.m */; };
+		B81483201ED6ED9C00DAFAEF /* GetLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814831E1ED6ED9C00DAFAEF /* GetLocationViewController.xib */; };
 		B814EEBB1EB62E7600B6475C /* ServerBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B814EEB91EB62E7600B6475C /* ServerBookingViewController.m */; };
 		B814EEBC1EB62E7600B6475C /* ServerBookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814EEBA1EB62E7600B6475C /* ServerBookingViewController.xib */; };
 		B814EEC11EB6368500B6475C /* ServiceBookingSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B814EEBF1EB6368500B6475C /* ServiceBookingSelectCell.m */; };
@@ -130,6 +136,8 @@
 		B8A758301ECD937C00EDB9D2 /* ImageUploadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7582F1ECD937C00EDB9D2 /* ImageUploadObject.m */; };
 		B8A758351ECDA5F300EDB9D2 /* ImageUpdateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A758331ECDA5F300EDB9D2 /* ImageUpdateCell.m */; };
 		B8A758361ECDA5F300EDB9D2 /* ImageUpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A758341ECDA5F300EDB9D2 /* ImageUpdateCell.xib */; };
+		B8A8603F1EDC3220006606CC /* PopupTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A8603D1EDC3220006606CC /* PopupTimeViewController.m */; };
+		B8A860401EDC3220006606CC /* PopupTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A8603E1EDC3220006606CC /* PopupTimeViewController.xib */; };
 		B8AA6B131E4090DB002716A7 /* SearchSalonAdvanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8AA6B111E4090DB002716A7 /* SearchSalonAdvanceViewController.m */; };
 		B8AA6B141E4090DB002716A7 /* SearchSalonAdvanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AA6B121E4090DB002716A7 /* SearchSalonAdvanceViewController.xib */; };
 		B8AA6B191E40920F002716A7 /* SearchOptionSalonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8AA6B171E40920F002716A7 /* SearchOptionSalonCell.m */; };
@@ -181,6 +189,8 @@
 		B8CF1DD61E50B6610008C6EC /* HeaderViewBooking.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CF1DD51E50B6610008C6EC /* HeaderViewBooking.xib */; };
 		B8D4825E1EBDCD1D0029DA9B /* EditServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D4825C1EBDCD1D0029DA9B /* EditServiceViewController.m */; };
 		B8D4825F1EBDCD1D0029DA9B /* EditServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D4825D1EBDCD1D0029DA9B /* EditServiceViewController.xib */; };
+		B8DA1BA31ED98DE500E3448C /* PopupCteateServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DA1BA11ED98DE500E3448C /* PopupCteateServiceViewController.m */; };
+		B8DA1BA41ED98DE500E3448C /* PopupCteateServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8DA1BA21ED98DE500E3448C /* PopupCteateServiceViewController.xib */; };
 		B8DE7ECD1E390A450008769C /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = B8DE7EAD1E390A450008769C /* Apache License.txt */; };
 		B8DE7ECE1E390A450008769C /* HIMPACT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B8DE7EAE1E390A450008769C /* HIMPACT.TTF */; };
 		B8DE7ECF1E390A450008769C /* LATINWD.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B8DE7EAF1E390A450008769C /* LATINWD.TTF */; };
@@ -257,6 +267,9 @@
 		B803D0B21E3B88E30078857E /* NearByViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByViewController.m; sourceTree = "<group>"; };
 		B803D0B31E3B88E30078857E /* NearByViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByViewController.xib; sourceTree = "<group>"; };
 		B803D0B71E3BA1340078857E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B80433111ED8039D00059032 /* PopupCreateCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupCreateCategoryViewController.h; sourceTree = "<group>"; };
+		B80433121ED8039D00059032 /* PopupCreateCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupCreateCategoryViewController.m; sourceTree = "<group>"; };
+		B80433131ED8039D00059032 /* PopupCreateCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupCreateCategoryViewController.xib; sourceTree = "<group>"; };
 		B80BE2AF1ED1D34200C7C6C4 /* ImgIndexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgIndexCell.h; sourceTree = "<group>"; };
 		B80BE2B01ED1D34200C7C6C4 /* ImgIndexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgIndexCell.m; sourceTree = "<group>"; };
 		B80BE2B11ED1D34200C7C6C4 /* ImgIndexCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImgIndexCell.xib; sourceTree = "<group>"; };
@@ -274,6 +287,12 @@
 		B80F91CD1E42241900649C88 /* SingleMasterDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleMasterDataCell.h; sourceTree = "<group>"; };
 		B80F91CE1E42241900649C88 /* SingleMasterDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleMasterDataCell.m; sourceTree = "<group>"; };
 		B80F91CF1E42241900649C88 /* SingleMasterDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleMasterDataCell.xib; sourceTree = "<group>"; };
+		B81483161ED6D23E00DAFAEF /* ListSalonUploadedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListSalonUploadedImage.h; sourceTree = "<group>"; };
+		B81483171ED6D23E00DAFAEF /* ListSalonUploadedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListSalonUploadedImage.m; sourceTree = "<group>"; };
+		B81483181ED6D23E00DAFAEF /* ListSalonUploadedImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListSalonUploadedImage.xib; sourceTree = "<group>"; };
+		B814831C1ED6ED9C00DAFAEF /* GetLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLocationViewController.h; sourceTree = "<group>"; };
+		B814831D1ED6ED9C00DAFAEF /* GetLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocationViewController.m; sourceTree = "<group>"; };
+		B814831E1ED6ED9C00DAFAEF /* GetLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetLocationViewController.xib; sourceTree = "<group>"; };
 		B814EEB81EB62E7600B6475C /* ServerBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerBookingViewController.h; sourceTree = "<group>"; };
 		B814EEB91EB62E7600B6475C /* ServerBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerBookingViewController.m; sourceTree = "<group>"; };
 		B814EEBA1EB62E7600B6475C /* ServerBookingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServerBookingViewController.xib; sourceTree = "<group>"; };
@@ -449,6 +468,9 @@
 		B8A758321ECDA5F300EDB9D2 /* ImageUpdateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUpdateCell.h; sourceTree = "<group>"; };
 		B8A758331ECDA5F300EDB9D2 /* ImageUpdateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUpdateCell.m; sourceTree = "<group>"; };
 		B8A758341ECDA5F300EDB9D2 /* ImageUpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageUpdateCell.xib; sourceTree = "<group>"; };
+		B8A8603C1EDC3220006606CC /* PopupTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupTimeViewController.h; sourceTree = "<group>"; };
+		B8A8603D1EDC3220006606CC /* PopupTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupTimeViewController.m; sourceTree = "<group>"; };
+		B8A8603E1EDC3220006606CC /* PopupTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupTimeViewController.xib; sourceTree = "<group>"; };
 		B8AA6B101E4090DB002716A7 /* SearchSalonAdvanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSalonAdvanceViewController.h; sourceTree = "<group>"; };
 		B8AA6B111E4090DB002716A7 /* SearchSalonAdvanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSalonAdvanceViewController.m; sourceTree = "<group>"; };
 		B8AA6B121E4090DB002716A7 /* SearchSalonAdvanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchSalonAdvanceViewController.xib; sourceTree = "<group>"; };
@@ -528,6 +550,9 @@
 		B8D4825B1EBDCD1D0029DA9B /* EditServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditServiceViewController.h; sourceTree = "<group>"; };
 		B8D4825C1EBDCD1D0029DA9B /* EditServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditServiceViewController.m; sourceTree = "<group>"; };
 		B8D4825D1EBDCD1D0029DA9B /* EditServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditServiceViewController.xib; sourceTree = "<group>"; };
+		B8DA1BA01ED98DE500E3448C /* PopupCteateServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupCteateServiceViewController.h; sourceTree = "<group>"; };
+		B8DA1BA11ED98DE500E3448C /* PopupCteateServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupCteateServiceViewController.m; sourceTree = "<group>"; };
+		B8DA1BA21ED98DE500E3448C /* PopupCteateServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupCteateServiceViewController.xib; sourceTree = "<group>"; };
 		B8DE7EAD1E390A450008769C /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		B8DE7EAE1E390A450008769C /* HIMPACT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = HIMPACT.TTF; sourceTree = "<group>"; };
 		B8DE7EAF1E390A450008769C /* LATINWD.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = LATINWD.TTF; sourceTree = "<group>"; };
@@ -678,6 +703,16 @@
 			path = Annotation;
 			sourceTree = "<group>";
 		};
+		B80433101ED8038D00059032 /* PopupCreateCategory */ = {
+			isa = PBXGroup;
+			children = (
+				B80433111ED8039D00059032 /* PopupCreateCategoryViewController.h */,
+				B80433121ED8039D00059032 /* PopupCreateCategoryViewController.m */,
+				B80433131ED8039D00059032 /* PopupCreateCategoryViewController.xib */,
+			);
+			path = PopupCreateCategory;
+			sourceTree = "<group>";
+		};
 		B80BE2AE1ED1D32300C7C6C4 /* ImgIndexCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -744,6 +779,26 @@
 				B80F91CF1E42241900649C88 /* SingleMasterDataCell.xib */,
 			);
 			path = SingleMasterDataCell;
+			sourceTree = "<group>";
+		};
+		B81483151ED6D22A00DAFAEF /* ListSalonUploadedImage */ = {
+			isa = PBXGroup;
+			children = (
+				B81483161ED6D23E00DAFAEF /* ListSalonUploadedImage.h */,
+				B81483171ED6D23E00DAFAEF /* ListSalonUploadedImage.m */,
+				B81483181ED6D23E00DAFAEF /* ListSalonUploadedImage.xib */,
+			);
+			path = ListSalonUploadedImage;
+			sourceTree = "<group>";
+		};
+		B814831B1ED6ED9200DAFAEF /* GetLocationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B814831C1ED6ED9C00DAFAEF /* GetLocationViewController.h */,
+				B814831D1ED6ED9C00DAFAEF /* GetLocationViewController.m */,
+				B814831E1ED6ED9C00DAFAEF /* GetLocationViewController.xib */,
+			);
+			path = GetLocationViewController;
 			sourceTree = "<group>";
 		};
 		B814EEB71EB62E7600B6475C /* ServerBookingViewController */ = {
@@ -831,6 +886,7 @@
 			children = (
 				B8A757FD1ECD44EF00EDB9D2 /* Images */,
 				B8D4825A1EBDCD0A0029DA9B /* Service */,
+				B8DF88891ED5D29400651213 /* CategoriesManageCell */,
 				B8ACAAA21E58942500F9AF05 /* ProfileUser */,
 				B8ACAA961E5881DD00F9AF05 /* ListUser */,
 				B85346C61E535BCE00B74D9F /* DetailBooking */,
@@ -1363,6 +1419,16 @@
 			path = ImageUpdateCell;
 			sourceTree = "<group>";
 		};
+		B8A8603B1EDC320F006606CC /* PopupTime */ = {
+			isa = PBXGroup;
+			children = (
+				B8A8603C1EDC3220006606CC /* PopupTimeViewController.h */,
+				B8A8603D1EDC3220006606CC /* PopupTimeViewController.m */,
+				B8A8603E1EDC3220006606CC /* PopupTimeViewController.xib */,
+			);
+			path = PopupTime;
+			sourceTree = "<group>";
+		};
 		B8AA6B0F1E4090CB002716A7 /* SearchSalonAdvance */ = {
 			isa = PBXGroup;
 			children = (
@@ -1550,7 +1616,6 @@
 		B8C725E31EC438EC000B70B8 /* ListManageServiceViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B8DF88891ED5D29400651213 /* CategoriesManageCell */,
 				B8C725E41EC438FB000B70B8 /* ListManageServiceViewController.h */,
 				B8C725E51EC438FB000B70B8 /* ListManageServiceViewController.m */,
 				B8C725E61EC438FB000B70B8 /* ListManageServiceViewController.xib */,
@@ -1640,6 +1705,16 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		B8DA1B9F1ED98DD700E3448C /* PopupCteateService */ = {
+			isa = PBXGroup;
+			children = (
+				B8DA1BA01ED98DE500E3448C /* PopupCteateServiceViewController.h */,
+				B8DA1BA11ED98DE500E3448C /* PopupCteateServiceViewController.m */,
+				B8DA1BA21ED98DE500E3448C /* PopupCteateServiceViewController.xib */,
+			);
+			path = PopupCteateService;
+			sourceTree = "<group>";
+		};
 		B8DE7EAC1E390A450008769C /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1708,12 +1783,14 @@
 				B8DF888B1ED5D2C000651213 /* CategoriesManageCell.m */,
 				B8DF888C1ED5D2C000651213 /* CategoriesManageCell.xib */,
 			);
-			path = CategoriesManageCell;
+			name = CategoriesManageCell;
+			path = Service/ListManageServiceViewController/CategoriesManageCell;
 			sourceTree = "<group>";
 		};
 		B8E5F9471E29E8C4007E5A81 /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
+				B814831B1ED6ED9200DAFAEF /* GetLocationViewController */,
 				B8E5F9481E29E8D1007E5A81 /* UserInfoViewController.h */,
 				B8E5F9491E29E8D1007E5A81 /* UserInfoViewController.m */,
 				B8E5F94A1E29E8D1007E5A81 /* UserInfoViewController.xib */,
@@ -1827,6 +1904,7 @@
 		B8EC1C5E1E291C9900D2D1E6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B81483151ED6D22A00DAFAEF /* ListSalonUploadedImage */,
 				B8356C7E1E501D2700C16AA3 /* Manager */,
 				B8780FFE1E9A013000D0B104 /* ChangePassword */,
 				B831346E1E94A273001A3465 /* Register */,
@@ -1875,6 +1953,9 @@
 		B8EC1C601E291C9900D2D1E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B8A8603B1EDC320F006606CC /* PopupTime */,
+				B8DA1B9F1ED98DD700E3448C /* PopupCteateService */,
+				B80433101ED8038D00059032 /* PopupCreateCategory */,
 				B87F538F1ED5797E00CF2678 /* BVReorderTableView */,
 				B88B54271ED19C3B000B98C7 /* MBCircularProgressBar */,
 				B8353F291EA1BE8E00627F60 /* ProcessDataView */,
@@ -2022,6 +2103,7 @@
 				B8DE7ED31E390A450008769C /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				B8C725E81EC438FB000B70B8 /* ListManageServiceViewController.xib in Resources */,
 				B8DE7EE41E390A450008769C /* Roboto-Thin.ttf in Resources */,
+				B8A860401EDC3220006606CC /* PopupTimeViewController.xib in Resources */,
 				B8DE7EE01E390A450008769C /* Roboto-LightItalic.ttf in Resources */,
 				B8DE7ECF1E390A450008769C /* LATINWD.TTF in Resources */,
 				B8DE7ED51E390A450008769C /* OpenSans-Light.ttf in Resources */,
@@ -2057,6 +2139,7 @@
 				B8DE7EDD1E390A450008769C /* Roboto-BoldItalic.ttf in Resources */,
 				B8B5BAD91E3A5ABB00586CBE /* HeaderBannerCell.xib in Resources */,
 				B8EF74C51E4CBE7C001466C4 /* NCCalendarSingleViewController_iPhone.xib in Resources */,
+				B814831A1ED6D23E00DAFAEF /* ListSalonUploadedImage.xib in Resources */,
 				B8ACAAB31E589CC300F9AF05 /* ProfileUserCell.xib in Resources */,
 				B8CB121E1EB3364700ECD857 /* ListNearBySalonViewController.xib in Resources */,
 				B8B470D11E476E6D0063CE2C /* ServiceHeaderView.xib in Resources */,
@@ -2077,6 +2160,7 @@
 				B8DE7ED41E390A450008769C /* OpenSans-Italic.ttf in Resources */,
 				B8A103151E457FBF00C4E376 /* HairCell.xib in Resources */,
 				B83D4EEF1EA26FEA00F39BD4 /* HeaderSalonView.xib in Resources */,
+				B80433151ED8039D00059032 /* PopupCreateCategoryViewController.xib in Resources */,
 				B8DE7EEA1E390A450008769C /* RobotoCondensed-LightItalic.ttf in Resources */,
 				B8DE7EE81E390A450008769C /* RobotoCondensed-Italic.ttf in Resources */,
 				B8DE7ED81E390A450008769C /* OpenSans-Semibold.ttf in Resources */,
@@ -2084,6 +2168,7 @@
 				B8DE7ED91E390A450008769C /* OpenSans-SemiboldItalic.ttf in Resources */,
 				B8DE7EFE1E391FF40008769C /* MenuLeftView.xib in Resources */,
 				B8DE7ED01E390A450008769C /* OpenSans-Bold.ttf in Resources */,
+				B8DA1BA41ED98DE500E3448C /* PopupCteateServiceViewController.xib in Resources */,
 				B814EEC21EB6368500B6475C /* ServiceBookingSelectCell.xib in Resources */,
 				B862EB351E4A134A00BBAB79 /* CommentViewController.xib in Resources */,
 				B8DE7ED11E390A450008769C /* OpenSans-BoldItalic.ttf in Resources */,
@@ -2114,6 +2199,7 @@
 				B8DE7EEB1E390A450008769C /* RobotoCondensed-Regular.ttf in Resources */,
 				B80F91D11E42241900649C88 /* SingleMasterDataCell.xib in Resources */,
 				B8DF888E1ED5D2C000651213 /* CategoriesManageCell.xib in Resources */,
+				B81483201ED6ED9C00DAFAEF /* GetLocationViewController.xib in Resources */,
 				B80F91BE1E41F88900649C88 /* ProvinceViewController.xib in Resources */,
 				B8A758281ECD8C5000EDB9D2 /* ELCAlbumPickerController.xib in Resources */,
 				B8DE7ECE1E390A450008769C /* HIMPACT.TTF in Resources */,
@@ -2213,9 +2299,11 @@
 				B8356C831E501D3F00C16AA3 /* ManageBookingViewController.m in Sources */,
 				B82E6D251E44721000C51770 /* Catagories.m in Sources */,
 				B8A758351ECDA5F300EDB9D2 /* ImageUpdateCell.m in Sources */,
+				B81483191ED6D23E00DAFAEF /* ListSalonUploadedImage.m in Sources */,
 				B85346D01E53635900B74D9F /* ServiceBookingCell.m in Sources */,
 				B8E984851EB8A9DD002DA2FF /* BookingOfMeCell.m in Sources */,
 				B8BA2E7E1E9CEF1300E1C9FA /* MenuCell.m in Sources */,
+				B80433141ED8039D00059032 /* PopupCreateCategoryViewController.m in Sources */,
 				B864FBA81E9764A900EABC66 /* SessionUser.m in Sources */,
 				B8A758271ECD8C5000EDB9D2 /* ELCOverlayImageView.m in Sources */,
 				B831346D1E949730001A3465 /* AuthenticateManage.m in Sources */,
@@ -2228,6 +2316,7 @@
 				B88B542C1ED19C3B000B98C7 /* MBCircularProgressBarLayer.m in Sources */,
 				B8565EB91E9F1B1D002E72A5 /* SalonDetailViewController.m in Sources */,
 				B8EC1C691E291CD600D2D1E6 /* LoginViewController.m in Sources */,
+				B8A8603F1EDC3220006606CC /* PopupTimeViewController.m in Sources */,
 				B87543C31EAA62790047213A /* CommentDetailView.m in Sources */,
 				B8AA6B131E4090DB002716A7 /* SearchSalonAdvanceViewController.m in Sources */,
 				B8D4825E1EBDCD1D0029DA9B /* EditServiceViewController.m in Sources */,
@@ -2258,6 +2347,7 @@
 				B8A758011ECD450100EDB9D2 /* ImagesViewController.m in Sources */,
 				B8ACAAA61E58943400F9AF05 /* ProfileUserViewController.m in Sources */,
 				B8EF74CB1E4CBEA1001466C4 /* AJRBackgroundDimmer.m in Sources */,
+				B8DA1BA31ED98DE500E3448C /* PopupCteateServiceViewController.m in Sources */,
 				B8A758071ECD8A4F00EDB9D2 /* UploadImageViewController.m in Sources */,
 				B899E8FD1E5858E900CC268B /* User.m in Sources */,
 				B8C32B501E2E11B200FB0E11 /* SalonCell.m in Sources */,
@@ -2309,6 +2399,7 @@
 				B8C32B411E2DEB0A00FB0E11 /* FindSalonViewController.m in Sources */,
 				B83D4EEE1EA26FEA00F39BD4 /* HeaderSalonView.m in Sources */,
 				B8CB12221EB3379C00ECD857 /* iCarousel.m in Sources */,
+				B814831F1ED6ED9C00DAFAEF /* GetLocationViewController.m in Sources */,
 				B803D0B41E3B88E30078857E /* NearByViewController.m in Sources */,
 				B862EB341E4A134A00BBAB79 /* CommentViewController.m in Sources */,
 				B8ACAA9E1E5881DD00F9AF05 /* ListUserViewController.m in Sources */,

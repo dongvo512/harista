@@ -11,14 +11,13 @@
 #import "MenuLeftView.h"
 #import "CommonDefine.h"
 #import "UserInfoViewController.h"
-#import "AlbumImageViewController.h"
 #import "FavoriteViewController.h"
 #import "BookingsViewController.h"
 #import "ManageBookingViewController.h"
 #import "ListUserViewController.h"
 #import "EditServiceViewController.h"
 #import "ImagesViewController.h"
-
+#import "ListSalonUploadedImage.h"
 
 typedef NS_ENUM(NSInteger, ItemMenuManage) {
     
@@ -119,7 +118,7 @@ static SlideMenuViewController *sharedInstance = nil;
             
         case Item_Images:{
             
-            AlbumImageViewController *vcAlbumImage = [[AlbumImageViewController alloc] initWithNibName:@"AlbumImageViewController" bundle:nil];
+            ListSalonUploadedImage *vcAlbumImage = [[ListSalonUploadedImage alloc] initWithNibName:@"ListSalonUploadedImage" bundle:nil];
             [vcNavigation setViewControllers:@[vcAlbumImage] animated:YES];
         }
             break;

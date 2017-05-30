@@ -10,7 +10,7 @@
 
 @interface ServerBookingViewController : UIViewController
 
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil arrSelected:(NSArray *)aArrSelected;
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil arrSelected:(NSArray *)aArrSelected salonID:(NSString *)aSalonID;
 
 @property (nonatomic, weak) id delegate;
 @end

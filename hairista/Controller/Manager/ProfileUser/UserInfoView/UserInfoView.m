@@ -48,7 +48,7 @@
     [self.imgAvatar sd_setImageWithURL:[NSURL URLWithString:user.avatar] placeholderImage:IMG_USER_DEFAULT];
     self.lblName.text = user.name;
     self.lblEmail.text = user.email;
-    self.lblPhone.text = user.phone;
+    self.lblPhone.text = [Common convertPhone84:user.phone];
     self.lblHomeAddress.text = user.homeAddress;
 }
 

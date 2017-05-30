@@ -188,7 +188,7 @@
     
     self.lblUserBookingName.text = bookingCurr.user.name;
     
-    self.lblUserBookingPhone.text = bookingCurr.user.phone;
+    self.lblUserBookingPhone.text = [Common convertPhone84:bookingCurr.user.phone];
     
      [self.imgViewUserBookingAvatar sd_setImageWithURL:[NSURL URLWithString:bookingCurr.user.avatar] placeholderImage:IMG_USER_DEFAULT];
     

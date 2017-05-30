@@ -83,7 +83,6 @@
     
 }
 
-
 - (IBAction)dismissKeyboard:(id)sender {
     
      [self.view endEditing:YES];
@@ -116,6 +115,23 @@
     return isValidate;
 }
 
+-(NSString *)changePhoneNumber{
+    
+    NSString *strNewPhone;
+    
+    if ([self.txtPhone.text hasPrefix:@"0"] && [self.txtPhone.text length] > 1) {
+        
+        strNewPhone = [NSString stringWithFormat:@"+84%@",[self.txtPhone.text substringFromIndex:1]];
+    }
+    else{
+    
+        strNewPhone = self.txtPhone.text;
+    }
+    
+    
+    return strNewPhone;
+}
+
 - (IBAction)login:(id)sender {
     
     if([self checkValidateLogin]){
@@ -126,8 +142,8 @@
     [self.view endEditing:YES];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    [[AuthenticateManage sharedInstance] login:self.txtPhone.text password:self.txtPassword.text dataResult:^(NSError *error, id idObject) {
+   
+    [[AuthenticateManage sharedInstance] login:[self changePhoneNumber] password:self.txtPassword.text dataResult:^(NSError *error, id idObject) {
         
          [MBProgressHUD hideHUDForView:self.view animated:YES];
         

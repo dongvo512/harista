@@ -15,7 +15,7 @@
 #import "Booking.h"
 #import "DetailBookingViewController.h"
 
-#define HEIGHT_CELL 100
+#define HEIGHT_CELL 120
 #define LIMIT_ITEM @"14"
 
 @interface ProfileUserViewController (){

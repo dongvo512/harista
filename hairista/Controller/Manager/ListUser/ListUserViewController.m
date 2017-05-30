@@ -24,13 +24,15 @@
    
     NSString *strSearchKey;
     
-    NSInteger indexPage;
+    NSInteger indexPageSearchAll;
+    
+    NSInteger indexPageSearchSalon;
     
     BOOL isLoadingData;
     
-    BOOL isFullData;
+    BOOL isFullDataAll;
     
-    BOOL isUserOfSalon;
+    BOOL isFullDataSalon;
     
     NSString *keywordCurr;
     
@@ -55,12 +57,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
-    isUserOfSalon = YES;
     
     [self configUI];
     
-    indexPage = 1;
+    indexPageSearchSalon = 1;
+    indexPageSearchAll = 1;
     
    // [self getListUser:@""];
     keywordCurr = @"";
@@ -86,9 +87,10 @@
     isSearchALL = YES;
     [self.btnSearchAll setBackgroundColor:[UIColor colorFromHexString:@"BF0A6A"]];
     [self.btnSearchSalon setBackgroundColor:[UIColor lightGrayColor]];
+
     
-    indexPage = 1;
-    
+    indexPageSearchAll = 1;
+    isFullDataAll = NO;
     [self getListUser:keywordCurr];
 }
 
@@ -100,10 +102,11 @@
     }
     
     isSearchALL = NO;
+    isFullDataSalon = NO;
     [self.btnSearchSalon setBackgroundColor:[UIColor colorFromHexString:@"BF0A6A"]];
     [self.btnSearchAll setBackgroundColor:[UIColor lightGrayColor]];
     
-    indexPage = 1;
+    indexPageSearchSalon = 1;
     
     [self getListUserSalon:keywordCurr];
 
@@ -155,7 +158,7 @@
     
     isLoadingData = YES;
     
-    [[AuthenticateManage sharedInstance] searchListUserOfSalon:keyword pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[AuthenticateManage sharedInstance] searchListUserOfSalon:keyword pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPageSearchSalon] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
         
         isLoadingData = NO;
         
@@ -171,12 +174,12 @@
             
             if(arrData.count < LIMIT_ITEM.integerValue){
                 
-                isFullData = YES;
+                isFullDataSalon = YES;
             }
             self.arrUser = [NSMutableArray arrayWithArray:arrData];
             
             if(self.arrUser.count > 0){
-                self.lblResult.text = [NSString stringWithFormat:@"%ld kết quả",self.arrUser.count];
+                self.lblResult.text = [NSString stringWithFormat:@"%ld kết quả",(long)self.arrUser.count];
             }
             else{
             
@@ -194,7 +197,7 @@
     
     isLoadingData = YES;
     
-    [[AuthenticateManage sharedInstance] searchListUser:keyword pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[AuthenticateManage sharedInstance] searchListUser:keyword pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPageSearchAll] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
         
         isLoadingData = NO;
         
@@ -210,13 +213,13 @@
             
             if(arrData.count < LIMIT_ITEM.integerValue){
                 
-                isFullData = YES;
+                isFullDataAll = YES;
             }
             
             self.arrUser = [NSMutableArray arrayWithArray:arrData];
            
             if(self.arrUser.count > 0){
-                self.lblResult.text = [NSString stringWithFormat:@"%ld kết quả",self.arrUser.count];
+                self.lblResult.text = [NSString stringWithFormat:@"%ld kết quả",(long)self.arrUser.count];
             }
             else{
                 
@@ -235,7 +238,7 @@
     
     isLoadingData = YES;
     
-    [[AuthenticateManage sharedInstance] searchListUser:self.searchBar.text pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[AuthenticateManage sharedInstance] searchListUser:self.searchBar.text pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPageSearchSalon] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
         
         isLoadingData = NO;
         
@@ -258,7 +261,7 @@
             
             if(arrData.count < LIMIT_ITEM.integerValue){
                 
-                isFullData = YES;
+                isFullDataSalon = YES;
             }
         }
         
@@ -272,7 +275,7 @@
     
     isLoadingData = YES;
     
-    [[AuthenticateManage sharedInstance] searchListUser:self.searchBar.text pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[AuthenticateManage sharedInstance] searchListUser:self.searchBar.text pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPageSearchAll] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
         
         isLoadingData = NO;
         
@@ -295,7 +298,7 @@
             
             if(arrData.count < LIMIT_ITEM.integerValue){
                 
-                isFullData = YES;
+                isFullDataAll = YES;
             }
             
         }
@@ -309,15 +312,15 @@
     keywordCurr = searchText;
     
     if(searchText.length == 0){
-   
-        indexPage = 1;
         
         if(isSearchALL){
         
+            indexPageSearchAll = 1;
             [self getListUser:@""];
         }
         else{
         
+            indexPageSearchSalon = 1;
             [self getListUserSalon:@""];
         }
         
@@ -328,13 +331,15 @@
     
      [self.view endEditing:YES];
     
-    indexPage = 1;
-    
     if(isSearchALL){
+        
+        indexPageSearchAll = 1;
         
         [self getListUser:searchBar.text];
     }
     else{
+        
+        indexPageSearchSalon = 1;
         
         [self getListUserSalon:searchBar.text];
     }
@@ -372,20 +377,24 @@
   willDisplayCell:(UITableViewCell *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if(indexPath.row == self.arrUser.count - 1 && !isLoadingData &&!isFullData){
-        
-        indexPage ++;
-        
-        if(isSearchALL){
-        
-            [self loadMoreAll];
-        }
-        else{
-        
+    if(!isSearchALL){
+    
+        if(indexPath.row == self.arrUser.count - 1 && !isLoadingData && !isFullDataSalon){
+            
+            indexPageSearchSalon ++;
             [self loadMoreSalon];
         }
-        
     }
+    else{
+    
+        if(indexPath.row == self.arrUser.count - 1 && !isLoadingData && !isFullDataAll){
+            
+            indexPageSearchAll ++;
+            [self loadMoreAll];
+
+        }
+    }
+    
     
 }
 

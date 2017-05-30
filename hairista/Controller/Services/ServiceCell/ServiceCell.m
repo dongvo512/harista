@@ -31,7 +31,7 @@
 
     [self.imgService sd_setImageWithURL:[NSURL URLWithString:service.image] placeholderImage:IMG_DEFAULT];
     
-    self.lblPrice.text = service.price.stringValue;
+    self.lblPrice.text = [NSString stringWithFormat:@"%@ đ",[Common getString3DigitsDot:service.price.integerValue]];
     
     self.lblServiceName.text = service.name;
  

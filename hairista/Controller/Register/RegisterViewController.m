@@ -99,11 +99,23 @@
     
     return isValidate;
 }
-
+-(NSString *)changePhoneNumber{
+    
+    NSString *strNewPhone;
+    
+    if ([self.tfPhone.text hasPrefix:@"0"] && [self.tfPhone.text length] > 1) {
+        
+        strNewPhone = [NSString stringWithFormat:@"+84%@",[self.tfPhone.text substringFromIndex:1]];
+    }
+    else{
+    
+        strNewPhone = self.tfPhone.text;
+    }
+    
+    
+    return strNewPhone;
+}
 - (IBAction)touchBtnComplete:(id)sender {
-    
-    
-    
     
     if([self checkValidate]){
     
@@ -112,7 +124,7 @@
     
      [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[AuthenticateManage sharedInstance] registerUser:self.tfPhone.text password:self.tfPassword.text passwordConfirm:self.tfConfirmPass.text dataResult:^(NSError *error, id idObject) {
+    [[AuthenticateManage sharedInstance] registerUser:[self changePhoneNumber] password:self.tfPassword.text passwordConfirm:self.tfConfirmPass.text dataResult:^(NSError *error, id idObject) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         

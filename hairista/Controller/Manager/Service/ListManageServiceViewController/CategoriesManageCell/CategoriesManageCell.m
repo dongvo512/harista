@@ -7,6 +7,11 @@
 //
 
 #import "CategoriesManageCell.h"
+#import "Category.h"
+
+@interface CategoriesManageCell ()
+
+@end
 
 @implementation CategoriesManageCell
 
@@ -19,6 +24,13 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+- (IBAction)touchBtnEdit:(id)sender {
+    
+    if([[self delegate] respondsToSelector:@selector(touchButtonEdit:)]){
+    
+        [[self delegate] touchButtonEdit:self.catCurr];
+    }
 }
 
 @end

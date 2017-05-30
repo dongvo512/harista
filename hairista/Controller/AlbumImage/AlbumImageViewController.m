@@ -14,6 +14,7 @@
 #import "HairFullView.h"
 #import "ImageCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "SalonManage.h"
 
 #define LIMIT_ITEM @"14"
 
@@ -52,7 +53,7 @@
     
     self.arrImages = [NSMutableArray array];
     
-    [self getListImageUser];
+    //[self getListSalonUpdated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,6 +69,14 @@
 }
 #pragma mark - GetData
 
+
+-(void)getListSalonUpdated{
+
+    [[SalonManage sharedInstance] getListSalonUpdateImage:^(NSError *error, id idObject) {
+        
+        
+    }];
+}
 
 -(void)getListImageUser{
 

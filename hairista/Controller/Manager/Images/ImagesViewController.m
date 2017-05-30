@@ -40,6 +40,8 @@
     indexPage = 1;
    
     [self.tblView registerNib:[UINib nibWithNibName:@"ImgIndexCell" bundle:nil] forCellReuseIdentifier:@"ImgIndexCell"];
+  //  [self.tblView setEditing:YES animated:YES];
+    
     
     [self reloadListSalon];
 }
@@ -94,7 +96,7 @@
     for(int i = 0; i < totalItem; i++){
     
         Image *img = [self.arrImages objectAtIndex:i];
-        NSDictionary *dic = @{@"id":img.idImage,@"order":[NSString stringWithFormat:@"%ld",img.index]};
+        NSDictionary *dic = @{@"id":img.idImage,@"order":[NSString stringWithFormat:@"%ld",(long)img.index]};
         [arrDic addObject:dic];
     }
     
@@ -216,6 +218,24 @@
     }];
 }
 
+-(void)deleteImage:(Image *)image{
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[SalonManage sharedInstance] deleteImage:image.idImage dataApiResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+       
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+        
+             [Common showAlert:self title:@"Thông báo" message:@"Xoá hình ảnh thành công" buttonClick:nil];
+        }
+    }];
+}
+
 #pragma mark - Table view DataSource - Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -259,7 +279,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 
     return object;
 }
-
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+   
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+       
+        Image *image = [self.arrImages objectAtIndex:indexPath.row];
+        [self deleteImage:image];
+    
+    }
+}
 - (void)moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
     
     id object = [self.arrImages objectAtIndex:fromIndexPath.row];

@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblDate;
 @property (weak, nonatomic) IBOutlet UILabel *lblThuAndTime;
 @property (weak, nonatomic) IBOutlet UILabel *lblTotalPrice;
+@property (weak, nonatomic) IBOutlet UILabel *lblSalonName;
 
 @end
 
@@ -37,6 +38,8 @@
 }
 -(void)setDataForCell:(Booking *)booking{
 
+    self.lblSalonName.text = booking.salon.name;
+    
     NSString *dayName = [Common getDayInWeekVietNamese:[Common getDateFromStringFormat:booking.startDate format:@"yyyy-MM-dd HH:mm:ss"]];
     
     NSString *strStartTime = [Common formattedDateTimeWithDateString:booking.startDate inputFormat:@"yyyy-MM-dd HH:mm:ss" outputFormat:@"HH:mm"];

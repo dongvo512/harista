@@ -86,6 +86,27 @@
     
 }
 
++(NSString *)convertPhone84:(NSString *)phone{
+
+    NSString *stringConvert = phone;
+    
+    if(phone.length > 3){
+    
+        NSString *firstCharactor = [stringConvert substringToIndex:3];
+        
+        if([firstCharactor isEqualToString:@"+84"]){
+        
+            firstCharactor = @"0";
+            
+            NSString *newString = [stringConvert substringWithRange:NSMakeRange(3, [stringConvert length]-3)];
+            
+            stringConvert = [NSString stringWithFormat:@"%@%@",firstCharactor,newString];
+        }
+    }
+    
+    return stringConvert;
+}
+
 + (NSString *)getString3DigitsDot:(NSInteger )number{
 
     NSNumberFormatter *formatter = [NSNumberFormatter new];

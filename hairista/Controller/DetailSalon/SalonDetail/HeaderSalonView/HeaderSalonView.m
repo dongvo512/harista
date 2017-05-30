@@ -58,7 +58,7 @@
     
     self.lblAddress.text = salon.homeAddress;
     
-    self.lblPhone.text = salon.phone;
+    self.lblPhone.text = [Common convertPhone84:salon.phone];
     
     
     if(self.salonCurr.isFavorite){

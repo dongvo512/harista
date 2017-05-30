@@ -60,11 +60,17 @@
                                         <constraint firstAttribute="width" constant="50" id="QRk-9u-ju7"/>
                                         <constraint firstAttribute="height" constant="50" id="rnF-W2-M2U"/>
                                     </constraints>
-                                    <state key="normal" image="ic_menu"/>
+                                    <state key="normal" image="ic_back"/>
+                                    <connections>
+                                        <action selector="touchBtnBack:" destination="-1" eventType="touchUpInside" id="Gsc-dy-SHg"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCz-yC-XDS">
                                     <rect key="frame" x="325" y="2" width="50" height="50"/>
                                     <state key="normal" image="ic_add_categories"/>
+                                    <connections>
+                                        <action selector="touchBtnCreateService:" destination="-1" eventType="touchUpInside" id="7mJ-Sb-m7v"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -124,6 +130,6 @@
     </objects>
     <resources>
         <image name="ic_add_categories" width="50" height="50"/>
-        <image name="ic_menu" width="21" height="18"/>
+        <image name="ic_back" width="15" height="15"/>
     </resources>
 </document>

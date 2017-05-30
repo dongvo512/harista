@@ -23,6 +23,8 @@
 @interface ServerBookingViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 {
     NSMutableArray *arrSelected;
+    
+    NSString *salonCurrID;
 }
 @property (nonatomic, strong) NSMutableArray *arrGroupService;
 @property (weak, nonatomic) IBOutlet UICollectionView *cllService;
@@ -34,14 +36,14 @@
 
 #pragma mark - Init
 
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil arrSelected:(NSArray *)aArrSelected{
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil arrSelected:(NSArray *)aArrSelected salonID:(NSString *)aSalonID{
 
     self = [super init];
     
     if(self){
         
         arrSelected = [NSMutableArray arrayWithArray:aArrSelected];
-        
+        salonCurrID = aSalonID;
         
     }
     
@@ -81,7 +83,7 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[SalonManage sharedInstance] getListCategoriesProduct:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListServiceBySalonID:salonCurrID dataApiResult:^(NSError *error, id idObject) {
        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         

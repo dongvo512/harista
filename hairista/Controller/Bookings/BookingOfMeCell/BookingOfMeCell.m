@@ -63,7 +63,7 @@
     
     self.lblBookingName.text = booking.name;
     
-    self.lblSalonName.text = booking.salon.name;
+    self.lblSalonName.text = [NSString stringWithFormat:@"Tại:%@",booking.salon.name];
     
     self.lblStartDate.text = [Common formattedDateTimeWithDateString:booking.startDate inputFormat:@"yyyy-MM-dd HH:mm:ss" outputFormat:@"dd/MM/yyyy HH:mm"];
     

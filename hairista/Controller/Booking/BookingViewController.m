@@ -203,7 +203,7 @@
     }
     else{
     
-        ServerBookingViewController *vcServices = [[ServerBookingViewController alloc] initWithNibName:@"ServerBookingViewController" bundle:nil arrSelected:arrSelected];
+        ServerBookingViewController *vcServices = [[ServerBookingViewController alloc] initWithNibName:@"ServerBookingViewController" bundle:nil arrSelected:arrSelected salonID:salonCurr.idSalon];
         vcServices.delegate = self;
         [self.navigationController pushViewController:vcServices animated:YES];
     }
@@ -244,7 +244,7 @@
     }
     
     [self.cboService setTextName:strServices];
-    self.lbltotalPrice.text = [NSString stringWithFormat:@"%ld ngàn đồng", (long)totalPrice];
+    self.lbltotalPrice.text = [NSString stringWithFormat:@"%@ VNĐ", [Common getString3DigitsDot:totalPrice]];
     
     arrSelected = [NSMutableArray arrayWithArray:arrItems];
     
@@ -299,7 +299,7 @@
         }
         
         [self.cboService setTextName:strServices];
-        self.lbltotalPrice.text = [NSString stringWithFormat:@"%ld ngàn đồng", (long)totalPrice];
+        self.lbltotalPrice.text = [NSString stringWithFormat:@"%ld VNĐ", (long)totalPrice];
 
         self.heightContraint.constant = 50 * arrSelected.count;
         [self.tblService deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];

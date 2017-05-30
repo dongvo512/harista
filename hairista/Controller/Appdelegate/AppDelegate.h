@@ -16,7 +16,7 @@
 @property (strong, nonatomic) SessionUser *sessionUser;
 @property (nonatomic, strong) ProcessDataView *processDataView;
 @property (nonatomic, strong) NSProgress *progressCurr;
-
+@property (nonatomic, strong) NSString *deviceToken;
 #pragma mark - Popup Golbal
 
 -(void)showProcessBar:(UIImage *)image progress:(NSProgress *)progressCurr;

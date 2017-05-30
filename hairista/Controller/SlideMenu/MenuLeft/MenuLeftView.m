@@ -125,7 +125,7 @@
 
 -(void)loadUserInfo{
 
-    self.lblPhone.text = Appdelegate_hairista.sessionUser.phone;
+    self.lblPhone.text = [Common convertPhone84:Appdelegate_hairista.sessionUser.phone];
     
     //NSLog(@"%@",Appdelegate_hairista.sessionUser.phone);
     
@@ -146,20 +146,20 @@
     
         ItemMenu *item_1 = [[ItemMenu alloc] init];
         item_1.itemName = @"Lịch hẹn";
-        item_1.itemIconName = @"ic_salon";
+        item_1.itemIconName = @"ic_booking";
         
         [self.arrMenus addObject:item_1];
         
         ItemMenu *item_2 = [[ItemMenu alloc] init];
-        item_2.itemName = @"Danh sách Khách hàng";
-        item_2.itemIconName = @"ic_hair";
+        item_2.itemName = @"Khách hàng";
+        item_2.itemIconName = @"Ic_user";
         
         [self.arrMenus addObject:item_2];
         
         
         ItemMenu *item_3 = [[ItemMenu alloc] init];
-        item_3.itemName = @"Danh sách Dịch vụ";
-        item_3.itemIconName = @"ic_favorite";
+        item_3.itemName = @"Dịch vụ";
+        item_3.itemIconName = @"ic_salon";
         [self.arrMenus addObject:item_3];
 
         

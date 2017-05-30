@@ -53,7 +53,7 @@
 -(void)setDataForView:(Salon *)salon{
 
     [self.imgViewSalon sd_setImageWithURL:[NSURL URLWithString:salon.avatar] placeholderImage:IMG_DEFAULT];
-    self.lblPhone.text = salon.phone;
+    self.lblPhone.text = [Common convertPhone84:salon.phone];
     self.lblName.text = salon.name;
     self.lblAddress.text = salon.homeAddress;
     self.lblOpenTime.text = [NSString stringWithFormat:@"%@ - %@",salon.openTime, salon.closeTime];

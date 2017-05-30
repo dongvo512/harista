@@ -10,7 +10,7 @@
 
 @interface ServicesViewController : UIViewController
 
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil isSelectItem:(BOOL)isSelectItem arrSelected:(NSArray *)aArrSelected;
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil isSelectItem:(BOOL)isSelectItem arrSelected:(NSArray *)aArrSelected salon:(NSString *)salonId;
 
 @property (nonatomic, weak) id delegate;
 @end

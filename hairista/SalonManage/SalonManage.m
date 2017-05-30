@@ -256,6 +256,20 @@ static SalonManage *sharedInstance = nil;
     
 }
 
+-(Category *)parseCategory:(NSDictionary *)responseDataObject{
+
+    
+    Category *cat = [[Category alloc] init];
+    cat.createdAt = CHECK_NIL([responseDataObject objectForKey:@"createAt"]);
+    cat.idCategory = CHECK_NIL([responseDataObject objectForKey:@"id"]);
+    cat.updatedAt = CHECK_NIL([responseDataObject objectForKey:@"updatedAt"]);
+    cat.name = CHECK_NIL([responseDataObject objectForKey:@"name"]);
+    cat.userId = CHECK_NIL([responseDataObject objectForKey:@"userId"]);
+    cat.name_slug = CHECK_NIL([responseDataObject objectForKey:@"name_slug"]);
+    
+    return cat;
+}
+
 - (NSMutableArray *)parseListService:(NSArray *)responseDataObject{
     
     NSMutableArray *arrData = [NSMutableArray array];
@@ -401,7 +415,7 @@ static SalonManage *sharedInstance = nil;
 
 -(void)getListImageSalon:(NSString *)idSalon page:(NSString *)page limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult{
 
-    NSString *url = [NSString stringWithFormat:@"%@%@/image?page=%@&limit=%@",URL_GET_DETAIL_SALON,idSalon,page,limit];
+    NSString *url = [NSString stringWithFormat:@"%@%@/image?page=%@&limit=%@&orderBy=ordering,asc",URL_GET_DETAIL_SALON,idSalon,page,limit];
     
     [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         
@@ -720,4 +734,195 @@ static SalonManage *sharedInstance = nil;
     }];
 }
 
+-(void)getListSalonUpdateImage:(DataAPIResult)dataApiResult{
+
+    [APIRequestHandler initWithURLString:URL_GET_SALON_IMAGE_UPLOADED withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorSalonUpdateImage", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorSalonUpdateImage" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            dataApiResult(nil, @"OK");
+            
+        }
+    }];
+}
+-(void)getListServiceBySalonID:(NSString *)salonID dataApiResult:(DataAPIResult)dataApiResult{
+
+    NSString *url = [NSString stringWithFormat:@"%@%@/categories",URL_GET_LIST_SERVICE_BY_SALONID,salonID];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorServiceBySalonID", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorServiceBySalonID" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            NSArray *arrData = [self parseListService:responseDataObject];
+            
+            dataApiResult(nil, arrData);
+            
+        }
+    }];
+
+}
+
+-(void)createCategory:(NSString *)catName dataApiResult:(DataAPIResult)dataApiResult{
+
+    //{{url}}categories
+    
+    NSDictionary *dic = @{@"name":catName};
+    
+    [APIRequestHandler initWithURLString:URL_POST_CREATE_CATEGORY withHttpMethod:kHTTP_METHOD_POST withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorCreateCategory", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorCreateCategory" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            Category *cat = [self parseCategory:responseDataObject];
+            
+            dataApiResult(nil, cat);
+            
+        }
+    }];
+
+}
+
+-(void)updateCategory:(NSString *)idCat nameCat:(NSString *)catName dataApiResult:(DataAPIResult)dataApiResult{
+
+    NSDictionary *dic = @{@"name":catName};
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@",URL_PUT_UPDATE_CATEGORY,idCat];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_PUT withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateCategory", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateCategory" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            Category *cat = [self parseCategory:responseDataObject];
+            
+            dataApiResult(nil, cat);
+            
+        }
+    }];
+}
+
+-(void)updateService:(NSString *)idCate service:(Service *)service dataApiResult:(DataAPIResult)dataApiResult{
+
+    NSDictionary *dic = @{@"name":service.name, @"image":service.image, @"price":service.price.stringValue, @"categoryId":idCate};
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@",URL_PUT_UPDATE_SERVICE,service.idService];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_PUT withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateService", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateService" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            dataApiResult(nil, @"OK");
+            
+            //Category *cat = [self parseCategory:responseDataObject];
+            
+            // dataApiResult(nil, cat);
+            
+        }
+    }];
+}
+
+-(void)getListServiceByCategoryID:(NSString *)categoryID dataApiResult:(DataAPIResult)dataApiResult{
+
+    NSString *url = [NSString stringWithFormat:@"%@%@/product",URL_GET_SERICE_BY_CATEGORYID,categoryID];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorServicesByCategoryID", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorServicesByCategoryID" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            Category *cat = [self parseCategory:responseDataObject];
+            
+            dataApiResult(nil, cat);
+            
+        }
+    }];
+
+}
+
+-(void)createServiceByIdCat:(NSString *)idCate service:(Service *)service dataApiResult:(DataAPIResult)dataApiResult{
+    
+    NSDictionary *dic = @{@"name":service.name, @"image":service.image, @"price":service.price.stringValue, @"categoryId":idCate};
+    
+    [APIRequestHandler initWithURLString:URL_POST_CREATE_SERVICE withHttpMethod:kHTTP_METHOD_POST withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorCreateService", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorCreateService" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+             dataApiResult(nil, @"OK");
+            
+            //Category *cat = [self parseCategory:responseDataObject];
+            
+           // dataApiResult(nil, cat);
+            
+        }
+    }];
+}
+
+-(void)deleteImage:(NSString *)idImage dataApiResult:(DataAPIResult)dataApiResult{
+
+    NSDictionary *dic = @{@"phone":Appdelegate_hairista.sessionUser.phone};
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@",URL_DELETE_IMAGE,idImage];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_DELETE withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorDeleteImage", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorDeleteImage" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            dataApiResult(nil, @"OK");
+            
+        }
+    }];
+}
 @end

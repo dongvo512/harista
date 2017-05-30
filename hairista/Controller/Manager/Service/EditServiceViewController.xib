@@ -65,12 +65,15 @@
                                         <action selector="showMenu:" destination="-1" eventType="touchUpInside" id="I6r-v3-uQg"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbv-RB-2xD">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbv-RB-2xD">
                                     <rect key="frame" x="325" y="2" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="BC7-5U-crH"/>
+                                        <constraint firstAttribute="height" constant="50" id="Oi4-D6-KG3"/>
+                                    </constraints>
                                     <state key="normal" image="ic_add_categories"/>
                                     <connections>
-                                        <action selector="showMenu:" destination="-1" eventType="touchUpInside" id="ghP-qf-wsQ"/>
+                                        <action selector="touchBtnInsertCategory:" destination="-1" eventType="touchUpInside" id="BEQ-xA-igc"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -83,6 +86,8 @@
                                 <constraint firstItem="rvM-sp-nFa" firstAttribute="top" secondItem="xHo-9s-5yi" secondAttribute="top" id="KnB-pX-vCt"/>
                                 <constraint firstItem="RdC-Ml-Ru0" firstAttribute="centerX" secondItem="xHo-9s-5yi" secondAttribute="centerX" id="Man-kh-EmK"/>
                                 <constraint firstAttribute="bottom" secondItem="eY2-gT-1k0" secondAttribute="bottom" constant="1" id="QQ6-fz-Qnh"/>
+                                <constraint firstAttribute="bottom" secondItem="cbv-RB-2xD" secondAttribute="bottom" id="UB7-nm-WwM"/>
+                                <constraint firstAttribute="trailing" secondItem="cbv-RB-2xD" secondAttribute="trailing" id="c9x-St-3eR"/>
                                 <constraint firstAttribute="height" constant="52" id="sqQ-R6-YXo"/>
                             </constraints>
                         </view>
@@ -98,7 +103,7 @@
                         <constraint firstAttribute="trailing" secondItem="XZY-if-9In" secondAttribute="trailing" id="xRr-52-zND"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJe-UP-KM8">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJe-UP-KM8">
                     <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>

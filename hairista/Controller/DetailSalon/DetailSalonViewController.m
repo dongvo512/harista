@@ -28,6 +28,8 @@
     Salon *salon;
     ImagePickerViewController *vcImagePicker;
     DKScrollingTabController *tabController;
+    
+    BOOL isCreateListTab;
 }
 @property (weak, nonatomic) IBOutlet UIView *tabView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollMaster;
@@ -69,7 +71,13 @@
 - (void)viewDidAppear:(BOOL)animated{
 
     [super viewDidAppear:animated];
-     [self loadTabbar];
+    
+    if(!isCreateListTab){
+        
+        isCreateListTab = YES;
+        [self loadTabbar];
+    }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -88,7 +96,7 @@
     
     self.vcComment = [[CommentViewController alloc] initWithNibName:@"CommentViewController" bundle:nil salon:salon];
     
-    self.vcService = [[ServicesViewController alloc] initWithNibName:@"ServicesViewController" bundle:nil];
+    self.vcService = [[ServicesViewController alloc] initWithNibName:@"ServicesViewController" bundle:nil isSelectItem:NO arrSelected:nil salon:salon.idSalon];
     
 }
 

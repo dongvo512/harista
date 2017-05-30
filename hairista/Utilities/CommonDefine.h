@@ -189,3 +189,19 @@
 
 #define URL_POST_ADD_USER_FOR_SALON @"https://salonhair.herokuapp.com/api/v1/relationships"
 
+#define URL_GET_SALON_IMAGE_UPLOADED @"https://salonhair.herokuapp.com/api/v1/users/me/salons"
+
+#define URL_GET_LIST_SERVICE_BY_SALONID @"https://salonhair.herokuapp.com/api/v1/salons/"
+
+#define URL_POST_CREATE_CATEGORY @"https://salonhair.herokuapp.com/api/v1/categories"
+
+#define URL_PUT_UPDATE_CATEGORY @"https://salonhair.herokuapp.com/api/v1/categories/"
+
+#define URL_GET_SERICE_BY_CATEGORYID @"https://salonhair.herokuapp.com/api/v1/categories/"
+
+#define URL_POST_CREATE_SERVICE @"https://salonhair.herokuapp.com/api/v1/services"
+
+#define URL_PUT_UPDATE_SERVICE @"https://salonhair.herokuapp.com/api/v1/services/"
+
+#define URL_DELETE_IMAGE @"https://salonhair.herokuapp.com/api/v1/images/"
+

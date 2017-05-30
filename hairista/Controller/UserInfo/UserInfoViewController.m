@@ -16,6 +16,10 @@
 #import "MenuLeftView.h"
 #import "ImgurAnonymousAPIClient.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "CommonDefine.h"
+#import "GetLocationViewController.h"
+#import "NCComboboxNewView.h"
+#import "PopupTimeViewController.h"
 
 
 @interface UserInfoViewController ()<ImagePickerViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
@@ -36,7 +40,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblEmail;
 @property (weak, nonatomic) IBOutlet UILabel *lblPhone;
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
-
+@property (weak, nonatomic) IBOutlet UIView *viewLocaltion;
+@property (weak, nonatomic) IBOutlet UITextField *tfLaitude;
+@property (weak, nonatomic) IBOutlet UITextField *tflongitude;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightContraintLocation;
+@property (weak, nonatomic) IBOutlet NCComboboxNewView *cboOpenTime;
+@property (weak, nonatomic) IBOutlet NCComboboxNewView *cboCloseTime;
 
 @end
 
@@ -45,9 +54,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.cboOpenTime.view setBackgroundColor:[UIColor whiteColor]];
+    [self.cboOpenTime setPlaceHolder:@"Chọn giờ mở cửa"];
+    self.cboOpenTime.delegate = self;
+    
+    [self.cboCloseTime.view setBackgroundColor:[UIColor whiteColor]];
+    [self.cboCloseTime setPlaceHolder:@"Chọn giờ đóng cửa"];
+    self.cboCloseTime.delegate = self;
+    
     vcImagePicker = [[ImagePickerViewController alloc] init];
     vcImagePicker.delegateImg = self;
     vcImagePicker.vcParent = self;
+    
+    if(![Appdelegate_hairista.sessionUser.role isEqualToString:@"salon"]){
+    
+        self.heightContraintLocation.constant = 0;
+        
+        [self.viewLocaltion setHidden:YES];
+    }
     
     [self loadDataForUI];
 }
@@ -57,7 +81,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - NCComboboxNewViewDelegate
+- (void)didSelect:(CGRect)frame inView:(UIView *)vieParent andType:(NSInteger)type andCombobox:(NCComboboxNewView*)comboboxCurr{
+
+    PopupTimeViewController *vcPopupTime = [[PopupTimeViewController alloc] initWithNibName:@"PopupTimeViewController" bundle:nil];
+    
+    [vcPopupTime presentInParentViewController:self];
+}
+
+- (void)clearCombobox:(NCComboboxNewView *)comboboxCurr{
+
+    
+}
+
 #pragma mark - Action
+- (IBAction)touchBtnGetLocation:(id)sender {
+    
+    GetLocationViewController *vcGetLocation = [[GetLocationViewController alloc] initWithNibName:@"GetLocationViewController" bundle:nil aLat:Appdelegate_hairista.sessionUser.lastLat aLong:Appdelegate_hairista.sessionUser.lastLng];
+    
+    vcGetLocation.delegate = self;
+    [self.navigationController pushViewController:vcGetLocation animated:YES];
+
+}
 
 - (IBAction)touchBtnShowMenu:(id)sender {
     
@@ -100,7 +145,18 @@
        [dic setObject:strUrlAvart forKey:@"avatar"];
     }
     
-    if(self.tfFullName.text.length == 0 && self.tfEmail.text.length == 0 && self.tfAddress.text.length == 0 && !isUploadedAvatar){
+    if(self.tfLaitude.text.length > 0){
+    
+        [dic setObject:self.tfLaitude.text forKey:@"lastLat"];
+    }
+    
+    if(self.tflongitude.text.length > 0){
+        
+        [dic setObject:self.tflongitude.text forKey:@"lastLng"];
+    }
+    
+    
+    if(self.tfFullName.text.length == 0 && self.tfEmail.text.length == 0 && self.tfAddress.text.length == 0 && !isUploadedAvatar && self.tfLaitude.text.length == 0 && self.tflongitude.text.length == 0){
     
         [Common showAlert:self title:@"Thông báo" message:@"Bạn phải nhập vào ít nhất một thông tin" buttonClick:nil];
         
@@ -127,6 +183,19 @@
             }
             else{
             
+                if(self.tfLaitude.text.length > 0 && self.tflongitude.text.length > 0){
+                
+                    Appdelegate_hairista.sessionUser.lastLat = self.tfLaitude.text;
+                    Appdelegate_hairista.sessionUser.lastLng = self.tflongitude.text;
+                }
+               
+                
+                NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:Appdelegate_hairista.sessionUser];
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:encodedObject forKey:@"FirstRun"];
+                [defaults synchronize];
+
+                
                 [self loadDataForUI];
                 
                 isUploadedAvatar = NO;
@@ -134,12 +203,10 @@
                 
                 [Common showAlert:self title:@"Thông báo" message:@"Cập nhật thông tin cá nhân thành công" buttonClick:nil];
             }
-            
-            
+        
         }];
 
     }
-    
 }
 
 - (IBAction)clickAvatar:(id)sender {
@@ -169,6 +236,14 @@
     [self presentViewController:vcAlert animated:YES completion:nil];
 }
 
+#pragma mark - GetLocationViewControllerDelegate
+-(void)touchButtonCheck:(CGFloat)laitude longitude:(CGFloat)longitude{
+
+    self.tfLaitude.text = [NSString stringWithFormat:@"%f",laitude];
+    
+    self.tflongitude.text = [NSString stringWithFormat:@"%f",longitude];
+    
+}
 #pragma mark - Method
 
 - (void)clearText{
@@ -183,7 +258,7 @@
 
     self.lblName.text = Appdelegate_hairista.sessionUser.name;
     self.lblEmail.text = Appdelegate_hairista.sessionUser.email;
-    self.lblPhone.text = Appdelegate_hairista.sessionUser.phone;
+    self.lblPhone.text = [Common convertPhone84:Appdelegate_hairista.sessionUser.phone];
     self.lblAddress.text = Appdelegate_hairista.sessionUser.homeAddress;
     [self.imgAvatar sd_setImageWithURL:[NSURL URLWithString:Appdelegate_hairista.sessionUser.avatar] placeholderImage:IMG_USER_DEFAULT];
     [self clearText];
@@ -193,10 +268,89 @@
 
 #pragma mark - ImagePickerViewControllerDelegate
 
+- (UIImage *)fixrotation:(UIImage *)image{
+    
+    if (image.imageOrientation == UIImageOrientationUp) return image;
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    switch (image.imageOrientation) {
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.width, image.size.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
+            break;
+            
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, 0, image.size.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
+            break;
+        case UIImageOrientationUp:
+        case UIImageOrientationUpMirrored:
+            break;
+    }
+    
+    switch (image.imageOrientation) {
+        case UIImageOrientationUpMirrored:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+        case UIImageOrientationUp:
+        case UIImageOrientationDown:
+        case UIImageOrientationLeft:
+        case UIImageOrientationRight:
+            break;
+    }
+    
+    // Now we draw the underlying CGImage into a new context, applying the transform
+    // calculated above.
+    CGContextRef ctx = CGBitmapContextCreate(NULL, image.size.width, image.size.height,
+                                             CGImageGetBitsPerComponent(image.CGImage), 0,
+                                             CGImageGetColorSpace(image.CGImage),
+                                             CGImageGetBitmapInfo(image.CGImage));
+    CGContextConcatCTM(ctx, transform);
+    switch (image.imageOrientation) {
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            // Grr...
+            CGContextDrawImage(ctx, CGRectMake(0,0,image.size.height,image.size.width), image.CGImage);
+            break;
+            
+        default:
+            CGContextDrawImage(ctx, CGRectMake(0,0,image.size.width,image.size.height), image.CGImage);
+            break;
+    }
+    
+    // And now we just create a new UIImage from the drawing context
+    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
+    UIImage *img = [UIImage imageWithCGImage:cgimg];
+    CGContextRelease(ctx);
+    CGImageRelease(cgimg);
+    return img;
+}
+
+
 - (void)finishGetImage:(NSString *)fileName
                  image:(UIImage *)image{
     
     self.imgAvatar.image = image;
+    
+    image = [self fixrotation:image];
     
     NSData *data= nil;
    float imgValue = MAX(image.size.width, image.size.height);
@@ -243,33 +397,6 @@
 
 }
 
-//-(void)uploadImagUrl:(NSString *)imgUrl{
-//
-//    
-//    [[AuthenticateManage sharedInstance] uploadUrlImage:imgUrl dataResult:^(NSError *error, id idObject) {
-//        
-//        if(error){
-//        
-//            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
-//        }
-//        else{
-//        
-//            idImage = (NSString *)idObject;
-//            
-//            if(idImage){
-//                
-//                isUploadedAvatar = YES;
-//                
-//                if(isTouchBtnUpdate){
-//                    
-//                    [self updateAvatar];
-//                }
-//            }
-//        }
-//    }];
-//    
-//}
-
 -(void)updateAvatar{
 
     NSMutableDictionary *dic = nil;
@@ -310,7 +437,4 @@
     }
 
 }
-
-
-
 @end

@@ -32,7 +32,7 @@
     
     [self.imgViewBanner sd_setImageWithURL:[NSURL URLWithString:salon.avatar] placeholderImage:IMG_DEFAULT];
     self.lblSalonName.text = salon.name;
-    self.lblSalonPhone.text = salon.phone;
+    self.lblSalonPhone.text = [Common convertPhone84:salon.phone];
     
     self.widthContraint.constant = (80/5)*salon.avgRate.integerValue;
     
