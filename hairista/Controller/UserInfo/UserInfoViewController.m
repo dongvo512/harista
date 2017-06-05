@@ -20,6 +20,10 @@
 #import "GetLocationViewController.h"
 #import "NCComboboxNewView.h"
 #import "PopupTimeViewController.h"
+#import "ProvinceViewController.h"
+#import "DistrictViewController.h"
+#import "Province.h"
+#import "District.h"
 
 
 @interface UserInfoViewController ()<ImagePickerViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
@@ -36,6 +40,9 @@
     
     NSDate *dateOpenTime;
     NSDate *dateCloseTime;
+    
+    Province *provinceSelected;
+    District *districtSelected;
 }
 @property (weak, nonatomic) IBOutlet UILabel *lblOpenTime;
 
@@ -54,6 +61,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightContraintLocation;
 @property (weak, nonatomic) IBOutlet NCComboboxNewView *cboOpenTime;
 @property (weak, nonatomic) IBOutlet NCComboboxNewView *cboCloseTime;
+@property (weak, nonatomic) IBOutlet NCComboboxNewView *cboProvince;
+@property (weak, nonatomic) IBOutlet NCComboboxNewView *cboDistrict;
 
 @end
 
@@ -63,16 +72,30 @@
     [super viewDidLoad];
     
     [self.cboOpenTime.view setBackgroundColor:[UIColor whiteColor]];
-    self.cboOpenTime.layer.cornerRadius = 4;
-    self.cboOpenTime.view.layer.cornerRadius = 4;
+    self.cboOpenTime.layer.cornerRadius = 6;
+    self.cboOpenTime.view.layer.cornerRadius = 6;
     [self.cboOpenTime setPlaceHolder:@"Chọn giờ mở cửa"];
     self.cboOpenTime.delegate = self;
     
     [self.cboCloseTime.view setBackgroundColor:[UIColor whiteColor]];
-    self.cboCloseTime.layer.cornerRadius = 4;
-    self.cboCloseTime.view.layer.cornerRadius = 4;
+    self.cboCloseTime.layer.cornerRadius = 6;
+    self.cboCloseTime.view.layer.cornerRadius = 6;
     [self.cboCloseTime setPlaceHolder:@"Chọn giờ đóng cửa"];
     self.cboCloseTime.delegate = self;
+    
+    [self.cboProvince.view setBackgroundColor:[UIColor whiteColor]];
+    self.cboProvince.layer.cornerRadius = 6;
+    self.cboProvince.view.layer.cornerRadius = 6;
+    [self.cboProvince setPlaceHolder:@"Chọn tỉnh thành"];
+    self.cboProvince.delegate = self;
+
+    
+    [self.cboDistrict.view setBackgroundColor:[UIColor whiteColor]];
+    self.cboDistrict.layer.cornerRadius = 6;
+    self.cboDistrict.view.layer.cornerRadius = 6;
+    [self.cboDistrict setPlaceHolder:@"Chọn quận huyện"];
+    self.cboDistrict.delegate = self;
+
     
     vcImagePicker = [[ImagePickerViewController alloc] init];
     vcImagePicker.delegateImg = self;
@@ -111,6 +134,20 @@
         popupTimeClose.delegate = self;
         [popupTimeClose presentInParentViewController:self];
     }
+    
+    if([comboboxCurr isEqual:self.cboProvince]){
+        
+        ProvinceViewController *vcProvince = [[ProvinceViewController alloc] initWithNibName:@"ProvinceViewController" bundle:nil provinceSelected:provinceSelected];
+        vcProvince.delegate = self;
+        [self.navigationController pushViewController:vcProvince animated:YES];
+    }
+    
+    if([comboboxCurr isEqual:self.cboDistrict]){
+        
+        DistrictViewController *vcDistrict = [[DistrictViewController alloc] initWithNibName:@"DistrictViewController" bundle:nil districtSelected:districtSelected province:provinceSelected.idProvince.stringValue];
+        vcDistrict.delegate = self;
+        [self.navigationController pushViewController:vcDistrict animated:YES];
+    }
 }
 
 - (void)clearCombobox:(NCComboboxNewView *)comboboxCurr{
@@ -126,6 +163,51 @@
         dateCloseTime = nil;
         [self.cboCloseTime setTextName:@""];
     }
+    
+    if([self.cboProvince isEqual:comboboxCurr]){
+        
+        provinceSelected = nil;
+        [self.cboProvince setTextName:@""];
+        
+        districtSelected = nil;
+        
+        [self.cboDistrict setTextName:@""];
+    }
+    
+    if([self.cboDistrict isEqual:comboboxCurr]){
+    
+        districtSelected = nil;
+        
+        [self.cboDistrict setTextName:@""];
+    }
+}
+
+#pragma mark - ProvinceViewControllerDelegte
+-(void)selectedProvince:(Province *)province controller:(ProvinceViewController *)controller{
+
+    if(provinceSelected.idProvince.integerValue == province.idProvince.integerValue){
+        
+        return;
+    }
+    
+    provinceSelected = province;
+    
+    [self.cboProvince setTextName:provinceSelected.provinceName];
+    districtSelected = nil;
+    [self.cboDistrict setTextName:@""];
+}
+
+#pragma mark - DistrictViewControllerDelegte
+-(void)selectedDistrict:(District *)district controller:(DistrictViewController *)controller{
+
+    if(districtSelected.idProvince.integerValue == district.idProvince.integerValue){
+    
+        return;
+    }
+    
+    districtSelected = district;
+    
+    [self.cboDistrict setTextName:districtSelected.name];
 }
 
 #pragma mark - PopupTimeViewControllerDelegate
@@ -143,14 +225,12 @@
         [self.cboCloseTime setTextName:[Common getStringDisplayFormDate:dateSelected andFormatString:@"HH:mm"]];
       
         dateCloseTime = dateSelected;
-
     }
-
 }
 #pragma mark - Action
 - (IBAction)touchBtnGetLocation:(id)sender {
     
-    GetLocationViewController *vcGetLocation = [[GetLocationViewController alloc] initWithNibName:@"GetLocationViewController" bundle:nil aLat:Appdelegate_hairista.sessionUser.lastLat aLong:Appdelegate_hairista.sessionUser.lastLng];
+    GetLocationViewController *vcGetLocation = [[GetLocationViewController alloc] initWithNibName:@"GetLocationViewController" bundle:nil aLat:self.tfLaitude.text aLong:self.tflongitude.text];
     
     vcGetLocation.delegate = self;
     [self.navigationController pushViewController:vcGetLocation animated:YES];
@@ -340,6 +420,19 @@
     
         self.tflongitude.text = Appdelegate_hairista.sessionUser.lastLng;
     }
+    
+    if(Appdelegate_hairista.sessionUser.district){
+    
+        districtSelected = Appdelegate_hairista.sessionUser.district;
+        [self.cboDistrict setTextName:districtSelected.name];
+    }
+    
+    if(Appdelegate_hairista.sessionUser.province){
+        
+        provinceSelected = Appdelegate_hairista.sessionUser.province;
+        [self.cboProvince setTextName:provinceSelected.provinceName];
+    }
+
     
     if(Appdelegate_hairista.sessionUser.openTime.length > 0 && Appdelegate_hairista.sessionUser.closeTime.length > 0){
     

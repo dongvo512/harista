@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "District.h"
+#import "Province.h"
+
 
 @interface SessionUser : NSObject
 
@@ -52,7 +55,13 @@
 
 @property (nonatomic, strong) NSString *city;
 
-@property (nonatomic, strong) NSString *district;
+@property (nonatomic, strong) District *district;
+
+@property (nonatomic, strong) Province *province;
+
+@property (nonatomic, strong) NSString *districtId;
+
+@property (nonatomic, strong) NSString *provinceId;
 
 @property (nonatomic, strong) NSString *about;
 

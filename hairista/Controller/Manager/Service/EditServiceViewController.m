@@ -53,6 +53,11 @@
 
 -(void)touchButtonFinish:(NSString *)catName edit:(BOOL)isEdit{
 
+    if(!self.arrCategories){
+        
+        self.arrCategories = [NSMutableArray array];
+    }
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     if(!isEdit){

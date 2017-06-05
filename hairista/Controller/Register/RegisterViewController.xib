@@ -131,9 +131,10 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mật khẩu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kzc-Gv-BOU">
-                                    <rect key="frame" x="16" y="104" width="101" height="21"/>
+                                    <rect key="frame" x="16" y="104" width="108" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="oUg-Dw-SD7"/>
+                                        <constraint firstAttribute="width" constant="108" id="uSQ-14-dus"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                     <color key="textColor" red="0.27937346359999998" green="0.2962057125" blue="0.30229808070000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -217,7 +218,7 @@
                                     </constraints>
                                     <color key="textColor" red="0.27937346359999998" green="0.2962057125" blue="0.30229808070000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zG-vI-qOL">
                                     <rect key="frame" x="16" y="343" width="343" height="1"/>
@@ -243,7 +244,7 @@
                                     </constraints>
                                     <color key="textColor" red="0.27937346359999998" green="0.2962057125" blue="0.30229808070000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yex-aa-xoj">
                                     <rect key="frame" x="16" y="431" width="343" height="1"/>
@@ -269,7 +270,7 @@
                                     </constraints>
                                     <color key="textColor" red="0.27937346359999998" green="0.2962057125" blue="0.30229808070000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4D-BC-NtW">
                                     <rect key="frame" x="16" y="519" width="343" height="1"/>
@@ -320,7 +321,6 @@
                                 <constraint firstItem="6zG-vI-qOL" firstAttribute="leading" secondItem="zao-hY-3lx" secondAttribute="leading" constant="16" id="eCJ-9P-DhU"/>
                                 <constraint firstItem="Nv0-fb-DJh" firstAttribute="leading" secondItem="zao-hY-3lx" secondAttribute="leading" constant="16" id="ekb-NS-q9W"/>
                                 <constraint firstAttribute="trailing" secondItem="zv1-Sy-0BO" secondAttribute="trailing" constant="16" id="hLP-CP-J41"/>
-                                <constraint firstAttribute="trailing" secondItem="Kzc-Gv-BOU" secondAttribute="trailing" constant="258" id="jz0-aI-Cfr"/>
                                 <constraint firstItem="u5a-Li-2XF" firstAttribute="top" secondItem="Nqm-TM-cBW" secondAttribute="bottom" constant="8" id="kQK-OB-gAN"/>
                                 <constraint firstAttribute="bottom" secondItem="dIK-he-mKX" secondAttribute="bottom" constant="24" id="kce-BQ-nhp"/>
                                 <constraint firstItem="Nqm-TM-cBW" firstAttribute="top" secondItem="6zG-vI-qOL" secondAttribute="bottom" constant="24" id="mVL-Iu-2m9"/>

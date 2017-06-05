@@ -17,6 +17,8 @@
     
     CGFloat laitudeDrop;
     CGFloat longitudeDrop;
+    
+    BOOL isLoadedUserLocation;
 
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mkMapkit;
@@ -114,36 +116,41 @@
     
     if (currentLocation != nil) {
         
-        if( laitudeDrop != 0 && longitudeDrop != 0){
+        if(!isLoadedUserLocation){
+          
+            isLoadedUserLocation = YES;
         
-            [self loadCordinateCurrent];
-        }
-        else{
-        
-            CLLocationCoordinate2D coordinateSalon = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
-            
-            laitudeDrop = currentLocation.coordinate.latitude;
-            longitudeDrop = currentLocation.coordinate.longitude;
-            
-            MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-            [annotation setCoordinate:coordinateSalon];
-            [self.mkMapkit addAnnotations:@[annotation]];
-            
-            self.mkMapkit.showsUserLocation = NO;
-            
-            MKCoordinateRegion region;
-            MKCoordinateSpan span;
-            span.latitudeDelta = 0.005;
-            span.longitudeDelta = 0.005;
-            CLLocationCoordinate2D location;
-            location.latitude = currentLocation.coordinate.latitude;
-            location.longitude = currentLocation.coordinate.longitude;
-            region.span = span;
-            region.center = location;
-            self.mkMapkit.showsUserLocation = NO;
-            [self.mkMapkit setRegion:region animated:YES];
-            
-            self.lblLocation.text = [NSString stringWithFormat:@"%f  -  %f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude];
+            if( laitudeDrop != 0 && longitudeDrop != 0){
+                
+                [self loadCordinateCurrent];
+            }
+            else{
+                
+                CLLocationCoordinate2D coordinateSalon = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+                
+                laitudeDrop = currentLocation.coordinate.latitude;
+                longitudeDrop = currentLocation.coordinate.longitude;
+                
+                MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+                [annotation setCoordinate:coordinateSalon];
+                [self.mkMapkit addAnnotations:@[annotation]];
+                
+                self.mkMapkit.showsUserLocation = NO;
+                
+                MKCoordinateRegion region;
+                MKCoordinateSpan span;
+                span.latitudeDelta = 0.005;
+                span.longitudeDelta = 0.005;
+                CLLocationCoordinate2D location;
+                location.latitude = currentLocation.coordinate.latitude;
+                location.longitude = currentLocation.coordinate.longitude;
+                region.span = span;
+                region.center = location;
+                self.mkMapkit.showsUserLocation = NO;
+                [self.mkMapkit setRegion:region animated:YES];
+                
+                self.lblLocation.text = [NSString stringWithFormat:@"%f  -  %f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude];
+            }
         }
     }
     

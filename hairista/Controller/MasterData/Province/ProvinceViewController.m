@@ -131,7 +131,7 @@
     
     Province *province = [self.arrSearchData objectAtIndex:indexPath.row];
     
-    if([province.idProvince.stringValue isEqualToString:provinceSelected.idProvince.stringValue]){
+    if(province.idProvince.integerValue == provinceSelected.idProvince.integerValue){
     
         [cell.imgVSelected setHidden:NO];
         

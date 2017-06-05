@@ -54,8 +54,6 @@
     
     [encoder encodeObject:self.city forKey:@"city"];
     
-    [encoder encodeObject:self.district forKey:@"district"];
-    
     [encoder encodeObject:self.about forKey:@"about"];
     
     [encoder encodeObject:self.avgRate forKey:@"avgRate"];
@@ -83,6 +81,10 @@
     [encoder encodeObject:self.openTime forKey:@"openTime"];
     
     [encoder encodeObject:self.closeTime forKey:@"closeTime"];
+    
+    [encoder encodeObject:self.district forKey:@"district"];
+
+    [encoder encodeObject:self.province forKey:@"province"];
 
 }
 
@@ -133,6 +135,8 @@
         self.city = [decoder decodeObjectForKey:@"city"];
         
         self.district = [decoder decodeObjectForKey:@"district"];
+        
+        self.province = [decoder decodeObjectForKey:@"province"];
         
         self.about = [decoder decodeObjectForKey:@"about"];
         

@@ -91,6 +91,10 @@ static AuthenticateManage *sharedInstance = nil;
   
     Appdelegate_hairista.sessionUser.token = CHECK_NIL([responseDataObject objectForKey:@"token"]) ;
     
+     Appdelegate_hairista.sessionUser.districtId = CHECK_NIL([responseDataObject objectForKey:@"districtId"]) ;
+    
+     Appdelegate_hairista.sessionUser.provinceId = CHECK_NIL([responseDataObject objectForKey:@"provinceId"]) ;
+    
     Appdelegate_hairista.sessionUser.idUser = CHECK_NIL([dic objectForKey:@"id"]);
     
      Appdelegate_hairista.sessionUser.name = CHECK_NIL([dic objectForKey:@"name"]);
@@ -133,8 +137,6 @@ static AuthenticateManage *sharedInstance = nil;
     
     Appdelegate_hairista.sessionUser.city = CHECK_NIL([dic objectForKey:@"city"]);
     
-    Appdelegate_hairista.sessionUser.district = CHECK_NIL([dic objectForKey:@"district"]);
-    
     Appdelegate_hairista.sessionUser.about = CHECK_NIL([dic objectForKey:@"about"]);
     
     Appdelegate_hairista.sessionUser.avgRate = CHECK_NIL([dic objectForKey:@"avgRate"]);
@@ -159,6 +161,28 @@ static AuthenticateManage *sharedInstance = nil;
      Appdelegate_hairista.sessionUser.openTime = CHECK_NIL([dic objectForKey:@"openTime"]);
     
     Appdelegate_hairista.sessionUser.closeTime = CHECK_NIL([dic objectForKey:@"closeTime"]);
+    
+    NSDictionary *dicProvince = [dic objectForKey:@"province"];
+    
+    if(dicProvince && ![dicProvince isKindOfClass:[NSNull class]]){
+    
+        Appdelegate_hairista.sessionUser.province = [[Province alloc] init];
+        Appdelegate_hairista.sessionUser.province.idProvince = CHECK_NIL([dicProvince objectForKey:@"id"]);
+        Appdelegate_hairista.sessionUser.province.provinceName = CHECK_NIL([dicProvince objectForKey:@"name"]);
+        Appdelegate_hairista.sessionUser.province.type = CHECK_NIL([dicProvince objectForKey:@"type"]);
+    }
+    
+    NSDictionary *dicDis = [dic objectForKey:@"district"];
+    
+    if(dicDis && ![dicDis isKindOfClass:[NSNull class]]){
+    
+        Appdelegate_hairista.sessionUser.district = [[District alloc] init];
+        Appdelegate_hairista.sessionUser.district.idDistrict = CHECK_NIL([dicDis objectForKey:@"id"]);
+        Appdelegate_hairista.sessionUser.district.idProvince = CHECK_NIL([dicDis objectForKey:@"provinceId"]);
+        Appdelegate_hairista.sessionUser.district.type = CHECK_NIL([dicDis objectForKey:@"type"]);
+        Appdelegate_hairista.sessionUser.district.location = CHECK_NIL([dicDis objectForKey:@"location"]);
+        Appdelegate_hairista.sessionUser.district.name = CHECK_NIL([dicDis objectForKey:@"name"]);
+    }
     
     return Appdelegate_hairista.sessionUser;
     
