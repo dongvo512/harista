@@ -90,13 +90,22 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.50409881161971826" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="gjj-jk-WU7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="J99-9Z-mw6"/>
                 <constraint firstItem="gjj-jk-WU7" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-20" id="Ri7-FN-ffL"/>
                 <constraint firstAttribute="trailing" secondItem="gjj-jk-WU7" secondAttribute="trailing" constant="16" id="guo-SQ-OI3"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="VWL-5T-zyU" appends="YES" id="K88-nR-T3J"/>
+            </connections>
             <point key="canvasLocation" x="40.5" y="59.5"/>
         </view>
+        <tapGestureRecognizer id="VWL-5T-zyU">
+            <connections>
+                <action selector="tapBackground:" destination="-1" id="3an-gK-BDx"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

@@ -63,7 +63,7 @@
     
     self.lblUserName.text = booking.name;
     
-    self.lblUserPhone.text = booking.user.phone;
+    self.lblUserPhone.text = [Common convertPhone84:booking.user.phone];
     
     if(booking.totalPrice.length > 0){
     

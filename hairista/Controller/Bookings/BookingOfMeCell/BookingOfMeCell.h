@@ -10,5 +10,13 @@
 @class Booking;
 
 @interface BookingOfMeCell : UITableViewCell
+
+@property (nonatomic, weak) id delegate;
 -(void)setDataForCell:(Booking *)booking;
+
+@end
+@protocol  BookingOfMeCellDelegate <NSObject>
+
+-(void)touchBtnGo:(Booking *)booking;
+
 @end

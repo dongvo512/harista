@@ -173,6 +173,8 @@
 		B8C725E21EC42164000B70B8 /* ManageCategoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C725E01EC42164000B70B8 /* ManageCategoriesCell.xib */; };
 		B8C725E71EC438FB000B70B8 /* ListManageServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C725E51EC438FB000B70B8 /* ListManageServiceViewController.m */; };
 		B8C725E81EC438FB000B70B8 /* ListManageServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C725E61EC438FB000B70B8 /* ListManageServiceViewController.xib */; };
+		B8C9A1A31EDE96000040A564 /* CommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C9A1A11EDE96000040A564 /* CommentController.m */; };
+		B8C9A1A41EDE96000040A564 /* CommentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C9A1A21EDE96000040A564 /* CommentController.xib */; };
 		B8CB12181EB2FA8F00ECD857 /* MapDetailSalonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CB12161EB2FA8F00ECD857 /* MapDetailSalonViewController.m */; };
 		B8CB12191EB2FA8F00ECD857 /* MapDetailSalonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CB12171EB2FA8F00ECD857 /* MapDetailSalonViewController.xib */; };
 		B8CB121D1EB3364700ECD857 /* ListNearBySalonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CB121B1EB3364700ECD857 /* ListNearBySalonViewController.m */; };
@@ -525,6 +527,9 @@
 		B8C725E41EC438FB000B70B8 /* ListManageServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListManageServiceViewController.h; sourceTree = "<group>"; };
 		B8C725E51EC438FB000B70B8 /* ListManageServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListManageServiceViewController.m; sourceTree = "<group>"; };
 		B8C725E61EC438FB000B70B8 /* ListManageServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListManageServiceViewController.xib; sourceTree = "<group>"; };
+		B8C9A1A01EDE96000040A564 /* CommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentController.h; sourceTree = "<group>"; };
+		B8C9A1A11EDE96000040A564 /* CommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentController.m; sourceTree = "<group>"; };
+		B8C9A1A21EDE96000040A564 /* CommentController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentController.xib; sourceTree = "<group>"; };
 		B8CB12151EB2FA8F00ECD857 /* MapDetailSalonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDetailSalonViewController.h; sourceTree = "<group>"; };
 		B8CB12161EB2FA8F00ECD857 /* MapDetailSalonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailSalonViewController.m; sourceTree = "<group>"; };
 		B8CB12171EB2FA8F00ECD857 /* MapDetailSalonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapDetailSalonViewController.xib; sourceTree = "<group>"; };
@@ -884,6 +889,7 @@
 		B8356C7E1E501D2700C16AA3 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				B8C9A19F1EDE95F10040A564 /* Comment */,
 				B8A757FD1ECD44EF00EDB9D2 /* Images */,
 				B8D4825A1EBDCD0A0029DA9B /* Service */,
 				B8DF88891ED5D29400651213 /* CategoriesManageCell */,
@@ -1623,6 +1629,16 @@
 			path = ListManageServiceViewController;
 			sourceTree = "<group>";
 		};
+		B8C9A19F1EDE95F10040A564 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				B8C9A1A01EDE96000040A564 /* CommentController.h */,
+				B8C9A1A11EDE96000040A564 /* CommentController.m */,
+				B8C9A1A21EDE96000040A564 /* CommentController.xib */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
 		B8CB12141EB2FA7E00ECD857 /* MapDetailSalon */ = {
 			isa = PBXGroup;
 			children = (
@@ -2139,6 +2155,7 @@
 				B8DE7EDD1E390A450008769C /* Roboto-BoldItalic.ttf in Resources */,
 				B8B5BAD91E3A5ABB00586CBE /* HeaderBannerCell.xib in Resources */,
 				B8EF74C51E4CBE7C001466C4 /* NCCalendarSingleViewController_iPhone.xib in Resources */,
+				B8C9A1A41EDE96000040A564 /* CommentController.xib in Resources */,
 				B814831A1ED6D23E00DAFAEF /* ListSalonUploadedImage.xib in Resources */,
 				B8ACAAB31E589CC300F9AF05 /* ProfileUserCell.xib in Resources */,
 				B8CB121E1EB3364700ECD857 /* ListNearBySalonViewController.xib in Resources */,
@@ -2306,6 +2323,7 @@
 				B80433141ED8039D00059032 /* PopupCreateCategoryViewController.m in Sources */,
 				B864FBA81E9764A900EABC66 /* SessionUser.m in Sources */,
 				B8A758271ECD8C5000EDB9D2 /* ELCOverlayImageView.m in Sources */,
+				B8C9A1A31EDE96000040A564 /* CommentController.m in Sources */,
 				B831346D1E949730001A3465 /* AuthenticateManage.m in Sources */,
 				B8EF74B51E4CB6BB001466C4 /* BookingViewController.m in Sources */,
 				B8DE7EF11E3911CE0008769C /* SlideMenuViewController.m in Sources */,

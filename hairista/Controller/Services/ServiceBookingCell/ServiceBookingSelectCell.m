@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPrice;
 @property (weak, nonatomic) IBOutlet UIImageView *imgService;
 @property (weak, nonatomic) IBOutlet UIImageView *imgSelect;
+@property (weak, nonatomic) IBOutlet UIView *viewSelected;
+
+
 @property (nonatomic, strong) Service *serviceCurr;
 @end
 
@@ -32,7 +35,17 @@
 
     self.serviceCurr = service;
     
-    [self.imgSelect setHidden:(service.isSelected)?NO:YES];
+    if(service.isNoneSelect){
+        
+        [self.viewSelected setHidden:NO];
+        self.userInteractionEnabled = NO;
+        
+    }
+    else{
+    
+        [self.viewSelected setHidden:(service.isSelected)?NO:YES];
+        self.userInteractionEnabled = YES;
+    }
     
     [self.imgService sd_setImageWithURL:[NSURL URLWithString:service.image] placeholderImage:IMG_DEFAULT];
     self.lblPrice.text = service.price.stringValue;

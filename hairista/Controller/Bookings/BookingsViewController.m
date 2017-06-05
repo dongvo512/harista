@@ -12,6 +12,8 @@
 #import "Booking.h"
 #import "BookingOfMeCell.h"
 #import "DetailSalonViewController.h"
+#import "DetailBookingViewController.h"
+
 
 #define LIMIT_ITEM @"14"
 
@@ -35,7 +37,7 @@
     
     [self.tblView registerNib:[UINib nibWithNibName:@"BookingOfMeCell" bundle:nil] forCellReuseIdentifier:@"BookingOfMeCell"];
     self.tblView.rowHeight = UITableViewAutomaticDimension;
-    self.tblView.estimatedRowHeight = 68;
+    self.tblView.estimatedRowHeight = 74;
    
     [self getListBookingOfMe];
 }
@@ -135,6 +137,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     BookingOfMeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BookingOfMeCell"];
+    cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     Booking *salon = [self.arrBooking objectAtIndex:indexPath.row];
     [cell setDataForCell:salon];
@@ -156,9 +159,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     Booking *booking = [self.arrBooking objectAtIndex:indexPath.row];
     
-    DetailSalonViewController *vcDetail = [[DetailSalonViewController alloc] initWithNibName:@"DetailSalonViewController" bundle:nil salon:booking.salon];
+    DetailBookingViewController *vcDetail = [[DetailBookingViewController alloc] initWithNibName:@"DetailBookingViewController" bundle:nil booking:booking editing:YES];
     
     [self.navigationController pushViewController:vcDetail animated:YES];
     
+}
+
+#pragma mark - BookingOfMeCellDelegate
+-(void)touchBtnGo:(Booking *)booking{
+
+    DetailSalonViewController *vcDetail = [[DetailSalonViewController alloc] initWithNibName:@"DetailSalonViewController" bundle:nil salon:booking.salon];
+    
+    [self.navigationController pushViewController:vcDetail animated:YES];
 }
 @end

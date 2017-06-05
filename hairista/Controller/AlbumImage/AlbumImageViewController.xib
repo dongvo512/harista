@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -55,15 +54,15 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJw-50-bog">
-                                    <rect key="frame" x="0.0" y="1" width="50" height="50"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWM-Oj-5hX">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="50" id="MkN-lt-Ap9"/>
-                                        <constraint firstAttribute="height" constant="50" id="zPK-ug-f9M"/>
+                                        <constraint firstAttribute="height" constant="50" id="MB7-Xz-QtG"/>
+                                        <constraint firstAttribute="width" constant="50" id="bV0-8F-1d7"/>
                                     </constraints>
-                                    <state key="normal" image="ic_menu"/>
+                                    <state key="normal" image="ic_back"/>
                                     <connections>
-                                        <action selector="showMenu:" destination="-1" eventType="touchUpInside" id="fB6-oJ-aqr"/>
+                                        <action selector="showMenu:" destination="-1" eventType="touchUpInside" id="gfk-ND-1AK"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -71,12 +70,12 @@
                             <constraints>
                                 <constraint firstItem="oRg-4S-70r" firstAttribute="top" secondItem="ab4-u3-W30" secondAttribute="bottom" constant="9" id="11i-Z0-Isy"/>
                                 <constraint firstItem="ab4-u3-W30" firstAttribute="leading" secondItem="DeV-KK-dpp" secondAttribute="leading" id="KIL-La-Kt0"/>
-                                <constraint firstItem="zJw-50-bog" firstAttribute="leading" secondItem="DeV-KK-dpp" secondAttribute="leading" id="bQt-ko-3iY"/>
+                                <constraint firstItem="bWM-Oj-5hX" firstAttribute="top" secondItem="ab4-u3-W30" secondAttribute="bottom" constant="-1" id="WQi-AI-gTc"/>
                                 <constraint firstItem="ab4-u3-W30" firstAttribute="top" secondItem="DeV-KK-dpp" secondAttribute="top" id="bRr-27-pjj"/>
                                 <constraint firstAttribute="trailing" secondItem="ab4-u3-W30" secondAttribute="trailing" id="dte-en-8v6"/>
-                                <constraint firstAttribute="bottom" secondItem="zJw-50-bog" secondAttribute="bottom" constant="1" id="hk9-Vg-tRQ"/>
                                 <constraint firstItem="oRg-4S-70r" firstAttribute="centerX" secondItem="DeV-KK-dpp" secondAttribute="centerX" id="lix-Ur-UxU"/>
                                 <constraint firstAttribute="height" constant="52" id="mAL-R6-mAi"/>
+                                <constraint firstItem="bWM-Oj-5hX" firstAttribute="leading" secondItem="DeV-KK-dpp" secondAttribute="leading" id="x5e-6N-64a"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -118,10 +117,10 @@
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="26.5" y="51.5"/>
+            <point key="canvasLocation" x="-173" y="-132"/>
         </view>
     </objects>
     <resources>
-        <image name="ic_menu" width="21" height="18"/>
+        <image name="ic_back" width="15" height="15"/>
     </resources>
 </document>

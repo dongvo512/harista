@@ -224,6 +224,21 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
 }
 #pragma mark - DetailBookingViewControllerDelegate
 
+-(void)deleteService:(Booking *)booking{
+
+    if([self.arrBooking containsObject:booking]){
+    
+        [self.tblBooking reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.arrBooking indexOfObject:booking] inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+-(void)addMoreService:(Booking *)booking{
+
+    if([self.arrBooking containsObject:booking]){
+        
+        [self.tblBooking reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.arrBooking indexOfObject:booking] inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 -(void)finishAceptBooking:(Booking *)booking{
 
     if([self.arrBooking containsObject:booking]){

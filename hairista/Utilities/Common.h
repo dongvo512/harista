@@ -51,4 +51,6 @@ typedef void (^CallAPIResult)(BOOL isError, NSString *stringError, id responseDa
 + (NSString *)getDayInWeekVietNamese:(NSDate *)date;
 + (CGFloat)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font;
 +(NSString *)convertPhone84:(NSString *)phone;
++(BOOL)validateEmailAddress:(NSString *)address;
+
 @end

@@ -18,16 +18,7 @@
 #import "EditServiceViewController.h"
 #import "ImagesViewController.h"
 #import "ListSalonUploadedImage.h"
-
-typedef NS_ENUM(NSInteger, ItemMenuManage) {
-    
-    ItemManagerBooking,
-    ItemMangeUser,
-    ItemManageService,
-    Item_Image
-    
-};
-
+#import "CommentController.h"
 
 @interface SlideMenuViewController ()<UIGestureRecognizerDelegate>{
 
@@ -177,7 +168,13 @@ static SlideMenuViewController *sharedInstance = nil;
             [vcNavigation setViewControllers:@[vcImage] animated:YES];
         }
             break;
-        case Item_InfoUser:{
+        case Item_Comment:{
+            
+            CommentController *vcComment = [[CommentController alloc] initWithNibName:@"CommentController" bundle:nil];
+            [vcNavigation setViewControllers:@[vcComment] animated:YES];
+        }
+            break;
+        case Item_InFoUserManger:{
             
             UserInfoViewController *vcUpdateUser = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
             [vcNavigation setViewControllers:@[vcUpdateUser] animated:YES];

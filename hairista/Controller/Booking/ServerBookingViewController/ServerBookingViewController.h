@@ -12,6 +12,8 @@
 
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil arrSelected:(NSArray *)aArrSelected salonID:(NSString *)aSalonID;
 
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil arrSelected:(NSArray *)aArrSelected salonID:(NSString *)aSalonID arrNoneSelect:(NSArray *)aArrNoneSelect;
+
 @property (nonatomic, weak) id delegate;
 @end
 @protocol ServerBookingViewControllerDelegate <NSObject>

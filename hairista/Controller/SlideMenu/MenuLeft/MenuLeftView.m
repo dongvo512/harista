@@ -112,7 +112,15 @@
 
 - (IBAction)touchBtnUpdateUserInfo:(id)sender {
     
-    [[SlideMenuViewController sharedInstance] selectedItemInMenu:Item_InfoUser];
+    if(self.isUserManager){
+    
+        [[SlideMenuViewController sharedInstance] selectedItemInMenu:Item_InFoUserManger];
+    }
+    else{
+    
+        [[SlideMenuViewController sharedInstance] selectedItemInMenu:Item_InfoUser];
+    }
+    
     
 }
 
@@ -166,8 +174,12 @@
         ItemMenu *item_4 = [[ItemMenu alloc] init];
         item_4.itemName = @"Hình ảnh";
         item_4.itemIconName = @"ic_gallery";
-        
         [self.arrMenus addObject:item_4];
+        
+        ItemMenu *item_5 = [[ItemMenu alloc] init];
+        item_5.itemName = @"Bình luận";
+        item_5.itemIconName = @"ic_comment";
+        [self.arrMenus addObject:item_5];
         
     }
     else{

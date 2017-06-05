@@ -232,6 +232,10 @@
         else{
         
              [Common showAlert:self title:@"Thông báo" message:@"Xoá hình ảnh thành công" buttonClick:nil];
+            NSInteger indexObj = [self.arrImages indexOfObject:image];
+            
+            [self.arrImages removeObject:image];
+            [self.tblView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexObj inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
         }
     }];
 }
@@ -286,9 +290,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
        
-        Image *image = [self.arrImages objectAtIndex:indexPath.row];
-        [self deleteImage:image];
-    
+       [Common showAlert:self title:@"Thông báo" message:@"Bạn có chắc muốn xoá hình này" buttonClick:^(UIAlertAction *alertAction) {
+           
+           Image *image = [self.arrImages objectAtIndex:indexPath.row];
+           [self deleteImage:image];
+           
+       }];
+        
     }
 }
 - (void)moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {

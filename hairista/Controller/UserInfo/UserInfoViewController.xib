@@ -25,6 +25,7 @@
                 <outlet property="lblAddress" destination="ASj-nT-5gh" id="pmN-gY-jIQ"/>
                 <outlet property="lblEmail" destination="TFB-gb-a3l" id="ENV-5Z-BPL"/>
                 <outlet property="lblName" destination="2Bc-bG-CwY" id="SyO-JY-J2s"/>
+                <outlet property="lblOpenTime" destination="PMN-zF-qKx" id="6vj-Lp-I4U"/>
                 <outlet property="lblPhone" destination="UpU-Fz-TRm" id="TZ6-dM-hnh"/>
                 <outlet property="tfAddress" destination="BPX-Z0-dqU" id="Ess-cT-rfw"/>
                 <outlet property="tfEmail" destination="nSb-PR-4y7" id="CfU-T3-17Q"/>
@@ -110,10 +111,10 @@
                     <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLp-WE-jz3">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="715"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="695"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_user" translatesAutoresizingMaskIntoConstraints="NO" id="vcO-cH-sp6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="715"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="695"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Họ và tên" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybm-rW-Hft">
                                     <rect key="frame" x="29" y="222" width="86" height="21"/>
@@ -172,7 +173,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRU-wx-7m3">
                                             <rect key="frame" x="29" y="46.5" width="120" height="120"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="unc-oU-qOm">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="unc-oU-qOm">
                                                     <rect key="frame" x="4" y="4" width="112" height="112"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <userDefinedRuntimeAttributes>
@@ -253,14 +254,26 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMN-zF-qKx">
+                                            <rect key="frame" x="8" y="12" width="359" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="bMf-nl-I1V"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="tRU-wx-7m3" firstAttribute="leading" secondItem="l4f-CA-OoS" secondAttribute="leading" constant="29" id="26l-cl-gcJ"/>
+                                        <constraint firstItem="PMN-zF-qKx" firstAttribute="leading" secondItem="l4f-CA-OoS" secondAttribute="leading" constant="8" id="40B-kB-2Mw"/>
                                         <constraint firstAttribute="bottom" secondItem="ASj-nT-5gh" secondAttribute="bottom" constant="5" id="7VC-Xz-Q7L"/>
                                         <constraint firstAttribute="trailing" secondItem="ASj-nT-5gh" secondAttribute="trailing" constant="8" id="Mqw-EF-CZD"/>
+                                        <constraint firstItem="PMN-zF-qKx" firstAttribute="top" secondItem="l4f-CA-OoS" secondAttribute="top" constant="12" id="NAk-9C-ZcN"/>
                                         <constraint firstAttribute="trailing" secondItem="TFB-gb-a3l" secondAttribute="trailing" id="NcY-4d-Tnx"/>
                                         <constraint firstItem="TFB-gb-a3l" firstAttribute="leading" secondItem="tRU-wx-7m3" secondAttribute="trailing" constant="12" id="PHP-aZ-nhL"/>
+                                        <constraint firstAttribute="trailing" secondItem="PMN-zF-qKx" secondAttribute="trailing" constant="8" id="SSj-k2-CiZ"/>
                                         <constraint firstItem="2Bc-bG-CwY" firstAttribute="top" secondItem="l4f-CA-OoS" secondAttribute="top" constant="41" id="VWe-VZ-M8I"/>
                                         <constraint firstAttribute="trailing" secondItem="UpU-Fz-TRm" secondAttribute="trailing" id="b0p-Db-jSK"/>
                                         <constraint firstItem="ASj-nT-5gh" firstAttribute="leading" secondItem="l4f-CA-OoS" secondAttribute="leading" constant="29" id="bSc-Os-rKn"/>
@@ -298,7 +311,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Địa chỉ mới" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lll-Bs-DDP">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Toạ độ mới" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lll-Bs-DDP">
                                             <rect key="frame" x="104" y="154" width="236" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -307,7 +320,7 @@
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Địa chỉ mới" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Krt-XL-3Y1">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Toạ độ mới" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Krt-XL-3Y1">
                                             <rect key="frame" x="104" y="108" width="236" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -390,7 +403,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDR-Ed-Gfb">
-                                    <rect key="frame" x="16" y="636" width="343" height="44"/>
+                                    <rect key="frame" x="16" y="616" width="343" height="44"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="OT9-tJ-wjr"/>
@@ -425,7 +438,7 @@
                                 <constraint firstItem="l4f-CA-OoS" firstAttribute="leading" secondItem="KLp-WE-jz3" secondAttribute="leading" id="Ned-nc-KXa"/>
                                 <constraint firstAttribute="trailing" secondItem="pOc-3E-j8p" secondAttribute="trailing" constant="8" id="Rze-09-KEf"/>
                                 <constraint firstAttribute="trailing" secondItem="vcO-cH-sp6" secondAttribute="trailing" id="UQn-H1-ZQ8"/>
-                                <constraint firstItem="vDR-Ed-Gfb" firstAttribute="top" secondItem="pOc-3E-j8p" secondAttribute="bottom" constant="28" id="USb-NS-Y6q"/>
+                                <constraint firstItem="vDR-Ed-Gfb" firstAttribute="top" secondItem="pOc-3E-j8p" secondAttribute="bottom" constant="8" id="USb-NS-Y6q"/>
                                 <constraint firstAttribute="trailing" secondItem="BPX-Z0-dqU" secondAttribute="trailing" constant="12" id="UcF-WU-LB2"/>
                                 <constraint firstAttribute="trailing" secondItem="nSb-PR-4y7" secondAttribute="trailing" constant="12" id="Y2i-yz-vq0"/>
                                 <constraint firstItem="RVj-c2-DKb" firstAttribute="leading" secondItem="KLp-WE-jz3" secondAttribute="leading" constant="29" id="ZYo-jS-YMp"/>
@@ -472,7 +485,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="bg_avatar" width="183" height="193"/>
         <image name="bg_user" width="666" height="444"/>
         <image name="ic_map_pin" width="36" height="36"/>
         <image name="ic_menu" width="21" height="18"/>

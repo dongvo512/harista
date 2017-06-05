@@ -205,3 +205,5 @@
 
 #define URL_DELETE_IMAGE @"https://salonhair.herokuapp.com/api/v1/images/"
 
+#define URL_DELETE_COMMENTS @"https://salonhair.herokuapp.com/api/v1/comments/"
+

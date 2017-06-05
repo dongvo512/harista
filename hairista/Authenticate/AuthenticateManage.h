@@ -12,7 +12,7 @@
 
 + (id)sharedInstance;
 
-- (void)registerUser:(NSString *)phone password:(NSString *)password passwordConfirm:(NSString *)passwordConfirm dataResult:(DataAPIResult)dataApiResult;
+- (void)registerUser:(NSDictionary *)dicbody dataResult:(DataAPIResult)dataApiResult;
 
 - (void)login:(NSString *)phone password:(NSString *)password dataResult:(DataAPIResult)dataApiResult;
 

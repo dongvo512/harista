@@ -79,6 +79,10 @@
     [encoder encodeObject:self.wallpaper forKey:@"wallpaper"];
     
     [encoder encodeObject:self.token forKey:@"token"];
+    
+    [encoder encodeObject:self.openTime forKey:@"openTime"];
+    
+    [encoder encodeObject:self.closeTime forKey:@"closeTime"];
 
 }
 
@@ -153,6 +157,10 @@
         self.wallpaper = [decoder decodeObjectForKey:@"wallpaper"];
         
         self.token = [decoder decodeObjectForKey:@"token"];
+        
+        self.openTime = [decoder decodeObjectForKey:@"openTime"];
+        
+        self.closeTime = [decoder decodeObjectForKey:@"closeTime"];
         
     }
     return self;

@@ -25,6 +25,8 @@
     NSMutableArray *arrSelected;
     
     NSString *salonCurrID;
+    
+    NSMutableArray *arrNoneSelect;
 }
 @property (nonatomic, strong) NSMutableArray *arrGroupService;
 @property (weak, nonatomic) IBOutlet UICollectionView *cllService;
@@ -35,6 +37,22 @@
 @implementation ServerBookingViewController
 
 #pragma mark - Init
+
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil arrSelected:(NSArray *)aArrSelected salonID:(NSString *)aSalonID arrNoneSelect:(NSArray *)aArrNoneSelect{
+
+    self = [super init];
+    
+    if(self){
+        
+        arrSelected = [NSMutableArray arrayWithArray:aArrSelected];
+        salonCurrID = aSalonID;
+        arrNoneSelect = [NSMutableArray arrayWithArray:aArrNoneSelect];
+    }
+    
+    return self;
+
+}
+
 
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil arrSelected:(NSArray *)aArrSelected salonID:(NSString *)aSalonID{
 
@@ -99,6 +117,9 @@
             
                 self.arrGroupService = [NSMutableArray arrayWithArray:arrService];
                 [self checkSelected];
+                
+                [self checkNoneSelect];
+                
                 [self.cllService reloadData];
             }
         }
@@ -118,6 +139,28 @@
                     if(service.idService.integerValue == serviceSelected.idService.integerValue){
                     
                         service.isSelected = YES;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+-(void)checkNoneSelect{
+
+    if(arrNoneSelect.count > 0){
+        
+        for(Service *serviceSelected in arrNoneSelect){
+            
+            for(Category *group in self.arrGroupService){
+                
+                for(Service *service in group.arrServices){
+                    
+                    if(service.idService.integerValue == serviceSelected.idService.integerValue){
+                        
+                        service.isNoneSelect = YES;
+                        service.status = @"active";
                     }
                 }
             }
@@ -177,6 +220,7 @@
     Service *serice = [cat.arrServices objectAtIndex:indexPath.row];
     
     ServiceBookingSelectCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ServiceBookingSelectCell" forIndexPath:indexPath];
+    
     cell.delegate = self;
     [cell setDataForCell:serice];
     return cell;

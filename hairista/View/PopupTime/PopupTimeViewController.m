@@ -20,13 +20,13 @@
 
 #pragma mark - Init
 
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil dateSelected:(NSDate *)aDateSelected{
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil dateSelected:(NSDate *)aDateSelected {
 
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if(self){
     
-        dateSelected = aDateSelected;
+        dateSelected = (aDateSelected)?aDateSelected:[NSDate date];
     }
     
     return self;
@@ -35,14 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if(dateSelected){
-    
-        [self.datePicker setDate:dateSelected];
-    }
-    else{
-    
-        [self.datePicker setDate:[NSDate date]];
-    }
+    [self.datePicker setDate:dateSelected];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -53,6 +46,12 @@
 }
 
 #pragma mark - Action
+
+- (IBAction)tapBackground:(id)sender {
+    
+    [self dismissFromParentViewController];
+}
+
 - (IBAction)changeValue:(id)sender {
     
     dateSelected = self.datePicker.date;
@@ -60,12 +59,13 @@
 
 - (IBAction)touchBtnFinish:(id)sender {
     
-    if([[self delegate] respondsToSelector:@selector(touchButtonFinish:)]){
+    if([[self delegate] respondsToSelector:@selector(touchButtonFinish:controller:)]){
     
-        [[self delegate] touchButtonFinish:dateSelected];
+        [[self delegate] touchButtonFinish:dateSelected controller:self];
     }
+    
+    [self dismissFromParentViewController];
 }
-
 
 - (void)presentInParentViewController:(UIViewController *)parentViewController {
     //[self.view removeFromSuperview];

@@ -12,6 +12,10 @@
 
 @property (nonatomic, strong) NSNumber *idService;
 
+@property (nonatomic, strong) NSNumber *idBookingDetail;
+
+@property (nonatomic, strong) NSString *status;
+
 @property (nonatomic, strong) NSString *name;
 
 @property (nonatomic, strong) NSString *name_slug;
@@ -33,6 +37,10 @@
 @property (nonatomic, strong) NSString *updatedAt;
 
 @property (nonatomic) BOOL isSelected;
+
+@property (nonatomic) BOOL isNoneSelect;
+
+@property (nonatomic) BOOL isAddNew;
 
 @end
 

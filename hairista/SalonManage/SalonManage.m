@@ -692,8 +692,6 @@ static SalonManage *sharedInstance = nil;
         [strUrl appendFormat:@"&name=%@",name];
     }
     
-    
-    
     [APIRequestHandler initWithURLString:strUrl withHttpMethod:kHTTP_METHOD_GET withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         
         if(isError){
@@ -747,7 +745,8 @@ static SalonManage *sharedInstance = nil;
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            NSArray *arrSalon = [self parseListSalons:responseDataObject];
+            dataApiResult(nil, arrSalon);
             
         }
     }];
@@ -909,7 +908,7 @@ static SalonManage *sharedInstance = nil;
     
     NSString *url = [NSString stringWithFormat:@"%@%@",URL_DELETE_IMAGE,idImage];
     
-    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_DELETE withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_PUT withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         
         if(isError){
             
@@ -925,4 +924,28 @@ static SalonManage *sharedInstance = nil;
         }
     }];
 }
+
+-(void)deleteComment:(NSString *)idComment dataApiResult:(DataAPIResult)dataApiResult{
+    
+  //  NSDictionary *dic = @{@"phone":Appdelegate_hairista.sessionUser.phone};
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@",URL_DELETE_COMMENTS,idComment];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_DELETE withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorDeleteComment", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorDeleteComment" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            dataApiResult(nil, @"OK");
+            
+        }
+    }];
+}
+
 @end

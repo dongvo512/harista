@@ -18,6 +18,8 @@
 @end
 @protocol DetailBookingViewControllerDelegate <NSObject>
 
+-(void)deleteService:(Booking *)booking;
+-(void)addMoreService:(Booking *)booking;
 -(void)finishAceptBooking:(Booking *)booking;
 -(void)finishCancelBooking:(Booking *)booking;
 

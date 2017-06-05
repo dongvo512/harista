@@ -52,7 +52,7 @@
     
     self.lblAddress.text = user.homeAddress;
     self.lblFullName.text = user.name;
-    self.lblPhone.text = user.phone;
+    self.lblPhone.text = [Common convertPhone84:user.phone];
     
 }
 

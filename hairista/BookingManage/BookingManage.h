@@ -23,4 +23,9 @@
 -(void)getDetailBooking:(NSString *)idBooking dataResult:(DataAPIResult)dataApiResult;
 
 -(void)updateBooking:(NSString *)idBooking status:(NSString *)status dataResult:(DataAPIResult)dataApiResult;
+
+-(void)deleteBookingDetailByBookingID:(NSString *)idBooking idBookingDetail:(NSString *)idBookingDetail dataResult:(DataAPIResult)dataApiResult;
+
+-(void)insertServiceForBookingOfUser:(NSString *)idBooking dicbody:(NSDictionary *)dic
+                          dataResult:(DataAPIResult)dataApiResult;
 @end

@@ -96,7 +96,7 @@
     
     //self.trailingImaIcon.constant=0;
     
-    [self.scrlbName.lblText setFont:[UIFont fontWithName:FONT_ROBOTO_LIGHT size:16.0f]];
+    [self.scrlbName.lblText setFont:[UIFont fontWithName:FONT_ROBOTO_REGULAR size:16.0f]];
     
     [self.btnDelete setHidden:YES];
     
@@ -146,6 +146,7 @@
 -(void)setTextName:(NSString *)strName{
     
     [self.scrlbName.lblText setText:strName];
+    [self.scrlbName.lblText setTextColor:[UIColor blackColor]];
     
     if (strName.length > 0) {
         
@@ -179,7 +180,7 @@
     [self.btnSelected setHidden:NO];
     [self.btnDelete setHidden:YES];
     [self.scrlbName.lblText setText:strplace];
-    [self.scrlbName.lblText setTextColor:[UIColor grayTextCombobox]];
+    [self.scrlbName.lblText setTextColor:[UIColor lightGrayColor]];
     
 }
 

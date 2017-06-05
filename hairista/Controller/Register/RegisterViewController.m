@@ -11,9 +11,13 @@
 
 
 @interface RegisterViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
 @property (weak, nonatomic) IBOutlet UITextField *tfPassword;
 @property (weak, nonatomic) IBOutlet UITextField *tfConfirmPass;
+@property (weak, nonatomic) IBOutlet UITextField *tfFullName;
+@property (weak, nonatomic) IBOutlet UITextField *tfEmail;
+@property (weak, nonatomic) IBOutlet UITextField *tfAddress;
 
 @end
 
@@ -96,6 +100,33 @@
         isValidate = YES;
         
     }
+    else if (self.tfFullName.text.length == 0){
+        
+        [Common showAlert:self title:@"Thông báo" message:@"Họ và tên không được để trống" buttonClick:nil];
+        
+        isValidate = YES;
+        
+    }
+    else if (self.tfEmail.text.length == 0){
+        
+        [Common showAlert:self title:@"Thông báo" message:@"Email không được để trống" buttonClick:nil];
+        
+        isValidate = YES;
+        
+    }
+    else if (![Common  validateEmailAddress:self.tfEmail.text]){
+    
+        [Common showAlert:self title:@"Thông báo" message:@"Email đúng định dạng (ví dụ: abc@gmail.com)" buttonClick:nil];
+        
+        isValidate = YES;
+    }
+    else if (self.tfAddress.text.length == 0){
+        
+        [Common showAlert:self title:@"Thông báo" message:@"Địa chỉ không được để trống" buttonClick:nil];
+        
+        isValidate = YES;
+        
+    }
     
     return isValidate;
 }
@@ -124,7 +155,9 @@
     
      [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[AuthenticateManage sharedInstance] registerUser:[self changePhoneNumber] password:self.tfPassword.text passwordConfirm:self.tfConfirmPass.text dataResult:^(NSError *error, id idObject) {
+    NSDictionary *dicBody = @{@"phone":[self changePhoneNumber],@"password":self.tfPassword.text,@"password_confirmation":self.tfConfirmPass.text,@"name":self.tfFullName.text,@"email":self.tfEmail.text,@"homeAddress":self.tfAddress.text};
+    
+    [[AuthenticateManage sharedInstance] registerUser:dicBody dataResult:^(NSError *error, id idObject) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         

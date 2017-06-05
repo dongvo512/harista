@@ -78,4 +78,8 @@
 
 @property (nonatomic, strong) NSString *token;
 
+@property (nonatomic, strong) NSString *openTime;
+
+@property (nonatomic, strong) NSString *closeTime;
+
 @end

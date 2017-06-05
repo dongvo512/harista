@@ -19,6 +19,10 @@
 
     Salon *salonCurr;
     NSInteger pageIndex;
+    
+    BOOL isLoading;
+    
+    BOOL isFullData;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tblView;
 @property (nonatomic, strong) NSMutableArray *arrComments;
@@ -49,6 +53,8 @@
     self.tblView.rowHeight = UITableViewAutomaticDimension;
     
     self.arrComments = [NSMutableArray array];
+    
+    pageIndex = 1;
     
     [self getListComment];
    // [self createDataTemp];
@@ -87,12 +93,16 @@
     [self.tblView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 #pragma mark - Method
+
 -(void)getListComment{
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
+    isLoading = YES;
+    
     [[SalonManage sharedInstance] getListCommentSalon:salonCurr.idSalon page:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
         
+        isLoading = NO;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
@@ -110,11 +120,14 @@
                 [self.tblView reloadData];
             }
             
+            if(arrData.count < LIMIT_ITEM.integerValue){
+            
+                isFullData = YES;
+            }
         }
     }];
     
 }
-
 
 - (IBAction)touchTblView:(id)sender {
     
@@ -196,11 +209,14 @@
     Comment *comment = [self.arrComments objectAtIndex:indexPath.row];
     [cell setDataForCell:comment];
     
-    return cell;
-}
+    if(indexPath.row == self.arrComments.count - 1 && !isLoading && !isFullData){
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+        pageIndex ++ ;
+        
+        [self getListComment];
+    }
     
+    return cell;
 }
 
 

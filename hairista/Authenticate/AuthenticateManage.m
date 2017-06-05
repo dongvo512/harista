@@ -72,6 +72,14 @@ static AuthenticateManage *sharedInstance = nil;
         Appdelegate_hairista.sessionUser.email = CHECK_NIL([responseDataObject objectForKey:@"email"]);
        
         Appdelegate_hairista.sessionUser.avatar = CHECK_NIL([responseDataObject objectForKey:@"avatar"]);
+        
+        Appdelegate_hairista.sessionUser.openTime = CHECK_NIL([responseDataObject objectForKey:@"openTime"]);
+        
+        Appdelegate_hairista.sessionUser.closeTime = CHECK_NIL([responseDataObject objectForKey:@"closeTime"]);
+        
+        Appdelegate_hairista.sessionUser.lastLat = CHECK_NIL([responseDataObject objectForKey:@"lastLat"]);
+        
+        Appdelegate_hairista.sessionUser.lastLng = CHECK_NIL([responseDataObject objectForKey:@"lastLng"]);
     }
 }
 
@@ -148,6 +156,10 @@ static AuthenticateManage *sharedInstance = nil;
     
     Appdelegate_hairista.sessionUser.wallpaper = CHECK_NIL([dic objectForKey:@"wallpaper"]);
     
+     Appdelegate_hairista.sessionUser.openTime = CHECK_NIL([dic objectForKey:@"openTime"]);
+    
+    Appdelegate_hairista.sessionUser.closeTime = CHECK_NIL([dic objectForKey:@"closeTime"]);
+    
     return Appdelegate_hairista.sessionUser;
     
 }
@@ -203,11 +215,9 @@ static AuthenticateManage *sharedInstance = nil;
 
 }
 
-- (void)registerUser:(NSString *)phone password:(NSString *)password passwordConfirm:(NSString *)passwordConfirm dataResult:(DataAPIResult)dataApiResult{
-
-    NSDictionary *dicBody = @{@"phone":phone, @"password":password, @"password_confirmation":passwordConfirm};
+- (void)registerUser:(NSDictionary *)dicbody dataResult:(DataAPIResult)dataApiResult{
     
-    [APIRequestHandler initWithURLString:URL_POST_REGISTER withHttpMethod:kHTTP_METHOD_POST withRequestBody:dicBody callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+    [APIRequestHandler initWithURLString:URL_POST_REGISTER withHttpMethod:kHTTP_METHOD_POST withRequestBody:dicbody callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         
         if(isError){
         
@@ -247,7 +257,7 @@ static AuthenticateManage *sharedInstance = nil;
 
 - (void)login:(NSString *)phone password:(NSString *)password dataResult:(DataAPIResult)dataApiResult{
     
-    NSDictionary *dicBody = @{@"phone":phone, @"password":password, @"deviceToken":Appdelegate_hairista.deviceToken,@"deviceType":@"ios"};
+    NSDictionary *dicBody = @{@"phone":phone, @"password":password, @"deviceToken":(Appdelegate_hairista.deviceToken)?Appdelegate_hairista.deviceToken:@"simulator",@"deviceType":@"ios"};
     
     [APIRequestHandler initWithURLString:URL_POST_LOGIN withHttpMethod:kHTTP_METHOD_POST withRequestBody:dicBody callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         

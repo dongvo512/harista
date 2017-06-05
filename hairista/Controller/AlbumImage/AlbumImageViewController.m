@@ -15,6 +15,7 @@
 #import "ImageCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "SalonManage.h"
+#import "Salon.h"
 
 #define LIMIT_ITEM @"14"
 
@@ -26,12 +27,27 @@
     BOOL isFullData;
     
     BOOL isLoading;
+    
+    Salon *salonCurr;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *arrImages;
 @end
 
 @implementation AlbumImageViewController
+
+#pragma mark - Init
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil salon:(Salon *)aSalon{
+
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if(self){
+    
+        salonCurr = aSalon;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,7 +69,7 @@
     
     self.arrImages = [NSMutableArray array];
     
-    //[self getListSalonUpdated];
+    [self getListImageInSalon];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,32 +81,25 @@
 
 - (IBAction)showMenu:(id)sender {
     
-    [[SlideMenuViewController sharedInstance] toggle];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - GetData
 
-
--(void)getListSalonUpdated{
-
-    [[SalonManage sharedInstance] getListSalonUpdateImage:^(NSError *error, id idObject) {
-        
-        
-    }];
-}
-
--(void)getListImageUser{
+-(void)getListImageInSalon{
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     isLoading = YES;
     
-    [[AuthenticateManage sharedInstance] getListImageUser:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListImageSalon:salonCurr.idSalon page:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
         isLoading = NO;
+        
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
         }
         else{
             
@@ -104,11 +113,12 @@
             }
             
             if(arrData.count < LIMIT_ITEM.integerValue){
-            
+                
                 isFullData = YES;
             }
         }
     }];
+
 
 }
 #pragma mark - UICollectionViewDataSource - Delegate
@@ -138,6 +148,7 @@
     ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     
     Image *img = [self.arrImages objectAtIndex:indexPath.row];
+   
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
         img.heightImage = (SW -24)/2 * image.size.height/image.size.width;
@@ -145,11 +156,13 @@
         [self.collectionView.collectionViewLayout invalidateLayout];
     }];
     
+    cell.lblImageName.text = img.name;
+    
     if(indexPath.row == self.arrImages.count - 1 && !isFullData && !isLoading){
     
         indexPage ++;
         
-        [self getListImageUser];
+        [self getListImageInSalon];
     }
     
     return cell;

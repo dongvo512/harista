@@ -29,7 +29,15 @@
     BOOL isUploadedAvatar;
     NSString *strUrlAvart;
     BOOL isTouchBtnUpdate;
+    
+    PopupTimeViewController *popupTimeOpen;
+    
+    PopupTimeViewController *popupTimeClose;
+    
+    NSDate *dateOpenTime;
+    NSDate *dateCloseTime;
 }
+@property (weak, nonatomic) IBOutlet UILabel *lblOpenTime;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
 @property (weak, nonatomic) IBOutlet UITextField *tfFullName;
@@ -55,10 +63,14 @@
     [super viewDidLoad];
     
     [self.cboOpenTime.view setBackgroundColor:[UIColor whiteColor]];
+    self.cboOpenTime.layer.cornerRadius = 4;
+    self.cboOpenTime.view.layer.cornerRadius = 4;
     [self.cboOpenTime setPlaceHolder:@"Chọn giờ mở cửa"];
     self.cboOpenTime.delegate = self;
     
     [self.cboCloseTime.view setBackgroundColor:[UIColor whiteColor]];
+    self.cboCloseTime.layer.cornerRadius = 4;
+    self.cboCloseTime.view.layer.cornerRadius = 4;
     [self.cboCloseTime setPlaceHolder:@"Chọn giờ đóng cửa"];
     self.cboCloseTime.delegate = self;
     
@@ -71,6 +83,8 @@
         self.heightContraintLocation.constant = 0;
         
         [self.viewLocaltion setHidden:YES];
+        
+        [self.lblOpenTime setHidden:YES];
     }
     
     [self loadDataForUI];
@@ -84,16 +98,55 @@
 #pragma mark - NCComboboxNewViewDelegate
 - (void)didSelect:(CGRect)frame inView:(UIView *)vieParent andType:(NSInteger)type andCombobox:(NCComboboxNewView*)comboboxCurr{
 
-    PopupTimeViewController *vcPopupTime = [[PopupTimeViewController alloc] initWithNibName:@"PopupTimeViewController" bundle:nil];
+    if([comboboxCurr isEqual:self.cboOpenTime]){
     
-    [vcPopupTime presentInParentViewController:self];
+        popupTimeOpen = [[PopupTimeViewController alloc] initWithNibName:@"PopupTimeViewController" bundle:nil dateSelected:dateOpenTime];
+        popupTimeOpen.delegate = self;
+        [popupTimeOpen presentInParentViewController:self];
+    }
+    
+    if([comboboxCurr isEqual:self.cboCloseTime]){
+    
+        popupTimeClose = [[PopupTimeViewController alloc] initWithNibName:@"PopupTimeViewController" bundle:nil dateSelected:dateCloseTime];
+        popupTimeClose.delegate = self;
+        [popupTimeClose presentInParentViewController:self];
+    }
 }
 
 - (void)clearCombobox:(NCComboboxNewView *)comboboxCurr{
 
+    if([self.cboOpenTime isEqual:comboboxCurr]){
     
+        dateOpenTime = nil;
+        [self.cboOpenTime setTextName:@""];
+    }
+    
+    if([self.cboCloseTime isEqual:comboboxCurr]){
+        
+        dateCloseTime = nil;
+        [self.cboCloseTime setTextName:@""];
+    }
 }
 
+#pragma mark - PopupTimeViewControllerDelegate
+-(void)touchButtonFinish:(NSDate *)dateSelected controller:(PopupTimeViewController *)controller{
+
+    if([controller isEqual:popupTimeOpen]){
+    
+        [self.cboOpenTime setTextName:[Common getStringDisplayFormDate:dateSelected andFormatString:@"HH:mm"]];
+        
+        dateOpenTime = dateSelected;
+    }
+    
+    if([controller isEqual:popupTimeClose]){
+    
+        [self.cboCloseTime setTextName:[Common getStringDisplayFormDate:dateSelected andFormatString:@"HH:mm"]];
+      
+        dateCloseTime = dateSelected;
+
+    }
+
+}
 #pragma mark - Action
 - (IBAction)touchBtnGetLocation:(id)sender {
     
@@ -155,14 +208,35 @@
         [dic setObject:self.tflongitude.text forKey:@"lastLng"];
     }
     
+    if(dateOpenTime){
     
-    if(self.tfFullName.text.length == 0 && self.tfEmail.text.length == 0 && self.tfAddress.text.length == 0 && !isUploadedAvatar && self.tfLaitude.text.length == 0 && self.tflongitude.text.length == 0){
+        [dic setObject:[Common getStringDisplayFormDate:dateOpenTime andFormatString:@"HH:mm:ss"] forKey:@"openTime"];
+
+    }
+    
+    if(dateCloseTime){
+        
+        [dic setObject:[Common getStringDisplayFormDate:dateCloseTime andFormatString:@"HH:mm:ss"] forKey:@"closeTime"];
+        
+    }
+    
+    if(self.tfFullName.text.length == 0 && self.tfEmail.text.length == 0 && self.tfAddress.text.length == 0 && !isUploadedAvatar && self.tfLaitude.text.length == 0 && self.tflongitude.text.length == 0 && [self.cboOpenTime getText].length == 0 && [self.cboCloseTime getText].length == 0){
     
         [Common showAlert:self title:@"Thông báo" message:@"Bạn phải nhập vào ít nhất một thông tin" buttonClick:nil];
         
         dic = nil;
         
         return;
+    }
+    
+    if(![Common validateEmailAddress:self.tfEmail.text] && self.tfEmail.text.length > 0){
+    
+        [Common showAlert:self title:@"Thông báo" message:@"Email không đúng định dạng (ví dụ: abc@gmail.com)" buttonClick:nil];
+        
+        dic = nil;
+        
+        return;
+
     }
     
     
@@ -181,21 +255,14 @@
                 
                 [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
             }
+            
             else{
             
-                if(self.tfLaitude.text.length > 0 && self.tflongitude.text.length > 0){
-                
-                    Appdelegate_hairista.sessionUser.lastLat = self.tfLaitude.text;
-                    Appdelegate_hairista.sessionUser.lastLng = self.tflongitude.text;
-                }
-               
-                
                 NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:Appdelegate_hairista.sessionUser];
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 [defaults setObject:encodedObject forKey:@"FirstRun"];
                 [defaults synchronize];
 
-                
                 [self loadDataForUI];
                 
                 isUploadedAvatar = NO;
@@ -252,6 +319,8 @@
     self.tfEmail.text = @"";
     self.tfFullName.text = @"";
     
+   // [self.cboOpenTime setTextName:@""];
+  //  [self.cboCloseTime setTextName:@""];
 }
 
 -(void)loadDataForUI{
@@ -261,6 +330,42 @@
     self.lblPhone.text = [Common convertPhone84:Appdelegate_hairista.sessionUser.phone];
     self.lblAddress.text = Appdelegate_hairista.sessionUser.homeAddress;
     [self.imgAvatar sd_setImageWithURL:[NSURL URLWithString:Appdelegate_hairista.sessionUser.avatar] placeholderImage:IMG_USER_DEFAULT];
+    
+    if(Appdelegate_hairista.sessionUser.lastLat.length > 0){
+    
+        self.tfLaitude.text = Appdelegate_hairista.sessionUser.lastLat;
+    }
+    
+    if(Appdelegate_hairista.sessionUser.lastLng.length > 0){
+    
+        self.tflongitude.text = Appdelegate_hairista.sessionUser.lastLng;
+    }
+    
+    if(Appdelegate_hairista.sessionUser.openTime.length > 0 && Appdelegate_hairista.sessionUser.closeTime.length > 0){
+    
+        NSString *openTime = [Appdelegate_hairista.sessionUser.openTime substringWithRange:NSMakeRange(0, Appdelegate_hairista.sessionUser.openTime.length - 3)];
+        
+        NSString *closeTime = [Appdelegate_hairista.sessionUser.closeTime substringWithRange:NSMakeRange(0, Appdelegate_hairista.sessionUser.closeTime.length - 3)];
+        
+        self.lblOpenTime.text = [NSString stringWithFormat:@"Giờ mở cửa: %@ - %@",openTime,closeTime];
+        
+        [self.cboOpenTime setTextName:openTime];
+        
+        [self.cboCloseTime setTextName:closeTime];
+        
+        dateOpenTime = [Common getDateFromStringFormat:Appdelegate_hairista.sessionUser.openTime format:@"HH:mm:ss"];
+        
+        dateCloseTime = [Common getDateFromStringFormat:Appdelegate_hairista.sessionUser.closeTime format:@"HH:mm:ss"];
+    }
+    else{
+    
+        dateOpenTime = nil;
+        
+        dateCloseTime = nil;
+        
+        self.lblOpenTime.text = @"";
+    }
+    
     [self clearText];
     
     [[[SlideMenuViewController sharedInstance] viewMenuLeft] loadUserInfo];

@@ -59,6 +59,8 @@
 
 -(void)deleteImage:(NSString *)idImage dataApiResult:(DataAPIResult)dataApiResult;
 
+-(void)deleteComment:(NSString *)idComment dataApiResult:(DataAPIResult)dataApiResult;
+
 //- (void)getDetailSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult;
 
 @end

@@ -15,6 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListSalonUploadedImage">
             <connections>
+                <outlet property="tblView" destination="xqD-1Y-MAe" id="rtd-3X-wz5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -60,6 +61,9 @@
                                         <constraint firstAttribute="width" constant="50" id="CTl-Vb-izq"/>
                                     </constraints>
                                     <state key="normal" image="ic_menu"/>
+                                    <connections>
+                                        <action selector="touchBtnShowMenu:" destination="-1" eventType="touchUpInside" id="eGv-jh-oca"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.74901960779999999" green="0.039215686270000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,11 +90,23 @@
                         <constraint firstAttribute="trailing" secondItem="9An-Ti-Her" secondAttribute="trailing" id="suo-jj-Log"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xqD-1Y-MAe">
+                    <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="dPC-Td-FS9"/>
+                        <outlet property="delegate" destination="-1" id="eFX-ZR-VfS"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="xqD-1Y-MAe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="31V-QZ-MfM"/>
+                <constraint firstAttribute="trailing" secondItem="xqD-1Y-MAe" secondAttribute="trailing" id="4ni-k6-XM8"/>
                 <constraint firstAttribute="trailing" secondItem="P0K-UX-D8I" secondAttribute="trailing" id="AyY-Rc-JkE"/>
                 <constraint firstItem="P0K-UX-D8I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="KSM-Ra-hfz"/>
+                <constraint firstAttribute="bottom" secondItem="xqD-1Y-MAe" secondAttribute="bottom" id="R9c-WV-iJQ"/>
+                <constraint firstItem="xqD-1Y-MAe" firstAttribute="top" secondItem="P0K-UX-D8I" secondAttribute="bottom" id="ZqE-98-D8x"/>
                 <constraint firstItem="P0K-UX-D8I" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aBc-hC-Px0"/>
             </constraints>
             <point key="canvasLocation" x="-196" y="-100"/>

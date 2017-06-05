@@ -20,6 +20,6 @@
 @end
 @protocol PopupTimeViewControllerDelegate <NSObject>
 
--(void)touchButtonFinish:(NSDate *)dateSelected;
+-(void)touchButtonFinish:(NSDate *)dateSelected controller:(PopupTimeViewController *)controller;
 
 @end

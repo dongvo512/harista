@@ -183,6 +183,8 @@ static BookingManage *sharedInstance = nil;
         if(dicService){
         
             Service *service = [[Service alloc] init];
+            service.idBookingDetail = CHECK_NIL([dic objectForKey:@"id"]);
+            service.status = CHECK_NIL([dic objectForKey:@"status"]);
             service.categoryId = CHECK_NIL([dicService objectForKey:@"categoryId"]);
             service.createdAt = CHECK_NIL([dicService objectForKey:@"createdAt"]);
             service.idService = CHECK_NIL([dicService objectForKey:@"id"]);
@@ -339,5 +341,48 @@ static BookingManage *sharedInstance = nil;
         }
     }];
 }
+-(void)deleteBookingDetailByBookingID:(NSString *)idBooking idBookingDetail:(NSString *)idBookingDetail dataResult:(DataAPIResult)dataApiResult{
 
+    NSString *url = [NSString stringWithFormat:@"%@%@/detail/%@/delete",URL_PUT_UPDATE_BOOKING,idBooking,idBookingDetail];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_PUT withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorDeleteBookingDetail", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorDeleteBookingDetail" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            //  NSMutableArray *arrData = [self parseListServiceFromBooking:responseDataObject];
+            
+            dataApiResult(nil, @"OK");
+        }
+    }];
+}
+
+-(void)insertServiceForBookingOfUser:(NSString *)idBooking dicbody:(NSDictionary *)dic
+                          dataResult:(DataAPIResult)dataApiResult{
+
+     NSString *url = [NSString stringWithFormat:@"%@%@/addMore",URL_PUT_UPDATE_BOOKING,idBooking];
+   
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_PUT withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorInsertBookingDetail", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorInsertBookingDetail" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            //  NSMutableArray *arrData = [self parseListServiceFromBooking:responseDataObject];
+            
+            dataApiResult(nil, @"OK");
+        }
+    }];
+}
 @end
