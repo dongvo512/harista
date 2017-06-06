@@ -80,6 +80,32 @@ static AuthenticateManage *sharedInstance = nil;
         Appdelegate_hairista.sessionUser.lastLat = CHECK_NIL([responseDataObject objectForKey:@"lastLat"]);
         
         Appdelegate_hairista.sessionUser.lastLng = CHECK_NIL([responseDataObject objectForKey:@"lastLng"]);
+        
+        NSDictionary *dicProvince = [responseDataObject objectForKey:@"province"];
+        
+        if(dicProvince && ![dicProvince isKindOfClass:[NSNull class]]){
+            
+            Appdelegate_hairista.sessionUser.province = [[Province alloc] init];
+            Appdelegate_hairista.sessionUser.province.idProvince = CHECK_NIL([dicProvince objectForKey:@"id"]);
+            Appdelegate_hairista.sessionUser.province.provinceName = CHECK_NIL([dicProvince objectForKey:@"name"]);
+            Appdelegate_hairista.sessionUser.province.type = CHECK_NIL([dicProvince objectForKey:@"type"]);
+        }
+        
+        NSDictionary *dicDis = [responseDataObject objectForKey:@"district"];
+        
+        if(dicDis && ![dicDis isKindOfClass:[NSNull class]]){
+            
+            Appdelegate_hairista.sessionUser.district = [[District alloc] init];
+            Appdelegate_hairista.sessionUser.district.idDistrict = CHECK_NIL([dicDis objectForKey:@"id"]);
+            Appdelegate_hairista.sessionUser.district.idProvince = CHECK_NIL([dicDis objectForKey:@"provinceId"]);
+            Appdelegate_hairista.sessionUser.district.type = CHECK_NIL([dicDis objectForKey:@"type"]);
+            Appdelegate_hairista.sessionUser.district.location = CHECK_NIL([dicDis objectForKey:@"location"]);
+            Appdelegate_hairista.sessionUser.district.name = CHECK_NIL([dicDis objectForKey:@"name"]);
+        }
+        
+         Appdelegate_hairista.sessionUser.districtId = CHECK_NIL([responseDataObject objectForKey:@"districtId"]);
+        
+        Appdelegate_hairista.sessionUser.provinceId = CHECK_NIL([responseDataObject objectForKey:@"provinceId"]);
     }
 }
 

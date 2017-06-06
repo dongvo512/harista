@@ -139,7 +139,7 @@
             }
             else{
                
-              NSString *message = [NSString stringWithFormat:@"Bạn đã đặt chỗ thành công đến Salon:%@",salonCurr.name];
+              NSString *message = [NSString stringWithFormat:@"Bạn đã đặt chỗ thành công đến %@",salonCurr.name];
                 [Common showAlert:self title:@"Thông báo" message:message buttonClick:nil];
             }
         }];

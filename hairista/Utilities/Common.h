@@ -52,5 +52,5 @@ typedef void (^CallAPIResult)(BOOL isError, NSString *stringError, id responseDa
 + (CGFloat)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font;
 +(NSString *)convertPhone84:(NSString *)phone;
 +(BOOL)validateEmailAddress:(NSString *)address;
-
++(void)showAlertCancel:(UIViewController *)controller title:(NSString *)title message:(NSString *)message buttonClick:(ButtonClick)buttonClickOk buttonClickCancel:(ButtonClick)buttonClickCancel;
 @end

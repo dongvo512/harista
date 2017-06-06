@@ -213,7 +213,7 @@
 
     UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"Đồng ý" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
        
         
         if(buttonClick){
@@ -230,7 +230,36 @@
 
 }
 
-
++(void)showAlertCancel:(UIViewController *)controller title:(NSString *)title message:(NSString *)message buttonClick:(ButtonClick)buttonClickOk buttonClickCancel:(ButtonClick)buttonClickCancel{
+    
+    UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"Đồng ý" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        if(buttonClickOk){
+            
+            buttonClickOk(action);
+        }
+        
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Huỷ" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        if(buttonClickCancel){
+            
+            buttonClickCancel(action);
+        }
+        
+    }];
+    
+    
+    [vcAlert addAction:Oke];
+    
+    [vcAlert addAction:cancel];
+    
+    [controller presentViewController:vcAlert animated:YES completion:nil];
+    
+}
 + (BOOL)isSameDay:(NSDate*)date1 otherDay:(NSDate*)date2 {
     NSCalendar* calendar = [NSCalendar currentCalendar];
     

@@ -122,10 +122,7 @@
             [[self delegate] touchCBODistrict];
         }
     }
-    else{
     
-        
-    }
 }
 
 - (void)clearCombobox:(NCComboboxNewView *)comboboxCurr{

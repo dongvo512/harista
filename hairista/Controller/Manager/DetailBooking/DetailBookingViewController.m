@@ -80,7 +80,7 @@
     else{
         
         self.heightContraintBottom.constant = 0;
-         [self.viewBottom setHidden:YES];
+        [self.viewBottom setHidden:YES];
         [self.btnAddmore setHidden:YES];
     }
 
@@ -88,6 +88,7 @@
     if(!isEdit){
     
         self.heightContraintBottom.constant = 0;
+        [self.btnAddmore setHidden:YES];
         [self.viewBottom setHidden:YES];
     }
     
@@ -113,27 +114,15 @@
 #pragma mark - Action
 - (IBAction)touchBtnSave:(id)sender {
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if(dicInsert){
     
-    [[BookingManage sharedInstance] insertServiceForBookingOfUser:bookingCurr.idBooking.stringValue dicbody:dicInsert dataResult:^(NSError *error, id idObject) {
-        
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-        if(error){
-        
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
-        }
-        else{
-        
-             [Common showAlert:self title:@"Thông báo" message:@"Thêm dịch vụ cho khách hàng thành công" buttonClick:nil];
+        [Common showAlertCancel:self title:@"Thông báo" message:@"Bạn có chắc muốn thêm những dịch vụ này cho khách hàng" buttonClick:^(UIAlertAction *alertAction) {
+           
+            [self performSelector:@selector(addMore) withObject:nil afterDelay:0.0f];
             
-            if([[self delegate] respondsToSelector:@selector(addMoreService:)]){
-            
-                [[self delegate] addMoreService:bookingCurr];
-            }
-        }
-        
-    }];
+        } buttonClickCancel:nil];
+    
+    }
 }
 
 - (IBAction)touchBtnAdd:(id)sender {
@@ -225,7 +214,6 @@
     NSInteger totalInser = 0;
     NSMutableString *listService = [NSMutableString string];
     
-    
     for(Service *service in arrItems){
         
         if(service.isSelected && !service.isNoneSelect){
@@ -268,6 +256,31 @@
 }
 #pragma mark - Method
 
+-(void)addMore{
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[BookingManage sharedInstance] insertServiceForBookingOfUser:bookingCurr.idBooking.stringValue dicbody:dicInsert dataResult:^(NSError *error, id idObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+            
+            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+        }
+        else{
+            
+            [Common showAlert:self title:@"Thông báo" message:@"Thêm dịch vụ cho khách hàng thành công" buttonClick:nil];
+            
+            if([[self delegate] respondsToSelector:@selector(addMoreService:)]){
+                
+                [[self delegate] addMoreService:bookingCurr];
+            }
+        }
+        
+    }];
+}
+
 -(void)loadDataForUI{
 
     NSString *totalPrice = [Common getString3DigitsDot:bookingCurr.totalPrice.integerValue];
@@ -285,7 +298,6 @@
     
      [self.imgViewUserBookingAvatar sd_setImageWithURL:[NSURL URLWithString:bookingCurr.user.avatar] placeholderImage:IMG_USER_DEFAULT];
     
-   
 }
 
 -(void)getDetailBooking{
@@ -370,29 +382,63 @@
    
     Service *serive = [self.arrService objectAtIndex:indexPath.row];
     
-    if([serive.status isEqualToString:@"active"]){
-    
-        return YES;
-    }
-    else{
+    if([bookingCurr.status isEqualToString:STATUS_DONE] || [bookingCurr.status isEqualToString:STATUS_CANCEL]){
     
         return NO;
     }
- 
+    else{
+    
+        if(isEdit){
+            
+            if([serive.status isEqualToString:@"active"]){
+                
+                return YES;
+            }
+            else{
+                
+                if(!serive.status){
+                    
+                    return YES;
+                }
+                else{
+                    
+                    return NO;
+                }
+            }
+        }
+        else{
+            
+            return NO;
+        }
+    }
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        [Common showAlert:self title:@"Thông báo" message:@"Bạn có chắc muốn xoá dịch vụ này của khách hàng" buttonClick:^(UIAlertAction *alertAction) {
-            
-            Service *service = [self.arrService objectAtIndex:indexPath.row];
-            
-            [self deleteBookingDetail:service];
-            
-        }];
+         Service *service = [self.arrService objectAtIndex:indexPath.row];
         
+        if(service.status){
+        
+           [Common showAlertCancel:self title:@"Thông báo" message:@"Bạn có chắc muốn xoá dịch vụ này của khách hàng" buttonClick:^(UIAlertAction *alertAction) {
+               
+               [self deleteBookingDetail:service];
+               
+           } buttonClickCancel:nil];
+        }
+        else{
+        
+            bookingCurr.totalPrice = [NSString stringWithFormat:@"%ld",(long)bookingCurr.totalPrice.integerValue - service.price.integerValue];
+            
+            self.lblTotalPrice.text = [Common getString3DigitsDot:bookingCurr.totalPrice.integerValue];
+            
+            [self.arrService removeObject:service];
+            
+            self.heightContraintService.constant = self.arrService.count * HEIGHT_CELL_SERVICE;
+            
+            [self.tblView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        }
     }
 }
 @end

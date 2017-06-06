@@ -155,8 +155,12 @@
     }
     else{
         
+        [self.scrlbName.lblText setText:_CM_STRING_EMPTY];
+        
         [self.btnDelete setHidden:YES];
         [self.btnSelected setHidden:NO];
+        
+        [self setPlaceHolder:strplace];
     }
 }
 

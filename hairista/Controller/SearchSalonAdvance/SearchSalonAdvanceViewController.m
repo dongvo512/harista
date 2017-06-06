@@ -217,6 +217,11 @@
 #pragma mark - DistrictViewControllerDelegte
 -(void)selectedDistrict:(District *)district controller:(DistrictViewController *)controller{
 
+    if(district.idDistrict.integerValue == districtSelected.idDistrict.integerValue){
+    
+        return;
+    }
+    
     districtSelected = district;
     
     [cellSearchOption.cboDistrict setTextName:districtSelected.name];
@@ -227,9 +232,17 @@
 #pragma mark - ProvinceViewControllerDelegte
 -(void)selectedProvince:(Province *)province controller:(ProvinceViewController *)controller{
 
+    if(province.idProvince.integerValue == provinceSelected.idProvince.integerValue){
+    
+        return;
+    }
+    
     provinceSelected = province;
     
     [cellSearchOption.cboProvince setTextName:provinceSelected.provinceName];
+    
+    districtSelected = nil;
+    [cellSearchOption.cboDistrict setTextName:@""];
     
     [controller.navigationController popViewControllerAnimated:YES];
 }
@@ -275,10 +288,14 @@
 -(void)clearCboProvice{
 
     provinceSelected = nil;
+    
+    districtSelected = nil;
+
 }
 
 -(void)clearCboDistrict{
 
+    districtSelected = nil;
 }
 
 -(void)selectedBtnShowMore:(UIButton *)btnSelected{
@@ -316,6 +333,16 @@
         cellSearchOption.delegate = self;
         cellSearchOption.selectionStyle = UITableViewCellSelectionStyleNone;
         [cellSearchOption setDataForCell:isShowSearchOption location:isLocationUser];
+        if(provinceSelected){
+        
+            [cellSearchOption.cboProvince setTextName:provinceSelected.provinceName];
+        }
+        
+        if(districtSelected){
+        
+            [cellSearchOption.cboDistrict setTextName:districtSelected.name];
+        }
+        
         return cellSearchOption;
     }
     else{

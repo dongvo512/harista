@@ -185,6 +185,8 @@
 #pragma mark - ProvinceViewControllerDelegte
 -(void)selectedProvince:(Province *)province controller:(ProvinceViewController *)controller{
 
+    [controller.navigationController popViewControllerAnimated:YES];
+    
     if(provinceSelected.idProvince.integerValue == province.idProvince.integerValue){
         
         return;
@@ -200,6 +202,8 @@
 #pragma mark - DistrictViewControllerDelegte
 -(void)selectedDistrict:(District *)district controller:(DistrictViewController *)controller{
 
+    [controller.navigationController popViewControllerAnimated:YES];
+    
     if(districtSelected.idProvince.integerValue == district.idProvince.integerValue){
     
         return;
@@ -298,6 +302,16 @@
         
         [dic setObject:[Common getStringDisplayFormDate:dateCloseTime andFormatString:@"HH:mm:ss"] forKey:@"closeTime"];
         
+    }
+    
+    if(provinceSelected){
+    
+        [dic setObject:provinceSelected.idProvince.stringValue forKey:@"provinceId"];
+    }
+    
+    if(districtSelected){
+    
+         [dic setObject:districtSelected.idDistrict.stringValue forKey:@"districtId"];
     }
     
     if(self.tfFullName.text.length == 0 && self.tfEmail.text.length == 0 && self.tfAddress.text.length == 0 && !isUploadedAvatar && self.tfLaitude.text.length == 0 && self.tflongitude.text.length == 0 && [self.cboOpenTime getText].length == 0 && [self.cboCloseTime getText].length == 0){
