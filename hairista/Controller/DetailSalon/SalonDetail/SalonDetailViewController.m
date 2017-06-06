@@ -274,9 +274,16 @@
 }
 -(void)selectLocation{
 
-    MapDetailSalonViewController *vcMapDetailSalon = [[MapDetailSalonViewController alloc] initWithNibName:@"MapDetailSalonViewController" bundle:nil Salon:salonCurr];
+    if(salonCurr.lastLat.length == 0 && salonCurr.lastLng.length == 0){
     
-    [self.rootVC.navigationController pushViewController:vcMapDetailSalon animated:YES];
+        [Common showAlert:self title:@"Thông báo" message:@"Salon vẫn chưa cập nhật vị trí trên bản đồ" buttonClick:nil];
+    }
+    else{
+    
+        MapDetailSalonViewController *vcMapDetailSalon = [[MapDetailSalonViewController alloc] initWithNibName:@"MapDetailSalonViewController" bundle:nil Salon:salonCurr];
+        
+        [self.rootVC.navigationController pushViewController:vcMapDetailSalon animated:YES];
+    }
 }
 /*
 #pragma mark - Navigation

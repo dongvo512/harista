@@ -159,7 +159,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     Booking *booking = [self.arrBooking objectAtIndex:indexPath.row];
     
-    DetailBookingViewController *vcDetail = [[DetailBookingViewController alloc] initWithNibName:@"DetailBookingViewController" bundle:nil booking:booking editing:YES];
+    DetailBookingViewController *vcDetail = [[DetailBookingViewController alloc] initWithNibName:@"DetailBookingViewController" bundle:nil booking:booking editing:NO];
     
     [self.navigationController pushViewController:vcDetail animated:YES];
     
