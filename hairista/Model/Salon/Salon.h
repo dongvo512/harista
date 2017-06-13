@@ -32,7 +32,7 @@
 @property (nonatomic, strong) NSString *authToken;
 @property (nonatomic, strong) NSString *lastLat;
 @property (nonatomic, strong) NSString *lastLng;
-@property (nonatomic, strong) NSString *isShowOnBoard;
+@property (nonatomic, strong) NSNumber *isShowOnBoard;
 @property (nonatomic, strong) NSString *birthday;
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic, strong) NSString *district;

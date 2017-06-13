@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class Service;
+@class Service, Salon;
 
 @interface SalonManage : NSObject
 
@@ -61,6 +61,10 @@
 
 -(void)deleteComment:(NSString *)idComment dataApiResult:(DataAPIResult)dataApiResult;
 
-//- (void)getDetailSalon:(NSString *)idSalon dataResult:(DataAPIResult)dataApiResult;
+-(void)updateSalonOnBoard:(Salon *)salon dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)updateUserToSalon:(SessionUser *)user dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)updateSalonToUser:(Salon *)salon dataApiResult:(DataAPIResult)dataApiResult;
 
 @end

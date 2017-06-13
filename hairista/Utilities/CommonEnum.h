@@ -21,3 +21,10 @@ typedef NS_ENUM(NSInteger, ItemMenuManage) {
     Item_InFoUserManger
     
 };
+
+typedef NS_ENUM(NSInteger, ItemMenuAdmin) {
+    
+    ItemAdminSalon,
+    ItemAdminUser
+    
+};

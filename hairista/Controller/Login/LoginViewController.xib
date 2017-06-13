@@ -67,7 +67,7 @@
                                 <constraint firstItem="ufO-Zn-Ll6" firstAttribute="top" secondItem="U7i-oJ-FY2" secondAttribute="top" id="uoX-5l-msm"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MEMBER LOGIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFW-1e-8mV">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ĐĂNG NHẬP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFW-1e-8mV">
                             <rect key="frame" x="24.5" y="26" width="199" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="199" id="YbN-kC-dtl"/>

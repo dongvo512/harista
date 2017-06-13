@@ -15,6 +15,7 @@
 + (void)resetSharedInstance;
 @property (nonatomic, strong) MenuLeftView *viewMenuLeft;
 @property (nonatomic) BOOL isUserManager;
+@property (nonatomic) BOOL isAdmin;
 // nhấn nút menu.
 -(void)toggle;
 

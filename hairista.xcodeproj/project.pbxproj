@@ -36,6 +36,10 @@
 		B814EEC21EB6368500B6475C /* ServiceBookingSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814EEC01EB6368500B6475C /* ServiceBookingSelectCell.xib */; };
 		B814EEC71EB645E100B6475C /* ServerSelectedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B814EEC51EB645E100B6475C /* ServerSelectedCell.m */; };
 		B814EEC81EB645E100B6475C /* ServerSelectedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814EEC61EB645E100B6475C /* ServerSelectedCell.xib */; };
+		B8182E841EE8018F003FE6DB /* SalonsAdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8182E821EE8018F003FE6DB /* SalonsAdminViewController.m */; };
+		B8182E851EE8018F003FE6DB /* SalonsAdminViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8182E831EE8018F003FE6DB /* SalonsAdminViewController.xib */; };
+		B8182E891EE8019B003FE6DB /* UserAdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8182E871EE8019B003FE6DB /* UserAdminViewController.m */; };
+		B8182E8A1EE8019B003FE6DB /* UserAdminViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8182E881EE8019B003FE6DB /* UserAdminViewController.xib */; };
 		B82E6D201E44685900C51770 /* CatagoriesHairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82E6D1E1E44685900C51770 /* CatagoriesHairViewController.m */; };
 		B82E6D211E44685900C51770 /* CatagoriesHairViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82E6D1F1E44685900C51770 /* CatagoriesHairViewController.xib */; };
 		B82E6D251E44721000C51770 /* Catagories.m in Sources */ = {isa = PBXBuildFile; fileRef = B82E6D241E44721000C51770 /* Catagories.m */; };
@@ -78,6 +82,10 @@
 		B86D28491E2E22E3005491E6 /* NCSearchBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86D28471E2E22E3005491E6 /* NCSearchBarView.xib */; };
 		B86D284E1E2E2305005491E6 /* NCTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = B86D284C1E2E2305005491E6 /* NCTextFieldView.m */; };
 		B86D284F1E2E2305005491E6 /* NCTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86D284D1E2E2305005491E6 /* NCTextFieldView.xib */; };
+		B86E0D1E1EE8F76F005C5036 /* SalonAdminCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B86E0D1C1EE8F76F005C5036 /* SalonAdminCell.m */; };
+		B86E0D1F1EE8F76F005C5036 /* SalonAdminCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86E0D1D1EE8F76F005C5036 /* SalonAdminCell.xib */; };
+		B86E0D231EE8F77D005C5036 /* SalonHotAdminCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B86E0D211EE8F77D005C5036 /* SalonHotAdminCell.m */; };
+		B86E0D241EE8F77D005C5036 /* SalonHotAdminCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86E0D221EE8F77D005C5036 /* SalonHotAdminCell.xib */; };
 		B87543C31EAA62790047213A /* CommentDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B87543C21EAA62790047213A /* CommentDetailView.m */; };
 		B87543C51EAA63860047213A /* CommentDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87543C41EAA63860047213A /* CommentDetailView.xib */; };
 		B87543CA1EAA6D190047213A /* CommentStarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B87543C81EAA6D190047213A /* CommentStarCell.m */; };
@@ -306,6 +314,12 @@
 		B814EEC61EB645E100B6475C /* ServerSelectedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServerSelectedCell.xib; sourceTree = "<group>"; };
 		B81732571E5B08B300DD8586 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		B81732581E5B08B300DD8586 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		B8182E811EE8018F003FE6DB /* SalonsAdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalonsAdminViewController.h; sourceTree = "<group>"; };
+		B8182E821EE8018F003FE6DB /* SalonsAdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalonsAdminViewController.m; sourceTree = "<group>"; };
+		B8182E831EE8018F003FE6DB /* SalonsAdminViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SalonsAdminViewController.xib; sourceTree = "<group>"; };
+		B8182E861EE8019B003FE6DB /* UserAdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAdminViewController.h; sourceTree = "<group>"; };
+		B8182E871EE8019B003FE6DB /* UserAdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAdminViewController.m; sourceTree = "<group>"; };
+		B8182E881EE8019B003FE6DB /* UserAdminViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserAdminViewController.xib; sourceTree = "<group>"; };
 		B82E6D1D1E44685900C51770 /* CatagoriesHairViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatagoriesHairViewController.h; sourceTree = "<group>"; };
 		B82E6D1E1E44685900C51770 /* CatagoriesHairViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatagoriesHairViewController.m; sourceTree = "<group>"; };
 		B82E6D1F1E44685900C51770 /* CatagoriesHairViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatagoriesHairViewController.xib; sourceTree = "<group>"; };
@@ -377,6 +391,12 @@
 		B86D284C1E2E2305005491E6 /* NCTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCTextFieldView.m; sourceTree = "<group>"; };
 		B86D284D1E2E2305005491E6 /* NCTextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCTextFieldView.xib; sourceTree = "<group>"; };
 		B86D28501E2E2348005491E6 /* CommonDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
+		B86E0D1B1EE8F76F005C5036 /* SalonAdminCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalonAdminCell.h; sourceTree = "<group>"; };
+		B86E0D1C1EE8F76F005C5036 /* SalonAdminCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalonAdminCell.m; sourceTree = "<group>"; };
+		B86E0D1D1EE8F76F005C5036 /* SalonAdminCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SalonAdminCell.xib; sourceTree = "<group>"; };
+		B86E0D201EE8F77D005C5036 /* SalonHotAdminCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalonHotAdminCell.h; sourceTree = "<group>"; };
+		B86E0D211EE8F77D005C5036 /* SalonHotAdminCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalonHotAdminCell.m; sourceTree = "<group>"; };
+		B86E0D221EE8F77D005C5036 /* SalonHotAdminCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SalonHotAdminCell.xib; sourceTree = "<group>"; };
 		B87543C11EAA62790047213A /* CommentDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailView.h; sourceTree = "<group>"; };
 		B87543C21EAA62790047213A /* CommentDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailView.m; sourceTree = "<group>"; };
 		B87543C41EAA63860047213A /* CommentDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentDetailView.xib; sourceTree = "<group>"; };
@@ -836,6 +856,37 @@
 			path = ServerSelectedCell;
 			sourceTree = "<group>";
 		};
+		B8182E7E1EE8013B003FE6DB /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				B8182E7F1EE80180003FE6DB /* SalonsAdminViewController */,
+				B8182E801EE80180003FE6DB /* UserAdminViewController */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+		B8182E7F1EE80180003FE6DB /* SalonsAdminViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B86E0D191EE8F75D005C5036 /* SalonAdminCell */,
+				B86E0D1A1EE8F75D005C5036 /* SalonHotAdminCell */,
+				B8182E811EE8018F003FE6DB /* SalonsAdminViewController.h */,
+				B8182E821EE8018F003FE6DB /* SalonsAdminViewController.m */,
+				B8182E831EE8018F003FE6DB /* SalonsAdminViewController.xib */,
+			);
+			path = SalonsAdminViewController;
+			sourceTree = "<group>";
+		};
+		B8182E801EE80180003FE6DB /* UserAdminViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B8182E861EE8019B003FE6DB /* UserAdminViewController.h */,
+				B8182E871EE8019B003FE6DB /* UserAdminViewController.m */,
+				B8182E881EE8019B003FE6DB /* UserAdminViewController.xib */,
+			);
+			path = UserAdminViewController;
+			sourceTree = "<group>";
+		};
 		B82E6D1C1E44684600C51770 /* CatagoriesHair */ = {
 			isa = PBXGroup;
 			children = (
@@ -1107,6 +1158,26 @@
 				B86D284D1E2E2305005491E6 /* NCTextFieldView.xib */,
 			);
 			path = NCTextField;
+			sourceTree = "<group>";
+		};
+		B86E0D191EE8F75D005C5036 /* SalonAdminCell */ = {
+			isa = PBXGroup;
+			children = (
+				B86E0D1B1EE8F76F005C5036 /* SalonAdminCell.h */,
+				B86E0D1C1EE8F76F005C5036 /* SalonAdminCell.m */,
+				B86E0D1D1EE8F76F005C5036 /* SalonAdminCell.xib */,
+			);
+			path = SalonAdminCell;
+			sourceTree = "<group>";
+		};
+		B86E0D1A1EE8F75D005C5036 /* SalonHotAdminCell */ = {
+			isa = PBXGroup;
+			children = (
+				B86E0D201EE8F77D005C5036 /* SalonHotAdminCell.h */,
+				B86E0D211EE8F77D005C5036 /* SalonHotAdminCell.m */,
+				B86E0D221EE8F77D005C5036 /* SalonHotAdminCell.xib */,
+			);
+			path = SalonHotAdminCell;
 			sourceTree = "<group>";
 		};
 		B87543C01EAA62630047213A /* CommentDetailView */ = {
@@ -1920,6 +1991,7 @@
 		B8EC1C5E1E291C9900D2D1E6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B8182E7E1EE8013B003FE6DB /* Admin */,
 				B81483151ED6D22A00DAFAEF /* ListSalonUploadedImage */,
 				B8356C7E1E501D2700C16AA3 /* Manager */,
 				B8780FFE1E9A013000D0B104 /* ChangePassword */,
@@ -2140,6 +2212,7 @@
 				B87543C51EAA63860047213A /* CommentDetailView.xib in Resources */,
 				B8A7582B1ECD8C5000EDB9D2 /* Overlay.png in Resources */,
 				B8A758021ECD450100EDB9D2 /* ImagesViewController.xib in Resources */,
+				B8182E851EE8018F003FE6DB /* SalonsAdminViewController.xib in Resources */,
 				B8BA2E7F1E9CEF1300E1C9FA /* MenuCell.xib in Resources */,
 				B880C6BD1E45FD1B00AA2B72 /* ServicesViewController.xib in Resources */,
 				B8A1031B1E45879300C4E376 /* HairFullView.xib in Resources */,
@@ -2174,7 +2247,9 @@
 				B8A758361ECDA5F300EDB9D2 /* ImageUpdateCell.xib in Resources */,
 				B8DE7EDA1E390A450008769C /* Roboto-Black.ttf in Resources */,
 				B814EEBC1EB62E7600B6475C /* ServerBookingViewController.xib in Resources */,
+				B8182E8A1EE8019B003FE6DB /* UserAdminViewController.xib in Resources */,
 				B8DE7ED41E390A450008769C /* OpenSans-Italic.ttf in Resources */,
+				B86E0D241EE8F77D005C5036 /* SalonHotAdminCell.xib in Resources */,
 				B8A103151E457FBF00C4E376 /* HairCell.xib in Resources */,
 				B83D4EEF1EA26FEA00F39BD4 /* HeaderSalonView.xib in Resources */,
 				B80433151ED8039D00059032 /* PopupCreateCategoryViewController.xib in Resources */,
@@ -2228,6 +2303,7 @@
 				B862EB3B1E4A140100BBAB79 /* CommentCellTableViewCell.xib in Resources */,
 				B8DE7EDE1E390A450008769C /* Roboto-Italic.ttf in Resources */,
 				B8A758291ECD8C5000EDB9D2 /* ELCAssetPicker.xib in Resources */,
+				B86E0D1F1EE8F76F005C5036 /* SalonAdminCell.xib in Resources */,
 				B8AA6B1A1E40920F002716A7 /* SearchOptionSalonCell.xib in Resources */,
 				B8DE7ECD1E390A450008769C /* Apache License.txt in Resources */,
 			);
@@ -2327,6 +2403,7 @@
 				B831346D1E949730001A3465 /* AuthenticateManage.m in Sources */,
 				B8EF74B51E4CB6BB001466C4 /* BookingViewController.m in Sources */,
 				B8DE7EF11E3911CE0008769C /* SlideMenuViewController.m in Sources */,
+				B8182E891EE8019B003FE6DB /* UserAdminViewController.m in Sources */,
 				B814EEC11EB6368500B6475C /* ServiceBookingSelectCell.m in Sources */,
 				B8E984801EB8A9C0002DA2FF /* BookingManage.m in Sources */,
 				B8A758211ECD8C5000EDB9D2 /* ELCAlbumPickerController.m in Sources */,
@@ -2355,6 +2432,7 @@
 				B88D7CB31E3A168E006B8019 /* UIColor+Method.m in Sources */,
 				B86D28481E2E22E3005491E6 /* NCSearchBarView.m in Sources */,
 				B8C32B4B1E2E0FAB00FB0E11 /* Salon.m in Sources */,
+				B86E0D1E1EE8F76F005C5036 /* SalonAdminCell.m in Sources */,
 				B80BE2B21ED1D34200C7C6C4 /* ImgIndexCell.m in Sources */,
 				B87810021E9A013D00D0B104 /* ChangePassword.m in Sources */,
 				B88D7CAD1E3A134E006B8019 /* FavoriteViewController.m in Sources */,
@@ -2369,6 +2447,7 @@
 				B8A758071ECD8A4F00EDB9D2 /* UploadImageViewController.m in Sources */,
 				B899E8FD1E5858E900CC268B /* User.m in Sources */,
 				B8C32B501E2E11B200FB0E11 /* SalonCell.m in Sources */,
+				B86E0D231EE8F77D005C5036 /* SalonHotAdminCell.m in Sources */,
 				B8CF1DD01E50B1D20008C6EC /* Booking.m in Sources */,
 				B87D7D301E43466F00CD5D54 /* DetailSalonViewController.m in Sources */,
 				B87543CA1EAA6D190047213A /* CommentStarCell.m in Sources */,
@@ -2385,6 +2464,7 @@
 				B83D4EF41EA275E300F39BD4 /* ImageCell.m in Sources */,
 				B8A1030F1E457DE700C4E376 /* Hair.m in Sources */,
 				B80F91B61E41CFCA00649C88 /* NCScrollLabelView.m in Sources */,
+				B8182E841EE8018F003FE6DB /* SalonsAdminViewController.m in Sources */,
 				B83134721E94A284001A3465 /* RegisterViewController.m in Sources */,
 				B8E5F9511E2A035E007E5A81 /* ImagePickerViewController.m in Sources */,
 				B8BDC2211E9B82DF0041899A /* SalonManage.m in Sources */,

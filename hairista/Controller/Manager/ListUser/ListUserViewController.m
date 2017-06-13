@@ -316,11 +316,13 @@
         if(isSearchALL){
         
             indexPageSearchAll = 1;
+            isFullDataAll = NO;
             [self getListUser:@""];
         }
         else{
         
             indexPageSearchSalon = 1;
+            isFullDataSalon = NO;
             [self getListUserSalon:@""];
         }
         
@@ -361,10 +363,14 @@
     if(isSearchALL){
     
         [cell.btnAddUser setHidden:NO];
+        
+        cell.widthContraintButtonAdd.constant = 44;
     }
     else{
     
         [cell.btnAddUser setHidden:YES];
+        
+        cell.widthContraintButtonAdd.constant = 0;
     }
     
     SessionUser *user = [self.arrUser objectAtIndex:indexPath.row];
@@ -394,8 +400,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 
         }
     }
-    
-    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

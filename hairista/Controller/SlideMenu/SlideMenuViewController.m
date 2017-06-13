@@ -19,6 +19,9 @@
 #import "ImagesViewController.h"
 #import "ListSalonUploadedImage.h"
 #import "CommentController.h"
+#import "SalonsAdminViewController.h"
+#import "UserAdminViewController.h"
+
 
 @interface SlideMenuViewController ()<UIGestureRecognizerDelegate>{
 
@@ -140,6 +143,27 @@ static SlideMenuViewController *sharedInstance = nil;
 
 }
 
+- (void)selectItemAdmin:(NSInteger)index{
+
+    switch (index) {
+            
+        case ItemAdminSalon:{
+            
+            SalonsAdminViewController *vcSalon = [[SalonsAdminViewController alloc] initWithNibName:@"SalonsAdminViewController" bundle:nil];
+            [vcNavigation setViewControllers:@[vcSalon] animated:YES];
+        }
+            break;
+        case ItemAdminUser:{
+            
+            UserAdminViewController *vcUser = [[UserAdminViewController alloc] initWithNibName:@"UserAdminViewController" bundle:nil];
+            [vcNavigation setViewControllers:@[vcUser] animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 - (void)selectItemManager:(NSInteger)index{
 
     switch (index) {
@@ -199,6 +223,10 @@ static SlideMenuViewController *sharedInstance = nil;
     
         [self selectItemManager:index];
     }
+    else if (self.isAdmin){
+        
+        [self selectItemAdmin:index];
+    }
     else{
     
         [self selectItemMemeber:index];
@@ -217,82 +245,6 @@ static SlideMenuViewController *sharedInstance = nil;
     UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(toggle)];
     [self.view addGestureRecognizer:swipeRecognizer];
 }
-
-/*- (void)addPanGestureForViewContent{
-
-    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
-    [panRecognizer setMinimumNumberOfTouches:1];
-    [panRecognizer setMaximumNumberOfTouches:1];
-    [self.view addGestureRecognizer:panRecognizer];
-}
-
-- (void)panRecognized:(UIPanGestureRecognizer *)rec {
-
-    
-    CGPoint vel = [rec velocityInView:self.view];
-    if (vel.x > 0)
-    {
-        // user dragged towards the right
-        
-        if(leftContraint.constant < 0){
-        
-            leftContraint.constant += 4;
-        }
-        
-    }
-    else
-    {
-        // user dragged towards the left
-        if(leftContraint.constant > -(SW *ratioWidthMenuLeft)){
-            
-            leftContraint.constant -= 4;
-        }
-        
-    }
-    
-    if([rec state] == UIGestureRecognizerStateEnded){
-    
-        if(leftContraint.constant == -(SW *ratioWidthMenuLeft) || leftContraint.constant == 0){
-            
-            return;
-        }
-        else{
-        
-            if(leftContraint.constant > -((SW*ratioWidthMenuLeft)/2)){
-            
-                leftContraint.constant = 0;
-                
-                [UIView animateWithDuration:0.3 animations:^{
-                    
-                    [self.view layoutIfNeeded];
-                    
-                    if(leftContraint.constant == 0){
-                        
-                        [viewBackground setAlpha:1.0];
-                    }
-                    
-                } completion:nil];
-            }
-            else{
-            
-                leftContraint.constant = -(SW*ratioWidthMenuLeft);
-                
-                [UIView animateWithDuration:0.3 animations:^{
-                    
-                    [self.view layoutIfNeeded];
-                    
-                    if(leftContraint.constant == 0){
-                        
-                        [viewBackground setAlpha:0];
-                    }
-                    
-                } completion:nil];
-                
-            }
-        }
-    }
-  
-}*/
 
 -(void)setRatioWidthMenuLeft:(CGFloat)ratio{
     
@@ -337,6 +289,15 @@ static SlideMenuViewController *sharedInstance = nil;
         ManageBookingViewController *vcManageBooking = [[ManageBookingViewController alloc] initWithNibName:@"ManageBookingViewController" bundle:nil];
       
         vcNavigation = [[UINavigationController alloc] initWithRootViewController:vcManageBooking];
+        vcNavigation.navigationBarHidden = YES;
+        vcNavigation.view.frame = self.view.bounds;
+        
+        [self.view addSubview:vcNavigation.view];
+    }
+    else if (self.isAdmin){
+    
+        SalonsAdminViewController *vcSalon = [[SalonsAdminViewController alloc] initWithNibName:@"SalonsAdminViewController" bundle:nil];
+        vcNavigation = [[UINavigationController alloc] initWithRootViewController:vcSalon];
         vcNavigation.navigationBarHidden = YES;
         vcNavigation.view.frame = self.view.bounds;
         
@@ -388,7 +349,7 @@ static SlideMenuViewController *sharedInstance = nil;
 
 -(void)createMenuLeft{
 
-    self.viewMenuLeft = [[MenuLeftView alloc] init:self.isUserManager];
+    self.viewMenuLeft = [[MenuLeftView alloc] init:self.isUserManager isAdmin:self.isAdmin];
 
     self.viewMenuLeft.backgroundColor = [UIColor whiteColor];
 

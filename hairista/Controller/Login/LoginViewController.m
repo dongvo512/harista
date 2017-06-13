@@ -22,6 +22,7 @@
 @interface LoginViewController (){
 
     BOOL isUserManger;
+    BOOL isAdmin;
     
     FindSalonViewController *vcFindSalon;
     AlbumImageViewController *vcAlbumImage;
@@ -163,9 +164,15 @@
             
                 isUserManger = YES;
             }
+            
+            if([Appdelegate_hairista.sessionUser.role isEqualToString:@"admin"]){
+                
+                isAdmin = YES;
+            }
         
             SlideMenuViewController *vcSlideMenu = [SlideMenuViewController sharedInstance];
             vcSlideMenu.isUserManager = isUserManger;
+            vcSlideMenu.isAdmin = isAdmin;
             [self presentViewController:vcSlideMenu animated:YES completion:nil];
             
         }

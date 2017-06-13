@@ -25,6 +25,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tblViewMenu;
 @property (nonatomic, strong) NSMutableArray *arrMenus;
+@property (weak, nonatomic) IBOutlet UIButton *btnUpdateUserInfo;
 
 
 @end
@@ -51,25 +52,27 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame isUserManager:(BOOL)isUserManager{
+- (id)initWithFrame:(CGRect)frame isUserManager:(BOOL)isUserManager isAdmin:(BOOL)isAdmin{
     
     self = [super initWithFrame:frame];
     
     if(self){
         
         self.isUserManager = isUserManager;
+        self.isAdmin = isAdmin;
         [self setup];
     }
     
     return self;
 }
-- (id) init:(BOOL)isUserManager{
+- (id) init:(BOOL)isUserManager isAdmin:(BOOL)isAdmin{
 
     self = [super init];
     
     if(self){
         
         self.isUserManager = isUserManager;
+        self.isAdmin = isAdmin;
         [self setup];
     }
     
@@ -86,6 +89,11 @@
     
     [self.tblViewMenu registerNib:[UINib nibWithNibName:@"MenuCell" bundle:nil] forCellReuseIdentifier:@"MenuCell"];
    
+    if(self.isAdmin){
+    
+        [self.btnUpdateUserInfo setUserInteractionEnabled:NO];
+    }
+    
     [self loadUserInfo];
     
     [self createListMenu];
@@ -181,6 +189,20 @@
         item_5.itemIconName = @"ic_comment";
         [self.arrMenus addObject:item_5];
         
+    }
+    else if (self.isAdmin){
+    
+        ItemMenu *item_1 = [[ItemMenu alloc] init];
+        item_1.itemName = @"Salons";
+        item_1.itemIconName = @"ic_salon";
+        
+        [self.arrMenus addObject:item_1];
+        
+        ItemMenu *item_2 = [[ItemMenu alloc] init];
+        item_2.itemName = @"Người dùng";
+        item_2.itemIconName = @"Ic_user";
+        
+        [self.arrMenus addObject:item_2];
     }
     else{
     

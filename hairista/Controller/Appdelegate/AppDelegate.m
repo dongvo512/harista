@@ -47,14 +47,20 @@
         
         Appdelegate_hairista.sessionUser = object;
         BOOL isUserManger = NO;
+        BOOL isAdmin = NO;
        
         if([Appdelegate_hairista.sessionUser.role isEqualToString:@"salon"]){
             
             isUserManger = YES;
         }
+        else if ([Appdelegate_hairista.sessionUser.role isEqualToString:@"admin"]){
+        
+            isAdmin = YES;
+        }
         
         SlideMenuViewController *vcSlideMenu = [SlideMenuViewController sharedInstance];
         vcSlideMenu.isUserManager = isUserManger;
+        vcSlideMenu.isAdmin = isAdmin;
         [self.window setRootViewController:vcSlideMenu];
 
     }

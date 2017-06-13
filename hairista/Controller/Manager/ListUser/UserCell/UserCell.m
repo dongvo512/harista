@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
 @property (weak, nonatomic) IBOutlet UILabel *lblPhone;
 
+
 @property (nonatomic, weak) SessionUser *user;
 @end
 

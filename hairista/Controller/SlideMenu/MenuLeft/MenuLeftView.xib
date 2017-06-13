@@ -18,6 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuLeftView">
             <connections>
+                <outlet property="btnUpdateUserInfo" destination="cXr-nn-zOR" id="3vK-OF-mfZ"/>
                 <outlet property="imgAvatar" destination="YbH-Vj-l9E" id="DRE-Ri-iXE"/>
                 <outlet property="lblEmail" destination="75B-DX-jID" id="qJu-X9-nh5"/>
                 <outlet property="lblFullName" destination="SGm-eD-oaw" id="TKS-IE-IDe"/>

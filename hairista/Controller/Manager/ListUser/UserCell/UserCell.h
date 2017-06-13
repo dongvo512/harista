@@ -13,6 +13,7 @@
 @interface UserCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *btnAddUser;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthContraintButtonAdd;
 @property (nonatomic, weak) id delegate;
 -(void)setDataForCell:(SessionUser *)user;
 

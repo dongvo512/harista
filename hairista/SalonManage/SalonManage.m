@@ -948,4 +948,88 @@ static SalonManage *sharedInstance = nil;
     }];
 }
 
+-(void)updateUserToSalon:(SessionUser *)user dataApiResult:(DataAPIResult)dataApiResult{
+
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    [dic setObject:user.name forKey:@"name"];
+    
+    [dic setObject:@"salon" forKey:@"role"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@/update",URL_PUT_SALON_UPDATE_SHOWONBOARD,user.idUser];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_PUT withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateUserToSalon", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateUserToSalon" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            dataApiResult(nil, @"OK");
+            
+        }
+    }];
+}
+
+-(void)updateSalonToUser:(Salon *)salon dataApiResult:(DataAPIResult)dataApiResult{
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    [dic setObject:salon.name forKey:@"name"];
+    
+    [dic setObject:@"member" forKey:@"role"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@/update",URL_PUT_SALON_UPDATE_SHOWONBOARD,salon.idSalon];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_PUT withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateSalonToUser", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateSalonToUser" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            dataApiResult(nil, @"OK");
+            
+        }
+    }];
+}
+-(void)updateSalonOnBoard:(Salon *)salon dataApiResult:(DataAPIResult)dataApiResult{
+
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    [dic setObject:salon.name forKey:@"name"];
+    
+    if([salon.isShowOnBoard boolValue]){
+    
+        [dic setObject:salon.isShowOnBoard forKey:@"isShowOnBoard"];
+    }
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@/update",URL_PUT_SALON_UPDATE_SHOWONBOARD,salon.idSalon];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_PUT withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateShowOnBoardSalon", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateShowOnBoardSalon" code:1 userInfo:userInfo];
+            dataApiResult(error, nil);
+        }
+        else{
+            
+            dataApiResult(nil, @"OK");
+            
+        }
+    }];
+
+}
+
 @end

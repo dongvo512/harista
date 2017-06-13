@@ -207,3 +207,5 @@
 
 #define URL_DELETE_COMMENTS @"https://salonhair.herokuapp.com/api/v1/comments/"
 
+#define URL_PUT_SALON_UPDATE_SHOWONBOARD @"https://salonhair.herokuapp.com/api/v1/users/"
+
