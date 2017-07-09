@@ -151,6 +151,8 @@
         return;
     }
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
         NSData *data= nil;
     
         imgCurr = [self fixrotation:imgCurr];
@@ -172,12 +174,12 @@
         }
     
     Appdelegate_hairista.progressCurr =  [[ImgurAnonymousAPIClient client] uploadImageData:data
-                                                                              withFilename:[NSString stringWithFormat:@"%@.jpg",title]
+                                                                              withFilename:[NSString stringWithFormat:[Common getStringDisplayFormDate:[NSDate date] andFormatString:@"dd-MM-yyyy-HH-mm-ss"],title]
                                                                          completionHandler:^(NSURL *imgurURL, NSError *error) {
                                                                              
                                                                              if(error){
-                                                                             
-                                                                             [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:^(UIAlertAction *alertAction) {
+                                                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                             [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:@"Đã dừng upload hình ảnh" buttonClick:^(UIAlertAction *alertAction) {
                                                                                  
                                                                              [Appdelegate_hairista closeProgress];
                                                                              
@@ -199,13 +201,21 @@
 }
 -(void)uploadImageForSalon:(NSString *)urlImage{
 
-    [[SalonManage sharedInstance] uploadUrlImageForSalon:urlImage name:self.tfImageName.text idSalon:salonCurr.idSalon dataResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] uploadUrlImageForSalon:urlImage name:self.tfImageName.text idSalon:salonCurr.idSalon dataResult:^(NSError *error, id idObject, NSString *strError) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
             
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
             
         }else{
+            
+            if([[self delegate] respondsToSelector:@selector(finishUploadImage)]){
+            
+                [[self delegate] finishUploadImage];
+            }
+            
             NSString *mesg = [NSString stringWithFormat:@"Hình ảnh của bạn đã được chia sẽ trên Salon %@",salonCurr.name];
             
             [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:mesg buttonClick:nil];

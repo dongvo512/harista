@@ -93,13 +93,13 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[AuthenticateManage sharedInstance] changePassword:self.tfPassword.text confirmPassword:self.tfConfirmPassword.text dataResult:^(NSError *error, id idObject) {
+    [[AuthenticateManage sharedInstance] changePassword:self.tfPassword.text confirmPassword:self.tfConfirmPassword.text dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
         
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         

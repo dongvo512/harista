@@ -59,11 +59,11 @@
 
 -(void)deleteComment:(Comment *)comment{
 
-    [[SalonManage sharedInstance] deleteComment:comment.idComment dataApiResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] deleteComment:comment.idComment dataApiResult:^(NSError *error, id idObject, NSString *strError) {
         
         if(error){
         
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         
@@ -83,7 +83,7 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[SalonManage sharedInstance] getListCommentSalon:Appdelegate_hairista.sessionUser.idUser page:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListCommentSalon:Appdelegate_hairista.sessionUser.idUser page:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         isLoading = NO;
         
@@ -91,7 +91,7 @@
         
         if(error){
             
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             

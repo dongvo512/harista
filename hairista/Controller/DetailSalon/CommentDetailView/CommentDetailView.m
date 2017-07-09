@@ -119,13 +119,13 @@
     
     [MBProgressHUD showHUDAddedTo:self animated:YES];
     
-    [[SalonManage sharedInstance] sendMessage:salonCurr.idSalon message:self.txtView.text rate:[NSString stringWithFormat:@"%ld",(long)countStarSelected] dataResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] sendMessage:salonCurr.idSalon message:self.txtView.text rate:[NSString stringWithFormat:@"%ld",(long)countStarSelected] dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self animated:YES];
         
         if(error){
         
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         
@@ -133,6 +133,9 @@
             
             if(comment){
                 
+                NSInteger totalComment = salonCurr.totalComment.integerValue + 1;
+                
+                salonCurr.totalComment = [NSString stringWithFormat:@"%ld",totalComment];
                 comment.user = Appdelegate_hairista.sessionUser;
                 
                 if([[self delegate] respondsToSelector:@selector(commented:)]){

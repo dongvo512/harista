@@ -215,11 +215,11 @@ static BookingManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorCreateBooking", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorCreateBooking" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
         }
     }];
     
@@ -236,13 +236,13 @@ static BookingManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorBookingOfSalon", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorBookingOfSalon" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrData = [self parseBooking:responseDataObject];
             
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, arrData, stringError);
         }
     }];
 
@@ -259,13 +259,13 @@ static BookingManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorBookingOfUser", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorBookingOfUser" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrData = [self parseBooking:responseDataObject];
             
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, arrData, stringError);
         }
     }];
 }
@@ -281,13 +281,13 @@ static BookingManage *sharedInstance = nil;
                 NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorBookingOfMe", nil)};
     
                 NSError *error = [[NSError alloc]initWithDomain:@"ErrorBookingOfMe" code:1 userInfo:userInfo];
-                dataApiResult(error, nil);
+                dataApiResult(error, nil, stringError);
             }
             else{
     
                 NSMutableArray *arrData = [self parseBooking:responseDataObject];
     
-                dataApiResult(nil, arrData);
+                dataApiResult(nil, arrData, stringError);
             }
         }];
 
@@ -305,13 +305,13 @@ static BookingManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorDetailBooking", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorDetailBooking" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrData = [self parseListServiceFromBooking:responseDataObject];
             
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, arrData, stringError);
         }
     }];
 
@@ -331,13 +331,13 @@ static BookingManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateBooking", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateBooking" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
           //  NSMutableArray *arrData = [self parseListServiceFromBooking:responseDataObject];
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
         }
     }];
 }
@@ -352,13 +352,13 @@ static BookingManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorDeleteBookingDetail", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorDeleteBookingDetail" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             //  NSMutableArray *arrData = [self parseListServiceFromBooking:responseDataObject];
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
         }
     }];
 }
@@ -375,13 +375,13 @@ static BookingManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorInsertBookingDetail", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorInsertBookingDetail" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             //  NSMutableArray *arrData = [self parseListServiceFromBooking:responseDataObject];
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
         }
     }];
 }

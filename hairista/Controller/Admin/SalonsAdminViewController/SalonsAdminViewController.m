@@ -66,13 +66,13 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[SalonManage sharedInstance] updateSalonToUser:salon dataApiResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] updateSalonToUser:salon dataApiResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
         
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         
@@ -92,13 +92,13 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[SalonManage sharedInstance] updateSalonOnBoard:salon dataApiResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] updateSalonOnBoard:salon dataApiResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -115,14 +115,14 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     isLoadingData = YES;
     
-    [[SalonManage sharedInstance] getListSalonNearBy:@"" longLocation:@"" pageindex:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM provinceid:@"" district:@"" name:keyword dataApiResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListSalonNearBy:@"" longLocation:@"" pageindex:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM provinceid:@"" district:@"" name:keyword dataApiResult:^(NSError *error, id idObject, NSString *strError) {
         
         isLoadingData = NO;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -146,14 +146,14 @@
     
     isLoadingData = YES;
     
-    [[SalonManage sharedInstance] getListSalonNearBy:@"" longLocation:@"" pageindex:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM provinceid:@"" district:@"" name:keyword dataApiResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListSalonNearBy:@"" longLocation:@"" pageindex:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM provinceid:@"" district:@"" name:keyword dataApiResult:^(NSError *error, id idObject, NSString *strError) {
         
         isLoadingData = NO;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             

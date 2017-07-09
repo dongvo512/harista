@@ -280,7 +280,7 @@
     
     
     Appdelegate_hairista.progressCurr =  [[ImgurAnonymousAPIClient client] uploadImageData:data
-                                                                              withFilename:@"image.jpg"
+                                                                              withFilename:[Common getStringDisplayFormDate:[NSDate date] andFormatString:@"dd-MM-yyyy-HH-mm-ss"]
                                                                          completionHandler:^(NSURL *imgurURL, NSError *error) {
                                                                              
                                                                              [Appdelegate_hairista closeProgress];

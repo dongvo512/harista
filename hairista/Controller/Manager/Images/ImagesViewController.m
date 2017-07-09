@@ -74,6 +74,7 @@
 
     [controller.navigationController popViewControllerAnimated:YES];
     indexPage = 1;
+    isFullData = NO;
     [self reloadListSalon];
 }
 #pragma mark - GetData
@@ -132,7 +133,7 @@
     
     isLoading = YES;
     
-    [[SalonManage sharedInstance] getListImageSalon:Appdelegate_hairista.sessionUser.idUser page:@"1" limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListImageSalon:Appdelegate_hairista.sessionUser.idUser page:@"1" limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -140,7 +141,7 @@
         
         if(error){
             
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -169,13 +170,13 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
    
-    [[SalonManage sharedInstance] updateMultiIndexImage:[self createListIndexDic] dataApiResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] updateMultiIndexImage:[self createListIndexDic] dataApiResult:^(NSError *error, id idObject, NSString *strError) {
        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
       
         if(error){
         
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         
@@ -190,7 +191,7 @@
     
     isLoading = YES;
     
-    [[SalonManage sharedInstance] getListImageSalon:Appdelegate_hairista.sessionUser.idUser page:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListImageSalon:Appdelegate_hairista.sessionUser.idUser page:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -198,7 +199,7 @@
         
         if(error){
             
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -221,13 +222,13 @@
 -(void)deleteImage:(Image *)image{
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[SalonManage sharedInstance] deleteImage:image.idImage dataApiResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] deleteImage:image.idImage dataApiResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
        
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         

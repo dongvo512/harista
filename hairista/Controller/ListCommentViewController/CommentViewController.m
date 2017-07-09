@@ -84,6 +84,11 @@
 #pragma mark - CommentDetailViewDelegate
 -(void)commented:(Comment *)comment{
 
+    if([[self delegate] respondsToSelector:@selector(finishCommented)]){
+    
+        [[self delegate] finishCommented];
+    }
+    
     [self.arrComments insertObject:comment atIndex:0];
     
     [self.tblView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
@@ -100,14 +105,14 @@
     
     isLoading = YES;
     
-    [[SalonManage sharedInstance] getListCommentSalon:salonCurr.idSalon page:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListCommentSalon:salonCurr.idSalon page:[NSString stringWithFormat:@"%ld",(long)pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         isLoading = NO;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
         
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         

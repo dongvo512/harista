@@ -37,11 +37,24 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAe-om-f5i">
+                    <rect key="frame" x="337" y="26" width="26" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="bwR-UM-PY9"/>
+                        <constraint firstAttribute="height" constant="26" id="rXE-mN-w7G"/>
+                    </constraints>
+                    <state key="normal" image="ic_save"/>
+                    <connections>
+                        <action selector="touchBtnSave:" destination="-1" eventType="touchUpInside" id="4cR-0L-UHn"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="qzt-Dd-dKx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="9lF-JN-agV"/>
+                <constraint firstItem="xAe-om-f5i" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="26" id="AkA-I2-cwF"/>
+                <constraint firstAttribute="trailing" secondItem="xAe-om-f5i" secondAttribute="trailing" constant="12" id="FGj-uT-w8J"/>
                 <constraint firstItem="qzt-Dd-dKx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="KKJ-8w-hCJ"/>
                 <constraint firstAttribute="bottom" secondItem="m8Q-AK-cU3" secondAttribute="bottom" id="VgL-vp-QGf"/>
                 <constraint firstItem="m8Q-AK-cU3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Xe4-FD-NHG"/>
@@ -60,4 +73,7 @@
             </connections>
         </tapGestureRecognizer>
     </objects>
+    <resources>
+        <image name="ic_save" width="30" height="30"/>
+    </resources>
 </document>

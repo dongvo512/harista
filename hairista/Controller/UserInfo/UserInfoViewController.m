@@ -340,14 +340,14 @@
     
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
-        [[AuthenticateManage sharedInstance] updateUserInfo:dic dataResult:^(NSError *error, id idObject) {
+        [[AuthenticateManage sharedInstance] updateUserInfo:dic dataResult:^(NSError *error, id idObject, NSString *strError) {
             
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             
             
             if(error){
                 
-                [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+                [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
             }
             
             else{
@@ -583,7 +583,7 @@
    
     
    Appdelegate_hairista.progressCurr =  [[ImgurAnonymousAPIClient client] uploadImageData:data
-                                         withFilename:@"image.jpg"
+                                         withFilename:[Common getStringDisplayFormDate:[NSDate date] andFormatString:@"dd-MM-yyyy-HH-mm-ss"]
                                                                         completionHandler:^(NSURL *imgurURL, NSError *error) {
                                                                             
                                                                             [Appdelegate_hairista closeProgress];
@@ -631,11 +631,11 @@
     
     if(dic){
         
-        [[AuthenticateManage sharedInstance] updateUserInfo:dic dataResult:^(NSError *error, id idObject) {
+        [[AuthenticateManage sharedInstance] updateUserInfo:dic dataResult:^(NSError *error, id idObject, NSString *strError) {
             
             if(error){
                 
-                [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+                [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
             }
             else{
                 

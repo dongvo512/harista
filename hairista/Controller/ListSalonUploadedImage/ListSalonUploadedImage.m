@@ -51,13 +51,13 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[SalonManage sharedInstance] getListSalonUpdateImage:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListSalonUpdateImage:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
         
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         

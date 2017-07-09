@@ -54,7 +54,7 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     
-    [[BookingManage sharedInstance] getListBookingOfMe:[NSString stringWithFormat:@"%ld",pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] getListBookingOfMe:[NSString stringWithFormat:@"%ld",pageIndex] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -88,7 +88,7 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[BookingManage sharedInstance] getListBookingOfMe:@"1" limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] getListBookingOfMe:@"1" limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         

@@ -150,13 +150,13 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[BookingManage sharedInstance] updateBooking:bookingCurr.idBooking.stringValue status:STATUS_DONE dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] updateBooking:bookingCurr.idBooking.stringValue status:STATUS_DONE dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
         
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         
@@ -180,13 +180,13 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[BookingManage sharedInstance] updateBooking:bookingCurr.idBooking.stringValue status:STATUS_CANCEL dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] updateBooking:bookingCurr.idBooking.stringValue status:STATUS_CANCEL dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -260,13 +260,13 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[BookingManage sharedInstance] insertServiceForBookingOfUser:bookingCurr.idBooking.stringValue dicbody:dicInsert dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] insertServiceForBookingOfUser:bookingCurr.idBooking.stringValue dicbody:dicInsert dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -304,7 +304,7 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[BookingManage sharedInstance] getDetailBooking:bookingCurr.idBooking.stringValue dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] getDetailBooking:bookingCurr.idBooking.stringValue dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -312,7 +312,7 @@
         
         if(error){
         
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         
@@ -334,13 +334,13 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[BookingManage sharedInstance] deleteBookingDetailByBookingID:bookingCurr.idBooking.stringValue idBookingDetail:service.idBookingDetail.stringValue dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] deleteBookingDetailByBookingID:bookingCurr.idBooking.stringValue idBookingDetail:service.idBookingDetail.stringValue dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
        
-            [Common showAlert:self title:@"Thông báo" message: error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message: strError buttonClick:nil];
         }
         else{
         

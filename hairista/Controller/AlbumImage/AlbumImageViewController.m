@@ -91,7 +91,7 @@
     
     isLoading = YES;
     
-    [[SalonManage sharedInstance] getListImageSalon:salonCurr.idSalon page:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListImageSalon:salonCurr.idSalon page:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -99,7 +99,7 @@
         
         if(error){
             
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             

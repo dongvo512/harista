@@ -80,14 +80,14 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     isLoading = YES;
     
-    [[BookingManage sharedInstance] getListBookingOfUser:user.idUser indexPage:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] getListBookingOfUser:user.idUser indexPage:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         isLoading = NO;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
         
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         
@@ -108,14 +108,14 @@
     isLoading = YES;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[BookingManage sharedInstance] getListBookingOfUser:user.idUser indexPage:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] getListBookingOfUser:user.idUser indexPage:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         isLoading = NO;
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             

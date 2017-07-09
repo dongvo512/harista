@@ -108,13 +108,13 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[SalonManage sharedInstance] getListSalonNearBy:(isSwitchOnCurr)?latLocation:@"" longLocation:(isSwitchOnCurr)?longLocation:@"" pageindex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM provinceid:provinceSelected.idProvince.stringValue district:districtSelected.idDistrict.stringValue name:@"" dataApiResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListSalonNearBy:(isSwitchOnCurr)?latLocation:@"" longLocation:(isSwitchOnCurr)?longLocation:@"" pageindex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM provinceid:provinceSelected.idProvince.stringValue district:districtSelected.idDistrict.stringValue name:@"" dataApiResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
         
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -138,13 +138,13 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[SalonManage sharedInstance] getListSalonNearBy:(isSwitchOnCurr)?latLocation:@"" longLocation:(isSwitchOnCurr)?longLocation:@"" pageindex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM provinceid:provinceSelected.idProvince.stringValue district:districtSelected.idDistrict.stringValue name:@"" dataApiResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListSalonNearBy:(isSwitchOnCurr)?latLocation:@"" longLocation:(isSwitchOnCurr)?longLocation:@"" pageindex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM provinceid:provinceSelected.idProvince.stringValue district:districtSelected.idDistrict.stringValue name:@"" dataApiResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             

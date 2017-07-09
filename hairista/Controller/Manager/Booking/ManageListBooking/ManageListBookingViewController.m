@@ -96,13 +96,13 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
     
    NSString *today = [Common getStringDisplayFormDate:[NSDate date] andFormatString:@"yyyy-MM-dd"];
     
-    [[BookingManage sharedInstance] getListBookingOfSalon:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:today endDate:today dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] getListBookingOfSalon:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:today endDate:today dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
             
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -125,7 +125,7 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
 //        
 //        if(error){
 //            
-//            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+//            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
 //        }
 //        else{
 //            
@@ -147,13 +147,13 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
     
      Date *dateWeek = [Common getStartEndDate:NSCalendarUnitMonth formatOutPut:@"yyyy-MM-dd"];
     
-    [[BookingManage sharedInstance] getListBookingOfSalon:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:dateWeek.startDate endDate:dateWeek.endDate dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] getListBookingOfSalon:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:dateWeek.startDate endDate:dateWeek.endDate dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
             
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -175,13 +175,13 @@ typedef NS_ENUM(NSInteger, TypeBooking) {
     
     Date *dateWeek = [Common getStartEndDate:NSCalendarUnitWeekOfMonth formatOutPut:@"yyyy-MM-dd"];
     
-    [[BookingManage sharedInstance] getListBookingOfSalon:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:dateWeek.startDate endDate:dateWeek.endDate dataResult:^(NSError *error, id idObject) {
+    [[BookingManage sharedInstance] getListBookingOfSalon:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM startDate:dateWeek.startDate endDate:dateWeek.endDate dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
         
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         

@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPhone;
 @property (weak, nonatomic) IBOutlet UILabel *lblEmail;
 @property (weak, nonatomic) IBOutlet UILabel *lblOpenTime;
-@property (weak, nonatomic) IBOutlet UILabel *lblTotalComment;
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthContraintStar;
 @property (nonatomic, strong) Salon *salonCurr;
@@ -60,6 +60,7 @@
     
     self.lblPhone.text = [Common convertPhone84:salon.phone];
     
+    self.lblEmail.text = salon.email;
     
     if(self.salonCurr.isFavorite){
     

@@ -11,8 +11,8 @@
 @class Salon;
 
 @interface SalonDetailViewController : UIViewController
-
+- (void)updateComent;
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil salon:(Salon *)salon;
 @property (nonatomic, weak) DetailSalonViewController *rootVC;
-
+-(void)getListImageSalon;
 @end

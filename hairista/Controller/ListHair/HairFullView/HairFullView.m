@@ -58,6 +58,14 @@
     
     
 }
+- (IBAction)touchBtnSave:(id)sender {
+   
+    if(self.imgViewHair.image){
+    
+        UIImageWriteToSavedPhotosAlbum(self.imgViewHair.image, nil, nil, nil);
+        [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:@"Đã lưu hình và máy của bạn" buttonClick:nil];
+    }
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

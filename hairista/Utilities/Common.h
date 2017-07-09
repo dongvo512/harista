@@ -16,7 +16,7 @@
 @interface Common : NSObject
 
 typedef void (^ButtonClick)(UIAlertAction *alertAction);
-typedef void (^DataAPIResult)(NSError *error, id idObject);
+typedef void (^DataAPIResult)(NSError *error, id idObject, NSString *strError);
 typedef void (^CallAPIResult)(BOOL isError, NSString *stringError, id responseDataObject);
 #pragma mark - System
 + (instancetype)sharedInstance;

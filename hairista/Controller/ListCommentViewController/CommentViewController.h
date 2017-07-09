@@ -13,5 +13,10 @@
 @interface CommentViewController : UIViewController
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil salon:(Salon *)salon;
+@property (nonatomic, weak) id delegate;
+@end
+@protocol CommentViewControllerDelegate <NSObject>
+
+-(void)finishCommented;
 
 @end

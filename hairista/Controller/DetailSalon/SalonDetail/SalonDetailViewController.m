@@ -82,6 +82,16 @@
 
 #pragma mark - Get data
 
+- (void)updateComent{
+
+    if(headerSalonView){
+    
+        NSInteger newComment = headerSalonView.lblTotalComment.text.integerValue +1;
+        
+        headerSalonView.lblTotalComment.text = [NSString stringWithFormat:@"%ld bình luận",newComment];
+    }
+}
+
 -(void)getDetailSalon{
 
     NSString *url = [NSString stringWithFormat:@"%@%@",URL_GET_DETAIL_SALON,salonCurr.idSalon];
@@ -94,11 +104,7 @@
         
         if(isError){
             
-            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorSalonDetail", nil)};
-            
-            NSError *error = [[NSError alloc]initWithDomain:@"ErrorSalonDetail" code:1 userInfo:userInfo];
-            
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:stringError buttonClick:nil];
            
         }
         else{
@@ -113,28 +119,56 @@
 
 }
 
--(void)getListImageSalon{
+-(void)loadMore{
 
     isLoading = YES;
     
-    [[SalonManage sharedInstance] getListImageSalon:salonCurr.idSalon page:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListImageSalon:salonCurr.idSalon page:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
+        
+        isLoading = NO;
+        
+        if(error){
+            
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
+        }
+        else{
+            
+            NSArray *arrData = idObject;
+            
+            if(arrData.count > 0){
+                
+                [self.arrImages addObjectsFromArray:arrData];
+                
+                [self.collectionView reloadData];
+            }
+            
+            if(arrData.count < LIMIT_ITEM.integerValue){
+                
+                isFullData = YES;
+            }
+        }
+    }];
+}
+
+-(void)getListImageSalon{
+
+    isLoading = YES;
+    indexPage = 1;
+    [[SalonManage sharedInstance] getListImageSalon:salonCurr.idSalon page:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         isLoading = NO;
         
         if(error){
         
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
             NSArray *arrData = idObject;
            
-            if(arrData.count > 0){
+            self.arrImages = [NSMutableArray arrayWithArray:arrData];
             
-                [self.arrImages addObjectsFromArray:arrData];
-                
-                [self.collectionView reloadData];
-            }
+            [self.collectionView reloadData];
             
             if(arrData.count < LIMIT_ITEM.integerValue){
             
@@ -186,18 +220,35 @@
         cell.lblImageName.text = img.name;
     }
     
-    [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    if(!img.heightImage){
+    
+        [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] placeholderImage:IMG_DEFAULT completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            img.heightImage = (SW -24)/2 * image.size.height/image.size.width;
+            //  [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
+            [self.collectionView.collectionViewLayout invalidateLayout];
+            
+        }];
+    }
+    else{
         
-        img.heightImage = (SW -24)/2 * image.size.height/image.size.width;
-      //  [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
-        [self.collectionView.collectionViewLayout invalidateLayout];
-    }];
+        [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] placeholderImage:IMG_DEFAULT completed:nil];
+        
+    }
+    
+    
+    
+//    [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        
+//        img.heightImage = (SW -24)/2 * image.size.height/image.size.width;
+//      //  [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
+//        [self.collectionView.collectionViewLayout invalidateLayout];
+//    }];
     
     if(indexPath.row == self.arrImages.count - 1 && !isFullData && !isLoading){
         
         indexPage ++;
         
-        [self getListImageSalon];
+        [self loadMore];
     }
     
     return cell;
@@ -237,11 +288,11 @@
         
         [btnCurr setImage:[UIImage imageNamed:@"ic_favorite_none"] forState:UIControlStateNormal];
         
-        [[SalonManage sharedInstance] deleteFavorite:salonCurr.idSalon dataApiResult:^(NSError *error, id idObject) {
+        [[SalonManage sharedInstance] deleteFavorite:salonCurr.idSalon dataApiResult:^(NSError *error, id idObject, NSString *strError) {
             
             if(error){
             
-                [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+                [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
             }
             else{
             
@@ -256,11 +307,11 @@
          [btnCurr setEnabled:NO];
          [btnCurr setImage:[UIImage imageNamed:@"ic_favorite"] forState:UIControlStateNormal];
         
-        [[SalonManage sharedInstance] favorite:salonCurr.idSalon dataApiResult:^(NSError *error, id idObject) {
+        [[SalonManage sharedInstance] favorite:salonCurr.idSalon dataApiResult:^(NSError *error, id idObject, NSString *strError) {
             
             if(error){
                 
-                [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+                [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
             }
             else{
                 

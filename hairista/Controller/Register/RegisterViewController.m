@@ -157,13 +157,13 @@
     
     NSDictionary *dicBody = @{@"phone":[self changePhoneNumber],@"password":self.tfPassword.text,@"password_confirmation":self.tfConfirmPass.text,@"name":self.tfFullName.text,@"email":self.tfEmail.text,@"homeAddress":self.tfAddress.text};
     
-    [[AuthenticateManage sharedInstance] registerUser:dicBody dataResult:^(NSError *error, id idObject) {
+    [[AuthenticateManage sharedInstance] registerUser:dicBody dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
         
-           [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:^(UIAlertAction *alertAction) {
+           [Common showAlert:self title:@"Thông báo" message:strError buttonClick:^(UIAlertAction *alertAction) {
                
            }];
             

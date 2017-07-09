@@ -11,7 +11,7 @@
 @class Salon;
 
 @interface HeaderSalonView : UICollectionReusableView
-
+@property (weak, nonatomic) IBOutlet UILabel *lblTotalComment;
 @property (nonatomic, weak) id delegate;
 -(void)setDataForView:(Salon *)salon;
 @property (weak, nonatomic) IBOutlet UIButton *btnFavourite;

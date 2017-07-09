@@ -135,13 +135,13 @@
     
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
-        [[AuthenticateManage sharedInstance] addUserForSalonByID:user.idUser dataResult:^(NSError *error, id idObject) {
+        [[AuthenticateManage sharedInstance] addUserForSalonByID:user.idUser dataResult:^(NSError *error, id idObject, NSString *strError) {
             
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             
             if(error){
             
-                [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+                [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
             }
             else{
                 
@@ -158,7 +158,7 @@
     
     isLoadingData = YES;
     
-    [[AuthenticateManage sharedInstance] searchListUserOfSalon:keyword pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPageSearchSalon] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[AuthenticateManage sharedInstance] searchListUserOfSalon:keyword pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPageSearchSalon] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         isLoadingData = NO;
         
@@ -166,7 +166,7 @@
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -197,7 +197,7 @@
     
     isLoadingData = YES;
     
-    [[AuthenticateManage sharedInstance] searchListUser:keyword pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPageSearchAll] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[AuthenticateManage sharedInstance] searchListUser:keyword pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPageSearchAll] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         isLoadingData = NO;
         
@@ -205,7 +205,7 @@
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -238,7 +238,7 @@
     
     isLoadingData = YES;
     
-    [[AuthenticateManage sharedInstance] searchListUser:self.searchBar.text pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPageSearchSalon] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[AuthenticateManage sharedInstance] searchListUser:self.searchBar.text pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPageSearchSalon] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         isLoadingData = NO;
         
@@ -246,7 +246,7 @@
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -275,7 +275,7 @@
     
     isLoadingData = YES;
     
-    [[AuthenticateManage sharedInstance] searchListUser:self.searchBar.text pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPageSearchAll] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject) {
+    [[AuthenticateManage sharedInstance] searchListUser:self.searchBar.text pageIndex:[NSString stringWithFormat:@"%ld",(long)indexPageSearchAll] limit:LIMIT_ITEM dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         isLoadingData = NO;
         
@@ -283,7 +283,7 @@
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             

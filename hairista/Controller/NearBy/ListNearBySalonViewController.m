@@ -127,14 +127,14 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     
-    [[SalonManage sharedInstance] getListSalonNearBy:laitude longLocation:longitude pageindex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM provinceid:@"" district:@"" name:@"" dataApiResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListSalonNearBy:laitude longLocation:longitude pageindex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM provinceid:@"" district:@"" name:@"" dataApiResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
@@ -163,14 +163,14 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     
-    [[SalonManage sharedInstance] getListSalonNearBy:laitude longLocation:longitude pageindex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM provinceid:@"" district:@"" name:@"" dataApiResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListSalonNearBy:laitude longLocation:longitude pageindex:[NSString stringWithFormat:@"%ld",(long)indexPage] limit:LIMIT_ITEM provinceid:@"" district:@"" name:@"" dataApiResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         
         if(error){
             
-            [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             

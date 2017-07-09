@@ -95,6 +95,7 @@
     self.vcSalonDetal.rootVC = self;
     
     self.vcComment = [[CommentViewController alloc] initWithNibName:@"CommentViewController" bundle:nil salon:salon];
+    self.vcComment.delegate = self;
     
     self.vcService = [[ServicesViewController alloc] initWithNibName:@"ServicesViewController" bundle:nil isSelectItem:NO arrSelected:nil salon:salon.idSalon];
     
@@ -171,14 +172,31 @@
 //    }];
 //    
 //}
+#pragma mark - CommentViewControllerDelegate
+-(void)finishCommented{
 
-
+    if(self.vcSalonDetal){
+    
+        [self.vcSalonDetal updateComent];
+    }
+}
 
 #pragma mark - DKScrollingTabControllerDelegate
 - (void)ScrollingTabController:(DKScrollingTabController*)controller selection:(NSUInteger)selection{
     
     CGPoint scrollPoint = CGPointMake(selection * self.scrollMaster.frame.size.width, 0);
     [self.scrollMaster setContentOffset:scrollPoint animated:YES];
+}
+
+#pragma mark - ChooseImageViewDelegate
+
+-(void)finishUploadImage{
+
+    if(self.vcSalonDetal){
+    
+        [self.vcSalonDetal getListImageSalon];
+    }
+    
 }
 
 #pragma mark - UIScrollView Delegate
@@ -282,7 +300,7 @@
   //  self.imgAvatar.image = image;
     
     ChooseImageView *chooseImageView = [[ChooseImageView alloc] initWithFrame:CGRectMake(0, 0, SW, SH) imgName:fileName image:image salon:salon];
-    
+    chooseImageView.delegate = self;
     [UIView transitionWithView:self.view duration:0.5
                        options:UIViewAnimationOptionTransitionCrossDissolve //change to whatever animation you like
                     animations:^ {

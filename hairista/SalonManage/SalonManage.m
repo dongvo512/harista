@@ -400,14 +400,14 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUploadUrlImageSalon", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorUploadUrlImageSalon" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil,stringError);
         }
         else{
             
             NSError *error = nil;
             Image *img = [self uploadUrlImageForSalon:responseDataObject error:&error];
             
-            dataApiResult(error, img);
+            dataApiResult(error, img, stringError);
         }
     }];
     
@@ -424,13 +424,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorGetListSalonImages", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorGetListSalonImages" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrSalon = [self parseListImageSalon:responseDataObject];
             
-            dataApiResult(nil, arrSalon);
+            dataApiResult(nil, arrSalon, stringError);
         }
     }];
 }
@@ -447,13 +447,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorGetListSalon", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorGetListSalon" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrSalon = [self parseListSalons:responseDataObject];
             
-            dataApiResult(nil, arrSalon);
+            dataApiResult(nil, arrSalon, stringError);
         }
     }];
 
@@ -470,13 +470,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorGetListCommentSalon", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorGetListCommentSalon" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrCommentSalon = [self parseListCommentSalon:responseDataObject];
             
-            dataApiResult(nil, arrCommentSalon);
+            dataApiResult(nil, arrCommentSalon, stringError);
         }
     }];
     
@@ -496,13 +496,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorSendCommentSalon", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorSendCommentSalon" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             Comment *comment = [self parsesendMessage:responseDataObject];
             
-            dataApiResult(nil, comment);
+            dataApiResult(nil, comment, stringError);
         }
     }];
 }
@@ -516,13 +516,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorCategoriesProduct", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorCategoriesProduct" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
            NSArray *arrData = [self parseListService:responseDataObject];
             
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, arrData, stringError);
             
         }
     }];
@@ -540,11 +540,11 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorFavoriteSalon", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorFavoriteSalon" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
             
         }
     }];
@@ -561,13 +561,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorListFavoriteSalon", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorListFavoriteSalon" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrData = [self parseListSalonsFavorite:responseDataObject];
             
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, arrData, stringError);
             
         }
     }];
@@ -585,11 +585,11 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorDeleteFavorite", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorDeleteFavorite" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
             
         }
     }];
@@ -606,11 +606,11 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorFavorite", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorFavorite" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
             
         }
     }];
@@ -626,13 +626,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorListProvince", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorListProvince" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrData = [self parseListProvince:responseDataObject];
             
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, arrData, stringError);
             
         }
     }];
@@ -650,13 +650,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorListDistrict", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorListDistrict" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrData = [self parseListDistrict:responseDataObject];
             
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, arrData, stringError);
             
         }
     }];
@@ -699,13 +699,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorListNearby", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorListNearby" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrData = [self parseListSalons:responseDataObject];
             
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, arrData, stringError);
             
         }
     }];
@@ -722,11 +722,11 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUploadMultiImage", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorUploadMultiImage" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
             
         }
     }];
@@ -741,12 +741,12 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorSalonUpdateImage", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorSalonUpdateImage" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSArray *arrSalon = [self parseListSalons:responseDataObject];
-            dataApiResult(nil, arrSalon);
+            dataApiResult(nil, arrSalon, stringError);
             
         }
     }];
@@ -762,13 +762,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorServiceBySalonID", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorServiceBySalonID" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSArray *arrData = [self parseListService:responseDataObject];
             
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, arrData, stringError);
             
         }
     }];
@@ -788,13 +788,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorCreateCategory", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorCreateCategory" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             Category *cat = [self parseCategory:responseDataObject];
             
-            dataApiResult(nil, cat);
+            dataApiResult(nil, cat, stringError);
             
         }
     }];
@@ -814,13 +814,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateCategory", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateCategory" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             Category *cat = [self parseCategory:responseDataObject];
             
-            dataApiResult(nil, cat);
+            dataApiResult(nil, cat, stringError);
             
         }
     }];
@@ -839,11 +839,11 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateService", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateService" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
             
             //Category *cat = [self parseCategory:responseDataObject];
             
@@ -864,13 +864,13 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorServicesByCategoryID", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorServicesByCategoryID" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             Category *cat = [self parseCategory:responseDataObject];
             
-            dataApiResult(nil, cat);
+            dataApiResult(nil, cat, stringError);
             
         }
     }];
@@ -888,11 +888,11 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorCreateService", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorCreateService" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-             dataApiResult(nil, @"OK");
+             dataApiResult(nil, @"OK", stringError);
             
             //Category *cat = [self parseCategory:responseDataObject];
             
@@ -915,11 +915,11 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorDeleteImage", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorDeleteImage" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
             
         }
     }];
@@ -938,11 +938,11 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorDeleteComment", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorDeleteComment" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
             
         }
     }];
@@ -965,11 +965,11 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateUserToSalon", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateUserToSalon" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
             
         }
     }];
@@ -992,11 +992,11 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateSalonToUser", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateSalonToUser" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
             
         }
     }];
@@ -1021,11 +1021,11 @@ static SalonManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateShowOnBoardSalon", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateShowOnBoardSalon" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
             
         }
     }];

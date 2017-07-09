@@ -251,14 +251,14 @@ static AuthenticateManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUploadUrlImage", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorUploadUrlImage" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSError *error = nil;
             NSString *idImage = [self parseuploadUrlImage:responseDataObject error:&error];
             
-            dataApiResult(error, idImage);
+            dataApiResult(error, idImage, stringError);
         }
     }];
 
@@ -274,11 +274,11 @@ static AuthenticateManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorRegister", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorRegister" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
         
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
         }
     }];
     
@@ -294,12 +294,12 @@ static AuthenticateManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateUser", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateUser" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             [self parseUpdateUserInfo:responseDataObject];
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
         }
     }];
 
@@ -316,13 +316,13 @@ static AuthenticateManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorLogin", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorLogin" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
              SessionUser *user = [self parseIntroductionScreen:responseDataObject];
             
-            dataApiResult(nil, user);
+            dataApiResult(nil, user, stringError);
         }
     }];
     
@@ -339,11 +339,11 @@ static AuthenticateManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorChangePassword", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorChangePassword" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
         }
     }];
 }
@@ -360,13 +360,13 @@ static AuthenticateManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorChangePassword", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorChangePassword" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrData = [self parseListImageUser:responseDataObject];
             
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, arrData, stringError);
         }
     }];
 
@@ -385,13 +385,13 @@ static AuthenticateManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorSearchUserSalon", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorSearchUserSalon" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrData = [self parseListUserSearch:responseDataObject];
             
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, arrData, stringError);
         }
     }];
 
@@ -410,13 +410,13 @@ static AuthenticateManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorSearchUser", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorSearchUser" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
             NSMutableArray *arrData = [self parseListUserSearch:responseDataObject];
             
-            dataApiResult(nil, arrData);
+            dataApiResult(nil, arrData, stringError);
         }
     }];
 
@@ -432,13 +432,13 @@ static AuthenticateManage *sharedInstance = nil;
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorAddUserForSalon", nil)};
             
             NSError *error = [[NSError alloc]initWithDomain:@"ErrorAddUserForSalon" code:1 userInfo:userInfo];
-            dataApiResult(error, nil);
+            dataApiResult(error, nil, stringError);
         }
         else{
             
 //            NSMutableArray *arrData = [self parseListUserSearch:responseDataObject];
 //            
-            dataApiResult(nil, @"OK");
+            dataApiResult(nil, @"OK", stringError);
         }
     }];
 }

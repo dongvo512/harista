@@ -76,7 +76,7 @@
             
             
            NSProgress *progress =  [[ImgurAnonymousAPIClient client] uploadImageData:data
-                                                                                      withFilename:@"image.jpg"
+                                                                                      withFilename:[Common getStringDisplayFormDate:[NSDate date] andFormatString:@"dd-MM-yyyy-HH-mm-ss"]
                                                                                  completionHandler:^(NSURL *imgurURL, NSError *error) {
                                                                                     
                                                                                      if(error){
@@ -108,13 +108,13 @@
 
 -(void)uploadImageForSalon:(ImageUploadObject *)img{
     
-    [[SalonManage sharedInstance] uploadUrlImageForSalon:img.urlImage name:img.name idSalon:Appdelegate_hairista.sessionUser.idUser     dataResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] uploadUrlImageForSalon:img.urlImage name:img.name idSalon:Appdelegate_hairista.sessionUser.idUser     dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         if(error){
             
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
             
         }
         else{

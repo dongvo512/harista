@@ -89,13 +89,13 @@
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[SalonManage sharedInstance] getListServiceBySalonID:salonCurrID dataApiResult:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListServiceBySalonID:salonCurrID dataApiResult:^(NSError *error, id idObject, NSString *strError) {
        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
         
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
         

@@ -12,5 +12,10 @@
 @interface ChooseImageView : UIView
 
 - (id)initWithFrame:(CGRect)frame imgName:(NSString *)aImgName image:(UIImage *)image salon:(Salon *)salon;
+@property (nonatomic, weak) id delegate;
+@end
+@protocol ChooseImageViewDelegate <NSObject>
+
+-(void)finishUploadImage;
 
 @end

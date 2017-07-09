@@ -85,7 +85,7 @@
     
         UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:@"Thông báo" message:@"Bạn chưa chọn thời gian" preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"Đồng ý" style:UIAlertActionStyleDefault handler:nil];
         
         [vcAlert addAction:Oke];
         
@@ -100,7 +100,7 @@
         
         UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:@"Thông báo" message:@"Bạn chưa chọn dịch vụ" preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"Đồng ý" style:UIAlertActionStyleDefault handler:nil];
         
         
         [vcAlert addAction:Oke];
@@ -129,13 +129,13 @@
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
-        [[BookingManage sharedInstance] createBooking:dic idSalon:salonCurr.idSalon dataResult:^(NSError *error, id idObject) {
+        [[BookingManage sharedInstance] createBooking:dic idSalon:salonCurr.idSalon dataResult:^(NSError *error, id idObject, NSString *strError) {
             
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             
             if(error){
             
-                [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+                [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
             }
             else{
                
@@ -311,7 +311,7 @@
     
     UIAlertController *vcAlert = [UIAlertController alertControllerWithTitle:@"Thông báo" message:@"Thời gian không được nhỏ hơn thời gian hiện tại" preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *Oke = [UIAlertAction actionWithTitle:@"Đồng ý" style:UIAlertActionStyleDefault handler:nil];
     
     
     [vcAlert addAction:Oke];

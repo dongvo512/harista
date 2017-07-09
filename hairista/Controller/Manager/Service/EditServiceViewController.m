@@ -62,13 +62,13 @@
     
     if(!isEdit){
         
-        [[SalonManage sharedInstance] createCategory:catName dataApiResult:^(NSError *error, id idObject) {
+        [[SalonManage sharedInstance] createCategory:catName dataApiResult:^(NSError *error, id idObject, NSString *strError) {
             
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             
             if(error){
                 
-                [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+                [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
             }
             else{
                 
@@ -85,13 +85,13 @@
     }
     else{
     
-        [[SalonManage sharedInstance] updateCategory:catSelected.idCategory nameCat:catName dataApiResult:^(NSError *error, id idObject) {
+        [[SalonManage sharedInstance] updateCategory:catSelected.idCategory nameCat:catName dataApiResult:^(NSError *error, id idObject, NSString *strError) {
             
             [MBProgressHUD hideHUDForView:self.view animated:YES];
 
             if(error){
             
-                [Common showAlert:self title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+                [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
             }
             else{
             
@@ -114,13 +114,13 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[SalonManage sharedInstance] getListCategoriesProduct:^(NSError *error, id idObject) {
+    [[SalonManage sharedInstance] getListCategoriesProduct:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if(error){
             
-            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:error.localizedDescription buttonClick:nil];
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
         }
         else{
             
