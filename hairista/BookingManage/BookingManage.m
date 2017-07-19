@@ -47,6 +47,7 @@ static BookingManage *sharedInstance = nil;
         booking.startDate = CHECK_NIL([dic objectForKey:@"startDate"]);
         booking.status = CHECK_NIL([dic objectForKey:@"status"]);
         booking.totalPrice = CHECK_NIL([dic objectForKey:@"totalPrice"]);
+        booking.note = CHECK_NIL([dic objectForKey:@"note"]);
         booking.updatedAt = CHECK_NIL([dic objectForKey:@"updatedAt"]);
         booking.userId = CHECK_NIL([dic objectForKey:@"userId"]);
         
@@ -317,6 +318,9 @@ static BookingManage *sharedInstance = nil;
 
 }
 
+//-(void)updateNoteBooking:()
+
+
 -(void)updateBooking:(NSString *)idBooking status:(NSString *)status dataResult:(DataAPIResult)dataApiResult{
 
     
@@ -385,4 +389,30 @@ static BookingManage *sharedInstance = nil;
         }
     }];
 }
+
+-(void)updateBookingNote:(NSString *)idBooking note:(NSString *)note dataResult:(DataAPIResult)dataApiResult{
+
+    NSDictionary *dic = @{@"note":note};
+    
+    NSString *url = [NSString stringWithFormat:URL_PUT_UPDATE_BOOKING_NOTE,idBooking];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_PUT withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUpdateBookingNote", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorUpdateBookingNote" code:1 userInfo:userInfo];
+            dataApiResult(error, nil, stringError);
+        }
+        else{
+            
+            //  NSMutableArray *arrData = [self parseListServiceFromBooking:responseDataObject];
+            
+            dataApiResult(nil, @"OK", stringError);
+        }
+    }];
+
+}
+
 @end

@@ -19,13 +19,14 @@
 @property (nonatomic, strong) NSString *name_slug;
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) Salon *salon;
-@property (nonatomic, strong) NSString *salonId;
+@property (nonatomic, strong) NSNumber *salonId;
 @property (nonatomic, strong) NSString *startDate;
 @property (nonatomic, strong) NSString *status;
 @property (nonatomic, strong) NSString *totalPrice;
 @property (nonatomic, strong) NSString *updatedAt;
 @property (nonatomic, strong) SessionUser *user;
 @property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSString *note;
 
 @property (nonatomic, strong) NSString *imgAvtarName;
 @property (nonatomic, strong) NSString *strDate;

@@ -13,7 +13,7 @@
 
 @interface SessionUser : NSObject
 
-@property (nonatomic, strong) NSString *idUser;
+@property (nonatomic, strong) NSNumber *idUser;
 
 @property (nonatomic, strong) NSString *name;
 

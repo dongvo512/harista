@@ -220,29 +220,21 @@
         cell.lblImageName.text = img.name;
     }
     
+
     if(!img.heightImage){
     
-        [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] placeholderImage:IMG_DEFAULT completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            img.heightImage = (SW -24)/2 * image.size.height/image.size.width;
-            //  [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
-            [self.collectionView.collectionViewLayout invalidateLayout];
+        [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
+            img.heightImage = (SW -24)/2 * image.size.height/image.size.width;
+            
+            [self.collectionView.collectionViewLayout invalidateLayout];
         }];
+
     }
     else{
-        
-        [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] placeholderImage:IMG_DEFAULT completed:nil];
-        
+    
+        [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] completed:nil];
     }
-    
-    
-    
-//    [cell.imgView sd_setImageWithURL:[NSURL URLWithString:img.url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        
-//        img.heightImage = (SW -24)/2 * image.size.height/image.size.width;
-//      //  [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
-//        [self.collectionView.collectionViewLayout invalidateLayout];
-//    }];
     
     if(indexPath.row == self.arrImages.count - 1 && !isFullData && !isLoading){
         

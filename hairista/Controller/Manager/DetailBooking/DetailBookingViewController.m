@@ -14,6 +14,8 @@
 #import "Service.h"
 #import "ProfileUserViewController.h"
 #import "ServerBookingViewController.h"
+#import "NoteDetailView.h"
+
 
 #define HEIGHT_CELL_SERVICE 44
 
@@ -47,6 +49,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnAddmore;
 
 @property (weak, nonatomic) IBOutlet UIView *viewBottom;
+@property (weak, nonatomic) IBOutlet UIView *viewNote;
+@property (weak, nonatomic) IBOutlet UILabel *lblNote;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthContraintBtnSave;
+@property (weak, nonatomic) IBOutlet UIButton *btnNote;
 
 @end
 
@@ -71,6 +77,18 @@
     [super viewDidLoad];
     
    [self.btnsave setHidden:YES];
+    
+    self.widthContraintBtnSave.constant = 0;
+    
+    if([Appdelegate_hairista.sessionUser.role isEqualToString:@"salon"] && bookingCurr.salonId == Appdelegate_hairista.sessionUser.idUser ){
+        
+        [self.btnNote setHidden:NO];
+    }
+    else{
+    
+        [self.btnNote setHidden:YES];
+        
+    }
     
     if([bookingCurr.status isEqualToString:STATUS_PENDING]){
         
@@ -111,7 +129,35 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - NoteDetailViewDelegate
+
+-(void)finishUpdateNote:(NSString *)note{
+
+    self.lblNote.text = note;
+    
+    if(note.length > 0){
+    
+        [self.viewNote setHidden:NO];
+        
+    }
+    else{
+    
+        [self.viewNote setHidden:YES];
+        
+    }
+}
+
 #pragma mark - Action
+
+- (IBAction)touchBtnComment:(id)sender {
+    
+    NoteDetailView *noteView = [[NoteDetailView alloc] initWithFrame:CGRectMake(0, 0, SW, SH) booking:bookingCurr];
+    noteView.delegate = self;
+    [[[SlideMenuViewController sharedInstance] view] addSubview:noteView];
+    
+}
+
+
 - (IBAction)touchBtnSave:(id)sender {
     
     if(dicInsert){
@@ -235,10 +281,12 @@
         }
         
         [self.btnsave setHidden:NO];
+        self.widthContraintBtnSave.constant = 30;
     }
     else{
     
         [self.btnsave setHidden:YES];
+        self.widthContraintBtnSave.constant = 0;
     }
     
     if(totalInser != 0 ){
@@ -298,6 +346,26 @@
     
      [self.imgViewUserBookingAvatar sd_setImageWithURL:[NSURL URLWithString:bookingCurr.user.avatar] placeholderImage:IMG_USER_DEFAULT];
     
+    if([Appdelegate_hairista.sessionUser.role isEqualToString:@"salon"] && bookingCurr.salonId == Appdelegate_hairista.sessionUser.idUser ){
+        
+        if(bookingCurr.note.length > 0){
+            
+            [self.viewNote setHidden:NO];
+        }
+        else{
+            
+            [self.viewNote setHidden:YES];
+        }
+        
+        self.lblNote.text = bookingCurr.note;
+
+    }
+    else{
+        
+        [self.viewNote setHidden:YES];
+        
+    }
+
 }
 
 -(void)getDetailBooking{

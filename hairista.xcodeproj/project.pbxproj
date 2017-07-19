@@ -125,6 +125,8 @@
 		B8A1031B1E45879300C4E376 /* HairFullView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A1031A1E45879300C4E376 /* HairFullView.xib */; };
 		B8A2D1AB1E46F7E800A357BC /* ServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A2D1A91E46F7E800A357BC /* ServiceCell.m */; };
 		B8A2D1AC1E46F7E800A357BC /* ServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A2D1AA1E46F7E800A357BC /* ServiceCell.xib */; };
+		B8A4B31F1F14D801009389D3 /* NoteDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A4B31D1F14D801009389D3 /* NoteDetailView.m */; };
+		B8A4B3201F14D801009389D3 /* NoteDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A4B31E1F14D801009389D3 /* NoteDetailView.xib */; };
 		B8A758011ECD450100EDB9D2 /* ImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A757FF1ECD450100EDB9D2 /* ImagesViewController.m */; };
 		B8A758021ECD450100EDB9D2 /* ImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A758001ECD450100EDB9D2 /* ImagesViewController.xib */; };
 		B8A758071ECD8A4F00EDB9D2 /* UploadImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A758051ECD8A4F00EDB9D2 /* UploadImageViewController.m */; };
@@ -457,6 +459,9 @@
 		B8A2D1A81E46F7E800A357BC /* ServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCell.h; sourceTree = "<group>"; };
 		B8A2D1A91E46F7E800A357BC /* ServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCell.m; sourceTree = "<group>"; };
 		B8A2D1AA1E46F7E800A357BC /* ServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceCell.xib; sourceTree = "<group>"; };
+		B8A4B31C1F14D801009389D3 /* NoteDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteDetailView.h; sourceTree = "<group>"; };
+		B8A4B31D1F14D801009389D3 /* NoteDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteDetailView.m; sourceTree = "<group>"; };
+		B8A4B31E1F14D801009389D3 /* NoteDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteDetailView.xib; sourceTree = "<group>"; };
 		B8A757FE1ECD450100EDB9D2 /* ImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesViewController.h; sourceTree = "<group>"; };
 		B8A757FF1ECD450100EDB9D2 /* ImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesViewController.m; sourceTree = "<group>"; };
 		B8A758001ECD450100EDB9D2 /* ImagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagesViewController.xib; sourceTree = "<group>"; };
@@ -1013,6 +1018,7 @@
 		B85346C61E535BCE00B74D9F /* DetailBooking */ = {
 			isa = PBXGroup;
 			children = (
+				B8A4B31B1F14D801009389D3 /* NoteDetailView */,
 				B85346CC1E53634100B74D9F /* ServiceBookingCell */,
 				B85346C71E535BE500B74D9F /* DetailBookingViewController.h */,
 				B85346C81E535BE500B74D9F /* DetailBookingViewController.m */,
@@ -1414,6 +1420,16 @@
 				B8A2D1AA1E46F7E800A357BC /* ServiceCell.xib */,
 			);
 			path = ServiceCell;
+			sourceTree = "<group>";
+		};
+		B8A4B31B1F14D801009389D3 /* NoteDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				B8A4B31C1F14D801009389D3 /* NoteDetailView.h */,
+				B8A4B31D1F14D801009389D3 /* NoteDetailView.m */,
+				B8A4B31E1F14D801009389D3 /* NoteDetailView.xib */,
+			);
+			path = NoteDetailView;
 			sourceTree = "<group>";
 		};
 		B8A757FD1ECD44EF00EDB9D2 /* Images */ = {
@@ -2209,6 +2225,7 @@
 				B814EEC81EB645E100B6475C /* ServerSelectedCell.xib in Resources */,
 				B8ACAAA11E5881DD00F9AF05 /* UserCell.xib in Resources */,
 				B80F91B11E41CF0E00649C88 /* NCComboboxNewView.xib in Resources */,
+				B8A4B3201F14D801009389D3 /* NoteDetailView.xib in Resources */,
 				B87543C51EAA63860047213A /* CommentDetailView.xib in Resources */,
 				B8A7582B1ECD8C5000EDB9D2 /* Overlay.png in Resources */,
 				B8A758021ECD450100EDB9D2 /* ImagesViewController.xib in Resources */,
@@ -2422,6 +2439,7 @@
 				B8B470D01E476E6D0063CE2C /* ServiceHeaderView.m in Sources */,
 				B88D7CA81E3A1342006B8019 /* BookingsViewController.m in Sources */,
 				B8DF888D1ED5D2C000651213 /* CategoriesManageCell.m in Sources */,
+				B8A4B31F1F14D801009389D3 /* NoteDetailView.m in Sources */,
 				B8A1030A1E4569F000C4E376 /* ListHairViewController.m in Sources */,
 				B869D3F21EBC6AE000976EF5 /* Date.m in Sources */,
 				B814EEBB1EB62E7600B6475C /* ServerBookingViewController.m in Sources */,

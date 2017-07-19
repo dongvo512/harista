@@ -185,6 +185,8 @@
 
 #define URL_PUT_UPDATE_BOOKING @"https://salonhair.herokuapp.com/api/v1/bookings/"
 
+#define URL_PUT_UPDATE_BOOKING_NOTE @"https://salonhair.herokuapp.com/api/v1/bookings/%@/updateNote"
+
 #define URL_PUT_MULTI_IMAGE @"https://salonhair.herokuapp.com/api/v1/imagesUpdateOrder"
 
 #define URL_POST_ADD_USER_FOR_SALON @"https://salonhair.herokuapp.com/api/v1/relationships"

@@ -28,4 +28,6 @@
 
 -(void)insertServiceForBookingOfUser:(NSString *)idBooking dicbody:(NSDictionary *)dic
                           dataResult:(DataAPIResult)dataApiResult;
+
+-(void)updateBookingNote:(NSString *)idBooking note:(NSString *)note dataResult:(DataAPIResult)dataApiResult;
 @end

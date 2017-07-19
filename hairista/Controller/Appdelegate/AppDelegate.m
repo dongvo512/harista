@@ -13,6 +13,7 @@
 #import "IQKeyboardManager.h"
 #import "ImgurAnonymousAPIClient.h"
 #import "SessionUser.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface AppDelegate ()
 @end
@@ -27,6 +28,9 @@
      self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
    
     [ImgurAnonymousAPIClient client];
+    
+    [SDImageCache sharedImageCache].shouldDecompressImages = NO;
+    [SDWebImageDownloader sharedDownloader].shouldDecompressImages = NO;
     
    // self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true;
 
