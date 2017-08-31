@@ -141,73 +141,73 @@
 #define kHTTP_METHOD_PUT    @"PUT"
 #define kHTTP_METHOD_DELETE @"DELETE"
 
-#define URL_POST_REGISTER @"https://salonhair.herokuapp.com/api/v1/register"
-#define URL_POST_LOGIN @"https://salonhair.herokuapp.com/api/v1/login"
-#define URL_PUT_CHANGE_PASSWORD @"https://salonhair.herokuapp.com/api/v1/users/me/changePassword"
-#define URL_PUT_UPDATE_USER_INFO @"https://salonhair.herokuapp.com/api/v1/users/me"
-#define URL_GET_LIST_SALON @"https://salonhair.herokuapp.com/api/v1/salons"
-#define URL_GET_DETAIL_SALON @"https://salonhair.herokuapp.com/api/v1/users/"
-#define URL_POST_URL_IMAGE @"https://salonhair.herokuapp.com/api/v1/imagesUrl"
-#define URL_GET_URL_COMMENT_SALON @"https://salonhair.herokuapp.com/api/v1/comments"
-#define URL_POST_COMMENT_SALON @"https://salonhair.herokuapp.com/api/v1/comments"
+#define URL_POST_REGISTER @"203.162.76.2/hairsalon/api/v1/register"
+#define URL_POST_LOGIN @"203.162.76.2/hairsalon/api/v1/login"
+#define URL_PUT_CHANGE_PASSWORD @"203.162.76.2/hairsalon/api/v1/users/me/changePassword"
+#define URL_PUT_UPDATE_USER_INFO @"203.162.76.2/hairsalon/api/v1/users/me"
+#define URL_GET_LIST_SALON @"203.162.76.2/hairsalon/api/v1/salons"
+#define URL_GET_DETAIL_SALON @"203.162.76.2/hairsalon/api/v1/users/"
+#define URL_POST_URL_IMAGE @"203.162.76.2/hairsalon/api/v1/imagesUrl"
+#define URL_GET_URL_COMMENT_SALON @"203.162.76.2/hairsalon/api/v1/comments"
+#define URL_POST_COMMENT_SALON @"203.162.76.2/hairsalon/api/v1/comments"
 
-#define URL_GET_CATEGORIES_PRODUCT @"https://salonhair.herokuapp.com/api/v1/categoriesProduct"
+#define URL_GET_CATEGORIES_PRODUCT @"203.162.76.2/hairsalon/api/v1/categoriesProduct"
 
-#define URL_GET_IMAGE_USER @"https://salonhair.herokuapp.com/api/v1/users/me/image"
+#define URL_GET_IMAGE_USER @"203.162.76.2/hairsalon/api/v1/users/me/image"
 
-#define URL_POST_FAVOURTIE  @"https://salonhair.herokuapp.com/api/v1/favorites/"
+#define URL_POST_FAVOURTIE  @"203.162.76.2/hairsalon/api/v1/favorites/"
 
-#define URL_GET_LIST_FAVOURTIE  @"https://salonhair.herokuapp.com/api/v1/users/me/favorites"
+#define URL_GET_LIST_FAVOURTIE  @"203.162.76.2/hairsalon/api/v1/users/me/favorites"
 
-#define URL_GET_LIST_PROVINCE @"https://salonhair.herokuapp.com/api/v1/provinces"
+#define URL_GET_LIST_PROVINCE @"203.162.76.2/hairsalon/api/v1/provinces"
 
-#define URL_GET_LIST_DISTRICT @"https://salonhair.herokuapp.com/api/v1/districts/"
+#define URL_GET_LIST_DISTRICT @"203.162.76.2/hairsalon/api/v1/districts/"
 
-#define URL_GET_LIST_SALON_NEARBY @"https://salonhair.herokuapp.com/api/v1/salons/nearly"
+#define URL_GET_LIST_SALON_NEARBY @"203.162.76.2/hairsalon/api/v1/salons/nearly"
 
-#define URL_POST_CREATE_BOOKING @"https://salonhair.herokuapp.com/api/v1/salons/"
+#define URL_POST_CREATE_BOOKING @"203.162.76.2/hairsalon/api/v1/salons/"
 
-#define URL_GET_LIST_BOOKING_OF_ME @"https://salonhair.herokuapp.com/api/v1/users/me/booking"
+#define URL_GET_LIST_BOOKING_OF_ME @"203.162.76.2/hairsalon/api/v1/users/me/booking"
 
-#define URL_GET_LIST_BOOKING_OF_USER @"https://salonhair.herokuapp.com/api/v1/users/"
+#define URL_GET_LIST_BOOKING_OF_USER @"203.162.76.2/hairsalon/api/v1/users/"
 
-#define URL_GET_LIST_BOOKING_OF_SALON @"https://salonhair.herokuapp.com/api/v1/users/me/booking"
+#define URL_GET_LIST_BOOKING_OF_SALON @"203.162.76.2/hairsalon/api/v1/users/me/booking"
 
-#define URL_DELETE_FAVORITE @"https://salonhair.herokuapp.com/api/v1/favorites/"
+#define URL_DELETE_FAVORITE @"203.162.76.2/hairsalon/api/v1/favorites/"
 
-#define URL_FAVORITE @"https://salonhair.herokuapp.com/api/v1/favorites/"
+#define URL_FAVORITE @"203.162.76.2/hairsalon/api/v1/favorites/"
 
-#define URL_GET_SEARCH_USER @"https://salonhair.herokuapp.com/api/v1/searchUser"
+#define URL_GET_SEARCH_USER @"203.162.76.2/hairsalon/api/v1/searchUser"
 
-#define URL_GET_SEARCH_USER_SALON @"https://salonhair.herokuapp.com/api/v1/relationships/me"
+#define URL_GET_SEARCH_USER_SALON @"203.162.76.2/hairsalon/api/v1/relationships/me"
 
-#define URL_GET_DETAIL_BOOKING @"https://salonhair.herokuapp.com/api/v1/bookings/"
+#define URL_GET_DETAIL_BOOKING @"203.162.76.2/hairsalon/api/v1/bookings/"
 
-#define URL_PUT_UPDATE_BOOKING @"https://salonhair.herokuapp.com/api/v1/bookings/"
+#define URL_PUT_UPDATE_BOOKING @"203.162.76.2/hairsalon/api/v1/bookings/"
 
-#define URL_PUT_UPDATE_BOOKING_NOTE @"https://salonhair.herokuapp.com/api/v1/bookings/%@/updateNote"
+#define URL_PUT_UPDATE_BOOKING_NOTE @"203.162.76.2/hairsalon/api/v1/bookings/%@/updateNote"
 
-#define URL_PUT_MULTI_IMAGE @"https://salonhair.herokuapp.com/api/v1/imagesUpdateOrder"
+#define URL_PUT_MULTI_IMAGE @"203.162.76.2/hairsalon/api/v1/imagesUpdateOrder"
 
-#define URL_POST_ADD_USER_FOR_SALON @"https://salonhair.herokuapp.com/api/v1/relationships"
+#define URL_POST_ADD_USER_FOR_SALON @"203.162.76.2/hairsalon/api/v1/relationships"
 
-#define URL_GET_SALON_IMAGE_UPLOADED @"https://salonhair.herokuapp.com/api/v1/users/me/salons"
+#define URL_GET_SALON_IMAGE_UPLOADED @"203.162.76.2/hairsalon/api/v1/users/me/salons"
 
-#define URL_GET_LIST_SERVICE_BY_SALONID @"https://salonhair.herokuapp.com/api/v1/salons/"
+#define URL_GET_LIST_SERVICE_BY_SALONID @"203.162.76.2/hairsalon/api/v1/salons/"
 
-#define URL_POST_CREATE_CATEGORY @"https://salonhair.herokuapp.com/api/v1/categories"
+#define URL_POST_CREATE_CATEGORY @"203.162.76.2/hairsalon/api/v1/categories"
 
-#define URL_PUT_UPDATE_CATEGORY @"https://salonhair.herokuapp.com/api/v1/categories/"
+#define URL_PUT_UPDATE_CATEGORY @"203.162.76.2/hairsalon/api/v1/categories/"
 
-#define URL_GET_SERICE_BY_CATEGORYID @"https://salonhair.herokuapp.com/api/v1/categories/"
+#define URL_GET_SERICE_BY_CATEGORYID @"203.162.76.2/hairsalon/api/v1/categories/"
 
-#define URL_POST_CREATE_SERVICE @"https://salonhair.herokuapp.com/api/v1/services"
+#define URL_POST_CREATE_SERVICE @"203.162.76.2/hairsalon/api/v1/services"
 
-#define URL_PUT_UPDATE_SERVICE @"https://salonhair.herokuapp.com/api/v1/services/"
+#define URL_PUT_UPDATE_SERVICE @"203.162.76.2/hairsalon/api/v1/services/"
 
-#define URL_DELETE_IMAGE @"https://salonhair.herokuapp.com/api/v1/images/"
+#define URL_DELETE_IMAGE @"203.162.76.2/hairsalon/api/v1/images/"
 
-#define URL_DELETE_COMMENTS @"https://salonhair.herokuapp.com/api/v1/comments/"
+#define URL_DELETE_COMMENTS @"203.162.76.2/hairsalon/api/v1/comments/"
 
-#define URL_PUT_SALON_UPDATE_SHOWONBOARD @"https://salonhair.herokuapp.com/api/v1/users/"
+#define URL_PUT_SALON_UPDATE_SHOWONBOARD @"203.162.76.2/hairsalon/api/v1/users/"
 

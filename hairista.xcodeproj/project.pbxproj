@@ -2166,7 +2166,7 @@
 					B8EC1C401E291B6700D2D1E6 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = YN248DF397;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -2642,9 +2642,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = hairista/hairista.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Thin Tran (YN248DF397)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Thin Tran (JRVY8U6998)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = YN248DF397;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2656,8 +2656,8 @@
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cenvisco.hairistas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "13467c7c-b3b8-4f26-b7dd-78c321455403";
-				PROVISIONING_PROFILE_SPECIFIER = hairistass;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2669,9 +2669,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = hairista/hairista.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Thin Tran (YN248DF397)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Thin Tran (JRVY8U6998)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = YN248DF397;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2683,8 +2683,8 @@
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cenvisco.hairistas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "13467c7c-b3b8-4f26-b7dd-78c321455403";
-				PROVISIONING_PROFILE_SPECIFIER = hairistass;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
