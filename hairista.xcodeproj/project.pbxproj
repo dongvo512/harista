@@ -2643,7 +2643,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = hairista/hairista.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Thin Tran (YN248DF397)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = YN248DF397;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2656,8 +2656,8 @@
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cenvisco.hairistas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "13467c7c-b3b8-4f26-b7dd-78c321455403";
-				PROVISIONING_PROFILE_SPECIFIER = hairistass;
+				PROVISIONING_PROFILE = "33125b17-20bb-4abe-9c30-7f393bcd24b8";
+				PROVISIONING_PROFILE_SPECIFIER = hairista_disss;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2670,7 +2670,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = hairista/hairista.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Thin Tran (YN248DF397)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = YN248DF397;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2683,8 +2683,8 @@
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cenvisco.hairistas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "13467c7c-b3b8-4f26-b7dd-78c321455403";
-				PROVISIONING_PROFILE_SPECIFIER = hairistass;
+				PROVISIONING_PROFILE = "33125b17-20bb-4abe-9c30-7f393bcd24b8";
+				PROVISIONING_PROFILE_SPECIFIER = hairista_disss;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
