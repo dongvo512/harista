@@ -18,6 +18,7 @@
 typedef void (^ButtonClick)(UIAlertAction *alertAction);
 typedef void (^DataAPIResult)(NSError *error, id idObject, NSString *strError);
 typedef void (^CallAPIResult)(BOOL isError, NSString *stringError, id responseDataObject);
+typedef void (^UploadResult)(BOOL isError, NSString *stringError, id responseDataObject, NSProgress *progress);
 #pragma mark - System
 + (instancetype)sharedInstance;
 + (BOOL)checkForWIFIConnection;

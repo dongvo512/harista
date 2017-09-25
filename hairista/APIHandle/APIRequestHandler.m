@@ -18,9 +18,6 @@
 
 @implementation APIRequestHandler
 
-
-
-
 + (void)initWithURLString:(NSString *)url withHttpMethod:(NSString *)httpMethod withRequestBody:(id)requestBody callApiResult:(CallAPIResult)callAPIResult
 {
     
@@ -46,9 +43,9 @@
     [request setHTTPBody:jsonBody];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
-    [request setValue:[NSString stringWithFormat:@"Bearer {{%@}}",Appdelegate_hairista.sessionUser.token] forHTTPHeaderField:@"Authorization"];
+    [request setValue:[NSString stringWithFormat:@"Bearer %@",Appdelegate_hairista.sessionUser.token] forHTTPHeaderField:@"Authorization"];
     
-    NSLog(@"%@",[NSString stringWithFormat:@"Bearer {{%@}}",Appdelegate_hairista.sessionUser.token]);
+  //  NSLog(@"%@",[NSString stringWithFormat:@"Bearer %@",Appdelegate_hairista.sessionUser.token]);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
    
@@ -90,6 +87,80 @@
     }];
     
     [dataTask resume];
+}
+
++ (void)uploadImageWithURLString:(NSString *)url withHttpMethod:(NSString *)httpMethod withRequestBody:(id)requestBody uploadAPIResult:(UploadResult)uploadAPIResult{
+
+    
+    if(![Common checkForWIFIConnection]){
+        
+        uploadAPIResult(TRUE, @"Không thể kết nối với máy chủ \nVui lòng kiểm tra kết nối internet của bạn và thử lại.", nil, nil);
+        return;
+        
+    }
+    
+    NSError *error = nil;
+    NSData *jsonBody = nil;
+    
+    if (requestBody) {
+        jsonBody = [NSJSONSerialization dataWithJSONObject:requestBody options:0 error:&error];
+    }
+    
+    url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    request.timeoutInterval = 60;
+    
+    [request setHTTPMethod:httpMethod];
+    [request setHTTPBody:jsonBody];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    [request setValue:[NSString stringWithFormat:@"Bearer %@",Appdelegate_hairista.sessionUser.token] forHTTPHeaderField:@"Authorization"];
+    NSLog(@"Bearer %@",Appdelegate_hairista.sessionUser.token);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    NSURLSessionUploadTask *uploadTask;
+    
+    uploadTask =  [manager
+                   uploadTaskWithStreamedRequest:request
+                   progress:^(NSProgress * _Nonnull uploadProgress) {
+                      
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                           
+                           uploadAPIResult(false, @"", nil, uploadProgress);
+                       });
+                   }
+                   completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+                    
+                       if (error) {
+                          
+                           if(responseObject){
+                               
+                               id arrMsg = [responseObject objectForKey:@"msg"];
+                               
+                               if([arrMsg isKindOfClass:[NSArray class]]){
+                                   
+                                   if([[arrMsg firstObject] length] > 0){
+                                       
+                                       uploadAPIResult(true,[arrMsg firstObject],nil,nil);
+                                   }
+                                   
+                               }
+                               else{
+                                   
+                                   uploadAPIResult(true,arrMsg,nil,nil);
+                                   
+                               }
+                               
+                           }
+                       }
+                       else{
+                           
+                           uploadAPIResult(false,nil,responseObject,nil);
+                          
+                       }
+                   }];
+    
+    [uploadTask resume];
 }
 
 @end

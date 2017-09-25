@@ -20,8 +20,6 @@
 
 - (void)updateUserInfo:(NSDictionary *)dicBody dataResult:(DataAPIResult)dataApiResult;
 
-- (void)uploadUrlImage:(NSString *)imgUrl dataResult:(DataAPIResult)dataApiResult;
-
 -(void)getListImageUser:(NSString *)pageIndex limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult;
 
 -(void)searchListUser:(NSString *)keyword pageIndex:(NSString *)pageIndex limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult;
@@ -29,4 +27,5 @@
 -(void)searchListUserOfSalon:(NSString *)keyword pageIndex:(NSString *)pageIndex limit:(NSString *)limit dataResult:(DataAPIResult)dataApiResult;
 
 -(void)addUserForSalonByID:(NSString *)idUser dataResult:(DataAPIResult)dataApiResult;
+
 @end

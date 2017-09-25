@@ -211,3 +211,4 @@
 
 #define URL_PUT_SALON_UPDATE_SHOWONBOARD @"http://203.162.76.2/hairsalon/api/v1/users/"
 
+#define URL_POST_UPLOAD_IMAGE @"http://203.162.76.2/hairsalon/api/v1/images"

@@ -240,31 +240,6 @@ static AuthenticateManage *sharedInstance = nil;
 
 #pragma mark - CallAPI
 
--(void)uploadUrlImage:(NSString *)imgUrl dataResult:(DataAPIResult)dataApiResult{
-
-    NSDictionary *dicBody = @{@"images":imgUrl};
-    
-    [APIRequestHandler initWithURLString:URL_POST_URL_IMAGE withHttpMethod:kHTTP_METHOD_POST withRequestBody:dicBody callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
-        
-        if(isError){
-            
-            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorUploadUrlImage", nil)};
-            
-            NSError *error = [[NSError alloc]initWithDomain:@"ErrorUploadUrlImage" code:1 userInfo:userInfo];
-            dataApiResult(error, nil, stringError);
-        }
-        else{
-            
-            NSError *error = nil;
-            NSString *idImage = [self parseuploadUrlImage:responseDataObject error:&error];
-            
-            dataApiResult(error, idImage, stringError);
-        }
-    }];
-
-
-}
-
 - (void)registerUser:(NSDictionary *)dicbody dataResult:(DataAPIResult)dataApiResult{
     
     [APIRequestHandler initWithURLString:URL_POST_REGISTER withHttpMethod:kHTTP_METHOD_POST withRequestBody:dicbody callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
@@ -442,4 +417,5 @@ static AuthenticateManage *sharedInstance = nil;
         }
     }];
 }
+
 @end

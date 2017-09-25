@@ -48,6 +48,7 @@
         
         NSString *openTime = [salon.openTime substringWithRange:NSMakeRange(0, salon.openTime.length - 3)];
         
+        
         NSString *closeTime = [salon.closeTime substringWithRange:NSMakeRange(0, salon.closeTime.length - 3)];
         
         self.lblOpenTime.text = [NSString stringWithFormat:@"%@ - %@", openTime, closeTime];

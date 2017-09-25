@@ -30,7 +30,12 @@
 
 -(void)setDataForCell:(Salon *)salon{
     
-    [self.imgViewBanner sd_setImageWithURL:[NSURL URLWithString:salon.avatar] placeholderImage:IMG_DEFAULT];
+    if([salon.avatar isKindOfClass:[NSString class]]){
+    
+         [self.imgViewBanner sd_setImageWithURL:[NSURL URLWithString:salon.avatar] placeholderImage:IMG_DEFAULT];
+    }
+   
+    
     self.lblSalonName.text = salon.name;
     self.lblSalonPhone.text = [Common convertPhone84:salon.phone];
     

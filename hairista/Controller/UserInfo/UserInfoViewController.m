@@ -31,7 +31,7 @@
     ImagePickerViewController *vcImagePicker;
     
     BOOL isUploadedAvatar;
-    NSString *strUrlAvart;
+    NSString *idImageCurr;
     BOOL isTouchBtnUpdate;
     
     PopupTimeViewController *popupTimeOpen;
@@ -277,9 +277,9 @@
         [dic setObject:self.tfAddress.text forKey:@"homeAddress"];
     }
     
-    if(isUploadedAvatar && strUrlAvart){
+    if(isUploadedAvatar && idImageCurr){
     
-       [dic setObject:strUrlAvart forKey:@"avatar"];
+       [dic setObject:idImageCurr forKey:@"avatarId"];
     }
     
     if(self.tfLaitude.text.length > 0){
@@ -344,7 +344,6 @@
             
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             
-            
             if(error){
                 
                 [Common showAlert:self title:@"Thông báo" message:strError buttonClick:nil];
@@ -360,7 +359,7 @@
                 [self loadDataForUI];
                 
                 isUploadedAvatar = NO;
-                strUrlAvart = nil;
+                idImageCurr = nil;
                 
                 [Common showAlert:self title:@"Thông báo" message:@"Cập nhật thông tin cá nhân thành công" buttonClick:nil];
             }
@@ -578,46 +577,49 @@
     }
     else{
     
-        data = UIImagePNGRepresentation(image);
+        data = UIImageJPEGRepresentation(image, 0.8);
     }
    
     
-   Appdelegate_hairista.progressCurr =  [[ImgurAnonymousAPIClient client] uploadImageData:data
-                                         withFilename:[Common getStringDisplayFormDate:[NSDate date] andFormatString:@"dd-MM-yyyy-HH-mm-ss"]
-                                                                        completionHandler:^(NSURL *imgurURL, NSError *error) {
-                                                                            
-                                                                            [Appdelegate_hairista closeProgress];
-                                                                            
-                                                                            strUrlAvart = imgurURL.absoluteString;
-                                                                            
-                                                                            isUploadedAvatar = YES;
-                                                                            
-                                                                            if(isTouchBtnUpdate){
-                                                                                
-                                                                                [self updateAvatar];
-                                                                            }
-                                                                            
-                                                                            
-                                                                            //  [self uploadImagUrl:strUrlAvart];
-                                                                            
-                                                                        }];
+    NSString *base64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    base64 = [NSString stringWithFormat:@"%@%@",@"data:image/jpeg;base64,",base64];
     
-  //  [Appdelegate_hairista showProcessBar:image];
+    NSDictionary *dic = @{@"images":base64};
+    
+    [APIRequestHandler uploadImageWithURLString:URL_POST_UPLOAD_IMAGE withHttpMethod:kHTTP_METHOD_POST withRequestBody:dic uploadAPIResult:^(BOOL isError, NSString *stringError, id responseDataObject, NSProgress *progress) {
+        
+        Appdelegate_hairista.progressCurr = progress;
+    
+        if(responseDataObject && !isError){
+        
+            [Appdelegate_hairista closeProgress];
+            
+            NSDictionary *data = [responseDataObject objectForKey:@"data"];
+            
+            idImageCurr = [data objectForKey:@"id"];
+            
+            isUploadedAvatar = YES;
+            
+            if(isTouchBtnUpdate){
+                
+                [self updateAvatar];
+            }
+
+        }
+    }];
     
     [Appdelegate_hairista showProcessBar:image progress:Appdelegate_hairista.progressCurr];
-    //[progress cancel];
-
 }
 
 -(void)updateAvatar{
 
     NSMutableDictionary *dic = nil;
 
-    if(isUploadedAvatar && strUrlAvart){
+    if(isUploadedAvatar && idImageCurr){
         
        dic = [[NSMutableDictionary alloc] init];
         
-        [dic setObject:strUrlAvart forKey:@"avatar"];
+        [dic setObject:idImageCurr forKey:@"avatarId"];
         
         if(self.tfFullName.text.length > 0){
             
@@ -640,7 +642,7 @@
             else{
                 
                 isUploadedAvatar = NO;
-                strUrlAvart = nil;
+                idImageCurr = nil;
                 
             }
             
