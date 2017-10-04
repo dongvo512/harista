@@ -98,7 +98,12 @@
             }
             else{
                 
-                [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.arrServices indexOfObject:service] inSection:0]]];
+                if(idObject){
+                   
+                    NSInteger indexRowReload = [self.arrServices indexOfObject:service];
+                    [self.arrServices replaceObjectAtIndex:indexRowReload withObject:idObject];
+                    [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexRowReload inSection:0]]];
+                }
             }
         }];
     }
@@ -114,19 +119,14 @@
             }
             else{
                 
-                [self.arrServices addObject:service];
+                [self.arrServices addObject:idObject];
                 
-                [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.arrServices indexOfObject:service] inSection:0]]];
+                [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.arrServices indexOfObject:idObject] inSection:0]]];
                 
                 isCreateService = YES;
             }
         }];
     }
-}
-#pragma mark - Method
-
--(void)getListServiceByCategory{
-
 }
 
 #pragma mark - UICollectionViewDataSource - UICollectionViewDelegate

@@ -301,6 +301,8 @@ static SalonManage *sharedInstance = nil;
 
             service.image = CHECK_NIL([dicService objectForKey:@"image"]);
 
+            service.imgId = CHECK_NIL([dicService objectForKey:@"imageId"]);
+            
             service.userId = CHECK_NIL([dicService objectForKey:@"userId"]);
             
             service.ordering = CHECK_NIL([dicService objectForKey:@"ordering"]);
@@ -318,6 +320,31 @@ static SalonManage *sharedInstance = nil;
     
     return arrData;
     
+}
+
+-(Service *)parseService:(NSDictionary *)responseDataObject{
+    
+    Service *service = nil;
+    
+    if(responseDataObject){
+        
+        service = [[Service alloc] init];
+        service.idService = [responseDataObject objectForKey:@"id"];
+        service.createdAt = [responseDataObject objectForKey:@"createdAt"];
+        service.updatedAt = [responseDataObject objectForKey:@"updateAt"];
+        service.ordering = [responseDataObject objectForKey:@"ordering"];
+        service.price = [responseDataObject objectForKey:@"price"];
+        service.name_slug = [responseDataObject objectForKey:@"name_slug"];
+        service.imgId = [responseDataObject objectForKey:@"imageId"];
+        service.userId = [responseDataObject objectForKey:@"userId"];
+        service.image = [responseDataObject objectForKey:@"image"];
+        service.priceDiscount = [responseDataObject objectForKey:@"priceDiscount"];
+        service.name = [responseDataObject objectForKey:@"name"];
+        service.categoryId = [responseDataObject objectForKey:@"categoryId"];
+       
+    }
+    
+    return service;
 }
 
 -(NSMutableArray *)parseListProvince:(NSArray *)responseDataObject{
@@ -828,7 +855,7 @@ static SalonManage *sharedInstance = nil;
 
 -(void)updateService:(NSString *)idCate service:(Service *)service dataApiResult:(DataAPIResult)dataApiResult{
 
-    NSDictionary *dic = @{@"name":service.name, @"image":service.image, @"price":service.price.stringValue, @"categoryId":idCate};
+    NSDictionary *dic = @{@"name":service.name, @"image":service.imgId, @"price":service.price.stringValue, @"categoryId":idCate};
     
     NSString *url = [NSString stringWithFormat:@"%@%@",URL_PUT_UPDATE_SERVICE,service.idService];
     
@@ -842,12 +869,9 @@ static SalonManage *sharedInstance = nil;
             dataApiResult(error, nil, stringError);
         }
         else{
-            
-            dataApiResult(nil, @"OK", stringError);
-            
-            //Category *cat = [self parseCategory:responseDataObject];
-            
-            // dataApiResult(nil, cat);
+           
+            Service *result = [self parseService:responseDataObject];
+            dataApiResult(nil,result, stringError);
             
         }
     }];
@@ -879,7 +903,7 @@ static SalonManage *sharedInstance = nil;
 
 -(void)createServiceByIdCat:(NSString *)idCate service:(Service *)service dataApiResult:(DataAPIResult)dataApiResult{
     
-    NSDictionary *dic = @{@"name":service.name, @"image":service.image, @"price":service.price.stringValue, @"categoryId":idCate};
+    NSDictionary *dic = @{@"name":service.name, @"image":service.imgId, @"price":service.price.stringValue, @"categoryId":idCate};
     
     [APIRequestHandler initWithURLString:URL_POST_CREATE_SERVICE withHttpMethod:kHTTP_METHOD_POST withRequestBody:dic callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
         
@@ -892,7 +916,9 @@ static SalonManage *sharedInstance = nil;
         }
         else{
             
-             dataApiResult(nil, @"OK", stringError);
+            Service *result = [self parseService:responseDataObject];
+            
+             dataApiResult(nil, result, stringError);
             
             //Category *cat = [self parseCategory:responseDataObject];
             

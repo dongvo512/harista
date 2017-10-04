@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		242E168A878A602E1B6ED5FB /* Pods_hairista.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA585DE927194AC1C684CE1 /* Pods_hairista.framework */; };
 		B802B11E1EAC761C007FE0D0 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B802B11D1EAC761C007FE0D0 /* Category.m */; };
 		B8033DFC1E43EF86006B2C0F /* SlideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8033DFB1E43EF86006B2C0F /* SlideMenuViewController.xib */; };
 		B8033DFF1E43F046006B2C0F /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8033DFE1E43F046006B2C0F /* Annotation.m */; };
@@ -201,6 +202,9 @@
 		B8CF1DD61E50B6610008C6EC /* HeaderViewBooking.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CF1DD51E50B6610008C6EC /* HeaderViewBooking.xib */; };
 		B8D4825E1EBDCD1D0029DA9B /* EditServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D4825C1EBDCD1D0029DA9B /* EditServiceViewController.m */; };
 		B8D4825F1EBDCD1D0029DA9B /* EditServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D4825D1EBDCD1D0029DA9B /* EditServiceViewController.xib */; };
+		B8D559991F84BC1700E17D8D /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D559981F84BC1700E17D8D /* Notification.m */; };
+		B8D5599C1F84BF5B00E17D8D /* NCNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D5599B1F84BF5B00E17D8D /* NCNotificationView.m */; };
+		B8D5599E1F84BF6700E17D8D /* NCNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D5599D1F84BF6700E17D8D /* NCNotificationView.xib */; };
 		B8DA1BA31ED98DE500E3448C /* PopupCteateServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DA1BA11ED98DE500E3448C /* PopupCteateServiceViewController.m */; };
 		B8DA1BA41ED98DE500E3448C /* PopupCteateServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8DA1BA21ED98DE500E3448C /* PopupCteateServiceViewController.xib */; };
 		B8DE7ECD1E390A450008769C /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = B8DE7EAD1E390A450008769C /* Apache License.txt */; };
@@ -580,6 +584,11 @@
 		B8D4825B1EBDCD1D0029DA9B /* EditServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditServiceViewController.h; sourceTree = "<group>"; };
 		B8D4825C1EBDCD1D0029DA9B /* EditServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditServiceViewController.m; sourceTree = "<group>"; };
 		B8D4825D1EBDCD1D0029DA9B /* EditServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditServiceViewController.xib; sourceTree = "<group>"; };
+		B8D559971F84BC1700E17D8D /* Notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		B8D559981F84BC1700E17D8D /* Notification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
+		B8D5599A1F84BF5B00E17D8D /* NCNotificationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NCNotificationView.h; sourceTree = "<group>"; };
+		B8D5599B1F84BF5B00E17D8D /* NCNotificationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NCNotificationView.m; sourceTree = "<group>"; };
+		B8D5599D1F84BF6700E17D8D /* NCNotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NCNotificationView.xib; sourceTree = "<group>"; };
 		B8DA1BA01ED98DE500E3448C /* PopupCteateServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupCteateServiceViewController.h; sourceTree = "<group>"; };
 		B8DA1BA11ED98DE500E3448C /* PopupCteateServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupCteateServiceViewController.m; sourceTree = "<group>"; };
 		B8DA1BA21ED98DE500E3448C /* PopupCteateServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupCteateServiceViewController.xib; sourceTree = "<group>"; };
@@ -673,6 +682,7 @@
 				B88A3C811EB9C6F700234671 /* Crashlytics.framework in Frameworks */,
 				B846AB001EA0C91F00C2B858 /* ImageIO.framework in Frameworks */,
 				B803D0B81E3BA1340078857E /* MapKit.framework in Frameworks */,
+				242E168A878A602E1B6ED5FB /* Pods_hairista.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1808,6 +1818,25 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		B8D559921F84BBC300E17D8D /* NCNotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				B8D5599A1F84BF5B00E17D8D /* NCNotificationView.h */,
+				B8D5599B1F84BF5B00E17D8D /* NCNotificationView.m */,
+				B8D5599D1F84BF6700E17D8D /* NCNotificationView.xib */,
+			);
+			path = NCNotificationView;
+			sourceTree = "<group>";
+		};
+		B8D559961F84BC0900E17D8D /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				B8D559971F84BC1700E17D8D /* Notification.h */,
+				B8D559981F84BC1700E17D8D /* Notification.m */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		B8DA1B9F1ED98DD700E3448C /* PopupCteateService */ = {
 			isa = PBXGroup;
 			children = (
@@ -2034,6 +2063,8 @@
 		B8EC1C5F1E291C9900D2D1E6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B80F91BF1E4221FF00649C88 /* Province */,
+				B8D559961F84BC0900E17D8D /* Notification */,
 				B869D3EF1EBC6AD300976EF5 /* Date */,
 				B867D1EE1EB1AA4F0028B06D /* District */,
 				B802B11B1EAC760E007FE0D0 /* Category */,
@@ -2047,9 +2078,8 @@
 				B880C6BE1E45FEC500AA2B72 /* Service */,
 				B8A1030C1E457DD800C4E376 /* Hair */,
 				B82E6D221E4471FD00C51770 /* Catagories */,
-				B80F91BF1E4221FF00649C88 /* Province */,
-				B88D7C9F1E3A0B03006B8019 /* ItemMenu */,
 				B8C32B481E2E0F9A00FB0E11 /* Salon */,
+				B88D7C9F1E3A0B03006B8019 /* ItemMenu */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2057,6 +2087,7 @@
 		B8EC1C601E291C9900D2D1E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B8D559921F84BBC300E17D8D /* NCNotificationView */,
 				B8A8603B1EDC320F006606CC /* PopupTime */,
 				B8DA1B9F1ED98DD700E3448C /* PopupCteateService */,
 				B80433101ED8038D00059032 /* PopupCreateCategory */,
@@ -2182,6 +2213,11 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				es,
+				ja,
+				pl,
+				"zh-Hans",
 			);
 			mainGroup = B8EC1C381E291B6700D2D1E6;
 			productRefGroup = B8EC1C421E291B6700D2D1E6 /* Products */;
@@ -2244,6 +2280,7 @@
 				B8A758081ECD8A4F00EDB9D2 /* UploadImageViewController.xib in Resources */,
 				B8DE7EDD1E390A450008769C /* Roboto-BoldItalic.ttf in Resources */,
 				B8B5BAD91E3A5ABB00586CBE /* HeaderBannerCell.xib in Resources */,
+				B8D5599E1F84BF6700E17D8D /* NCNotificationView.xib in Resources */,
 				B8EF74C51E4CBE7C001466C4 /* NCCalendarSingleViewController_iPhone.xib in Resources */,
 				B8C9A1A41EDE96000040A564 /* CommentController.xib in Resources */,
 				B814831A1ED6D23E00DAFAEF /* ListSalonUploadedImage.xib in Resources */,
@@ -2335,15 +2372,16 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/myfile",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/myfile",
+				"$(DERIVED_FILE_DIR)/Pods-hairista-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		110ADD2908F0496015AA7BCF /* [CP] Embed Pods Frameworks */ = {
@@ -2352,9 +2390,22 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-hairista/Pods-hairista-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/ImgurAnonymousAPIClient/ImgurAnonymousAPIClient.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/QBImagePickerController/QBImagePickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImgurAnonymousAPIClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QBImagePickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2442,6 +2493,7 @@
 				B8A4B31F1F14D801009389D3 /* NoteDetailView.m in Sources */,
 				B8A1030A1E4569F000C4E376 /* ListHairViewController.m in Sources */,
 				B869D3F21EBC6AE000976EF5 /* Date.m in Sources */,
+				B8D559991F84BC1700E17D8D /* Notification.m in Sources */,
 				B814EEBB1EB62E7600B6475C /* ServerBookingViewController.m in Sources */,
 				B86D284E1E2E2305005491E6 /* NCTextFieldView.m in Sources */,
 				B8AA6B191E40920F002716A7 /* SearchOptionSalonCell.m in Sources */,
@@ -2461,6 +2513,7 @@
 				B8A758011ECD450100EDB9D2 /* ImagesViewController.m in Sources */,
 				B8ACAAA61E58943400F9AF05 /* ProfileUserViewController.m in Sources */,
 				B8EF74CB1E4CBEA1001466C4 /* AJRBackgroundDimmer.m in Sources */,
+				B8D5599C1F84BF5B00E17D8D /* NCNotificationView.m in Sources */,
 				B8DA1BA31ED98DE500E3448C /* PopupCteateServiceViewController.m in Sources */,
 				B8A758071ECD8A4F00EDB9D2 /* UploadImageViewController.m in Sources */,
 				B899E8FD1E5858E900CC268B /* User.m in Sources */,

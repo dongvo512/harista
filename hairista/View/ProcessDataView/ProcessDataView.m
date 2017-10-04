@@ -67,7 +67,7 @@
    
     [self.progressCurr setTotalUnitCount:1];
     [self.progressCurr addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:NULL];
-    
+    //self.progressCurr = Appdelegate_hairista.progressCurr;
    
 }
 

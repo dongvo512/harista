@@ -14,8 +14,16 @@
 #import "ImgurAnonymousAPIClient.h"
 #import "SessionUser.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "NCNotificationView.h"
+#import "Notification.h"
 
-@interface AppDelegate ()
+#define DEFAULT_HEIGHT_MESSBOX 56
+
+@interface AppDelegate (){
+    
+    NCNotificationView *ncNoticationView;
+    
+}
 @end
 
 @implementation AppDelegate
@@ -107,7 +115,45 @@
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
 }
 
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler{
+    
+    if (userInfo != nil) {
+        
+        NSArray *array = [userInfo objectForKey:@"extraPayLoad"];
+        if(array.count > 0){
+            
+            NSDictionary *dic = [array firstObject];
+            
+            Notification *noti = [[Notification alloc] init];
+            noti.title = [dic objectForKey:@"name"];
+            noti.bookDate = [dic objectForKey:@"startDate"];
+            
+            [self showMessageBoxNotification:<#(NSString *)#>]
+            
+        }
+    }
+    
+}
 
+
+- (void)showMessageBoxNotification:(NSString *)strContent{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if(ncNoticationView){
+            
+            [ncNoticationView removeFromSuperview];
+            ncNoticationView = nil;
+        }
+        
+        ncNoticationView = [[NCNotificationView alloc] initWithFrame:CGRectMake(0, - DEFAULT_HEIGHT_MESSBOX, SW, DEFAULT_HEIGHT_MESSBOX)];
+        ncNoticationView.clipsToBounds = YES;
+        
+        [self.window addSubview:ncNoticationView];
+    });
+}
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
@@ -157,10 +203,10 @@
                          completion:nil];
         [UIView commitAnimations];
     }
-    else{
-    
-        [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:@"Đang upload hình vui lòng đợi hoàn tất" buttonClick:nil];
-    }
+//    else{
+//    
+//        [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:@"Đang upload hình vui lòng đợi hoàn tất" buttonClick:nil];
+//    }
 }
 
 @end

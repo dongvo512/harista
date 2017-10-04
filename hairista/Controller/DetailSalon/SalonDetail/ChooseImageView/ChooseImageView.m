@@ -10,12 +10,15 @@
 #import "ImgurAnonymousAPIClient.h"
 #import "SalonManage.h"
 #import "Salon.h"
+#import "APIRequestHandler.h"
+
 
 @interface ChooseImageView (){
 
     UIImage *imgCurr;
     NSString *title;
     Salon *salonCurr;
+    NSString *idImageCurr;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *view;
@@ -173,35 +176,62 @@
             data = UIImagePNGRepresentation(imgCurr);
         }
     
-    Appdelegate_hairista.progressCurr =  [[ImgurAnonymousAPIClient client] uploadImageData:data
-                                                                              withFilename:[NSString stringWithFormat:[Common getStringDisplayFormDate:[NSDate date] andFormatString:@"dd-MM-yyyy-HH-mm-ss"],title]
-                                                                         completionHandler:^(NSURL *imgurURL, NSError *error) {
-                                                                             
-                                                                             if(error){
-                                                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                             [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:@"Đã dừng upload hình ảnh" buttonClick:^(UIAlertAction *alertAction) {
-                                                                                 
-                                                                             [Appdelegate_hairista closeProgress];
-                                                                             
-                                                                             }];
-                                                                    }
-                                                                    else{
-                                                                             
-                                                                        [self uploadImageForSalon:imgurURL.absoluteString];
-                                                                        
-                                                                    }
-                           }];
-    [Appdelegate_hairista showProcessBar:imgCurr progress: Appdelegate_hairista.progressCurr];
+    NSString *base64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    base64 = [NSString stringWithFormat:@"%@%@",@"data:image/jpeg;base64,",base64];
     
-    [UIView animateWithDuration:0.5
-                     animations:^{self.alpha = 0.0;}
-                     completion:^(BOOL finished){ [self removeFromSuperview];
-                     }];
+    [self uploadImageForSalon:base64];
+
+    
+//    NSDictionary *dic = @{@"images":base64};
+//    [APIRequestHandler uploadImageWithURLString:URL_POST_UPLOAD_IMAGE withHttpMethod:kHTTP_METHOD_POST withRequestBody:dic uploadAPIResult:^(BOOL isError, NSString *stringError, id responseDataObject, NSProgress *progress) {
+//        
+//        //Appdelegate_hairista.progressCurr = progress;
+//        
+//        [Appdelegate_hairista showProcessBar:imgCurr progress:progress];
+//        
+//        if(responseDataObject && !isError){
+//            
+//            [Appdelegate_hairista closeProgress];
+//            
+//            NSDictionary *data = [responseDataObject objectForKey:@"data"];
+//        
+//            idImageCurr = [data objectForKey:@"id"];
+//         
+//                    }
+//    }];
+//    
+//    
+// 
+//    [UIView animateWithDuration:0.5
+//                     animations:^{self.alpha = 0.0;}
+//                     completion:^(BOOL finished){ [self removeFromSuperview];
+//                     }];
+
+//    Appdelegate_hairista.progressCurr =  [[ImgurAnonymousAPIClient client] uploadImageData:data
+//                                                                              withFilename:[NSString stringWithFormat:[Common getStringDisplayFormDate:[NSDate date] andFormatString:@"dd-MM-yyyy-HH-mm-ss"],title]
+//                                                                         completionHandler:^(NSURL *imgurURL, NSError *error) {
+//                                                                             
+//                                                                             if(error){
+//                                                                                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                                                                             [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:@"Đã dừng upload hình ảnh" buttonClick:^(UIAlertAction *alertAction) {
+//                                                                                 
+//                                                                             [Appdelegate_hairista closeProgress];
+//                                                                             
+//                                                                             }];
+//                                                                    }
+//                                                                    else{
+//                                                                             
+//                                                                        [self uploadImageForSalon:imgurURL.absoluteString];
+//                                                                        
+//                                                                    }
+//                           }];
+//    [Appdelegate_hairista showProcessBar:imgCurr progress: Appdelegate_hairista.progressCurr];
+//    
 
 }
--(void)uploadImageForSalon:(NSString *)urlImage{
+-(void)uploadImageForSalon:(NSString *)base64{
 
-    [[SalonManage sharedInstance] uploadUrlImageForSalon:urlImage name:self.tfImageName.text idSalon:salonCurr.idSalon dataResult:^(NSError *error, id idObject, NSString *strError) {
+    [[SalonManage sharedInstance] uploadUrlImageForSalon:base64 name:self.tfImageName.text idSalon:salonCurr.idSalon dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -221,7 +251,14 @@
             [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:mesg buttonClick:nil];
         }
         
-        [Appdelegate_hairista closeProgress];
+        [UIView animateWithDuration:0.5
+                             animations:^{self.alpha = 0.0;}
+                             completion:^(BOOL finished){
+                              
+                                 [self removeFromSuperview];
+                             }];
+        
+      //  [Appdelegate_hairista closeProgress];
     
     }];
 }

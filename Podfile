@@ -7,4 +7,5 @@ target ‘hairista’ do
  pod 'IQKeyboardManager'
  pod 'SDWebImage'
  pod 'ImgurAnonymousAPIClient', :git => 'https://github.com/nolanw/ImgurAnonymousAPIClient.git', :tag => 'v0.1.1'
+ pod ‘QBImagePickerController’
 end

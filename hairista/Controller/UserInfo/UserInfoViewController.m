@@ -588,7 +588,7 @@
     
     [APIRequestHandler uploadImageWithURLString:URL_POST_UPLOAD_IMAGE withHttpMethod:kHTTP_METHOD_POST withRequestBody:dic uploadAPIResult:^(BOOL isError, NSString *stringError, id responseDataObject, NSProgress *progress) {
         
-        Appdelegate_hairista.progressCurr = progress;
+       [Appdelegate_hairista showProcessBar:image progress:progress];
     
         if(responseDataObject && !isError){
         
@@ -608,7 +608,7 @@
         }
     }];
     
-    [Appdelegate_hairista showProcessBar:image progress:Appdelegate_hairista.progressCurr];
+   // [Appdelegate_hairista showProcessBar:image progress:Appdelegate_hairista.progressCurr];
 }
 
 -(void)updateAvatar{

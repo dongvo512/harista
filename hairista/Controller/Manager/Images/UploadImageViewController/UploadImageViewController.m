@@ -14,8 +14,9 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ImgurAnonymousAPIClient.h"
 #import "SalonManage.h"
+#import "QBImagePickerController.h"
 
-@interface UploadImageViewController ()<ELCImagePickerControllerDelegate>
+@interface UploadImageViewController ()<ELCImagePickerControllerDelegate, QBImagePickerControllerDelegate>
 {
 
     NSInteger countUpload;
@@ -23,7 +24,7 @@
 @property (nonatomic, strong) NSMutableArray *arrImages;
 @property (nonatomic, strong) NSMutableArray *arrProgress;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
+@property (nonatomic, strong) PHImageRequestOptions *requestOptions;
 @end
 
 @implementation UploadImageViewController
@@ -31,6 +32,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.requestOptions = [[PHImageRequestOptions alloc] init];
+    self.requestOptions.resizeMode   = PHImageRequestOptionsResizeModeExact;
+    self.requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+    
+    // this one is key
+    self.requestOptions.synchronous = true;
+
     
     self.arrImages = [NSMutableArray array];
     
@@ -51,7 +60,7 @@
     
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
-        self.arrProgress = [NSMutableArray array];
+       // self.arrProgress = [NSMutableArray array];
       
         for(int i = 0; i < self.arrImages.count; i ++){
         
@@ -74,24 +83,15 @@
                 data = UIImagePNGRepresentation(img.image);
             }
             
+            NSString *base64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+            base64 = [NSString stringWithFormat:@"%@%@",@"data:image/jpeg;base64,",base64];
             
-           NSProgress *progress =  [[ImgurAnonymousAPIClient client] uploadImageData:data
-                                                                                      withFilename:[Common getStringDisplayFormDate:[NSDate date] andFormatString:@"dd-MM-yyyy-HH-mm-ss"]
-                                                                                 completionHandler:^(NSURL *imgurURL, NSError *error) {
-                                                                                    
-                                                                                     if(error){
-                                                                                     
-                                                                                         NSLog(@"Lỗi upload hình ảnh");
-                                                                                    }
-                                                                                     else{
-                                                                                         img.urlImage = imgurURL.absoluteString;
-                                                                                         [self uploadImageForSalon:img];
-                                                                                     }
-                                                                                 }];
-            [self.arrProgress addObject:progress];
+            img.urlImage = base64;
             
-            [progress setTotalUnitCount:1];
-            [progress addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:NULL];
+            [self uploadImageForSalon:img];
+            
+            //[progress setTotalUnitCount:1];
+           // [progress addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:NULL];
         }
     
     }
@@ -108,7 +108,7 @@
 
 -(void)uploadImageForSalon:(ImageUploadObject *)img{
     
-    [[SalonManage sharedInstance] uploadUrlImageForSalon:img.urlImage name:img.name idSalon:Appdelegate_hairista.sessionUser.idUser     dataResult:^(NSError *error, id idObject, NSString *strError) {
+    [[SalonManage sharedInstance] uploadUrlImageForSalon:img.urlImage name:img.name idSalon:Appdelegate_hairista.sessionUser.idUser.stringValue     dataResult:^(NSError *error, id idObject, NSString *strError) {
         
         if(error){
             
@@ -160,62 +160,101 @@
 }
 - (IBAction)touchBtnAddImage:(id)sender {
     
-    ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
+    QBImagePickerController *imagePickerController = [QBImagePickerController new]; imagePickerController.delegate = self;
+    imagePickerController.mediaType = QBImagePickerMediaTypeImage;
+    imagePickerController.allowsMultipleSelection = YES;
+    imagePickerController.minimumNumberOfSelection = 1;
+    imagePickerController.maximumNumberOfSelection = 5;
+    imagePickerController.showsNumberOfSelectedAssets = YES;
+    [self presentViewController:imagePickerController animated:YES completion:NULL];
     
-    elcPicker.maximumImagesCount = 10; //Set the maximum number of images to select to 100
-    elcPicker.returnsOriginalImage = YES; //Only return the fullScreenImage, not the fullResolutionImage
-    elcPicker.returnsImage = YES; //Return UIimage if YES. If NO, only return asset location information
-    elcPicker.onOrder = YES; //For multiple image selection, display and return order of selected images
-    elcPicker.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeMovie]; //Supports image and movie types
-    
-    elcPicker.imagePickerDelegate = self;
-    
-    [self presentViewController:elcPicker animated:YES completion:nil];
+//    ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
+//
+//    elcPicker.maximumImagesCount = 10; //Set the maximum number of images to select to 100
+//    elcPicker.returnsOriginalImage = YES; //Only return the fullScreenImage, not the fullResolutionImage
+//    elcPicker.returnsImage = YES; //Return UIimage if YES. If NO, only return asset location information
+//    elcPicker.onOrder = YES; //For multiple image selection, display and return order of selected images
+//    elcPicker.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeMovie]; //Supports image and movie types
+//
+//    elcPicker.imagePickerDelegate = self;
+//
+//    [self presentViewController:elcPicker animated:YES completion:nil];
 }
 
-#pragma mark ELCImagePickerControllerDelegate Methods
+#pragma mark - QBImagePickerControllerDelegate
 
-- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    
-    for (NSDictionary *dict in info) {
-        if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypePhoto){
-            if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
-               
-                UIImage* image=[dict objectForKey:UIImagePickerControllerOriginalImage];
-                
-                ImageUploadObject *imageOjb = [[ImageUploadObject alloc] init];
-                imageOjb.image = image;
-                imageOjb.name = @"Hình salon";
-                [self.arrImages addObject:imageOjb];
-                
-               
-            } else {
-                NSLog(@"UIImagePickerControllerReferenceURL = %@", dict);
-            }
-        } else if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypeVideo){
-            if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
-               
-                UIImage* image=[dict objectForKey:UIImagePickerControllerOriginalImage];
-                
-                ImageUploadObject *imageOjb = [[ImageUploadObject alloc] init];
-                imageOjb.image = image;
-                imageOjb.name = @"Hình salon";
-                [self.arrImages addObject:imageOjb];
-                
-               
-            } else {
-                NSLog(@"UIImagePickerControllerReferenceURL = %@", dict);
-            }
-        } else {
-            NSLog(@"Uknown asset type");
-        }
+- (void)qb_imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingAssets:(NSArray *)assets {
+  
+    PHImageManager *manager = [PHImageManager defaultManager];
+
+    for (PHAsset *asset in assets) {
+        // Do something with the asset
+        [manager requestImageForAsset:asset
+                           targetSize:PHImageManagerMaximumSize
+                          contentMode:PHImageContentModeDefault
+                              options:self.requestOptions
+                        resultHandler:^void(UIImage *image, NSDictionary *info) {
+                            
+                            ImageUploadObject *imageOjb = [[ImageUploadObject alloc] init];
+                            imageOjb.image = image;
+                            imageOjb.name = @"Hình salon";
+                            [self.arrImages addObject:imageOjb];
+                        }];
+
     }
     
     [self.collectionView reloadData];
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
+
+- (void)qb_imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController{
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+//#pragma mark ELCImagePickerControllerDelegate Methods
+//
+//- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
+//{
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//
+//
+//    for (NSDictionary *dict in info) {
+//        if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypePhoto){
+//            if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
+//
+//                UIImage* image=[dict objectForKey:UIImagePickerControllerOriginalImage];
+//
+//                ImageUploadObject *imageOjb = [[ImageUploadObject alloc] init];
+//                imageOjb.image = image;
+//                imageOjb.name = @"Hình salon";
+//                [self.arrImages addObject:imageOjb];
+//
+//
+//            } else {
+//                NSLog(@"UIImagePickerControllerReferenceURL = %@", dict);
+//            }
+//        } else if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypeVideo){
+//            if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
+//
+//                UIImage* image=[dict objectForKey:UIImagePickerControllerOriginalImage];
+//
+//                ImageUploadObject *imageOjb = [[ImageUploadObject alloc] init];
+//                imageOjb.image = image;
+//                imageOjb.name = @"Hình salon";
+//                [self.arrImages addObject:imageOjb];
+//
+//
+//            } else {
+//                NSLog(@"UIImagePickerControllerReferenceURL = %@", dict);
+//            }
+//        } else {
+//            NSLog(@"Uknown asset type");
+//        }
+//    }
+//
+//    [self.collectionView reloadData];
+//}
 
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
 {

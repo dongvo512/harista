@@ -26,6 +26,8 @@
 
 @property (nonatomic, strong) NSString *image;
 
+@property (nonatomic, strong) NSString *imgId;
+
 @property (nonatomic, strong) NSString *userId;
 
 @property (nonatomic, strong) NSString *ordering;

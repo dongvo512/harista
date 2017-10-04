@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "977802E311B3473EF9379DC2E245B39C"
+               BlueprintIdentifier = "BBAE782F90736F28AB4B9BD6AF80ED85"
                BuildableName = "Pods_hairista.framework"
                BlueprintName = "Pods-hairista"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "977802E311B3473EF9379DC2E245B39C"
+            BlueprintIdentifier = "BBAE782F90736F28AB4B9BD6AF80ED85"
             BuildableName = "Pods_hairista.framework"
             BlueprintName = "Pods-hairista"
             ReferencedContainer = "container:Pods.xcodeproj">

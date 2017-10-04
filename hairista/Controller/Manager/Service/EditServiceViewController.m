@@ -177,18 +177,18 @@
 //    
 //}
 - (CGFloat)tableView:(UITableView *)tableView
- heightForRowAtIndexPath:(NSIndexPath *)indexPath{
- 
- return 70;
- }
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    Category *cat = [self.arrCategories objectAtIndex:indexPath.row];
-    ListManageServiceViewController *manageServices = [[ListManageServiceViewController alloc] initWithNibName:@"ListManageServiceViewController" bundle:nil];
-    manageServices.titleCategories = cat.name;
-    [self.navigationController pushViewController:manageServices animated:YES];
+    return 70;
 }
+
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+//
+//    Category *cat = [self.arrCategories objectAtIndex:indexPath.row];
+//    ListManageServiceViewController *manageServices = [[ListManageServiceViewController alloc] initWithNibName:@"ListManageServiceViewController" bundle:nil];
+//    manageServices.titleCategories = cat.name;
+//    [self.navigationController pushViewController:manageServices animated:YES];
+//}
 
 #pragma mark - CategoriesManageCellDelegate
 -(void)touchButtonEdit:(Category *)cat{

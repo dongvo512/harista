@@ -15,7 +15,7 @@
 @interface PopupCteateServiceViewController ()<ImagePickerViewControllerDelegate>{
 
     ImagePickerViewController *vcImagePicker;
-    NSString *strUrlService;
+    NSNumber *idImage;
     
     BOOL isEditCurr;
     Service *serviceCurr;
@@ -54,7 +54,7 @@
     if(isEditCurr){
     
         self.lblTitle.text = @"Chỉnh sửa dịch vụ";
-        strUrlService = serviceCurr.image;
+       // strUrlService = serviceCurr.idService;
         if(serviceCurr){
         
             self.tfServiceName.text = serviceCurr.name;
@@ -127,7 +127,7 @@
         return;
     }
     
-    if(strUrlService.length == 0){
+    if(!idImage){
     
         [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:@"Bạn chưa chọn hình cho dịch vụ" buttonClick:nil];
         
@@ -148,7 +148,7 @@
     
     serviceCurr.name = self.tfServiceName.text;
     serviceCurr.price = [NSNumber numberWithInteger:self.tfServicePrice.text.integerValue];
-    serviceCurr.image = strUrlService;
+    serviceCurr.imgId = idImage.stringValue;
    // service
     
     if([[self delegate] respondsToSelector:@selector(touchButtonFinish:edit:)]){
@@ -268,31 +268,35 @@
         data = UIImageJPEGRepresentation(image, 0.1);
         
     }
-    
     else if(imgValue > 2000){
         
         data = UIImageJPEGRepresentation(image, 0.3);
     }
     else{
         
-        data = UIImagePNGRepresentation(image);
+        data = UIImageJPEGRepresentation(image, 0.8);
     }
     
+    NSString *base64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    base64 = [NSString stringWithFormat:@"%@%@",@"data:image/jpeg;base64,",base64];
     
-    Appdelegate_hairista.progressCurr =  [[ImgurAnonymousAPIClient client] uploadImageData:data
-                                                                              withFilename:[Common getStringDisplayFormDate:[NSDate date] andFormatString:@"dd-MM-yyyy-HH-mm-ss"]
-                                                                         completionHandler:^(NSURL *imgurURL, NSError *error) {
-                                                                             
-                                                                             [Appdelegate_hairista closeProgress];
-                                                                             
-                                                                             strUrlService = imgurURL.absoluteString;
-                                                                             
-                                                                             isUploadingImage = NO;
-                                                                             
-                                                                         }];
+    NSDictionary *dic = @{@"images":base64,@"type":@"service"};
     
-    
-    [Appdelegate_hairista showProcessBar:image progress:Appdelegate_hairista.progressCurr];
+    [APIRequestHandler uploadImageWithURLString:URL_POST_UPLOAD_IMAGE withHttpMethod:kHTTP_METHOD_POST withRequestBody:dic uploadAPIResult:^(BOOL isError, NSString *stringError, id responseDataObject, NSProgress *progress) {
+        
+        [Appdelegate_hairista showProcessBar:image progress:progress];
+        
+        if(responseDataObject && !isError){
+            
+            [Appdelegate_hairista closeProgress];
+          
+            NSDictionary *data = [responseDataObject objectForKey:@"data"];
+            
+            idImage = [data objectForKey:@"id"];
+            
+            isUploadingImage = NO;
+        }
+    }];
     
 }
 @end

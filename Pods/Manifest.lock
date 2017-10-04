@@ -18,6 +18,7 @@ PODS:
     - AFNetworking (>= 2.2.2)
   - IQKeyboardManager (4.0.8)
   - MBProgressHUD (1.0.0)
+  - QBImagePickerController (3.4.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - ImgurAnonymousAPIClient (from `https://github.com/nolanw/ImgurAnonymousAPIClient.git`, tag `v0.1.1`)
   - IQKeyboardManager
   - MBProgressHUD
+  - QBImagePickerController
   - SDWebImage
 
 EXTERNAL SOURCES:
@@ -44,8 +46,9 @@ SPEC CHECKSUMS:
   ImgurAnonymousAPIClient: 3e5f9b8782e300743ed167d62b775a7f248fa218
   IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 84156fe3ee06bce855c770b6b2ca94fc5de9582a
+PODFILE CHECKSUM: 687535d4dc0da331784d22d0b65199aaf32241f4
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.1
