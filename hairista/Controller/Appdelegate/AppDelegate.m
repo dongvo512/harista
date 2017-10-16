@@ -122,23 +122,23 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandl
     if (userInfo != nil) {
         
         NSArray *array = [userInfo objectForKey:@"extraPayLoad"];
+       
         if(array.count > 0){
             
             NSDictionary *dic = [array firstObject];
             
-            Notification *noti = [[Notification alloc] init];
-            noti.title = [dic objectForKey:@"name"];
-            noti.bookDate = [dic objectForKey:@"startDate"];
+            Notification *notification = [[Notification alloc] init];
+            notification.title = [dic objectForKey:@"name"];
+            notification.bookDate = [dic objectForKey:@"startDate"];
             
-            [self showMessageBoxNotification:<#(NSString *)#>]
+            [self showMessageBoxNotification:notification];
             
         }
     }
-    
 }
 
 
-- (void)showMessageBoxNotification:(NSString *)strContent{
+- (void)showMessageBoxNotification:(Notification *)noti{
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
@@ -148,7 +148,7 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandl
             ncNoticationView = nil;
         }
         
-        ncNoticationView = [[NCNotificationView alloc] initWithFrame:CGRectMake(0, - DEFAULT_HEIGHT_MESSBOX, SW, DEFAULT_HEIGHT_MESSBOX)];
+        ncNoticationView = [[NCNotificationView alloc] initWithFrame:CGRectMake(0, - DEFAULT_HEIGHT_MESSBOX, SW, DEFAULT_HEIGHT_MESSBOX) notification:noti];
         ncNoticationView.clipsToBounds = YES;
         
         [self.window addSubview:ncNoticationView];

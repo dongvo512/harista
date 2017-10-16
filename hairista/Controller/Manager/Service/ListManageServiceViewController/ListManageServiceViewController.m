@@ -119,6 +119,7 @@
             }
             else{
                 
+               
                 [self.arrServices addObject:idObject];
                 
                 [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.arrServices indexOfObject:idObject] inSection:0]]];
@@ -129,6 +130,34 @@
     }
 }
 
+#pragma mark - ServiceCellDelegate
+- (void)deleteService:(Service *)service{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[SalonManage sharedInstance] deleteService:service.idService.stringValue dataApiResult:^(NSError *error, id idObject, NSString *strError) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+            
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:strError buttonClick:nil];
+        }
+        else{
+            
+            NSInteger indexDelete = [self.arrServices indexOfObject:service];
+            
+            [catCurr.arrServices removeObjectAtIndex:indexDelete];
+            [self.arrServices removeObject:service];
+            
+            [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexDelete inSection:0]]];
+        }
+    }];
+    
+    
+
+    
+}
 #pragma mark - UICollectionViewDataSource - UICollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -141,7 +170,8 @@
     Service *service = [self.arrServices objectAtIndex:indexPath.row];
     
     ServiceCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ServiceCell" forIndexPath:indexPath];
-    
+    cell.delegate = self;
+    cell.isManager = YES;
     [cell setDataForCell:service];
     return cell;
 }

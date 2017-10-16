@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hairista/SalonManage/SalonManage.m"
-            timestampString = "528740661.246099"
+            timestampString = "529401803.418445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "398"
@@ -250,12 +250,12 @@
                   moduleName = "hairista"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dongvo/Desktop/Dongvo/IOS/Project/harista/hairista/Controller/ChangePassword/ChangePassword.m"
-                  timestampString = "528792251.360031"
+                  timestampString = "529411905.024507"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "39"
                   endingLineNumber = "39"
-                  offsetFromSymbolStart = "192">
+                  offsetFromSymbolStart = "212">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -265,12 +265,12 @@
                   moduleName = "hairista"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dongvo/Desktop/Dongvo/IOS/Project/harista/hairista/Controller/ChangePassword/ChangePassword.m"
-                  timestampString = "528792251.362452"
+                  timestampString = "529411905.026404"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "39"
                   endingLineNumber = "39"
-                  offsetFromSymbolStart = "24">
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -361,22 +361,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "hairista/SalonManage/SalonManage.m"
-            timestampString = "528740661.246344"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "823"
-            endingLineNumber = "823"
-            landmarkName = "-createCategory:dataApiResult:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "hairista/Controller/Manager/ProfileUser/ProfileUserViewController.m"
             timestampString = "517662071.174084"
             startingColumnNumber = "9223372036854775807"
@@ -442,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hairista/SalonManage/SalonManage.m"
-            timestampString = "528740661.246483"
+            timestampString = "529401803.419078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "838"
-            endingLineNumber = "838"
+            startingLineNumber = "884"
+            endingLineNumber = "884"
             landmarkName = "-updateCategory:nameCat:dataApiResult:"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hairista/SalonManage/SalonManage.m"
-            timestampString = "528740661.246546"
+            timestampString = "529401803.419152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "848"
-            endingLineNumber = "848"
+            startingLineNumber = "894"
+            endingLineNumber = "894"
             landmarkName = "-updateCategory:nameCat:dataApiResult:"
             landmarkType = "7">
          </BreakpointContent>
@@ -538,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hairista/SalonManage/SalonManage.m"
-            timestampString = "528740661.246674"
+            timestampString = "529401803.419362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "956"
-            endingLineNumber = "956"
+            startingLineNumber = "1002"
+            endingLineNumber = "1002"
             landmarkName = "-deleteComment:dataApiResult:"
             landmarkType = "7">
          </BreakpointContent>
@@ -554,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hairista/SalonManage/SalonManage.m"
-            timestampString = "528740661.246736"
+            timestampString = "529401803.419426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "961"
-            endingLineNumber = "961"
+            startingLineNumber = "1007"
+            endingLineNumber = "1007"
             landmarkName = "-deleteComment:dataApiResult:"
             landmarkType = "7">
          </BreakpointContent>
@@ -586,7 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hairista/Authenticate/AuthenticateManage.m"
-            timestampString = "518435117.17822"
+            timestampString = "529411904.638409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "402"
@@ -602,12 +586,12 @@
                   moduleName = "hairista"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dongvo/Desktop/Dongvo/IOS/Project/harista/hairista/Authenticate/AuthenticateManage.m"
-                  timestampString = "528792251.43269"
+                  timestampString = "529411905.088968"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "403"
                   endingLineNumber = "403"
-                  offsetFromSymbolStart = "232">
+                  offsetFromSymbolStart = "204">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -617,12 +601,12 @@
                   moduleName = "hairista"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dongvo/Desktop/Dongvo/IOS/Project/harista/hairista/Authenticate/AuthenticateManage.m"
-                  timestampString = "528792251.434519"
+                  timestampString = "529411905.090783"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "405"
                   endingLineNumber = "405"
-                  offsetFromSymbolStart = "112">
+                  offsetFromSymbolStart = "56">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -682,7 +666,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hairista/Authenticate/AuthenticateManage.m"
-            timestampString = "528177306.031596"
+            timestampString = "529411904.638928"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "265"
@@ -698,12 +682,12 @@
                   moduleName = "hairista"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dongvo/Desktop/Dongvo/IOS/Project/harista/hairista/Authenticate/AuthenticateManage.m"
-                  timestampString = "528792251.449578"
+                  timestampString = "529411905.105739"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "265"
                   endingLineNumber = "265"
-                  offsetFromSymbolStart = "116">
+                  offsetFromSymbolStart = "100">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -713,12 +697,12 @@
                   moduleName = "hairista"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dongvo/Desktop/Dongvo/IOS/Project/harista/hairista/Authenticate/AuthenticateManage.m"
-                  timestampString = "528792251.451425"
+                  timestampString = "529411905.107531"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "267"
                   endingLineNumber = "267"
-                  offsetFromSymbolStart = "112">
+                  offsetFromSymbolStart = "56">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -730,7 +714,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hairista/View/PopupCteateService/PopupCteateServiceViewController.m"
-            timestampString = "528792251.095697"
+            timestampString = "529400195.108838"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
@@ -745,28 +729,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "hairista/SalonManage/SalonManage.m"
-            timestampString = "528740661.246966"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "812"
-            endingLineNumber = "812"
-            landmarkName = "-createCategory:dataApiResult:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "hairista/Controller/Manager/Service/EditServiceViewController.m"
-            timestampString = "528792251.095811"
+            timestampString = "529407088.215163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "-touchButtonFinish:edit:"
             landmarkType = "7">
          </BreakpointContent>
@@ -778,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hairista/Controller/Manager/Service/EditServiceViewController.m"
-            timestampString = "528792251.095869"
+            timestampString = "529407088.215241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "-touchButtonFinish:edit:"
             landmarkType = "7">
          </BreakpointContent>
@@ -794,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hairista/SalonManage/SalonManage.m"
-            timestampString = "528740661.247289"
+            timestampString = "529401803.419809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "906"
-            endingLineNumber = "906"
+            startingLineNumber = "952"
+            endingLineNumber = "952"
             landmarkName = "-createServiceByIdCat:service:dataApiResult:"
             landmarkType = "7">
          </BreakpointContent>
@@ -810,13 +778,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hairista/Controller/Appdelegate/AppDelegate.m"
-            timestampString = "528792251.095963"
+            timestampString = "529407088.21534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "AppDelegate"
-            landmarkType = "3">
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-applicationWillResignActive:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hairista/SalonManage/SalonManage.m"
+            timestampString = "529401803.419912"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "783"
+            endingLineNumber = "783"
+            landmarkName = "-getListServiceBySalonID:dataApiResult:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hairista/SalonManage/SalonManage.m"
+            timestampString = "529401803.419975"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "786"
+            endingLineNumber = "786"
+            landmarkName = "-getListServiceBySalonID:dataApiResult:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hairista/SalonManage/SalonManage.m"
+            timestampString = "529401803.420027"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "795"
+            endingLineNumber = "795"
+            landmarkName = "-getListServiceBySalonID:dataApiResult:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hairista/SalonManage/SalonManage.m"
+            timestampString = "529401803.420195"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "833"
+            endingLineNumber = "833"
+            landmarkName = "-deleteService:dataApiResult:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -826,12 +858,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hairista/Controller/Appdelegate/AppDelegate.m"
-            timestampString = "528792251.096296"
+            timestampString = "529407088.215536"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-applicationWillResignActive:"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hairista/Authenticate/AuthenticateManage.m"
+            timestampString = "529411904.639568"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "-login:password:dataResult:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hairista/Authenticate/AuthenticateManage.m"
+            timestampString = "529411904.639835"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "-login:password:dataResult:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hairista/APIHandle/APIRequestHandler.m"
+            timestampString = "529411942.386594"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "+initWithURLString:withHttpMethod:withRequestBody:callApiResult:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hairista/APIHandle/APIRequestHandler.m"
+            timestampString = "529411963.730751"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "+initWithURLString:withHttpMethod:withRequestBody:callApiResult:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

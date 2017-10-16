@@ -21,7 +21,6 @@
 
 -(void)showProcessBar:(UIImage *)image progress:(NSProgress *)progressCurr;
 -(void)closeProgress;
--(void)showMessageBoxNotification:(NSString *)strContent;
 
 @end
 

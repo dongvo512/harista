@@ -50,7 +50,6 @@
 
 -(void)getListServiceByCategoryID:(NSString *)categoryID dataApiResult:(DataAPIResult)dataApiResult;
 
-
 -(void)createServiceByIdCat:(NSString *)idCate service:(Service *)service dataApiResult:(DataAPIResult)dataApiResult;
 
 -(void)updateCategory:(NSString *)idCat nameCat:(NSString *)catName dataApiResult:(DataAPIResult)dataApiResult;
@@ -66,5 +65,9 @@
 -(void)updateUserToSalon:(SessionUser *)user dataApiResult:(DataAPIResult)dataApiResult;
 
 -(void)updateSalonToUser:(Salon *)salon dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)deleteService:(NSString *)idService dataApiResult:(DataAPIResult)dataApiResult;
+
+-(void)deleteCategories:(NSString *)idCategories dataApiResult:(DataAPIResult)dataApiResult;
 
 @end

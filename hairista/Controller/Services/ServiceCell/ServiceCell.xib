@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -25,7 +26,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wash_hair_1" translatesAutoresizingMaskIntoConstraints="NO" id="Wn0-om-Oim">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wn0-om-Oim">
                         <rect key="frame" x="4" y="0.0" width="126" height="130"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Scf-Od-AqD">
@@ -57,10 +58,10 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2T-l8-FAk">
-                        <rect key="frame" x="0.0" y="0.0" width="55.5" height="20"/>
+                        <rect key="frame" x="0.0" y="0.0" width="55" height="20"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJT-r7-jNY">
-                                <rect key="frame" x="4" y="0.0" width="47.5" height="20"/>
+                                <rect key="frame" x="4" y="0.0" width="47" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="2DM-o9-6Ua"/>
@@ -84,12 +85,24 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYt-bg-JOo">
+                        <rect key="frame" x="94" y="0.0" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="HIE-fV-254"/>
+                            <constraint firstAttribute="height" constant="36" id="jEe-RR-g14"/>
+                        </constraints>
+                        <state key="normal" image="ic_delete_booking"/>
+                        <connections>
+                            <action selector="touchBtnDelete:" destination="gTV-IL-0wX" eventType="touchUpInside" id="zz0-3G-5Z6"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Scf-Od-AqD" secondAttribute="trailing" id="AOg-Rg-pea"/>
                 <constraint firstItem="VSg-6B-nAN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BQr-C4-OVr"/>
                 <constraint firstItem="Scf-Od-AqD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="Dez-Gv-go0"/>
+                <constraint firstItem="IYt-bg-JOo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KzJ-1X-NZb"/>
                 <constraint firstItem="Wn0-om-Oim" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="MlQ-tv-GjD"/>
                 <constraint firstItem="N2T-l8-FAk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="OhG-GM-GQJ"/>
                 <constraint firstItem="VSg-6B-nAN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="18" id="RJV-2g-DEK"/>
@@ -98,18 +111,20 @@
                 <constraint firstItem="Wn0-om-Oim" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dLe-9G-2vu"/>
                 <constraint firstAttribute="bottom" secondItem="Scf-Od-AqD" secondAttribute="bottom" id="iht-6A-mEs"/>
                 <constraint firstItem="N2T-l8-FAk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lwh-if-1kg"/>
+                <constraint firstAttribute="trailing" secondItem="IYt-bg-JOo" secondAttribute="trailing" id="zre-S3-Oi2"/>
             </constraints>
             <size key="customSize" width="129" height="129"/>
             <connections>
+                <outlet property="btnDelete" destination="IYt-bg-JOo" id="aKe-yc-PBS"/>
                 <outlet property="imgService" destination="Wn0-om-Oim" id="QTs-bs-Gip"/>
                 <outlet property="lblPrice" destination="ZJT-r7-jNY" id="I0X-ff-3Ll"/>
                 <outlet property="lblServiceName" destination="rmc-wL-xXq" id="Yhg-Tp-TNi"/>
             </connections>
-            <point key="canvasLocation" x="-232" y="-221"/>
+            <point key="canvasLocation" x="-590" y="-464"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ic_delete_booking" width="50" height="50"/>
         <image name="tamgiac" width="29" height="116"/>
-        <image name="wash_hair_1" width="674" height="449"/>
     </resources>
 </document>

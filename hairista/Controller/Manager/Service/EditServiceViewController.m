@@ -13,6 +13,8 @@
 #import "SalonManage.h"
 #import "PopupCreateCategoryViewController.h"
 
+#define HEIGHT_CELL_CATEGORIES 70
+
 @interface EditServiceViewController (){
 
     Category *catSelected;
@@ -110,6 +112,33 @@
 }
 
 #pragma mark - Method
+
+- (void)deleteCategories:(Category *)cat{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[SalonManage sharedInstance] deleteCategories:cat.idCategory dataApiResult:^(NSError *error, id idObject, NSString *strError) {
+      
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if(error){
+            
+            [Common showAlert:[SlideMenuViewController sharedInstance] title:@"Thông báo" message:@"Lỗi xoá danh mục" buttonClick:nil];
+        }
+        else{
+            
+            NSInteger indexDelete = [self.arrCategories indexOfObject:cat];
+            
+            [self.arrCategories removeObject:cat];
+            
+           [self.tblView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexDelete inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+            
+        }
+        
+    }];
+    
+}
+
 -(void)getListCategories{
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -165,30 +194,26 @@
     [self.navigationController pushViewController:vcListService animated:YES];
     
 }
-//- (void)tableView:(UITableView *)tableView
-//  willDisplayCell:(UITableViewCell *)cell
-//forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-////    if(indexPath.row == self.arrSalons.count - 1 && !isLoadingData &&!isFullData){
-////        
-////        pageIndex ++;
-////        [self loadMoreSalon];
-////    }
-//    
-//}
+
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 70;
+    return HEIGHT_CELL_CATEGORIES;
 }
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//
-//    Category *cat = [self.arrCategories objectAtIndex:indexPath.row];
-//    ListManageServiceViewController *manageServices = [[ListManageServiceViewController alloc] initWithNibName:@"ListManageServiceViewController" bundle:nil];
-//    manageServices.titleCategories = cat.name;
-//    [self.navigationController pushViewController:manageServices animated:YES];
-//}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+   
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        
+        [self deleteCategories:[self.arrCategories objectAtIndex:indexPath.row]];
+    }
+}
 
 #pragma mark - CategoriesManageCellDelegate
 -(void)touchButtonEdit:(Category *)cat{

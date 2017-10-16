@@ -12,4 +12,11 @@
 
 @interface ServiceCell : UICollectionViewCell
 -(void)setDataForCell:(Service *)service;
+@property (nonatomic, weak) id delegate;
+@property (nonatomic) BOOL isManager;
+@end
+@protocol ServiceCellDelegate
+
+- (void)deleteService:(Service *)service;
+
 @end

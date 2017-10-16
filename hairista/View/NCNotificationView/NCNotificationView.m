@@ -82,7 +82,7 @@
     [self.view addGestureRecognizer:singleFingerTap];
     
     self.lblTitle.text = notification.title;
-    self.lblBookdate.text = notification.bookDate;
+    self.lblBookdate.text = [Common formattedDateTimeWithDateString:notification.bookDate inputFormat:@"yyy/MM/dd HH:mm:ss" outputFormat:@"dd/MM/yyyy - HH:mm"];
     
     [self showMessage];
     //The event handling method

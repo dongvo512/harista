@@ -802,6 +802,52 @@ static SalonManage *sharedInstance = nil;
 
 }
 
+- (void)deleteCategories:(NSString *)idCategories dataApiResult:(DataAPIResult)dataApiResult{
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@/de-active",URL_PUT_UPDATE_CATEGORY,idCategories];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_PUT withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorDeleteCategories", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorDeleteCategories" code:1 userInfo:userInfo];
+            dataApiResult(error, nil, stringError);
+        }
+        else{
+            
+            dataApiResult(nil, @"OK", stringError);
+            
+        }
+    }];
+
+    
+}
+
+- (void)deleteService:(NSString *)idService dataApiResult:(DataAPIResult)dataApiResult{
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@/de-active",URL_PUT_UPDATE_SERVICE,idService];
+    
+    [APIRequestHandler initWithURLString:url withHttpMethod:kHTTP_METHOD_PUT withRequestBody:nil callApiResult:^(BOOL isError, NSString *stringError, id responseDataObject) {
+        
+        if(isError){
+            
+            NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(stringError, @"ErrorDeleteCategories", nil)};
+            
+            NSError *error = [[NSError alloc]initWithDomain:@"ErrorDeleteCategories" code:1 userInfo:userInfo];
+            dataApiResult(error, nil, stringError);
+        }
+        else{
+            
+            dataApiResult(nil, @"OK", stringError);
+            
+        }
+    }];
+    
+    
+}
+
 -(void)createCategory:(NSString *)catName dataApiResult:(DataAPIResult)dataApiResult{
 
     //{{url}}categories
