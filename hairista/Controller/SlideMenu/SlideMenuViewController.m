@@ -48,7 +48,7 @@ static SlideMenuViewController *sharedInstance = nil;
     @synchronized(self) {
         if (sharedInstance == nil) {
             sharedInstance = [[SlideMenuViewController alloc] initWithNibName:@"SlideMenuViewController" bundle:nil];
-            
+           
         }
         return sharedInstance;
     }

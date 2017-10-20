@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Roboto-Bold.ttf">
             <string>Roboto-Bold</string>
-        </array>
-        <array key="Roboto-Light.ttf">
-            <string>Roboto-Light</string>
         </array>
         <array key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -48,15 +46,6 @@
                         </constraints>
                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salon làm tóc rất đẹp, rất chuyên nghiệp. Tôi rất thích" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8F-x5-gLr">
-                        <rect key="frame" x="62" y="41" width="350" height="51.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="ow4-hd-P7C"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/02/2012" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SG-xv-Fsd">
@@ -113,11 +102,8 @@
                     <constraint firstItem="gLX-ne-Wdc" firstAttribute="leading" secondItem="pfQ-Hl-FV5" secondAttribute="trailing" constant="8" id="R7l-Cl-jZ8"/>
                     <constraint firstItem="6SG-xv-Fsd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Sfu-Cu-bJ9"/>
                     <constraint firstItem="arI-1Z-FYM" firstAttribute="top" secondItem="efd-R9-ZBY" secondAttribute="bottom" constant="8" id="YHd-A7-7TU"/>
-                    <constraint firstItem="v8F-x5-gLr" firstAttribute="leading" secondItem="pfQ-Hl-FV5" secondAttribute="trailing" constant="8" id="Ydl-Ud-lWi"/>
                     <constraint firstItem="gLX-ne-Wdc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="YqJ-pk-75j"/>
-                    <constraint firstItem="v8F-x5-gLr" firstAttribute="top" secondItem="gLX-ne-Wdc" secondAttribute="bottom" constant="4" id="d2f-Hv-uds"/>
                     <constraint firstItem="efd-R9-ZBY" firstAttribute="top" secondItem="gLX-ne-Wdc" secondAttribute="bottom" constant="8" id="iI8-ep-tFW"/>
-                    <constraint firstItem="v8F-x5-gLr" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" priority="750" id="iLa-mU-SQt"/>
                     <constraint firstItem="efd-R9-ZBY" firstAttribute="leading" secondItem="pfQ-Hl-FV5" secondAttribute="trailing" constant="8" id="icw-M5-qGN"/>
                     <constraint firstAttribute="trailing" secondItem="iG4-kH-Pho" secondAttribute="trailing" constant="8" id="nMN-09-Kf7"/>
                     <constraint firstItem="pfQ-Hl-FV5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="p8e-6M-cln"/>
